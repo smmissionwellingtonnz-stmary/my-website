@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Mary's Syro Malabar Mission Wellington</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary: #1a4b7a;
+            --secondary: #b38a58;
+            --light: #f8f5f2;
+            --dark: #333;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+        
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation Menu */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+        
+        .nav-logo {
+            height: 50px;
+        }
+        
+        .nav-toggle {
+            font-size: 1.5rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 1rem 1.2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.donate {
+            background-color: #ff6b6b;
+            border-radius: 4px;
+            margin: 0.5rem 1rem;
+            font-weight: 600;
+        }
+        
+        .nav-link.donate:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: white;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f1f1;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #0a4d68;
+            padding-left: 1.3rem;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Hero section with increased spacing from nav */
+        .hero {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, #0d2d4a 100%);
+            padding: 5rem 0 2rem; /* Increased top padding */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px; /* Increased space from navigation */
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            animation: pulse 15s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.2; }
+        }
+        
+        .logo-container {
+            position: relative;
+            margin: 0 auto;
+            width: 180px; /* Increased size */
+            height: 180px; /* Increased size */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 100%; /* Full width of container */
+            height: 100%; /* Full height of container */
+            object-fit: contain;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+        }
+        
+        .title {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-size: 2.5rem;
+            margin: 2rem 1rem 1.5rem; /* Increased top margin */
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            max-width: 90%;
+        }
+        
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            animation: lineGrow 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+                max-width: 85%;
+            }
+            
+            .logo-container {
+                width: 150px; /* Slightly smaller on mobile */
+                height: 150px; /* Slightly smaller on mobile */
+            }
+            
+            /* Navigation for mobile */
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, #0a4d68, #088395);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+            }
+            
+            .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+        }
+        
+        @keyframes lineGrow {
+            0% { width: 0; }
+            100% { width: 80px; }
+        }
+        
+        .content-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .map-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-link:hover {
+            background-color: #0d3a6b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .thanksgiving {
+            text-align: center;
+            font-style: italic;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            position: relative;
+            padding: 1rem 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+        
+        .thanksgiving::before,
+        .thanksgiving::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--secondary);
+            position: absolute;
+        }
+        
+        .thanksgiving::before {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+        }
+        
+        .thanksgiving::after {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .chaplains-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 0 2rem;
+            max-width: 1200px;
+        }
+        
+        @media (max-width: 768px) {
+            .chaplains-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 2rem auto;
+            }
+            
+            .chaplain-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        .chaplain-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardAppear 0.8s ease-out forwards;
+        }
+        
+        .chaplain-card:nth-child(1) { animation-delay: 1.2s; }
+        .chaplain-card:nth-child(2) { animation-delay: 1.4s; }
+        .chaplain-card:nth-child(3) { animation-delay: 1.6s; }
+        .chaplain-card:nth-child(4) { animation-delay: 1.8s; }
+        
+        @keyframes cardAppear {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .chaplain-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .chaplain-image-container {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .chaplain-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Specific style for the third chaplain's image (10% zoom) */
+        .chaplain-card:nth-child(3) .chaplain-image {
+            transform: scale(1.4);
+            transform-origin: center center;
+        }
+        
+        .chaplain-card:hover .chaplain-image {
+            transform: scale(1.05);
+        }
+        
+        /* Override hover effect for the third chaplain */
+        .chaplain-card:nth-child(3):hover .chaplain-image {
+            transform: scale(1.15);
+        }
+        
+        .chaplain-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .chaplain-name {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .chaplain-period {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: white;
+            padding: 60px 0 20px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite linear;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #F8DE7E;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-social a:hover {
+            background: #ffd700;
+            color: #0a4d68;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="nav-container">
+        <div class="nav-header">
+            <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/file-5700d3b.png/:/rs=w:1440,h:1440" alt="Logo" class="nav-logo">
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">Syro Malabar Church</a></li>
+                    <li><a href="#" class="dropdown-item">Syro Malabar Melbourne</a></li>
+                    <li><a href="#" class="dropdown-item">Syro Malabar Wellington</a></li>
+                    <li><a href="#" class="dropdown-item">Priest & Council</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://smmissionwellington.org.nz/holy-qurbana-schedule" class="dropdown-item">Holy Qurbana Schedule</a></li>
+                    <li><a href="https://smmissionwellington.org.nz/upcoming-programs" class="dropdown-item">Upcoming Programs</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Ministries <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">Altar Servers</a></li>
+                    <li><a href="#" class="dropdown-item">Catechism</a></li>
+                    <li><a href="#" class="dropdown-item">Choir</a></li>
+                    <li><a href="#" class="dropdown-item">Family Units</a></li>
+                    <li><a href="#" class="dropdown-item">SMYM Wellington</a></li>
+                    <li><a href="#" class="dropdown-item">Young Couple Ministry</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Forms</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Resources</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Safeguarding</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Gallery & Social</a>
+            </li>
+            <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link donate">DONATE</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <section class="hero">
+        <div class="logo-container">
+            <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/file-5700d3b.png/:/rs=w:1440,h:1440" alt="St. Mary's Logo" class="logo">
+        </div>
+        <h1 class="title">St. Mary's Syro Malabar Mission Wellington</h1>
+    </section>
+    
+    <div class="content-container">
+        <div class="content">
+            <p>St. Mary's Syro Malabar Mission Wellington started their journey in 2006 only with a few families. From the last two decades the community has grown to a new level of spiritual and social among the people in Wellington Region.</p>
+            <p>The Syro Malabar Mission Wellington has been a part of Syro Malabar Eparchy of St. Thomas the Apostle, Melbourne Australia. Pope Francis established the Eparchy on the 23rd of December 2013, and Appointed Bishop Bosco Puthur as the First Bishop. Syro Malabar Mission Wellington is one of the largest Syro Malabar faithful communities in New Zealand.</p>
+            
+            <a href="https://tominjessil.github.io/wardmap/" class="map-link" target="_blank" rel="noopener noreferrer">Check the Area Map</a>
+        </div>
+        
+        <div class="thanksgiving">
+            With gratitude we remember our former chaplains and greatly appreciate their dedicated service to our community.
+        </div>
+        
+        <div class="chaplains-container">
+            <div class="chaplain-card">
+                <div class="chaplain-image-container">
+                    <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/WhatsApp%20Image%202024-12-24%20at%201.45.55%20PM.jpeg/:/rs=w:1440,h:1440" alt="Fr. Joseph Akkara CMI" class="chaplain-image">
+                </div>
+                <div class="chaplain-info">
+                    <div class="chaplain-name">Fr. Joseph Akkara CMI</div>
+                    <div class="chaplain-period">2006 December - 2009 December</div>
+                </div>
+            </div>
+            
+            <div class="chaplain-card">
+                <div class="chaplain-image-container">
+                    <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/Screenshot%202024-12-24%20135244.png/:/rs=w:1440,h:1440" alt="Fr. Varghese Thuruthichira" class="chaplain-image">
+                </div>
+                <div class="chaplain-info">
+                    <div class="chaplain-name">Fr. Varghese Thuruthichira</div>
+                    <div class="chaplain-period">2010 February - 2012 July</div>
+                </div>
+            </div>
+            
+            <div class="chaplain-card">
+                <div class="chaplain-image-container">
+                    <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/WhatsApp%20Image%202024-12-24%20at%201.37.33%20PM.jpeg/:/rs=w:1440,h:1440" alt="Fr. Sebastian Vandanamthadathil" class="chaplain-image">
+                </div>
+                <div class="chaplain-info">
+                    <div class="chaplain-name">Fr. Sebastian Vandanamthadathil</div>
+                    <div class="chaplain-period">2012 February - 2017 July</div>
+                </div>
+            </div>
+            
+            <div class="chaplain-card">
+                <div class="chaplain-image-container">
+                    <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/WhatsApp%20Image%202024-12-24%20at%201.32.45%20PM.jpeg/:/rs=w:1440,h:1440" alt="Fr. Biju Xavier" class="chaplain-image">
+                </div>
+                <div class="chaplain-info">
+                    <div class="chaplain-name">Fr. Biju Xavier</div>
+                    <div class="chaplain-period">2017 September - 2024 April</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>St. Mary's Mission</h3>
+                <p>St. Mary's Syro Malabar Mission Wellington is one of the largest Syro Malabar faithful communities in New Zealand, serving the spiritual needs of the community since 2006.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="https://smmissionwellington.org.nz/holy-qurbana-schedule" target="_blank"><i class="fas fa-chevron-right"></i> Mass Schedule</a></li>
+                    <li><a href="https://smmissionwellington.org.nz/upcoming-programs" target="_blank"><i class="fas fa-chevron-right"></i> Upcoming Programs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><a href="https://goo.gl/maps/3sRzvQ2VJY9Vp3ENA" target="_blank"><i class="fas fa-map-marker-alt"></i> 27 Trebann Street, Paparangi, Wellington</a></li>
+                    <li><a href="mailto:smmissionwellingtonnz@gmail.com"><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</a></li>
+                    <li><a href="tel:+64272841791"><i class="fas fa-phone"></i> +64 27 284 1791 (Fr. Joseph - Chaplain)</a></li>
+                    <li><a href="tel:+642108217181"><i class="fas fa-phone"></i> +64 21 082 17181 (Joshua Jose - Parish Council Secretary)</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 St. Mary's Syro Malabar Mission Wellington. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle functionality
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-item') && !e.target.closest('.nav-toggle')) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+            }
+        });
+        
+        // Scroll to top functionality
+        const scrollTop = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+        });
+        
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Mobile navigation handling
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.nextElementSibling && link.nextElementSibling.classList.contains('dropdown-menu')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const dropdown = link.nextElementSibling;
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
