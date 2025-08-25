@@ -32,6 +32,7 @@
             overflow-x: hidden;
             opacity: 0;
             animation: fadeIn 1s ease-in forwards;
+            padding-top: 110px; /* Added padding to prevent content from being hidden under fixed header */
         }
         
         html {
@@ -44,7 +45,8 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-/* Notice Bar */
+        
+        /* Notice Bar */
         .notice-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
@@ -74,7 +76,7 @@
         /* Navigation Menu */
         .nav-container {
             position: fixed;
-            top: 0;
+            top: 40px; /* Positioned below notice bar */
             left: 0;
             width: 100%;
             z-index: 1000;
@@ -172,54 +174,10 @@
             color: #0a4d68;
             padding-left: 1.3rem;
         }
- /* Responsive Design */
-        @media (max-width: 768px) {
-            /* Notice bar for mobile */
-            .notice-bar {
-                padding: 10px 0;
-                font-size: 14px;
-            }
-        /* Navigation for mobile */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background: linear-gradient(135deg, #0a4d68, #088395);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                padding: 1rem 0;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-toggle {
-                display: block;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                width: 100%;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                display: none;
-            }
-            
-            .nav-item:hover .dropdown-menu {
-                display: block;
-            }
-        }
-
+        
         /* Main content padding to account for fixed nav */
         .main-content {
-            padding-top: 100px;
+            padding-top: 20px; /* Reduced padding since body already has padding */
         }
         
         /* Animated Background */
@@ -405,7 +363,7 @@
         
         .leader-role {
             display: inline-block;
-            background: var(--accent);
+            background: var(--accept);
             color: var(--white);
             padding: 5px 15px;
             border-radius: 20px;
@@ -628,6 +586,10 @@
         }
         
         @media (max-width: 768px) {
+            body {
+                padding-top: 110px; /* Maintain padding for mobile */
+            }
+            
             .hero {
                 padding: 50px 0 30px;
                 clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
@@ -658,9 +620,51 @@
             .footer-column {
                 margin-bottom: 30px;
             }
+            
+            /* Navigation for mobile */
+            .nav-menu {
+                position: fixed;
+                top: 90px; /* Below notice bar and nav header */
+                left: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, #0a4d68, #088395);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                height: calc(100vh - 90px);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+            }
+            
+            .nav-item:hover .dropdown-menu {
+                display: block;
+            }
         }
         
         @media (max-width: 576px) {
+            body {
+                padding-top: 110px; /* Maintain padding for very small screens */
+            }
+            
             .eparchy-logo {
                 width: 100px;
                 height: 100px;
@@ -687,10 +691,11 @@
     </style>
 </head>
 <body>
-<!-- Notice Bar -->
+    <!-- Notice Bar -->
     <div class="notice-bar">
         <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
     </div>
+    
     <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
@@ -900,28 +905,14 @@
         if (window.innerWidth <= 768) {
             document.querySelectorAll('.nav-link').forEach(link => {
                 if (link.nextElementSibling && link.nextElementSibling.classList.contains('dropdown-menu')) {
-                    link.addEventListener('click', function(e) {
+                    link.addEventListener('click', (e) => {
                         e.preventDefault();
-                        const dropdown = this.nextElementSibling;
-                        const isDisplayed = dropdown.style.display === 'block';
-                        
-                        // Hide all dropdowns first
-                        document.querySelectorAll('.dropdown-menu').forEach(d => {
-                            d.style.display = 'none';
-                        });
-                        
-                        // Show this dropdown if it wasn't shown
-                        if (!isDisplayed) {
-                            dropdown.style.display = 'block';
-                        }
+                        const dropdown = link.nextElementSibling;
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
                     });
                 }
             });
         }
     </script>
 </body>
-
 </html>
-
-
-
