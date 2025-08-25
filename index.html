@@ -37,7 +37,8 @@
             margin: 0 auto;
             padding: 0 15px;
         }
-/* Notice Bar */
+        
+        /* Notice Bar */
         .notice-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
@@ -62,11 +63,12 @@
         .notice-bar span {
             margin: 0 15px;
             display: inline-block;
-        }        
+        }
+        
         /* Navigation Menu */
         .nav-container {
             position: fixed;
-            top: 0;
+            top: 40px; /* Positioned below notice bar */
             left: 0;
             width: 100%;
             z-index: 1000;
@@ -206,7 +208,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            margin-top: 70px;
+            margin-top: 110px; /* Added margin to prevent overlap with navigation */
         }
         
         .bg-image {
@@ -534,6 +536,7 @@
             margin-bottom: 20px;
             text-align: justify;
             transition: all 0.3s ease;
+            font-size: 1.05rem;
         }
         
         .welcome-message p:hover {
@@ -680,6 +683,7 @@
         .mass-times li:hover {
             background-color: rgba(5, 191, 219, 0.05);
             padding-left: 8px;
+            font-weight: 500;
         }
         
         .mass-times li:last-child {
@@ -873,6 +877,8 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
         }
         
         .image-container::before {
@@ -1364,70 +1370,6 @@
             font-size: 0.9rem;
         }
 
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-            }
-            
-            .footer-column {
-                margin-bottom: 30px;
-            }
-            
-            .contact-header, .contact-info, .contact-form {
-                padding: 25px 20px;
-            }
-            .info-item {
-                flex-direction: column;
-            }
-            .info-item i {
-                margin-bottom: 8px;
-                margin-right: 0;
-            }
-            /* Responsive Design */
-        @media (max-width: 768px) {
-            /* Notice bar for mobile */
-            .notice-bar {
-                padding: 10px 0;
-                font-size: 14px;
-            }
-            
-            /* Navigation for mobile */
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background: linear-gradient(135deg, #0a4d68, #088395);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                padding: 1rem 0;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-toggle {
-                display: block;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                width: 100%;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                display: none;
-            }
-            
-            .nav-item:hover .dropdown-menu {
-                display: block;
-            }
-        }
-        
         /* Animations */
         @keyframes zoomPan {
             0% {
@@ -1549,6 +1491,49 @@
             .gallery-header h2 {
                 font-size: 2rem;
             }
+            
+            /* Navigation for mobile */
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, #0a4d68, #088395);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                height: calc(100vh - 90px);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+            }
+            
+            .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+            
+            /* Header */
+            .cover-container {
+                margin-top: 100px; /* Adjusted for mobile */
+            }
         }
         
         @media (max-width: 480px) {
@@ -1624,6 +1609,10 @@
             .gallery-header h2 {
                 font-size: 1.7rem;
             }
+            
+            .cover-container {
+                margin-top: 90px; /* Adjusted for very small screens */
+            }
         }
         
         @media (orientation: landscape) and (max-height: 500px) {
@@ -1634,10 +1623,11 @@
     </style>
 </head>
 <body>
-<!-- Notice Bar -->
+    <!-- Notice Bar -->
     <div class="notice-bar">
         <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
     </div>
+
     <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
@@ -2059,17 +2049,17 @@
         // Image URLs - Using higher resolution versions
         const images = [
             "images/bishoprafel.jpg",
-        "images/bishopjohn.jpg",
-        "images/frjosephgallery.jpg",
-        "images/altarboys.jpg",
-        "images/smymteam.jpg",
-        "images/marsleeva.jpg",
-        "images/smym.jpg",
-        "images/nativity.jpg",
-        "images/priests.jpg",
-        "images/sentoff.jpg",
-        "images/noticeboard.jpg",
-        "images/church.jpg"
+            "images/bishopjohn.jpg",
+            "images/frjosephgallery.jpg",
+            "images/altarboys.jpg",
+            "images/smymteam.jpg",
+            "images/marsleeva.jpg",
+            "images/smym.jpg",
+            "images/nativity.jpg",
+            "images/priests.jpg",
+            "images/sentoff.jpg",
+            "images/noticeboard.jpg",
+            "images/church.jpg"
         ];
 
         // DOM elements for gallery
@@ -2275,15 +2265,4 @@
         handleResize();
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
