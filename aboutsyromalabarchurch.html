@@ -33,8 +33,10 @@
             color: var(--navy);
             line-height: 1.7;
             overflow-x: hidden;
+            padding-top: 110px; /* Added padding to prevent content from being hidden under fixed header */
         }
-/* Notice Bar */
+        
+        /* Notice Bar */
         .notice-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
@@ -60,10 +62,11 @@
             margin: 0 15px;
             display: inline-block;
         }
+        
         /* Navigation Menu */
         .nav-container {
             position: fixed;
-            top: 0;
+            top: 40px; /* Positioned below notice bar */
             left: 0;
             width: 100%;
             z-index: 1000;
@@ -164,9 +167,13 @@
 
         /* Navigation for mobile */
         @media (max-width: 768px) {
+            body {
+                padding-top: 110px; /* Maintain padding for mobile */
+            }
+            
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 90px; /* Below notice bar and nav header */
                 left: -100%;
                 flex-direction: column;
                 background: linear-gradient(135deg, #0a4d68, #088395);
@@ -175,6 +182,8 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
                 padding: 1rem 0;
+                height: calc(100vh - 90px);
+                overflow-y: auto;
             }
             
             .nav-menu.active {
@@ -189,7 +198,7 @@
                 position: static;
                 width: 100%;
                 opacity: 1;
-            visibility: visible;
+                visibility: visible;
                 transform: none;
                 box-shadow: none;
                 display: none;
@@ -202,7 +211,7 @@
 
         /* Main content padding to account for fixed nav */
         .main-content {
-            padding-top: 100px;
+            padding-top: 20px; /* Reduced padding since body already has padding */
         }
 
         .header-container {
@@ -773,13 +782,6 @@
             background-color: var(--accent);
             transform: translateY(-3px);
         }
-/* Responsive Design */
-        @media (max-width: 768px) {
-            /* Notice bar for mobile */
-            .notice-bar {
-                padding: 10px 0;
-                font-size: 14px;
-            }
         
         /* Responsive styles */
         @media (max-width: 1024px) {
@@ -804,6 +806,7 @@
         @media (max-width: 768px) {
             body {
                 padding: 8px 15px;
+                padding-top: 110px; /* Maintain padding for mobile */
             }
             
             .header-background {
@@ -857,6 +860,7 @@
         @media (max-width: 480px) {
             body {
                 padding: 5px 10px;
+                padding-top: 110px; /* Maintain padding for very small screens */
             }
             
             .header-background {
@@ -932,10 +936,11 @@
     </style>
 </head>
 <body>
-<!-- Notice Bar -->
+    <!-- Notice Bar -->
     <div class="notice-bar">
         <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
     </div>
+    
     <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
@@ -1116,7 +1121,7 @@
                 
                 <p>By 1960, while Cardinal Tisserant was the prefect of the Oriental Congregation in Rome, this jurisdiction was extended to all over Kerala and parts of neighbouring states, Tamil Nadu and Karnataka. Eparchy of Thalassery was established for the Syro - Malabar migrants in North Malabar. The Anaphora of Mar Addai and Mar Mari was restored. Parts of the Holy Relics of our Apostle Mar Thoma Sleeha were brought to India and established at Kodungallur, where he initially landed. The second half of the 20th century and the start of the 21st century saw a great jump in the history of the Syro-Malabar church.</p>
                 
-                <p>Sons and daughters of St Thomas the Apostle started going out as missionaries carrying the same evangelisation zeal of their father in faith. Apart from that, the lay faithful who migrated to different parts of India and the world formed Syro-Malabar communities wherever they went to cherish and celebrate the great faith handed down from their ancestors. Multiple mission eparchies were established in different parts of India, and this missionary zeal made many calls us the most vibrant missionary church in the Catholic communion.</p>
+                <p>Sons and daughters of St Thomas the Apostle started going out as missionaries carrying the same evangelisation zeal of their father in faith. Apart from that, the lay faithful who migrated to different parts of India and the world formed Syro-Malabar communities wherever they went to cherish and celebrate the great faith handed down from their ancestors. Multiple mission eparchies were established in different parts of India, and this missionary zeal made many call us the most vibrant missionary church in the Catholic communion.</p>
                 
                 <p>By 1992, Syro - Malabar church became a Major Archi episcopa sui iuris Church with Major Arch- bishop as its head, and the Syro-Malabar Synod was established. The start of the 21st century saw the Nasrani church growing globally. Eparchies were established in Chicago, Melbourne, Great Britain and Mississauga. The Eparchy of Shamsabad was erected to bring back the All-India jurisdiction of the Syro-Malabar Church. Today we have 31 eparchies in India and four eparchies in the western countries, along with an Apostolic visitation to Europe. There are thousands of Syro-Malabar faithful in other Asian and African countries too.</p>
             </div>
@@ -1284,11 +1289,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
