@@ -14,6 +14,7 @@
             --secondary: #b38a58;
             --light: #f8f5f2;
             --dark: #333;
+            --white: #ffffff;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --gradient: linear-gradient(135deg, #0a4d68, #088395);
         }
@@ -178,37 +179,38 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        /* Navigation Buttons Container */
-        .nav-buttons {
-            position: fixed;
-            top: 80px;
-            left: 25px;
+        /* Back Button */
+        .back-button-container {
             display: flex;
-            gap: 15px;
-            z-index: 100;
+            justify-content: center;
+            margin-bottom: 30px;
+            width: 100%;
         }
 
-        /* Back Button */
         .back-button {
-            width: 50px;
-            height: 50px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            color: var(--primary);
+           justify-content: flex-start;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
             text-decoration: none;
-            font-size: 20px;
-            z-index: 100;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(26, 75, 122, 0.3);
+            margin-top: 20px;
         }
 
         .back-button:hover {
-            transform: translateX(-3px);
-            background: var(--primary);
-            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 75, 122, 0.4);
+            background: #153c5f;
+        }
+
+        .back-button i {
+            margin-right: 10px;
+            font-size: 1.1rem;
         }
 
         /* Hero section */
@@ -316,6 +318,7 @@
             max-width: 400px;
             position: relative;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
@@ -334,6 +337,7 @@
                           rgba(249,247,252,0) 100%);
             padding: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-top: 20px;
         }
 
         .main-image {
@@ -613,16 +617,9 @@
                 font-size: 1rem;
             }
             
-            .nav-buttons {
-                top: 70px;
-                left: 15px;
-                gap: 10px;
-            }
-            
             .back-button {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
             
             .image-frame {
@@ -687,6 +684,11 @@
             
             .info-title {
                 font-size: 1.2rem;
+            }
+            
+            .back-button {
+                padding: 8px 16px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -757,13 +759,6 @@
     <div class="scroll-top" id="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </div>
-    
-    <!-- Navigation Buttons -->
-    <div class="nav-buttons">
-        <a href="javascript:history.back()" class="back-button" aria-label="Go Back">
-            &lt;
-        </a>
-    </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -771,6 +766,13 @@
     </section>
     
     <div class="container">
+        <!-- Back Button Container -->
+        <div class="back-button-container">
+            <a href="#" class="back-button" id="back-button">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+        
         <div class="ward-hero">
             <div class="image-container">
                 <div class="image-frame">
@@ -903,6 +905,21 @@
                 }
             });
         }
+        
+        // Back button functionality
+        const backButton = document.getElementById('back-button');
+        
+        backButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Check if there's a previous page in session history
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // If no history, redirect to home page
+                window.location.href = 'index.html';
+            }
+        });
     </script>
 </body>
 </html>
