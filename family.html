@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMYM Wellington - Family Units</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        :root {
+            --primary: #1a4b7a;
+            --secondary: #b38a58;
+            --light: #f8f5f2;
+            --dark: #333;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+        
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
+        }
+        
+        /* Navigation Menu */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+        
+        .nav-logo {
+            height: 50px;
+        }
+        
+        .nav-toggle {
+            font-size: 1.5rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 1rem 1.2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.donate {
+            background-color: #ff6b6b;
+            border-radius: 4px;
+            margin: 0.5rem 1rem;
+            font-weight: 600;
+        }
+        
+        .nav-link.donate:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: white;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f1f1;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #0a4d68;
+            padding-left: 1.3rem;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Hero section with increased spacing from nav */
+        .hero {
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/0152e4cd63cdd8516cbc6692cb8d7043.jpg/:/rs=w:1440,h:1440');
+            background-size: cover;
+            background-position: center;
+            padding: 7rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+            animation: pulse 15s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.1; }
+            100% { opacity: 0.2; }
+        }
+        
+        .title {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-size: 3.5rem;
+            margin: 1rem 1rem 1.5rem;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            max-width: 90%;
+        }
+        
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            animation: lineGrow 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @keyframes lineGrow {
+            0% { width: 0; }
+            100% { width: 80px; }
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Main content layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .description-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .description-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .description-text {
+            font-size: 1.05rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Wards section - centered and standout */
+        .wards-section {
+            width: 100%;
+            text-align: center;
+            margin: 3rem 0;
+            padding: 0 1rem;
+        }
+        
+        .wards-heading {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .wards-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .wards-container {
+            background: white;
+            border-radius: 8px;
+            padding: 3rem 2rem;
+            box-shadow: var(--shadow);
+            margin: 0 auto;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wards-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+        
+        .wards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .ward-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary), #0d3a6b);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ward-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            pointer-events: none;
+        }
+
+        .ward-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #0d3a6b, var(--primary));
+        }
+
+        .ward-button i {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #ffd700;
+        }
+        
+        /* Search section */
+        .search-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .search-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .search-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-title i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            font-size: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 75, 122, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+
+        #suggestions {
+            position: absolute;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            background: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 1px;
+            z-index: 10;
+            display: none;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+        }
+
+        #suggestions li {
+            padding: 0.75rem 1.25rem;
+            list-style: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        #suggestions li:hover {
+            background: #f9fafb;
+            color: var(--primary);
+        }
+        
+        /* Map section */
+        .wardmap-container {
+            width: 100%;
+            text-align: center;
+            margin: 3rem 0;
+            padding: 0 1rem;
+        }
+        
+        .wardmap-container h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .wardmap-container iframe {
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Popup styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .popup-card {
+            background: white;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+            text-align: center;
+        }
+
+        .popup-overlay.active .popup-card {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .popup-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .popup-content {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: white;
+            padding: 60px 0 20px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite linear;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #F8DE7E;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-social a:hover {
+            background: #ffd700;
+            color: #0a4d68;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .wards-heading {
+                font-size: 2rem;
+            }
+            
+            .wards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-bottom: 30px;
+            }
+            
+            /* Navigation for mobile */
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, #0a4d68, #088395);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                display: none;
+            }
+            
+            .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .wards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .wardmap-container h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="nav-container">
+        <div class="nav-header">
+            <img src="images/logo.png" alt="Logo" class="nav-logo">
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="aboutsyromalabarchurch.html" class="dropdown-item">Syro Malabar Church</a></li>
+                    <li><a href="abouteparchy.html" class="dropdown-item">Syro Malabar Melbourne</a></li>
+                    <li><a href="aboutsmmission.html" class="dropdown-item">Syro Malabar Wellington</a></li>
+                    <li><a href="priestandcouncil.html" class="dropdown-item">Priest & Council</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="services.html" class="dropdown-item">Holy Qurbana Schedule</a></li>
+                    <li><a href="event.html" class="dropdown-item">Upcoming Programs</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Ministries <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="altar.html" class="dropdown-item">Altar Servers</a></li>
+                    <li><a href="#" class="dropdown-item">Catechism</a></li>
+                    <li><a href="#" class="dropdown-item">Choir</a></li>
+                    <li><a href="#" class="dropdown-item">Family Units</a></li>
+                    <li><a href="#" class="dropdown-item">SMYM Wellington</a></li>
+                    <li><a href="#" class="dropdown-item">Young Couple Ministry</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Forms</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Resources</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Safeguarding</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Gallery & Social</a>
+            </li>
+            <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link donate">DONATE</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="title">FAMILY UNITS</h1>
+        <p class="hero-subtitle">Strengthening our community through faith, gatherings, and shared activities</p>
+    </section>
+    
+    <div class="content-container">
+        <div class="main-content">
+            <div class="description-card">
+                <p class="description-text">
+                    We have family units that come together with monthly rosaries, unit gatherings and fun activities to strengthen our community. We have different wards based on different locations. The wards have 2 leaders each and help bring the unit together. We have 7 family wards.
+                </p>
+            </div>
+
+            <div class="search-section">
+                <div class="search-card">
+                    <h3 class="search-title"><i class="fas fa-search"></i> Find Your Ward</h3>
+                    <div class="search-container">
+                        <input type="text" id="search-input" class="search-input" placeholder="Search for your suburb..." oninput="filterOptions()">
+                        <div class="search-icon">🔍</div>
+                        <ul id="suggestions"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Our Wards Section - Centered and Standout -->
+        <div class="wards-section">
+            <h2 class="wards-heading">Our Wards</h2>
+            <div class="wards-container">
+                <p>Click on any ward to learn more about it and connect with your ward community.</p>
+                <div class="wards-grid">
+                    <a href="#" class="ward-button">
+                        <i class="fas fa-church"></i>
+                        St. Chavera
+                    </a>
+                    <a href="#" class="ward-button">
+                        <i class="fas fa-church"></i>
+                        St. Alphonsa
+                    </a>
+                    <a href="#" class="ward-button">
+                        <i class="fas fa-church"></i>
+                        Our Lady of Kapiti
+                    </a>
+                    <a href="#" class="ward-button">
+                        <i class="fas fa-church"></i>
+                        St. Thomas
+                    </a>
+                    <a href="#" class="ward-button">
+                        <i class="fas fa-church"></i>
+                        Holy Family
+                    </a>
+                    <a href="#" class="ward-button">
+                        <i class="fas fa-church"></i>
+                        St. Francis Xavier
+                    </a>
+                    <a href="#" class="ward-button">
+                        <i class="fas fa-church"></i>
+                        St. Joseph
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Map Section -->
+        <div class="wardmap-container">
+            <h1>Map of the Parish Wards</h1>
+            <iframe src="https://tominjessil.github.io/wardmap/" title="Map of the wards of our parish" style="border:none; width:100%; height:400px"></iframe>
+        </div>
+    </div>
+
+    <!-- Popup for search results -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-card">
+            <button class="popup-close" onclick="closePopup()">×</button>
+            <h3 class="popup-title" id="popup-title"></h3>
+            <p class="popup-content" id="popup-content"></p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>St. Mary's Mission</h3>
+                <p>St. Mary's Syro Malabar Mission Wellington is one of the largest Syro Malabar faithful communities in New Zealand, serving the spiritual needs of the community since 2006.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="services.html" target="_blank"><i class="fas fa-chevron-right"></i> Mass Schedule</a></li>
+                    <li><a href="event.html" target="_blank"><i class="fas fa-chevron-right"></i> Upcoming Programs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><a href="https://goo.gl/maps/3sRzvQ2VJY9Vp3ENA" target="_blank"><i class="fas fa-map-marker-alt"></i> 27 Trebann Street, Paparangi, Wellington</a></li>
+                    <li><a href="mailto:smmissionwellingtonnz@gmail.com"><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</a></li>
+                    <li><a href="tel:+64272841791"><i class="fas fa-phone"></i> +64 27 284 1791 (Fr. Joseph - Chaplain)</a></li>
+                    <li><a href="tel:+642108217181"><i class="fas fa-phone"></i> +64 21 082 17181 (Joshua Jose - Parish Council Secretary)</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 St. Mary's Syro Malabar Mission Wellington. All Rights Reserved. | Created by Jinto Jose</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle functionality
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-item') && !e.target.closest('.nav-toggle')) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+            }
+        });
+        
+        // Scroll to top functionality
+        const scrollTop = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+        });
+        
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Mobile navigation handling
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.nextElementSibling && link.nextElementSibling.classList.contains('dropdown-menu')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const dropdown = link.nextElementSibling;
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    });
+                }
+            });
+        }
+        
+        // Family Units functionality
+        const suburbData = {
+            "St. Chavera Ward": [
+                "Aro Valley", "Berhampore", "Breaker Bay", "Brooklyn", "Hataitai",
+                "Highbury", "Houghton Bay", "Island Bay", "Karaka Bays", "Kelburn",
+                "Kilbirnie", "Kingston", "Lyall Bay", "Maupuia", "Melrose",
+                "Miramar", "Moa Point", "Mornington", "Mount Cook", "Mount Victoria",
+                "Newtown", "Oriental Bay", "Owhiro Bay", "Pipitea", "Rongotai",
+                "Roseneath", "Seatoun", "Southgate", "Streathmore Park", "Te Aro",
+                "Thorndon", "Vogeltown", "Wellington Central"
+            ],
+            "St. Alphonsa Ward": [
+                "Aotea", "Ascot Park", "Broadmeadows", "Camborne", "Cannons Creek",
+                "Churton Park", "Croston Downs", "Elsdon", "Glenside", "Greneda North",
+                "Greneda Village", "Hongoeka", "Johnsonville", "Judgeford", "Karori",
+                "Keneperu", "Khandallah", "Makara", "Mana Island", "Newlands",
+                "Ngaio", "Ngauranga", "Northland", "Ohariu", "Paekakariki Hill",
+                "Papakowhai", "Paparangi", "Paremata", "Pauatahanui", "Plimmerton",
+                "Porirua Central", "Pukerua Bay", "Ranui", "Takapu Valley",
+                "Takapuwahia", "Tawa", "Titahi Bay", "Wadestown", "Waitangirua",
+                "Whitby"
+            ],
+            "Our Lady of Kapiti Ward": [    
+                "Hautere", "Kapiti Island", "Manakau", "Maungakotukutuku", "Nikau Valley", 
+                "Otaihanga", "Otaki", "Otaki Beach", "Paekakariki", "Paraparaumu", 
+                "Paraparaumu Beach", "Peka Peka", "Raumati Beach", "Raumati South", 
+                "Reikorangi", "Tararua Forest Park", "Te Horo", "Te Horo Beach", "Waikanae", 
+                "Waikanae Beach", "Waikawa Beach"
+            ],
+            "St. Thomas Ward": [
+                "Alicetown", "Arakura", "Days Bay", "Eastbourne", "Fairfield", "Gracefield", 
+                "Hutt Central", "Korokoro", "Lowry Bay", "Mahina Bay", "Maungaraki", "Melling", 
+                "Moera", "Naenae", "Normandale", "Parkway", "Petone", "Seaview", "Sorrento Bay", 
+                "Sunshine Bay", "Wainuiomata", "Waiwhetu", "Waterloo", "Woburn", "York Bay"
+            ],
+            "Holy Family Ward": [
+                "Avalon", "Belmont", "Belmont Domain", "Boulcott", "Epuni", "Harbour View", 
+                "Kelson", "Tirohanga"
+            ],
+            "St. Francis Xavier Ward": [
+                "Manor Park", "Pomare", "Stokes Valley", "Taita", "Wingate"
+            ],
+            "St. Joseph Ward": [
+                "Birchville", "Brown Owl", "Clouston Park", "Ebdentown", "Elderslea", "Emerald Hill", 
+                "Heretaunga", "Kingsley Heights", "Mangaroa", "Maoribank", "Maymorn", "Moonshine", 
+                "Parkdale", "Pinehaven", "Riverstone", "Silverstream", "Te Marua", "Timberlea", 
+                "Totara Park", "Trentham", "Upper Hutt", "Wallaceville", "Whitemans Valley"
+            ]
+        };
+
+        // Create sorted suburb list
+        const suburbList = Object.entries(suburbData).flatMap(([ward, suburbs]) => 
+            suburbs.map(suburb => ({ name: suburb, ward })))
+            .sort((a, b) => a.name.localeCompare(b.name));
+
+        // DOM elements
+        const searchInput = document.getElementById('search-input');
+        const suggestionsList = document.getElementById('suggestions');
+        const popupOverlay = document.getElementById('popup-overlay');
+        const popupTitle = document.getElementById('popup-title');
+        const popupContent = document.getElementById('popup-content');
+
+        // Filter options based on search input
+        function filterOptions() {
+            const filter = searchInput.value.toLowerCase().trim();
+            
+            if (filter === "") {
+                suggestionsList.style.display = 'none';
+                return;
+            }
+
+            const matchedSuburbs = suburbList.filter(suburb => 
+                suburb.name.toLowerCase().includes(filter));
+
+            displaySuggestions(matchedSuburbs);
+        }
+
+        // Display suggestions dropdown
+        function displaySuggestions(suburbs) {
+            suggestionsList.innerHTML = '';
+
+            if (suburbs.length > 0) {
+                suburbs.forEach(suburb => {
+                    const suggestionItem = document.createElement('li');
+                    suggestionItem.textContent = suburb.name;
+                    suggestionItem.addEventListener('click', () => {
+                        showPopup(suburb.name, suburb.ward);
+                        searchInput.value = suburb.name;
+                        suggestionsList.style.display = 'none';
+                    });
+                    suggestionsList.appendChild(suggestionItem);
+                });
+                suggestionsList.style.display = 'block';
+            } else {
+                suggestionsList.style.display = 'none';
+            }
+        }
+
+        // Show popup with suburb and ward info
+        function showPopup(suburb, ward) {
+            popupTitle.textContent = suburb;
+            popupContent.textContent = `You belong to: ${ward}`;
+            popupOverlay.classList.add('active');
+        }
+
+        // Close popup
+        function closePopup() {
+            popupOverlay.classList.remove('active');
+        }
+
+        // Close suggestions when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target !== searchInput && !suggestionsList.contains(e.target)) {
+                suggestionsList.style.display = 'none';
+            }
+        });
+
+        // Handle keyboard events
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim() !== '') {
+                const suburb = suburbList.find(item => 
+                    item.name.toLowerCase() === searchInput.value.trim().toLowerCase());
+                if (suburb) {
+                    showPopup(suburb.name, suburb.ward);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
