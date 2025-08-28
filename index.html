@@ -38,7 +38,7 @@
             padding: 0 15px;
         }
         
-        /* Notice Bar */
+        /* Notice Bar - FIXED POSITIONING */
         .notice-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
@@ -65,7 +65,7 @@
             display: inline-block;
         }
         
-        /* Navigation Menu */
+        /* Navigation Menu - FIXED FOR MOBILE */
         .nav-container {
             position: fixed;
             top: 40px; /* Positioned below notice bar */
@@ -1128,7 +1128,7 @@
 
         .info-text p {
             opacity: 0.9; 
-            line-height: 1.5;
+            line-height: 1.5; 
             font-size: 15px;
         }
 
@@ -1146,13 +1146,13 @@
         }
 
         .contact-form {
-            padding: 35px;
-            flex: 1;
+            padding: 35px; 
+            flex: 1; 
             background: white;
         }
 
         .contact-form h3 {
-            margin-bottom: 25px;
+            margin-bottom: 25px; 
             font-size: 24px;
             color: #2c3e50;
             border-bottom: 2px solid #2c3e50;
@@ -1165,13 +1165,14 @@
         }
 
         .form-group label {
-            display: block;
+            display: block; 
             margin-bottom: 8px;
-            font-weight: bold;
+            font-weight: bold; 
             color: #333;
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
@@ -1180,7 +1181,7 @@
         }
 
         .form-group textarea {
-            height: 140px;
+            height: 140px; 
             resize: vertical;
         }
 
@@ -1201,15 +1202,15 @@
         }
 
         .map-container {
-            height: 250px;
+            height: 250px; 
             margin-top: 20px;
-            border-radius: 5px;
+            border-radius: 5px; 
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .map-container iframe {
-            width: 100%;
+            width: 100%; 
             height: 100%;
             border: none;
         }
@@ -1371,57 +1372,134 @@
 
         /* Animations */
         @keyframes zoomPan {
-            0% { transform: scale(1) translateY(0); }
-            100% { transform: scale(1.1) translateY(-20px); }
+            0% {
+                transform: scale(1) translateY(0);
+            }
+            100% {
+                transform: scale(1.1) translateY(-20px);
+            }
         }
-
+        
         @keyframes fadeIn {
-            to { opacity: 1; }
+            to {
+                opacity: 1;
+            }
         }
-
+        
         @keyframes expandWidth {
-            to { width: 100%; }
+            to {
+                width: 100%;
+            }
         }
-
+        
         @keyframes expandHeight {
-            to { height: 100%; }
+            to {
+                height: 100%;
+            }
         }
-
+        
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
+        
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
-        /* Responsive Adjustments */
+        
+        /* Responsive Adjustments - FIXED MOBILE NAVIGATION */
         @media (max-width: 1024px) {
-            .heading-main { font-size: 60px; }
-            .heading-sub { font-size: 50px; }
-            .logo { width: 100px; height: 100px; }
-            .slideshow-container { height: 60vh; }
-            .nav-menu { flex-wrap: wrap; justify-content: center; }
+            .heading-main {
+                font-size: 60px;
+            }
+            
+            .heading-sub {
+                font-size: 50px;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .slideshow-container {
+                height: 60vh;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
-
+        
         @media (max-width: 768px) {
-            .heading-main { font-size: 60px; }
-            .heading-sub { font-size: 50px; }
-            .logo { width: 120px; height: 120px; }
-            .heading-container { padding: 1.8rem; }
-            header h1 { font-size: 2rem; }
-            header .subtitle { font-size: 1rem; }
-            .welcome-message, .priest-image { flex: 0 0 100%; }
-            .priest-image { order: -1; padding: 25px; }
-            .welcome-message { padding: 25px; }
-            .slideshow-container { height: 50vh; }
-            .gallery-header h2 { font-size: 2rem; }
-            /* Navigation for mobile */
+            .heading-main {
+                font-size: 60px;
+            }
+            
+            .heading-sub {
+                font-size: 50px;
+            }
+            
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .heading-container {
+                padding: 1.8rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header .subtitle {
+                font-size: 1rem;
+            }
+            
+            .welcome-message, .priest-image {
+                flex: 0 0 100%;
+            }
+            
+            .priest-image {
+                order: -1;
+                padding: 25px;
+            }
+            
+            .welcome-message {
+                padding: 25px;
+            }
+            
+            .slideshow-container {
+                height: 50vh;
+            }
+            
+            .gallery-header h2 {
+                font-size: 2rem;
+            }
+            
+            /* FIXED: Navigation for mobile */
+            .nav-toggle {
+                display: block;
+            }
+            
             .nav-menu {
                 position: fixed;
-                top: 120px;
+                top: 110px; /* Adjusted to account for notice bar + nav header */
                 left: -100%;
                 flex-direction: column;
                 background: linear-gradient(135deg, #0a4d68, #088395);
@@ -1430,13 +1508,18 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
                 padding: 1rem 0;
-                height: calc(100vh - 90px);
+                height: calc(100vh - 110px);
                 overflow-y: auto;
             }
+            
             .nav-menu.active {
                 left: 0;
             }
-            .nav-toggle { display: block; }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
             .dropdown-menu {
                 position: static;
                 width: 100%;
@@ -1445,54 +1528,132 @@
                 transform: none;
                 box-shadow: none;
                 display: none;
+                background: rgba(0, 0, 0, 0.1);
             }
+            
             .nav-item:hover .dropdown-menu {
                 display: block;
             }
+            
+            .dropdown-item {
+                color: white;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-left: 2rem;
+            }
+            
+            .dropdown-item:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: white;
+            }
+            
             /* Header */
             .cover-container {
                 margin-top: 100px; /* Adjusted for mobile */
             }
         }
-
+        
         @media (max-width: 480px) {
-            .heading-main { font-size: 36px; }
-            .heading-sub { font-size: 28px; }
-            .logo { width: 70px; height: 70px; }
-            .heading-container { padding: 1.5rem; }
-            .cover-content { width: 90%; padding: 1rem; }
-            header h1 { font-size: 1.7rem; padding: 0 10px; }
-            header .subtitle { padding: 0 10px; }
-            header { padding: 25px 0; }
-            .welcome-message h2 { font-size: 1.5rem; }
-            .section-title { font-size: 1.3rem; }
-            .welcome-message, .notice-section, .event-section { padding: 18px; }
-            .priest-image { padding: 20px; }
-            .info-sections { gap: 12px; }
-            .mass-times li { padding: 8px 0; }
-            .slideshow-container { height: 40vh; }
-            .nav-btn { width: 40px; height: 40px; font-size: 16px; }
-            .gallery-header h2 { font-size: 1.7rem; }
-            .cover-container { margin-top: 90px; /* Adjusted for very small screens */ }
+            .heading-main {
+                font-size: 36px;
+            }
+            
+            .heading-sub {
+                font-size: 28px;
+            }
+            
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .heading-container {
+                padding: 1.5rem;
+            }
+            
+            .cover-content {
+                width: 90%;
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 1.7rem;
+                padding: 0 10px;
+            }
+            
+            header .subtitle {
+                padding: 0 10px;
+            }
+            
+            header {
+                padding: 25px 0;
+            }
+            
+            .welcome-message h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .welcome-message, .notice-section, .event-section {
+                padding: 18px;
+            }
+            
+            .priest-image {
+                padding: 20px;
+            }
+            
+            .info-sections {
+                gap: 12px;
+            }
+            
+            .mass-times li {
+                padding: 8px 0;
+            }
+            
+            .slideshow-container {
+                height: 40vh;
+            }
+            
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .gallery-header h2 {
+                font-size: 1.7rem;
+            }
+            
+            .cover-container {
+                margin-top: 90px; /* Adjusted for very small screens */
+            }
         }
-
+        
         @media (orientation: landscape) and (max-height: 500px) {
-            .slideshow-container { height: 80vh; }
+            .slideshow-container {
+                height: 80vh;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Notice Bar -->
     <div class="notice-bar">
         <a href="event.html" style="color: white; text-decoration: none;">
-            <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
+        <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
     </div>
+
+    <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
-            <a href="index.html"><img src="images/logo.png" alt="Logo" class="nav-logo">
+           <a href="index.html"><img src="images/logo.png" alt="Logo" class="nav-logo">
             <button class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <ul class="nav-menu" id="nav-menu">
             <li class="nav-item">
                 <a href="index.html" class="nav-link">Home</a>
@@ -1544,471 +1705,590 @@
             </li>
         </ul>
     </nav>
+
+    <!-- Scroll to top button -->
     <div class="scroll-top" id="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </div>
-    <section class="cover-section">
-        <div class="cover-container">
-            <div class="bg-image"></div>
-            <div class="overlay"></div>
-            <div class="cover-content">
-                <div class="logo">
-                    <img src="./images/logo.png" alt="Mission Logo">
-                </div>
-                <div class="heading-container">
-                    <h1 class="heading-main">Welcome</h1>
-                    <h2 class="heading-sub">St. Mary's Syro Malabar Mission</h2>
-                    <div class="border-frame">
-                        <span class="border-top"></span>
-                        <span class="border-right"></span>
-                        <span class="border-bottom"></span>
-                        <span class="border-left"></span>
-                    </div>
-                </div>
-                <div class="scroll-down" id="scroll-down">
-                    <p>SCROLL DOWN</p>
-                    <i class="fas fa-chevron-down"></i>
+    
+    <!-- Cover Page -->
+    <section class="cover-container">
+        <div class="bg-image"></div>
+        <div class="overlay"></div>
+        <div class="cover-content">
+            <div class="logo">
+                <img src="./images/logo.png" alt="St. Mary's Logo">
+            </div>
+            
+            <div class="heading-container">
+                <h1 class="heading-main">St. Mary's</h1>
+                <h2 class="heading-sub">Syro Malabar Mission<br>Wellington</h2>
+                
+                <div class="border-frame">
+                    <div class="border-top"></div>
+                    <div class="border-right"></div>
+                    <div class="border-bottom"></div>
+                    <div class="border-left"></div>
+                    
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-br"></div>
+                    <div class="corner corner-bl"></div>
                 </div>
             </div>
         </div>
+        
+        <div class="scroll-down" onclick="scrollToProgram()">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
-
-    <section class="program-section" id="main-content">
+    
+    <!-- Program Section -->
+    <section id="program" class="program-section">
+        <!-- Floating Cross Decorations -->
+        <i class="fas fa-cross cross-decoration cross-1"></i>
+        <i class="fas fa-cross cross-decoration cross-2"></i>
+        <i class="fas fa-cross cross-decoration cross-3"></i>
+        
         <header>
             <div class="container">
-                <h1>Our Mission and Community</h1>
-                <p class="subtitle">St. Mary's Syro Malabar Mission is a beacon of faith, hope, and love, nurturing the spiritual and social lives of the Syro Malabar Catholic community in the Wellington, New Zealand region. We are dedicated to preserving and promoting our rich heritage and traditions for future generations.</p>
+                <h1>Welcome to St. Mary's Syro-Malabar Mission, Wellington</h1>
+                <p class="subtitle">St. Mary's Syro Malabar Mission Wellington started their journey in 2006 only with a few families and it's been a part of Syro Malabar Eparchy of St. Thomas the Apostle, Melbourne Australia. It's one of the largest Syro Malabar faithful communities in NZ.</p>
             </div>
         </header>
-
+        
         <main class="container">
-            <div class="welcome-section">
+            <section class="welcome-section">
                 <div class="welcome-message">
-                    <h2>A Warm Welcome</h2>
-                    <p>Dearly beloved in Christ,</p>
-                    <p>It is with immense joy and gratitude that I extend a heartfelt welcome to each and every one of you to the St. Mary's Syro Malabar Mission website. This digital space serves as a virtual home for our vibrant and growing community, a place where we can connect, share, and grow together in faith.</p>
-                    <p>Our mission is to continue the legacy of our Syro Malabar Church, rooted in the teachings of St. Thomas the Apostle, and to serve the spiritual needs of our members. We strive to create a warm and welcoming environment where everyone feels part of our family, regardless of age or background.</p>
-                    <p>I invite you to explore the different sections of our site to learn about our Holy Qurbana schedules, upcoming events, ministries, and the various ways you can get involved. We are a community built on prayer, fellowship, and service, and your presence enriches us all.</p>
-                    <p>May the intercession of our Blessed Mother, St. Mary, guide and protect us all. With prayers and blessings,</p>
-                    <p class="priest-name">Fr. Mathew Thazhathuveettil</p>
-                    <p>Chaplain, St. Mary's Syro Malabar Mission, Wellington</p>
+                    <h2>Welcome to the St. Mary's Syro Malabar Mission Wellington</h2>
+                    <p>Thank you for taking the time to visit the website of St. Mary's Syro Malabar Mission Wellington, New Zealand. St. Mary's Mission of the Syro-Malabar Eparchy of Melbourne strives to live as a faithful Catholic community in Wellington. The members of this Mission are the Catholics of the Syro-Malabar Major Archiepiscopal Church, one of the most vibrant Eastern Churches in the Catholic Communion, who live in the greater Wellington Region. The Syro-Malabar Church traces back its origin to the preachings of St Thomas, the Apostle, in India.</p>
+                    <p>It has currently 7 family units comprising of more than 250 families. This Mission continues to grow in the footsteps of St Thomas the Apostle by celebrating the Syro-Malabar Liturgy in its Synodal form contributing towards the beauty of Catholic traditions. The Community is privileged to have daily Holy Qurbana (Holy Mass) at 27 Trebann Street, Paparangi. The community runs its Catechism Classes every Sunday, attended by more than 200 students and 25 volunteer teachers. We have a dynamic youth group known as SMYM.</p>
+                    <p>The Community consists of migrated professionals of Catholic families from different dioceses hailing mostly from Kerala and different parts of India. The Community had its presence in greater Wellington since 2006 with once in a month Holy Qurbana assisted by priests of Syro-Malabar origin. Currently, St. Mary's Mission is one of the most vibrant communities in New Zealand.</p>
+                    <p>Our Community strives to; grow together as a loving community in Christ, fostering the family faith life and following the ways of St. Thomas the Apostle. We are proud to say that we have always tried to keep up the faith handed down to us by our forefathers.</p>
+                    <p>Our community is thankful to our friends, benefactors and well wishers especially to the Catholic Archdiocese of Wellington for all the support given and continue today. May the grace of Our Lord Jesus Christ, the love of God the Father and the fellowship of the Holy Spirit be with us all.</p>
                 </div>
+                
                 <div class="priest-image">
-                    <img src="./images/fr-mathew-removebg.png" alt="Fr. Mathew Thazhathuveettil">
-                    <p class="priest-name">Fr. Mathew Thazhathuveettil</p>
+                    <img src="images/frjoseph1.jpg" alt="Fr. Joseph Kunnackattu">
+                    <p class="priest-name">Fr. Joseph Kunnackattu<br>Chaplain - St. Mary's Syro Malabar Mission, Wellington</p>
                 </div>
-            </div>
-
+            </section>
+            
             <div class="info-sections">
-                <div class="notice-section">
-                    <div class="cross-decoration cross-1"><i class="fas fa-cross"></i></div>
-                    <h3 class="section-title">Holy Qurbana Schedule</h3>
+                <section class="notice-section">
+                    <h3 class="section-title">Sunday Mass Times</h3>
                     <ul class="mass-times">
-                        <li>
-                            <span class="mass-day">Sunday Holy Mass</span>
-                            <span>10:30 AM</span>
-                        </li>
-                        <li>
-                            <span class="mass-day">Weekday Mass (Mon-Sat)</span>
-                            <span>7:00 PM</span>
-                        </li>
+                        <li><span class="mass-day">Sunday</span></li>
+                        <li>9:30 am - Catechism</li>
+                        <li>11:00 am - Holy Qurbana</li>
+                        <li>5:00 pm - Rosary</li>
+                        <li>5:30 pm - Holy Qurbana</li>
                     </ul>
-                    <p class="note">All Mass times are subject to change. Please check the weekly bulletin for updates.</p>
-                    <a href="services.html" class="section-link">View Full Schedule & Location</a>
-                </div>
-
-                <div class="event-section">
-                    <div class="cross-decoration cross-2"><i class="fas fa-cross"></i></div>
-                    <h3 class="section-title">Upcoming Events</h3>
-                    <p><strong>Vachanabhishekam Retreat</strong></p>
-                    <p>Join us for a spiritual retreat with Fr. Soju Jose. It's a great opportunity for a powerful encounter with the Word of God.</p>
-                    <img src="./images/event-poster-vachanabhishekam.jpg" alt="Vachanabhishekam Retreat Poster" class="event-image">
-                    <p style="margin-top: 15px;"><strong>Date:</strong> 28 - 31 August 2025</p>
-                    <p><strong>Venue:</strong> St. Patrick's College, Wellington</p>
-                    <a href="event.html" class="section-link">More Details</a>
-                </div>
-            </div>
-            <div class="info-sections">
-                <div class="notice-section">
-                    <div class="cross-decoration cross-3"><i class="fas fa-cross"></i></div>
-                    <h3 class="section-title">Latest Announcements</h3>
-                    <p style="font-weight: 500;">🔔 **Holy Mass and Adoration**</p>
-                    <p style="font-size: 0.95rem;">Join us for Holy Mass followed by Adoration every Thursday at 7:00 PM. A beautiful time of prayer and reflection.</p>
-                    <p style="margin-top: 10px; font-weight: 500;">🔔 **Family Unit Meeting**</p>
-                    <p style="font-size: 0.95rem;">Our monthly Family Unit meeting will be held on the second Sunday of the month after the Holy Mass. All members are requested to attend. Food and fellowship to follow.</p>
-                    <p style="margin-top: 10px; font-weight: 500;">🔔 **Youth Gathering**</p>
-                    <p style="font-size: 0.95rem;">SMYM (Syro Malabar Youth Movement) will have their next meeting on Saturday. Please check the SMYM WhatsApp group for details.</p>
-                    <a href="#" class="section-link">View All Bulletins</a>
-                </div>
+                    <a href="services.html" class="section-link" target="_blank">Check Holy Qurbana Schedule</a>
+                </section>
+                
+                <section class="event-section">
+                    <h3 class="section-title">Upcoming Event</h3>
+                    <img src="images/retreat.jpg" alt="Upcoming Event" class="event-image">
+                    <a href="event.jpg" class="section-link" target="_blank">Check upcoming programs for more events</a>
+                </section>
             </div>
         </main>
     </section>
 
-    <section class="gallery-section">
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
         <div class="gallery-header">
-            <h2>Our Community in Pictures</h2>
+            <h2>Photo Gallery</h2>
         </div>
+        
         <div class="slideshow-container">
             <div class="slide-wrapper">
-                <div class="slide active">
-                    <div class="image-container">
-                        <img src="./images/gallery-1.jpg" alt="Community Gathering">
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="image-container">
-                        <img src="./images/gallery-2.jpg" alt="Church Interior">
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="image-container">
-                        <img src="./images/gallery-3.jpg" alt="Christmas Celebration">
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="image-container">
-                        <img src="./images/gallery-4.jpg" alt="Youth Group">
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="image-container">
-                        <img src="./images/gallery-5.jpg" alt="Family Retreat">
-                    </div>
-                </div>
+                <!-- Slides will be inserted here by JavaScript -->
             </div>
-            <button class="nav-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
-            <button class="nav-btn" id="next-btn"><i class="fas fa-chevron-right"></i></button>
-            <div class="dots-container" id="dots-container"></div>
+            
+            <button class="nav-btn" id="prev-btn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn" id="next-btn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="dots-container">
+                <!-- Dots will be inserted here by JavaScript -->
+            </div>
+            
             <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
+                <div class="progress-bar"></div>
             </div>
         </div>
     </section>
 
-    <section class="contact-section" id="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
         <div class="contact-container">
             <div class="contact-header">
-                <h2>Get in Touch</h2>
-                <p>We are here to serve you. Feel free to contact us with any questions.</p>
+                <h2>Contact St. Mary's Syro-Malabar Mission</h2>
+                <p>Get in touch with our community in Wellington</p>
             </div>
+
             <div class="contact-content">
+                <!-- LEFT: INFO SECTION -->
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
+                    <h3>Our Information</h3>
+
                     <div class="info-section">
-                        <p class="info-section-title">Mission Address</p>
+                        <div class="info-section-title">MISSION DETAILS</div>
                         <div class="info-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="info-text">
-                                <p>St. Mary's Syro Malabar Mission</p>
-                                <p>123 Mission Road, Wellington, 6011</p>
-                                <p>New Zealand</p>
+                                <h4>Address</h4>
+                                <p>27 Trebann Street, Paparangi, Wellington 6037, New Zealand</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="info-text">
+                                <h4>Email</h4>
+                                <p>smmissionwellingtonnz@gmail.com</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="info-section">
-                        <p class="info-section-title">Chaplain</p>
+                        <div class="info-section-title">CHAPLAIN</div>
                         <div class="chaplain-card">
-                            <h4>Fr. Mathew Thazhathuveettil</h4>
-                            <p><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</p>
-                            <p><i class="fas fa-phone"></i> +64 21 123 4567</p>
+                            <h4>Fr. Joseph Kunnackattu (Chaplain)</h4>
+                            <div class="info-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <div class="info-text"><p>+64 27 284 1791</p></div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <div class="info-text"><p>office.wellington@syromalabar.org.nz</p></div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="info-section">
-                        <p class="info-section-title">Secretary</p>
+                        <div class="info-section-title">SECRETARY</div>
                         <div class="secretary-card">
-                            <h4>Mr. John David</h4>
-                            <p><i class="fas fa-envelope"></i> secretary@smmwellington.org.nz</p>
-                            <p><i class="fas fa-phone"></i> +64 27 987 6543</p>
+                            <h4>Joshua Jose (Parish Council Secretary)</h4>
+                            <div class="info-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <div class="info-text"><p>+64 21 082 17181</p></div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="info-section">
-                        <p class="info-section-title">Our Location</p>
-                        <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500.418469956627!2d174.77662915830873!3d-41.2858107931327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38b1f8c1f0b0d3%3A0xa518f8e312f2c8d!2sSt%20Joseph's%20Church!5e0!3m2!1sen!2snz!4v1714541334969!5m2!1sen!2snz" allowfullscreen="" loading="lazy"></iframe>
-                        </div>
+
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.0286205438783!2d174.78746047640465!3d-41.20775107130559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38a54a10a299c1%3A0x10d4136be6f8047d!2s27%20Trebann%20Street%2C%20Paparangi%2C%20Wellington%206037%2C%20New%20Zealand!5e0!3m2!1sen!2snz!4v1721527568001!5m2!1sen!2snz"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
 
+                <!-- RIGHT: FORM SECTION -->
                 <div class="contact-form">
-                    <h3>Send a Message</h3>
+                    <h3>Send Us a Message</h3>
                     <form id="contactForm">
+                        <input type="hidden" name="_captcha" value="false">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email address">
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" required placeholder="What is your message about?">
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
                     </form>
+
+                    <!-- Thank You Message -->
                     <div id="thankYouMessage">
-                        <h3>Thank you for your message!</h3>
-                        <p>We have received your inquiry and will get back to you shortly.</p>
-                        <button onclick="window.location.reload();">Send Another Message</button>
+                        <h3>Thank You!</h3>
+                        <p>Your message has been sent successfully. We'll get back to you soon.</p>
+                        <button onclick="location.reload()">Back to Form</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-column">
-                <h3>About Our Mission</h3>
-                <p>We are a faith community of the Syro Malabar Catholic Church in Wellington, dedicated to preserving our traditions and nurturing spiritual growth.</p>
+                <h3>St. Mary's Mission</h3>
+                <p>St. Mary's Syro Malabar Mission Wellington is one of the largest Syro Malabar faithful communities in New Zealand, serving the spiritual needs of the community since 2006.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
             </div>
+            
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="aboutsyromalabarchurch.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Holy Qurbana Schedule</a></li>
-                    <li><a href="event.html"><i class="fas fa-chevron-right"></i> Upcoming Events</a></li>
-                    <li><a href="priestandcouncil.html"><i class="fas fa-chevron-right"></i> Our Team</a></li>
+                    <li><a href="aboutsmmission.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
                     <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Mass Schedule</a></li>
+                    <li><a href="event.html" target="_blank"><i class="fas fa-chevron-right"></i> Upcoming Programs</a></li>
                 </ul>
             </div>
+            
             <div class="footer-column">
-                <h3>Stay Connected</h3>
+                <h3>Contact Info</h3>
                 <ul class="footer-links">
-                    <li><i class="fas fa-map-marker-alt"></i> St. Mary's Mission, Wellington</li>
-                    <li><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> +64 21 123 4567</li>
+                    <li><a href="https://goo.gl/maps/3sRzvQ2VJY9Vp3ENA" target="_blank"><i class="fas fa-map-marker-alt"></i> 27 Trebann Street, Paparangi, Wellington</a></li>
+                    <li><a href="mailto:smmissionwellingtonnz@gmail.com"><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</a></li>
+                    <li><a href="tel:+64272841791"><i class="fas fa-phone"></i> +64 27 284 1791 (Fr. Joseph - Chaplain)</a></li>
+                    <li><a href="tel:+642108217181"><i class="fas fa-phone"></i> +64 21 082 17181 (Joshua Jose - Parish Council Secretary)</a></li>
                 </ul>
-                <div class="footer-social">
-                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>&copy; 2024 St. Mary's Syro Malabar Mission. All rights reserved.</p>
+            <p>&copy; 2023 St. Mary's Syro Malabar Mission Wellington. All Rights Reserved. | Created by Jinto Jose</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Mobile Nav Toggle
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.getElementById('nav-toggle');
-            const navMenu = document.getElementById('nav-menu');
-
-            if (navToggle) {
-                navToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
-                });
+        // FIXED: Improved navigation toggle functionality
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            
+            // Toggle icon between bars and times
+            const icon = navToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
-
-            // Close mobile menu when a link is clicked
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
+        });
+        
+        // Toggle dropdowns on mobile
+        navItems.forEach(item => {
+            if (item.querySelector('.dropdown-menu')) {
+                const link = item.querySelector('.nav-link');
+                
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const dropdown = item.querySelector('.dropdown-menu');
+                        
+                        // Close other dropdowns
+                        document.querySelectorAll('.dropdown-menu').forEach(d => {
+                            if (d !== dropdown) {
+                                d.style.display = 'none';
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        if (dropdown.style.display === 'block') {
+                            dropdown.style.display = 'none';
+                        } else {
+                            dropdown.style.display = 'block';
+                        }
                     }
                 });
-            });
-        });
-
-        // Sticky Nav on Scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.nav-container');
-            const noticeBar = document.querySelector('.notice-bar');
-            if (window.scrollY > 0) {
-                nav.style.top = '0';
-                noticeBar.style.top = '-40px';
-            } else {
-                nav.style.top = '40px';
-                noticeBar.style.top = '0';
             }
         });
-
-        // Scroll to top button visibility
-        const scrollTopBtn = document.getElementById('scroll-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.add('active');
-            } else {
-                scrollTopBtn.classList.remove('active');
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                navMenu.classList.remove('active');
+                const icon = navToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                
+                // Close all dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
             }
         });
-
-        scrollTopBtn.addEventListener('click', () => {
+        
+        // Prevent menu from closing when clicking inside it
+        navMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+        
+        // Scroll to top functionality
+        const scrollTop = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+        });
+        
+        scrollTop.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
         
-        // Cover Page scroll down animation
-        const scrollDownBtn = document.getElementById('scroll-down');
-        if (scrollDownBtn) {
-            scrollDownBtn.addEventListener('click', () => {
-                const mainContent = document.getElementById('main-content');
-                if (mainContent) {
-                    mainContent.scrollIntoView({ behavior: 'smooth' });
-                }
+        // Cover page animation restart
+        document.addEventListener('DOMContentLoaded', function() {
+            function restartAnimation() {
+                // Reset all animations
+                const elementsToReset = [
+                    '.heading-main',
+                    '.heading-sub',
+                    '.border-top',
+                    '.border-right',
+                    '.border-bottom',
+                    '.border-left',
+                    '.corner',
+                    '.logo'
+                ];
+                
+                elementsToReset.forEach(selector => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        element.style.animation = 'none';
+                        void element.offsetWidth; // Trigger reflow
+                    }
+                });
+                
+                // Restart animations with proper delays
+                document.querySelector('.heading-main').style.animation = 'fadeIn 1.5s forwards 0.5s';
+                document.querySelector('.heading-sub').style.animation = 'fadeIn 1.5s forwards 1s';
+                document.querySelector('.border-top').style.animation = 'expandWidth 1s forwards 1.5s';
+                document.querySelector('.border-right').style.animation = 'expandHeight 1s forwards 2s';
+                document.querySelector('.border-bottom').style.animation = 'expandWidth 1s forwards 2.5s';
+                document.querySelector('.border-left').style.animation = 'expandHeight 1s forwards 3s';
+                
+                document.querySelectorAll('.corner').forEach(corner => {
+                    corner.style.animation = 'fadeIn 0.5s forwards 3.5s';
+                });
+                
+                document.querySelector('.logo').style.animation = 'fadeIn 1s forwards 1.5s';
+            }
+            
+            // Set interval to restart animation every 20 seconds
+            setInterval(restartAnimation, 20000);
+            
+            // Program section reveal on scroll
+            const programSection = document.querySelector('.program-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        programSection.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(programSection);
+        });
+        
+        // Scroll to program section function
+        function scrollToProgram() {
+            document.getElementById('program').scrollIntoView({ 
+                behavior: 'smooth' 
             });
         }
         
-        // Program section visibility on scroll
-        const programSection = document.getElementById('main-content');
-        if (programSection) {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            observer.observe(programSection);
-        }
+        // Gallery Slideshow Code
+        // Image URLs - Using higher resolution versions
+        const images = [
+            "images/bishoprafel.jpg",
+            "images/bishopjohn.jpg",
+            "images/frjosephgallery.jpg",
+            "images/altarboys.jpg",
+            "images/smymteam.jpg",
+            "images/marsleeva.jpg",
+            "images/smym.jpg",
+            "images/nativity.jpg",
+            "images/priests.jpg",
+            "images/sentoff.jpg",
+            "images/noticeboard.jpg",
+            "images/church.jpg"
+        ];
 
-        // Gallery Slideshow JavaScript
-        const slides = document.querySelectorAll('.slide');
-        const dotsContainer = document.getElementById('dots-container');
-        const progressBar = document.getElementById('progress-bar');
+        // DOM elements for gallery
+        const slideWrapper = document.querySelector('#gallery .slide-wrapper');
+        const dotsContainer = document.querySelector('#gallery .dots-container');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.querySelector('#gallery .progress-bar');
 
+        // Create slides and dots for gallery
+        images.forEach((image, index) => {
+            // Create slide
+            const slide = document.createElement('div');
+            slide.className = 'slide';
+            if (index === 0) slide.classList.add('active');
+            
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = `Slide ${index + 1}`;
+            img.loading = "lazy";
+            
+            imageContainer.appendChild(img);
+            slide.appendChild(imageContainer);
+            slideWrapper.appendChild(slide);
+            
+            // Create dot
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            if (index === 0) dot.classList.add('active');
+            dot.dataset.index = index;
+            dotsContainer.appendChild(dot);
+        });
+
+        const slides = document.querySelectorAll('#gallery .slide');
+        const dots = document.querySelectorAll('#gallery .dot');
         let currentIndex = 0;
-        let autoSlideTimer;
-        let progressBarTimer;
-        const slideDuration = 8000; // 8 seconds
+        let slideInterval;
+        let progressInterval;
+        let progress = 0;
 
-        function createDots() {
-            slides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (index === 0) {
-                    dot.classList.add('active');
+        // Function to update progress bar
+        function updateProgressBar() {
+            progress = 0;
+            progressBar.style.width = '0%';
+            
+            if (progressInterval) clearInterval(progressInterval);
+            
+            progressInterval = setInterval(() => {
+                progress += 1;
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    nextSlide();
                 }
-                dot.addEventListener('click', () => {
-                    showSlide(index);
-                    resetSlideshow();
-                });
-                dotsContainer.appendChild(dot);
-            });
+            }, 50); // 5000ms total (5 seconds) / 100 = 50ms per 1%
         }
 
-        function updateProgress(progress) {
-            progressBar.style.width = `${progress}%`;
-        }
-
-        function startProgressBar() {
-            let start = null;
-            function animate(timestamp) {
-                if (!start) start = timestamp;
-                const elapsed = timestamp - start;
-                const progress = Math.min((elapsed / slideDuration) * 100, 100);
-                updateProgress(progress);
-                if (progress < 100) {
-                    progressBarTimer = requestAnimationFrame(animate);
-                }
-            }
-            progressBarTimer = requestAnimationFrame(animate);
-        }
-
-        function resetProgressBar() {
-            cancelAnimationFrame(progressBarTimer);
-            updateProgress(0);
-        }
-
+        // Function to show slide
         function showSlide(index) {
-            slides.forEach(slide => {
-                slide.classList.remove('active', 'next', 'prev');
+            // Wrap around if index is out of bounds
+            if (index >= slides.length) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else {
+                currentIndex = index;
+            }
+            
+            // Update slides
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'prev', 'next');
+                
+                if (i === currentIndex) {
+                    slide.classList.add('active');
+                } else if (i === (currentIndex + 1) % slides.length) {
+                    slide.classList.add('next');
+                } else if (i === (currentIndex - 1 + slides.length) % slides.length) {
+                    slide.classList.add('prev');
+                }
             });
-            document.querySelectorAll('.dot').forEach(dot => {
-                dot.classList.remove('active');
+            
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
             });
-
-            slides[index].classList.add('active');
-            document.querySelectorAll('.dot')[index].classList.add('active');
-
-            const prevIndex = (index - 1 + slides.length) % slides.length;
-            const nextIndex = (index + 1) % slides.length;
-
-            slides[prevIndex].classList.add('prev');
-            slides[nextIndex].classList.add('next');
+            
+            // Reset progress bar
+            updateProgressBar();
         }
 
+        // Function for next slide
         function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
+            showSlide(currentIndex + 1);
         }
 
+        // Function for previous slide
         function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
+            showSlide(currentIndex - 1);
         }
 
+        // Start automatic slideshow
         function startSlideshow() {
-            autoSlideTimer = setInterval(() => {
-                nextSlide();
-                resetProgressBar();
-                startProgressBar();
-            }, slideDuration);
-            startProgressBar();
+            updateProgressBar();
+            slideInterval = setInterval(nextSlide, 5000); // Change every 5 seconds
         }
 
+        // Reset slideshow timer
         function resetSlideshow() {
-            clearInterval(autoSlideTimer);
-            resetProgressBar();
+            clearInterval(slideInterval);
+            clearInterval(progressInterval);
             startSlideshow();
         }
+
+        // Event listeners for gallery
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetSlideshow();
+        });
 
         prevBtn.addEventListener('click', () => {
             prevSlide();
             resetSlideshow();
         });
 
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetSlideshow();
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.dataset.index);
+                showSlide(index);
+                resetSlideshow();
+            });
         });
 
         // Initialize slideshow
-        if (slides.length > 0) {
-            createDots();
-            showSlide(currentIndex);
-            startSlideshow();
-        }
+        startSlideshow();
 
-        // Add touch/swipe support for mobile
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+                resetSlideshow();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+                resetSlideshow();
+            }
+        });
+
+        // Touch events for mobile swipe
         let touchStartX = 0;
         let touchEndX = 0;
-        const slideshowWrapper = document.querySelector('.slideshow-container');
 
-        slideshowWrapper.addEventListener('touchstart', e => {
+        slideWrapper.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
-        }, false);
+        }, {passive: true});
 
-        slideshowWrapper.addEventListener('touchend', e => {
+        slideWrapper.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
-        }, false);
+        }, {passive: true});
 
         function handleSwipe() {
             if (touchEndX < touchStartX - 50) {
