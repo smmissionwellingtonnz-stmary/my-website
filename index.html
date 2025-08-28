@@ -23,7 +23,7 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
-            padding-top: 120px;
+            padding-top: 110px; /* Reduced for mobile */
         }
         
         html {
@@ -44,29 +44,17 @@
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
             text-align: center;
-            padding: 16px 0;
+            padding: 12px 0; /* Reduced padding for mobile */
             font-weight: 600;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 2000;
-            height: 60px;
+            height: 50px; /* Reduced height for mobile */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             animation: pulseNotice 2s infinite;
-            font-size: 16px;
-        }
-
-        @media (max-width: 768px) {
-            .notice-bar {
-                font-size: 14px; /* Reduced font size for mobile */
-                padding: 12px 0; /* Slightly reduced padding */
-                height: 50px; /* Reduced height */
-            }
-            
-            .notice-bar span {
-                margin: 0 8px; /* Reduced margin */
-            }
+            font-size: 14px; /* Reduced font size for mobile */
         }
 
         @keyframes pulseNotice {
@@ -76,14 +64,14 @@
         }
 
         .notice-bar span {
-            margin: 0 15px;
+            margin: 0 8px; /* Reduced margin for mobile */
             display: inline-block;
         }
         
         /* Navigation Menu - FIXED FOR MOBILE */
         .nav-container {
             position: fixed;
-            top: 60px; /* Positioned below notice bar */
+            top: 50px; /* Positioned directly below notice bar */
             left: 0;
             width: 100%;
             z-index: 1500;
@@ -99,16 +87,17 @@
         }
         
         .nav-logo {
-            height: 60px;
+            height: 50px; /* Reduced for mobile */
         }
         
         .nav-toggle {
-            font-size: 28px;
+            font-size: 24px; /* Reduced for mobile */
             color: white;
             background: transparent;
             border: none;
             cursor: pointer;
             display: none;
+            z-index: 2001;
         }
         
         .nav-menu {
@@ -150,7 +139,7 @@
             position: absolute;
             left: 0;
             top: 100%;
-            background: white;
+            background: rgba(10, 77, 104, 0.95); /* Changed from white to match nav */
             width: 220px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             border-radius: 4px;
@@ -170,15 +159,15 @@
         .dropdown-item {
             display: block;
             padding: 0.8rem 1rem;
-            color: #333;
+            color: white; /* Changed from #333 to white */
             text-decoration: none;
-            border-bottom: 1px solid #f1f1f1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Changed from #f1f1f1 */
             transition: all 0.3s ease;
         }
         
         .dropdown-item:hover {
-            background-color: #f8f9fa;
-            color: #0a4d68;
+            background-color: rgba(255, 255, 255, 0.1); /* Changed from #f8f9fa */
+            color: #ffd700; /* Changed from #0a4d68 to gold */
             padding-left: 1.3rem;
         }
         
@@ -223,7 +212,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            margin-top: 110px; /* Added margin to prevent overlap with navigation */
+            margin-top: 110px; /* Matches nav height */
         }
         
         .bg-image {
@@ -232,7 +221,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('./images/alter.jpg') no-repeat center center;
+            background: linear-gradient(135deg, #0a4d68, #088395); /* Placeholder color */
             background-size: cover;
             z-index: 1;
             animation: zoomPan 20s infinite alternate;
@@ -1510,7 +1499,7 @@
             /* Navigation for mobile - FIXED */
             .nav-menu {
                 position: fixed;
-                top: 110px;
+                top: 50px; /* Directly below notice bar */
                 left: -100%;
                 flex-direction: column;
                 background: linear-gradient(135deg, #0a4d68, #088395);
@@ -1519,7 +1508,7 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
                 padding: 1rem 0;
-                height: calc(100vh - 110px);
+                height: calc(100vh - 50px);
                 overflow-y: auto;
             }
             
@@ -1539,7 +1528,9 @@
                 transform: none;
                 box-shadow: none;
                 display: none;
-                background: rgba(0, 0, 0, 0.1);
+                background: rgba(0, 0, 0, 0.2);
+                text-align: left;
+                padding-left: 20px;
             }
             
             .nav-item {
@@ -1560,11 +1551,11 @@
             
             /* Header */
             .cover-container {
-                margin-top: 100px; /* Adjusted for mobile */
+                margin-top: 110px; /* Matches nav height */
             }
             
             body {
-                padding-top: 110px; /* Adjusted for mobile */
+                padding-top: 110px; /* Matches nav height */
             }
         }
         
@@ -1643,7 +1634,7 @@
             }
             
             .cover-container {
-                margin-top: 90px; /* Adjusted for very small screens */
+                margin-top: 110px; /* Matches nav height */
             }
         }
         
@@ -1997,6 +1988,14 @@
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+                
+                // Close all dropdowns when closing the main menu
+                document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
             }
         });
 
@@ -2007,19 +2006,15 @@
                 const icon = navToggle.querySelector('i');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+                
+                // Close all dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
             }
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                    const icon = navToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
         });
 
         // Mobile dropdown functionality
@@ -2030,28 +2025,46 @@
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        // Close other dropdowns
+                        // Toggle this dropdown
+                        const isActive = this.classList.contains('active');
+                        
+                        // Close all dropdowns first
                         document.querySelectorAll('.nav-link').forEach(otherLink => {
-                            if (otherLink !== link) {
-                                otherLink.classList.remove('active');
-                                const otherDropdown = otherLink.nextElementSibling;
-                                if (otherDropdown && otherDropdown.classList.contains('dropdown-menu')) {
-                                    otherDropdown.style.display = 'none';
-                                }
-                            }
+                            otherLink.classList.remove('active');
+                        });
+                        document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                            dropdown.style.display = 'none';
                         });
                         
-                        // Toggle this dropdown
-                        link.classList.toggle('active');
-                        const dropdown = link.nextElementSibling;
-                        if (dropdown.style.display === 'block') {
-                            dropdown.style.display = 'none';
-                        } else {
+                        // Open this dropdown if it wasn't active
+                        if (!isActive) {
+                            this.classList.add('active');
+                            const dropdown = this.nextElementSibling;
                             dropdown.style.display = 'block';
                         }
                     }
                 });
             }
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link:not(:has(+ .dropdown-menu)), .dropdown-item').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    const icon = navToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    
+                    // Close all dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                }
+            });
         });
 
         // Scroll to top functionality
@@ -2277,7 +2290,7 @@
         });
 
         dots.forEach(dot => {
-            dot.addEventListener('click', () => {
+            dot.addEventListener('click', () {
                 const index = parseInt(dot.dataset.index);
                 showSlide(index);
                 resetSlideshow();
