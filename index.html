@@ -904,7 +904,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transform: scale(0.95);
             transition: transform 0.5s ease;
-            max-height: 90%; /* Added for mobile */
         }
         
         .slide.active img {
@@ -1448,28 +1447,28 @@
         
         @media (max-width: 768px) {
             .heading-main {
-                font-size: 40px;
+                font-size: 60px;
             }
             
             .heading-sub {
-                font-size: 32px;
+                font-size: 50px;
             }
             
             .logo {
-                width: 100px;
-                height: 100px;
+                width: 120px;
+                height: 120px;
             }
             
             .heading-container {
-                padding: 1.5rem;
+                padding: 1.8rem;
             }
             
             header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             header .subtitle {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             
             .welcome-message, .priest-image {
@@ -1478,25 +1477,25 @@
             
             .priest-image {
                 order: -1;
-                padding: 20px;
+                padding: 25px;
             }
             
             .welcome-message {
-                padding: 20px;
+                padding: 25px;
             }
             
             .slideshow-container {
-                height: 40vh;
+                height: 50vh;
             }
             
             .gallery-header h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             /* Navigation for mobile */
             .nav-menu {
                 position: fixed;
-                top: 110px;
+                top: 120px;
                 left: -100%;
                 flex-direction: column;
                 background: linear-gradient(135deg, #0a4d68, #088395);
@@ -1505,8 +1504,7 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
                 padding: 1rem 0;
-                height: auto;
-                max-height: calc(100vh - 110px);
+                height: calc(100vh - 90px);
                 overflow-y: auto;
             }
             
@@ -1526,162 +1524,94 @@
                 transform: none;
                 box-shadow: none;
                 display: none;
-                background: rgba(0, 0, 0, 0.1);
             }
             
             .nav-item:hover .dropdown-menu {
                 display: block;
             }
             
-            .nav-link {
+            /* Header */
+            .cover-container {
+                margin-top: 100px; /* Adjusted for mobile */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .heading-main {
+                font-size: 36px;
+            }
+            
+            .heading-sub {
+                font-size: 28px;
+            }
+            
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .heading-container {
+                padding: 1.5rem;
+            }
+            
+            .cover-content {
+                width: 90%;
                 padding: 1rem;
             }
             
-            .nav-link.donate {
-                margin: 1rem auto;
-                width: 80%;
+            header h1 {
+                font-size: 1.7rem;
+                padding: 0 10px;
             }
             
-            /* Header */
-            .cover-container {
-                margin-top: 90px;
+            header .subtitle {
+                padding: 0 10px;
             }
             
-            /* Contact section mobile fixes */
-            .contact-info, .contact-form {
-                padding: 25px;
+            header {
+                padding: 25px 0;
             }
             
-            .info-item {
-                flex-direction: column;
+            .welcome-message h2 {
+                font-size: 1.5rem;
             }
             
-            .info-item i {
-                margin-bottom: 10px;
+            .section-title {
+                font-size: 1.3rem;
             }
             
-            /* Gallery mobile improvements */
+            .welcome-message, .notice-section, .event-section {
+                padding: 18px;
+            }
+            
+            .priest-image {
+                padding: 20px;
+            }
+            
+            .info-sections {
+                gap: 12px;
+            }
+            
+            .mass-times li {
+                padding: 8px 0;
+            }
+            
+            .slideshow-container {
+                height: 40vh;
+            }
+            
             .nav-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 16px;
             }
             
-            .slide {
-                width: 95%;
-                height: 95%;
-                top: 2.5%;
-                left: 2.5%;
-            }
-            
-            .slide img {
-                max-height: 85%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .heading-main {
-                font-size: 32px;
-            }
-            
-            .heading-sub {
-                font-size: 24px;
-            }
-            
-            .logo {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .heading-container {
-                padding: 1rem;
-            }
-            
-            .cover-content {
-                width: 95%;
-                padding: 0.5rem;
-            }
-            
-            header h1 {
-                font-size: 1.5rem;
-                padding: 0 10px;
-            }
-            
-            header .subtitle {
-                padding: 0 10px;
-                font-size: 0.85rem;
-            }
-            
-            header {
-                padding: 20px 0;
-            }
-            
-            .welcome-message h2 {
-                font-size: 1.4rem;
-            }
-            
-            .section-title {
-                font-size: 1.2rem;
-            }
-            
-            .welcome-message, .notice-section, .event-section {
-                padding: 15px;
-            }
-            
-            .priest-image {
-                padding: 15px;
-            }
-            
-            .info-sections {
-                gap: 10px;
-                margin-left: 0;
-                margin-right: 0;
-                width: 100%;
-            }
-            
-            .mass-times li {
-                padding: 8px 0;
-                flex-direction: column;
-            }
-            
-            .slideshow-container {
-                height: 35vh;
-            }
-            
-            .nav-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
-            }
-            
             .gallery-header h2 {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
             }
             
             .cover-container {
-                margin-top: 80px;
-            }
-            
-            /* Notice bar mobile fix */
-            .notice-bar {
-                padding: 10px 0;
-                font-size: 0.9rem;
-            }
-            
-            .notice-bar span {
-                margin: 0 5px;
-            }
-            
-            /* Footer mobile adjustments */
-            .footer-column {
-                min-width: 100%;
-                padding: 0 10px;
-            }
-            
-            .footer-social a {
-                width: 35px;
-                height: 35px;
-                font-size: 16px;
+                margin-top: 90px; /* Adjusted for very small screens */
             }
         }
         
@@ -1689,52 +1619,6 @@
             .slideshow-container {
                 height: 80vh;
             }
-            
-            .cover-container {
-                height: auto;
-                min-height: 100vh;
-            }
-            
-            .nav-menu {
-                max-height: 70vh;
-            }
-        }
-        
-        /* Mobile dropdown improvements */
-        .nav-item {
-            width: 100%;
-        }
-        
-        .dropdown-menu {
-            width: 100%;
-            position: static;
-            display: none;
-            transition: none;
-            opacity: 1;
-            visibility: visible;
-            transform: none;
-            box-shadow: none;
-            background: rgba(0, 0, 0, 0.1);
-        }
-        
-        .dropdown-item {
-            padding-left: 2rem;
-            color: white;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .dropdown-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-        
-        /* Mobile dropdown toggle */
-        .nav-link i {
-            transition: transform 0.3s ease;
-        }
-        
-        .nav-link.active i {
-            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -2069,33 +1953,16 @@
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.getElementById('nav-menu');
         
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
+        navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
         
-        // Close menu when clicking outside
+        // Close dropdowns when clicking outside
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-container')) {
-                navMenu.classList.remove('active');
-            }
-        });
-        
-        // Mobile dropdown functionality
-        document.querySelectorAll('.nav-link').forEach(link => {
-            if (link.nextElementSibling && link.nextElementSibling.classList.contains('dropdown-menu')) {
-                link.addEventListener('click', function(e) {
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        this.classList.toggle('active');
-                        
-                        const dropdown = this.nextElementSibling;
-                        if (dropdown.style.display === 'block') {
-                            dropdown.style.display = 'none';
-                        } else {
-                            dropdown.style.display = 'block';
-                        }
-                    }
+            if (!e.target.closest('.nav-item') && !e.target.closest('.nav-toggle')) {
+                const dropdowns = document.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    dropdown.style.display = 'none';
                 });
             }
         });
@@ -2400,3 +2267,9 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
