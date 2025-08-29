@@ -170,20 +170,20 @@
             padding-left: 1.3rem;
         }
 
-        /* MOBILE NAVIGATION REDESIGN */
-        /* Mobile navigation overlay */
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1500;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
+        /* MOBILE NAVIGATION REDESIGN - FIXED */
+/* Mobile navigation overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 110px; /* Start below the fixed header */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 110px); /* Adjust height to account for header */
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
         
         .mobile-nav-overlay.active {
             opacity: 1;
@@ -191,19 +191,55 @@
         }
         
         /* Mobile menu container */
-        .mobile-menu-container {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 400px;
-            height: 100%;
-            background: linear-gradient(135deg, #0a4d68, #088395);
-            z-index: 2000;
-            overflow-y: auto;
-            transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
-        }
+.mobile-menu-container {
+    position: fixed;
+    top: 110px; /* Position below the fixed header */
+    right: -100%;
+    width: 85%;
+    max-width: 400px;
+    height: calc(100% - 110px); /* Adjust height to account for header */
+    background: linear-gradient(135deg, #0a4d68, #088395);
+    z-index: 1000; /* Ensure this is higher than notice bar */
+    overflow-y: auto;
+    transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+}
+        /* Increase z-index for nav container to ensure it's above notice bar */
+.nav-container {
+    position: fixed;
+    top: 40px; /* Positioned below notice bar */
+    left: 0;
+    width: 100%;
+    z-index: 2002; /* Increased to be above notice bar */
+    background: linear-gradient(135deg, #0a4d68, #088395);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Make sure notice bar has proper z-index */
+.notice-bar {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: 600;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2001; /* Keep high but lower than nav container */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    animation: pulseNotice 2s infinite;
+}
+
+/* Mobile menu header adjustment */
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px; /* Reduced padding */
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
         
         .mobile-menu-container.active {
             right: 0;
@@ -927,7 +963,30 @@
                 font-size: 2.8rem;
             }
         }
-        
+        /* Media query adjustments */
+@media (max-width: 768px) {
+    .mobile-nav-overlay {
+        top: 110px;
+        height: calc(100% - 110px);
+    }
+    
+    .mobile-menu-container {
+        top: 110px;
+        height: calc(100% - 110px);
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-nav-overlay {
+        top: 110px;
+        height: calc(100% - 110px);
+    }
+    
+    .mobile-menu-container {
+        top: 110px;
+        height: calc(100% - 110px);
+    }
+}
         @media (max-width: 768px) 
         
             body {
@@ -1538,5 +1597,6 @@
     </script>
 </body>
 </html>
+
 
 
