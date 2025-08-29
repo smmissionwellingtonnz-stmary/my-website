@@ -38,10 +38,37 @@
             padding: 0 15px;
         }
         
-        /* Navigation Menu - Copied from Program 1 */
-        .nav-container {
+        /* Notice Bar */
+        .notice-bar {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            font-weight: 600;
             position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: pulseNotice 2s infinite;
+        }
+
+        @keyframes pulseNotice {
+            0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+            50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
+            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+        }
+
+        .notice-bar span {
+            margin: 0 15px;
+            display: inline-block;
+        }
+        
+        /* Navigation Menu */
+        .nav-container {
+            position: fixed;
+            top: 40px; /* Positioned below notice bar */
             left: 0;
             width: 100%;
             z-index: 1000;
@@ -140,44 +167,6 @@
             padding-left: 1.3rem;
         }
         
-        /* Mobile Navigation Styles */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background: linear-gradient(135deg, #0a4d68, #088395);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                padding: 1rem 0;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-toggle {
-                display: block;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                width: 100%;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                display: none;
-            }
-            
-            .nav-item:hover .dropdown-menu {
-                display: block;
-            }
-        }
-        
         /* Scroll to top button */
         .scroll-top {
             position: fixed;
@@ -219,7 +208,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            margin-top: 70px; /* Adjusted for the navigation without notice bar */
+            margin-top: 110px; /* Added margin to prevent overlap with navigation */
         }
         
         .bg-image {
@@ -254,8 +243,8 @@
         }
         
         .logo {
-            width: 180px;
-            height: 180px;
+            width: 120px;
+            height: 120px;
             margin: 0 auto 20px;
             opacity: 0;
             animation: fadeIn 1s forwards 1.5s;
@@ -278,7 +267,7 @@
         
         .heading-main {
             font-family: 'Cinzel Decorative', cursive;
-            font-size: 96px;
+            font-size: 72px;
             color: #F8DE7E;
             margin-bottom: 1rem;
             opacity: 0;
@@ -287,7 +276,7 @@
         }
         
         .heading-sub {
-            font-size: 72px;
+            font-size: 60px;
             color: white;
             line-height: 1.3;
             opacity: 0;
@@ -311,12 +300,12 @@
         }
         
         .border-top, .border-bottom {
-            height: 5px;
+            height: 3px;
             width: 0;
         }
         
         .border-left, .border-right {
-            width: 5px;
+            width: 3px;
             height: 0;
         }
         
@@ -530,7 +519,6 @@
             font-size: 2rem;
             position: relative;
             display: inline-block;
-            font-family: 'Playfair Display', serif;
         }
         
         .welcome-message h2::after {
@@ -846,7 +834,7 @@
             transition: all 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 极 10px 25px var(--shadow-color);
+            box-shadow: 0 10px 25px var(--shadow-color);
             background: transparent;
             z-index: 1;
         }
@@ -855,7 +843,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(255, 255, 255, 极.1);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 15px;
@@ -863,7 +851,7 @@
             z-index: -1;
         }
         
-极 .slide.active {
+        .slide.active {
             opacity: 1;
             transform: translateZ(0);
             z-index: 10;
@@ -876,7 +864,7 @@
         }
         
         .slide.prev {
-极           transform: translateX(-30%) translateZ(-极00px) rotateY(15deg);
+            transform: translateX(-30%) translateZ(-100px) rotateY(15deg);
             opacity: 0.7;
             z-index: 5;
         }
@@ -910,7 +898,7 @@
             max-width: 100%;
             max-height: 100%;
             width: auto;
-极           height: auto;
+            height: auto;
             object-fit: contain;
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -946,7 +934,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .极av-btn:hover {
+        .nav-btn:hover {
             transform: translateY(-50%) scale(1.1);
             box-shadow: 0 8px 25px var(--shadow-color);
         }
@@ -995,7 +983,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 极00%;
+            width: 100%;
             height: 100%;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             transform: scale(0);
@@ -1022,8 +1010,8 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
             overflow: hidden;
-           极 z-index: 20;
-            backdrop-filter: blur(5极);
+            z-index: 20;
+            backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         
@@ -1076,7 +1064,7 @@
             background: #2c3e50; 
             color: white;
             padding: 25px; 
-极           text-align: center;
+            text-align: center;
         }
 
         .contact-header h2 {
@@ -1103,7 +1091,7 @@
         }
 
         .contact-info h3 {
-            margin-bottom极 25px;
+            margin-bottom: 25px;
             font-size: 24px;
             border-bottom: 2px solid #f39c12;
             padding-bottom: 10px;
@@ -1188,7 +1176,7 @@
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
-            border-radius: 5极;
+            border-radius: 5px;
             font-size: 16px;
         }
 
@@ -1267,7 +1255,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,极) 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
             animation: pulse 15s infinite linear;
             z-index: 0;
         }
@@ -1280,7 +1268,7 @@
             justify-content: space-between;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20极;
+            padding: 0 20px;
         }
 
         .footer-column {
@@ -1370,7 +1358,7 @@
             padding-top: 30px;
             margin-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-           极 max-width: 1200px;
+            max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
             padding-left: 20px;
@@ -1405,12 +1393,12 @@
         }
         
         @keyframes expandHeight {
-极           to {
+            to {
                 height: 100%;
             }
         }
         
-        @keyframes fade极Down {
+        @keyframes fadeInDown {
             from {
                 opacity: 0;
                 transform: translateY(-20px);
@@ -1459,16 +1447,16 @@
         
         @media (max-width: 768px) {
             .heading-main {
-                font-size: 60px;
+                font-size: 45px;
             }
             
             .heading-sub {
-                font-size: 50px;
+                font-size: 35px;
             }
             
             .logo {
-                width: 120px;
-                height: 120px;
+                width: 80px;
+                height: 80px;
             }
             
             .heading-container {
@@ -1504,10 +1492,10 @@
                 font-size: 2rem;
             }
             
-            /* Navigation for mobile - Updated for no notice bar */
+            /* Navigation for mobile */
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 90px;
                 left: -100%;
                 flex-direction: column;
                 background: linear-gradient(135deg, #0a4d68, #088395);
@@ -1516,7 +1504,7 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
                 padding: 1rem 0;
-                height: calc(100vh - 70px);
+                height: calc(100vh - 90px);
                 overflow-y: auto;
             }
             
@@ -1544,7 +1532,7 @@
             
             /* Header */
             .cover-container {
-                margin-top: 70px; /* Adjusted for mobile without notice bar */
+                margin-top: 100px; /* Adjusted for mobile */
             }
         }
         
@@ -1597,7 +1585,7 @@
             }
             
             .priest-image {
-                padding: 20极;
+                padding: 20px;
             }
             
             .info-sections {
@@ -1623,7 +1611,7 @@
             }
             
             .cover-container {
-                margin-top: 70px; /* Adjusted for very small screens without notice bar */
+                margin-top: 90px; /* Adjusted for very small screens */
             }
         }
         
@@ -1635,10 +1623,16 @@
     </style>
 </head>
 <body>
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        <a href="event.html" style="color: white; text-decoration: none;">
+        <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
+    </div>
+
     <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
-           <a href="index.html"><img src="images/logo.png" alt="Logo" class="nav-logo"></a>
+            <img src="images/logo.png" alt="Logo" class="nav-logo">
             <button class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1654,7 +1648,7 @@
                     <li><a href="aboutsyromalabarchurch.html" class="dropdown-item">Syro Malabar Church</a></li>
                     <li><a href="abouteparchy.html" class="dropdown-item">Syro Malabar Melbourne</a></li>
                     <li><a href="aboutsmmission.html" class="dropdown-item">Syro Malabar Wellington</a></li>
-                    <极><a href="priestandcouncil.html" class="dropdown-item">Priest & Council</a></li>
+                    <li><a href="priestandcouncil.html" class="dropdown-item">Priest & Council</a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -1704,7 +1698,7 @@
     <!-- Cover Page -->
     <section class="cover-container">
         <div class="bg-image"></div>
-        <div class极overlay"></div>
+        <div class="overlay"></div>
         <div class="cover-content">
             <div class="logo">
                 <img src="./images/logo.png" alt="St. Mary's Logo">
@@ -1743,7 +1737,7 @@
         
         <header>
             <div class="container">
-                <h1>Welcome to St. Mary's Syro-Malabar Mission, Wellington</极>
+                <h1>Welcome to St. Mary's Syro-Malabar Mission, Wellington</h1>
                 <p class="subtitle">St. Mary's Syro Malabar Mission Wellington started their journey in 2006 only with a few families and it's been a part of Syro Malabar Eparchy of St. Thomas the Apostle, Melbourne Australia. It's one of the largest Syro Malabar faithful communities in NZ.</p>
             </div>
         </header>
@@ -1752,10 +1746,10 @@
             <section class="welcome-section">
                 <div class="welcome-message">
                     <h2>Welcome to the St. Mary's Syro Malabar Mission Wellington</h2>
-                    <p>Thank you for taking the time to visit the website of St. Mary's Syro Malabar Mission Wellington, New Zealand. St. Mary's Mission of the Syro-Malabar Eparchy of Melbourne strives to live as a faithful Catholic community in Wellington. The members of this Mission are the Catholics极 the Syro-Malabar Major Archiepiscopal Church, one of the most vibrant Eastern Churches in the Catholic Communion, who live in the greater Wellington Region. The Syro-Malabar Church traces back its origin to the preachings of St Thomas, the Apostle, in India.</p>
+                    <p>Thank you for taking the time to visit the website of St. Mary's Syro Malabar Mission Wellington, New Zealand. St. Mary's Mission of the Syro-Malabar Eparchy of Melbourne strives to live as a faithful Catholic community in Wellington. The members of this Mission are the Catholics of the Syro-Malabar Major Archiepiscopal Church, one of the most vibrant Eastern Churches in the Catholic Communion, who live in the greater Wellington Region. The Syro-Malabar Church traces back its origin to the preachings of St Thomas, the Apostle, in India.</p>
                     <p>It has currently 7 family units comprising of more than 250 families. This Mission continues to grow in the footsteps of St Thomas the Apostle by celebrating the Syro-Malabar Liturgy in its Synodal form contributing towards the beauty of Catholic traditions. The Community is privileged to have daily Holy Qurbana (Holy Mass) at 27 Trebann Street, Paparangi. The community runs its Catechism Classes every Sunday, attended by more than 200 students and 25 volunteer teachers. We have a dynamic youth group known as SMYM.</p>
                     <p>The Community consists of migrated professionals of Catholic families from different dioceses hailing mostly from Kerala and different parts of India. The Community had its presence in greater Wellington since 2006 with once in a month Holy Qurbana assisted by priests of Syro-Malabar origin. Currently, St. Mary's Mission is one of the most vibrant communities in New Zealand.</p>
-                    <p>Our Community strives to; grow together as a loving community in Christ, fostering the family faith life and following the ways极 St. Thomas the Apostle. We are proud to say that we have always tried to keep up the faith handed down to us by our forefathers.</p>
+                    <p>Our Community strives to; grow together as a loving community in Christ, fostering the family faith life and following the ways of St. Thomas the Apostle. We are proud to say that we have always tried to keep up the faith handed down to us by our forefathers.</p>
                     <p>Our community is thankful to our friends, benefactors and well wishers especially to the Catholic Archdiocese of Wellington for all the support given and continue today. May the grace of Our Lord Jesus Christ, the love of God the Father and the fellowship of the Holy Spirit be with us all.</p>
                 </div>
                 
@@ -1810,7 +1804,7 @@
             </div>
             
             <div class="progress-container">
-                <极 class="progress-bar"></div>
+                <div class="progress-bar"></div>
             </div>
         </div>
     </section>
@@ -1818,7 +1812,7 @@
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="contact-container">
-            <div class="极ontact-header">
+            <div class="contact-header">
                 <h2>Contact St. Mary's Syro-Malabar Mission</h2>
                 <p>Get in touch with our community in Wellington</p>
             </div>
@@ -1834,7 +1828,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="info-text">
                                 <h4>Address</h4>
-                                <p>27 Trebann Street, Paparangi, Wellington 6037, New Zealand</极>
+                                <p>27 Trebann Street, Paparangi, Wellington 6037, New Zealand</p>
                             </div>
                         </div>
                         <div class="info-item">
@@ -1847,7 +1841,7 @@
                     </div>
 
                     <div class="info-section">
-                        <div class极info-section-title">CHAPLAIN</div>
+                        <div class="info-section-title">CHAPLAIN</div>
                         <div class="chaplain-card">
                             <h4>Fr. Joseph Kunnackattu (Chaplain)</h4>
                             <div class="info-item">
@@ -1868,13 +1862,13 @@
                             <div class="info-item">
                                 <i class="fas fa-phone-alt"></i>
                                 <div class="info-text"><p>+64 21 082 17181</p></div>
-                            </极>
+                            </div>
                         </div>
                     </div>
 
                     <div class="map-container">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.0286205438783!2d174.78746047640465!3d-41.20775107130559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38a54a10a299c1%3A0x10d4136be6f8047d!2s27%20Trebann%20Street%2C%20Paparangi%2C%20Wellington%206037%2C%20New%20Zealand!5e0!3m2!1sen!2sn极!4v1721527568001!5m2!1sen!2snz"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3062.0286205438783!2d174.78746047640465!3d-41.20775107130559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38a54a10a299c1%3A0x10d4136be6f8047d!2s27%20Trebann%20Street%2C%20Paparangi%2C%20Wellington%206037%2C%20New%20Zealand!5e0!3m2!1sen!2snz!4v1721527568001!5m2!1sen!2snz"
                             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
@@ -1894,12 +1888,12 @@
                             <input type="email" id="email" name="email" required placeholder="Enter your email address">
                         </div>
                         <div class="form-group">
-                            <label for="subject极Subject</label>
+                            <label for="subject">Subject</label>
                             <input type="text" id="subject" name="subject" required placeholder="What is your message about?">
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" name="message极 required placeholder="Type your message here..."></textarea>
+                            <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn">
                             <i class="fas fa-paper-plane"></i> Send Message
@@ -1941,8 +1935,8 @@
             <div class="footer-column">
                 <h3>Contact Info</h3>
                 <ul class="footer-links">
-                    <li><a href="https极//goo.gl/maps/3sRzvQ2VJY9Vp3ENA" target="_blank"><i class="fas极fa-map-marker-alt"></i> 27 Trebann Street, Paparangi, Wellington</a></li>
-                    <li><a href="mailto:smmissionwellingtonn极@gmail.com"><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</a></li>
+                    <li><a href="https://goo.gl/maps/3sRzvQ2VJY9Vp3ENA" target="_blank"><i class="fas fa-map-marker-alt"></i> 27 Trebann Street, Paparangi, Wellington</a></li>
+                    <li><a href="mailto:smmissionwellingtonnz@gmail.com"><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</a></li>
                     <li><a href="tel:+64272841791"><i class="fas fa-phone"></i> +64 27 284 1791 (Fr. Joseph - Chaplain)</a></li>
                     <li><a href="tel:+642108217181"><i class="fas fa-phone"></i> +64 21 082 17181 (Joshua Jose - Parish Council Secretary)</a></li>
                 </ul>
@@ -2017,7 +2011,7 @@
                 // Restart animations with proper delays
                 document.querySelector('.heading-main').style.animation = 'fadeIn 1.5s forwards 0.5s';
                 document.querySelector('.heading-sub').style.animation = 'fadeIn 1.5s forwards 1s';
-                document.querySelector('.border-top').极tyle.animation = 'expandWidth 1s forwards 1.5s';
+                document.querySelector('.border-top').style.animation = 'expandWidth 1s forwards 1.5s';
                 document.querySelector('.border-right').style.animation = 'expandHeight 1s forwards 2s';
                 document.querySelector('.border-bottom').style.animation = 'expandWidth 1s forwards 2.5s';
                 document.querySelector('.border-left').style.animation = 'expandHeight 1s forwards 3s';
@@ -2163,7 +2157,7 @@
 
         // Function for next slide
         function nextSlide() {
-            showSlide(current极 + 1);
+            showSlide(currentIndex + 1);
         }
 
         // Function for previous slide
@@ -2244,7 +2238,7 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const form = this;
-            const formData = new Form极(form);
+            const formData = new FormData(form);
 
             fetch('https://formsubmit.co/ajax/smmissionwellingtonnz@gmail.com', {
                 method: 'POST',
@@ -2273,3 +2267,8 @@
     </script>
 </body>
 </html>
+
+
+
+
+
