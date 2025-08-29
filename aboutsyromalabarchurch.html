@@ -928,12 +928,18 @@
             }
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 768px) 
+        
             body {
                 padding: 8px 15px;
                 padding-top: 110px; /* Maintain padding for mobile */
             }
-            
+            /* Smaller notice bar for mobile */
+            .notice-bar {
+                padding: 8px 0;
+                font-size: 14px;
+                z-index: 2001; /* Higher than mobile menu */
+            }
             .header-background {
                 padding: 30px 15px 20px; /* Adjusted padding for mobile */
             }
@@ -987,7 +993,12 @@
                 padding: 5px 10px;
                 padding-top: 110px; /* Maintain padding for very small screens */
             }
-            
+            /* Smaller notice bar for mobile */
+            .notice-bar {
+                padding: 8px 0;
+                font-size: 14px;
+                z-index: 2001; /* Higher than mobile menu */
+            }
             .header-background {
                 padding: 25px 10px 15px; /* Adjusted padding for mobile */
             }
@@ -1527,3 +1538,4 @@
     </script>
 </body>
 </html>
+
