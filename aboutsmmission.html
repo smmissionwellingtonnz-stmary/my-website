@@ -15,6 +15,8 @@
             --light: #f8f5f2;
             --dark: #333;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --menu-bg: linear-gradient(135deg, #0a4d68, #088395);
+            --footer-bg: linear-gradient(135deg, #0a4d68, #088395);
         }
         
         * {
@@ -35,6 +37,7 @@
             flex-direction: column;
             align-items: center;
             padding: 0;
+            padding-top: 110px; /* Added padding to prevent content from being hidden under fixed header */
         }
         
         html {
@@ -43,47 +46,44 @@
             scroll-behavior: smooth;
         }
         
-        /* Notice Bar */
+        /* Notice Bar - EXACT FROM REFERENCE */
         .notice-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
-            padding: 12px 20px;
             text-align: center;
-            font-weight: 500;
+            padding: 12px 0;
+            font-weight: 600;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: pulseNotice 2s infinite;
         }
-        
-        .notice-bar p {
-            margin: 0;
-            font-size: 1rem;
+
+        @keyframes pulseNotice {
+            0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+            50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
+            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
         }
-        
-        .notice-close {
-            background: transparent;
-            border: none;
+
+        .notice-bar a {
             color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
         }
         
-        /* Navigation Menu */
+        /* Navigation Menu - EXACT FROM REFERENCE */
         .nav-container {
             position: fixed;
-            top: 40px; /* Adjusted to account for notice bar */
+            top: 40px; /* Positioned below notice bar */
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(135deg, #0a4d68, #088395);
+            background: var(--menu-bg);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
         
@@ -105,12 +105,16 @@
             border: none;
             cursor: pointer;
             display: none;
+            z-index: 1002;
+            position: relative;
         }
         
         .nav-menu {
             display: flex;
             justify-content: center;
             list-style: none;
+            flex-wrap: wrap;
+            padding: 0 10px;
         }
         
         .nav-item {
@@ -119,11 +123,12 @@
         
         .nav-link {
             display: block;
-            padding: 1rem 1.2rem;
+            padding: 1rem 1rem;
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 15px;
         }
         
         .nav-link:hover {
@@ -133,7 +138,7 @@
         .nav-link.donate {
             background-color: #ff6b6b;
             border-radius: 4px;
-            margin: 0.5rem 1rem;
+            margin: 0.5rem 0.5rem;
             font-weight: 600;
         }
         
@@ -177,7 +182,195 @@
             color: #0a4d68;
             padding-left: 1.3rem;
         }
+
+        /* MOBILE NAVIGATION - EXACT FROM REFERENCE */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
         
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-container {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--menu-bg);
+            z-index: 1000;
+            overflow-y: auto;
+            transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-container.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-logo {
+            height: 40px;
+        }
+        
+        .mobile-menu-close {
+            font-size: 1.5rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-content {
+            padding: 20px 0;
+        }
+        
+        .mobile-nav-menu {
+            list-style: none;
+        }
+        
+        .mobile-nav-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav-link.donate {
+            background-color: #ff6b6b;
+            font-weight: 600;
+        }
+        
+        .mobile-nav-link.donate:hover {
+            background-color: #ff5252;
+        }
+        
+        .mobile-dropdown-toggle {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-dropdown-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            transition: max-height 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        
+        .mobile-dropdown-menu.show {
+            max-height: 500px;
+        }
+        
+        .mobile-dropdown-item {
+            display: block;
+            padding: 14px 20px 14px 40px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding-left: 45px;
+        }
+        
+        /* Navigation for mobile */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 100px; /* Adjusted for mobile */
+            }
+            
+            .nav-toggle {
+                display: block;
+                z-index: 1002; /* Higher than mobile menu container */
+            }
+            
+            /* Hide desktop navigation on mobile */
+            .nav-menu {
+                display: none;
+            }
+            
+            /* Adjust navigation container position */
+            .nav-container {
+                top: 32px; /* Positioned below smaller notice bar */
+                z-index: 1001; /* Higher than overlay but lower than notice bar */
+            }
+            
+            /* Adjust notice bar for mobile */
+            .notice-bar {
+                padding: 8px 0;
+                font-size: 14px;
+                z-index: 2001; /* Higher than mobile menu */
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 90px; /* Adjusted for very small screens */
+            }
+            
+            .nav-container {
+                top: 30px;
+            }
+            
+            .notice-bar {
+                padding: 6px 0;
+                font-size: 12px;
+            }
+        }
+
         /* Scroll to top button */
         .scroll-top {
             position: fixed;
@@ -218,7 +411,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-top: 120px; /* Increased space from navigation */
+            margin-top: 0; /* Removed margin-top as padding-top on body handles spacing */
         }
         
         .hero::before {
@@ -276,75 +469,6 @@
             height: 3px;
             background-color: var(--secondary);
             animation: lineGrow 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-        }
-        
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2rem;
-                max-width: 85%;
-            }
-            
-            .logo-container {
-                width: 150px; /* Slightly smaller on mobile */
-                height: 150px; /* Slightly smaller on mobile */
-            }
-            
-            /* Notice bar for mobile */
-            .notice-bar {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .notice-close {
-                right: 15px;
-            }
-            
-            /* Navigation for mobile */
-            .nav-container {
-                top: 40px; /* Adjusted to account for notice bar */
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 100px; /* Adjusted to account for notice bar and nav header */
-                left: -100%;
-                flex-direction: column;
-                background: linear-gradient(135deg, #0a4d68, #088395);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                padding: 1rem 0;
-                height: calc(100vh - 100px);
-                overflow-y: auto;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-toggle {
-                display: block;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                width: 100%;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                display: none;
-                background: rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-item:hover .dropdown-menu {
-                display: block;
-            }
-            
-            .hero {
-                margin-top: 100px; /* Adjusted for mobile */
-            }
         }
         
         @keyframes lineGrow {
@@ -450,6 +574,7 @@
             width: 50%;
             text-align: center;
             color: var(--primary);
+            margin: 0 auto;
         }
         
         .chaplains-container {
@@ -470,6 +595,10 @@
             
             .chaplain-card {
                 margin-bottom: 1.5rem;
+            }
+            
+            .wardmap-container {
+                width: 90%;
             }
         }
         
@@ -547,7 +676,7 @@
         
         /* Footer Styles */
         .footer {
-            background: linear-gradient(135deg, #0a4d68, #088395);
+            background: var(--footer-bg);
             color: white;
             padding: 60px 0 20px;
             position: relative;
@@ -690,15 +819,14 @@
     </style>
 </head>
 <body>
-    <!-- Notice Bar -->
-    <div class="notice-bar" id="notice-bar">
-        <p>Notice: This is an important announcement for all parish members.</p>
-        <button class="notice-close" id="notice-close">
-            <i class="fas fa-times"></i>
-        </button>
+    <!-- Notice Bar - EXACT FROM REFERENCE -->
+    <div class="notice-bar">
+        <a href="event.html">
+            <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
+        </a>
     </div>
 
-    <!-- Navigation Menu -->
+    <!-- Navigation Menu - EXACT FROM REFERENCE -->
     <nav class="nav-container">
         <div class="nav-header">
             <img src="images/logo.png" alt="Logo" class="nav-logo">
@@ -733,7 +861,7 @@
                     <li><a href="altar.html" class="dropdown-item">Altar Servers</a></li>
                     <li><a href="#" class="dropdown-item">Catechism</a></li>
                     <li><a href="#" class="dropdown-item">Choir</a></li>
-                    <li><a href="#" class="dropdown-item">Family Units</a></li>
+                    <li><a href="family.html" class="dropdown-item">Family Units</a></li>
                     <li><a href="#" class="dropdown-item">SMYM Wellington</a></li>
                     <li><a href="#" class="dropdown-item">Young Couple Ministry</a></li>
                 </ul>
@@ -758,6 +886,87 @@
             </li>
         </ul>
     </nav>
+
+    <!-- Mobile Navigation Overlay - EXACT FROM REFERENCE -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+    <!-- Mobile Navigation Menu - EXACT FROM REFERENCE -->
+    <div class="mobile-menu-container" id="mobile-menu-container">
+        <div class="mobile-menu-header">
+            <img src="images/logo.png" alt="Logo" class="mobile-menu-logo">
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-menu">
+                <li class="mobile-nav-item">
+                    <a href="index.html" class="mobile-nav-link">Home</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
+                        <span>About</span>
+                        <span class="mobile-dropdown-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="aboutsyromalabarchurch.html" class="mobile-dropdown-item">Syro Malabar Church</a>
+                        <a href="abouteparchy.html" class="mobile-dropdown-item">Syro Malabar Melbourne</a>
+                        <a href="aboutsmmission.html" class="mobile-dropdown-item">Syro Malabar Wellington</a>
+                        <a href="priestandcouncil.html" class="mobile-dropdown-item">Priest & Council</a>
+                    </div>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
+                        <span>Services</span>
+                        <span class="mobile-dropdown-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="services.html" class="mobile-dropdown-item">Holy Qurbana Schedule</a>
+                        <a href="event.html" class="mobile-dropdown-item">Upcoming Programs</a>
+                    </div>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
+                        <span>Ministries</span>
+                        <span class="mobile-dropdown-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="altar.html" class="mobile-dropdown-item">Altar Servers</a>
+                        <a href="#" class="mobile-dropdown-item">Catechism</a>
+                        <a href="#" class="mobile-dropdown-item">Choir</a>
+                        <a href="family.html" class="mobile-dropdown-item">Family Units</a>
+                        <a href="#" class="mobile-dropdown-item">SMYM Wellington</a>
+                        <a href="#" class="mobile-dropdown-item">Young Couple Ministry</a>
+                    </div>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Forms</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Resources</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Safeguarding</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Gallery & Social</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#contact" class="mobile-nav-link">Contact</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link donate">DONATE</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Scroll to top button -->
     <div class="scroll-top" id="scroll-top">
@@ -841,9 +1050,9 @@
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="aboutsmmission.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
                     <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-                    <li><a href="services.html" target="_blank"><i class="fas fa-chevron-right"></i> Mass Schedule</a></li>
+                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Mass Schedule</a></li>
                     <li><a href="event.html" target="_blank"><i class="fas fa-chevron-right"></i> Upcoming Programs</a></li>
                 </ul>
             </div>
@@ -865,34 +1074,74 @@
     </footer>
 
     <script>
-        // Notice bar functionality
-        const noticeBar = document.getElementById('notice-bar');
-        const noticeClose = document.getElementById('notice-close');
-        
-        noticeClose.addEventListener('click', () => {
-            noticeBar.style.display = 'none';
-            // Adjust navigation position
-            document.querySelector('.nav-container').style.top = '0';
-            // Adjust hero margin
-            document.querySelector('.hero').style.marginTop = '80px';
-        });
-        
-        // Navigation toggle functionality
+        // Mobile Navigation Functionality - EXACT FROM REFERENCE
         const navToggle = document.getElementById('nav-toggle');
-        const navMenu = document.getElementById('nav-menu');
+        const mobileMenuContainer = document.getElementById('mobile-menu-container');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
         
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            mobileMenuContainer.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenuContainer.classList.contains('active') ? 'hidden' : '';
+            
+            // Toggle between hamburger and close icon
+            const icon = navToggle.querySelector('i');
+            if (mobileMenuContainer.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+        
+        // Event listeners for mobile menu
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
         });
         
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-item') && !e.target.closest('.nav-toggle')) {
-                const dropdowns = document.querySelectorAll('.dropdown-menu');
-                dropdowns.forEach(dropdown => {
-                    dropdown.style.display = 'none';
+        mobileMenuClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMobileMenu();
+        });
+        
+        mobileNavOverlay.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMobileMenu();
+        });
+        
+        // Mobile dropdown functionality
+        document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
+            parent.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownMenu = this.nextElementSibling;
+                const dropdownToggle = this.querySelector('.mobile-dropdown-toggle');
+                
+                // Close other dropdowns
+                document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+                    if (menu !== dropdownMenu) {
+                        menu.classList.remove('show');
+                        menu.previousElementSibling.querySelector('.mobile-dropdown-toggle').classList.remove('active');
+                    }
                 });
-            }
+                
+                // Toggle current dropdown
+                dropdownMenu.classList.toggle('show');
+                dropdownToggle.classList.toggle('active');
+            });
+        });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMobileMenu();
+            });
         });
         
         // Scroll to top functionality
@@ -912,19 +1161,6 @@
                 behavior: 'smooth'
             });
         });
-        
-        // Mobile navigation handling
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.nextElementSibling && link.nextElementSibling.classList.contains('dropdown-menu')) {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const dropdown = link.nextElementSibling;
-                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                    });
-                }
-            });
-        }
     </script>
 </body>
 </html>
