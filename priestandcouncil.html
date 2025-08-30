@@ -108,6 +108,8 @@
             display: flex;
             justify-content: center;
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
         .nav-item {
@@ -152,6 +154,9 @@
             transform: translateY(10px);
             transition: all 0.3s ease;
             z-index: 1000;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
         .nav-item:hover .dropdown-menu {
@@ -173,6 +178,11 @@
             background-color: #f8f9fa;
             color: #0a4d68;
             padding-left: 1.3rem;
+        }
+
+        /* Desktop-specific: Second row for Donate button */
+        .nav-donate-row {
+            display: none;
         }
 
         /* Scroll to top button */
@@ -755,6 +765,31 @@
             }
         }
 
+        /* Desktop-specific styles */
+        @media (min-width: 769px) {
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-donate-row {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.1);
+                padding: 0.5rem 0;
+            }
+            
+            .nav-donate-row .nav-item {
+                margin: 0;
+            }
+            
+            /* Hide the donate button in the main menu */
+            .nav-menu > .nav-item:last-child {
+                display: none;
+            }
+        }
+
         @keyframes pulse {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -764,8 +799,9 @@
 <body>
     <!-- Notice Bar -->
     <div class="notice-bar">
-<a href="event.html" style="color: white; text-decoration: none;">
-        <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
+        <a href="event.html" style="color: white; text-decoration: none;">
+            <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
+        </a>
     </div>
 
     <!-- Navigation Menu -->
@@ -827,6 +863,15 @@
                 <a href="#" class="nav-link donate">DONATE</a>
             </li>
         </ul>
+        
+        <!-- Second row for Donate button on desktop -->
+        <div class="nav-donate-row">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link donate">DONATE</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Scroll to top button -->
@@ -1097,6 +1142,3 @@
 </body>
 
 </html>
-
-
-
