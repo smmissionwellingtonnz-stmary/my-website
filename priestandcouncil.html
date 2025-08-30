@@ -11,16 +11,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1a4d80;
-            --primary-light: #2c5e8f;
-            --primary-dark: #0f3662;
+            --primary: #2c5e8f;
+            --primary-light: #3a7cb9;
             --accent: #e8c07d;
-            --accent-light: #f5e2c2;
             --light: #f8f9fa;
             --white: #ffffff;
             --gray: #6c757d;
             --dark: #212529;
-            --gold: #d4af37;
+            --menu-bg: linear-gradient(135deg, #0a4d68, #088395);
+            --notice-bg: linear-gradient(135deg, #ff6b6b, #ff8e53);
         }
 
         * {
@@ -51,7 +50,7 @@
 
         /* Notice Bar */
         .notice-bar {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            background: var(--notice-bg);
             color: white;
             text-align: center;
             padding: 12px 0;
@@ -62,28 +61,34 @@
             width: 100%;
             z-index: 2000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            border-bottom: 2px solid var(--accent);
+            animation: pulseNotice 2s infinite;
+        }
+
+        @keyframes pulseNotice {
+            0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+            50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
+            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
         }
 
         .notice-bar a {
             color: white;
             text-decoration: none;
             display: block;
-            transition: all 0.3s ease;
         }
 
-        .notice-bar a:hover {
-            color: var(--accent-light);
+        .notice-bar span {
+            margin: 0 15px;
+            display: inline-block;
         }
 
         /* Navigation Menu */
         .nav-container {
             position: fixed;
-            top: 44px; /* Adjusted to connect with notice bar */
+            top: 44px; /* Adjusted to sit right below notice bar */
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: var(--menu-bg);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
         
@@ -126,7 +131,6 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .nav-link:hover {
@@ -134,15 +138,14 @@
         }
         
         .nav-link.donate {
-            background-color: var(--gold);
-            color: var(--primary-dark);
+            background-color: #ff6b6b;
             border-radius: 4px;
             margin: 0.5rem 1rem;
-            font-weight: 700;
+            font-weight: 600;
         }
         
         .nav-link.donate:hover {
-            background-color: #e6c158;
+            background-color: #ff5252;
             transform: translateY(-2px);
         }
         
@@ -173,25 +176,21 @@
         .dropdown-item {
             display: block;
             padding: 0.8rem 1rem;
-            color: var(--dark);
+            color: #333;
             text-decoration: none;
             border-bottom: 1px solid #f1f1f1;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
         }
         
         .dropdown-item:hover {
-            background-color: var(--accent-light);
-            color: var(--primary-dark);
+            background-color: #f8f9fa;
+            color: #0a4d68;
             padding-left: 1.3rem;
         }
 
         /* Desktop-specific: Second row for Donate button */
         .nav-donate-row {
             display: none;
-            background: rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 0;
-            justify-content: center;
         }
 
         /* Scroll to top button */
@@ -201,7 +200,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            background: var(--menu-bg);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -267,7 +266,16 @@
             opacity: 0.9;
             font-weight: 400;
             letter-spacing: 0.5px;
-            color: var(--accent-light);
+            color: var(--white);
+        }
+
+        /* Main Content Styling */
+        .page-content {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 40px;
         }
 
         /* Chaplain Section */
@@ -276,6 +284,7 @@
             flex-direction: column;
             align-items: center;
             margin-bottom: 60px;
+            text-align: center;
         }
 
         .chaplain-image {
@@ -309,6 +318,7 @@
         .chaplain-details {
             font-size: 1.1rem;
             color: var(--gray);
+            line-height: 1.8;
         }
 
         .chaplain-details a {
@@ -484,7 +494,7 @@
 
         /* Footer Styles */
         .footer {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            background: var(--menu-bg);
             color: white;
             padding: 60px 0 20px;
             position: relative;
@@ -526,7 +536,7 @@
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
-            color: var(--accent);
+            color: #F8DE7E;
         }
 
         .footer-column h3::after {
@@ -536,7 +546,7 @@
             left: 0;
             width: 40px;
             height: 3px;
-            background: var(--accent);
+            background: #ffd700;
             border-radius: 2px;
         }
 
@@ -559,11 +569,11 @@
         .footer-links a i {
             margin-right: 10px;
             font-size: 14px;
-            color: var(--accent);
+            color: #ffd700;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
+            color: #ffd700;
             transform: translateX(5px);
         }
 
@@ -588,8 +598,8 @@
         }
 
         .footer-social a:hover {
-            background: var(--accent);
-            color: var(--primary-dark);
+            background: #ffd700;
+            color: #0a4d68;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
@@ -622,12 +632,16 @@
             }
             
             /* Navigation for mobile */
+            .nav-container {
+                top: 40px;
+            }
+            
             .nav-menu {
                 position: fixed;
-                top: 90px; /* Below notice bar and nav header */
+                top: 90px;
                 left: -100%;
                 flex-direction: column;
-                background: linear-gradient(135deg, var(--primary), var(--primary-light));
+                background: var(--menu-bg);
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
@@ -661,8 +675,8 @@
             
             /* Header */
             .header {
-                padding: 60px 0 40px; /* Adjusted for mobile */
-                margin-top: 120px; /* Adjusted for mobile */
+                padding: 60px 0 40px;
+                margin-top: 120px;
             }
             
             h1 {
@@ -739,6 +753,10 @@
             .footer-column {
                 margin-bottom: 30px;
             }
+            
+            .page-content {
+                padding: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -752,7 +770,7 @@
             }
             
             .header {
-                margin-top: 110px; /* Adjusted for very small screens */
+                margin-top: 110px;
                 padding: 50px 0 30px;
             }
             
@@ -787,6 +805,12 @@
                 display: flex;
                 justify-content: center;
                 width: 100%;
+                background: rgba(0, 0, 0, 0.1);
+                padding: 0.5rem 0;
+            }
+            
+            .nav-donate-row .nav-item {
+                margin: 0;
             }
             
             /* Hide the donate button in the main menu */
@@ -873,7 +897,7 @@
         <div class="nav-donate-row">
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link donate">DONATE NOW</a>
+                    <a href="#" class="nav-link donate">DONATE</a>
                 </li>
             </ul>
         </div>
@@ -892,183 +916,182 @@
     </header>
 
     <main class="container">
-        <!-- Chaplain Section -->
-        <section class="chaplain-section">
-            <img src="images/frjoseph1.jpg" 
-                 alt="Fr. Joseph Kunnackattu" 
-                 class="chaplain-image">
-            
-            <div class="chaplain-info">
-                <h2 class="chaplain-name">Fr. Joseph Kunnackattu</h2>
-                <div class="chaplain-details">
-                    Chaplain - St. Mary's Syro Malabar Mission, Wellington<br>
-                    Mob: <a href="tel:+64272841791">+64272841791</a><br>
-                    Email: <a href="mailto:office.wellington@syromalabar.org.nz">office.wellington@syromalabar.org.nz</a>
+        <div class="page-content">
+            <!-- Chaplain Section -->
+            <section class="chaplain-section">
+                <img src="images/frjoseph1.jpg" 
+                     alt="Fr. Joseph Kunnackattu" 
+                     class="chaplain-image">
+                
+                <div class="chaplain-info">
+                    <h2 class="chaplain-name">Fr. Joseph Kunnackattu</h2>
+                    <div class="chaplain-details">
+                        Chaplain - St. Mary's Syro Malabar Mission, Wellington<br>
+                        Mob: <a href="tel:+64272841791">+64272841791</a><br>
+                        Email: <a href="mailto:office.wellington@syromalabar.org.nz">office.wellington@syromalabar.org.nz</a>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Kaikarans Section -->
-        <div class="leadership-section">
-            <div class="section-title">
-                <h2>Kaikkarans</h2>
-            </div>
-            
-            <div class="leadership-row">
-                <!-- Kaikkaran 1 -->
-                <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images/joshy.jpg" 
-                             alt="Joshy Abraham" 
-                             class="leader-image"
-         >
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">Joshy Abraham</h3>
-                        <p class="leader-role">Kaikkaran</p>
-                        <p class="leader-contact">Mob: 0226206677</p>
-                    </div>
+            <!-- Kaikarans Section -->
+            <div class="leadership-section">
+                <div class="section-title">
+                    <h2>Kaikkarans</h2>
                 </div>
                 
-                <!-- Kaikkaran 2 -->
-                <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images/tony.jpg" 
-                             alt="Tony Thomas" 
-                             class="leader-image">
+                <div class="leadership-row">
+                    <!-- Kaikkaran 1 -->
+                    <div class="leader-card">
+                        <div class="leader-image-container">
+                            <img src="images/joshy.jpg" 
+                                 alt="Joshy Abraham" 
+                                 class="leader-image">
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Joshy Abraham</h3>
+                            <p class="leader-role">Kaikkaran</p>
+                            <p class="leader-contact">Mob: 0226206677</p>
+                        </div>
                     </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">Tony Thomas</h3>
-                        <p class="leader-role">Kaikkaran</p>
-                        <p class="leader-contact">Mob: 0272482270</p>
+                    
+                    <!-- Kaikkaran 2 -->
+                    <div class="leader-card">
+                        <div class="leader-image-container">
+                            <img src="images/tony.jpg" 
+                                 alt="Tony Thomas" 
+                                 class="leader-image">
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Tony Thomas</h3>
+                            <p class="leader-role">Kaikkaran</p>
+                            <p class="leader-contact">Mob: 0272482270</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Secretary and Finance Section -->
-        <div class="leadership-section">
-            <div class="section-title">
-                <h2>Secretary and Finance</h2>
-            </div>
-            
-            <div class="leadership-row">
-                <!-- Secretary -->
-                <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images/joshua.jpg" 
-                             alt="Joshua Jose" 
-                             class="leader-image" style="object-position: center 2%;">
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">Joshua Jose</h3>
-                        <p class="leader-role">Parish Council Secretary</p>
-                        <p class="leader-contact">Mob: +642108217181</p>
-                    </div>
+            <!-- Secretary and Finance Section -->
+            <div class="leadership-section">
+                <div class="section-title">
+                    <h2>Secretary and Finance</h2>
                 </div>
                 
-                <!-- Accountant -->
-                <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images/anna.jpg" 
-                             alt="Anna Mathew" 
-                             class="leader-image">
+                <div class="leadership-row">
+                    <!-- Secretary -->
+                    <div class="leader-card">
+                        <div class="leader-image-container">
+                            <img src="images/joshua.jpg" 
+                                 alt="Joshua Jose" 
+                                 class="leader-image" style="object-position: center 2%;">
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Joshua Jose</h3>
+                            <p class="leader-role">Parish Council Secretary</p>
+                            <p class="leader-contact">Mob: +642108217181</p>
+                        </div>
                     </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">Anna Mathew</h3>
-                        <p class="leader-role">Accountant</p>
-                         <p class="leader-contact">Mob: +64 210 817 0654</p>
+                    
+                    <!-- Accountant -->
+                    <div class="leader-card">
+                        <div class="leader-image-container">
+                            <img src="images/anna.jpg" 
+                                 alt="Anna Mathew" 
+                                 class="leader-image">
+                        </div>
+                        <div class="leader-info">
+                            <h3 class="leader-name">Anna Mathew</h3>
+                            <p class="leader-role">Accountant</p>
+                            <p class="leader-contact">Mob: +64 210 817 0654</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ward Representatives -->
+            <div class="council-section">
+                <h3 class="section-subtitle">Ward Representatives</h3>
+                
+                <div class="council-container">
+                    <div class="council-column">
+                        <span class="ward-name">St. Alphonsa Ward</span>
+                        <div class="council-member">Linto Antony</div>
+                        <div class="council-member">Sunil George</div>
+                        <div class="council-member">Gifsa Maria Joseph</div>
+                        
+                        <span class="ward-name">St. Chavara Ward</span>
+                        <div class="council-member">Mathew Mani</div>
+                        <div class="council-member">Aneesh Philip</div>
+                        <div class="council-member">Gladis Pathalil George</div>
+                    </div>
+                    
+                    <div class="council-column">
+                        <span class="ward-name">Our Lady of Kapiti Ward</span>
+                        <div class="council-member">Joseph Chacko</div>
+                        <div class="council-member">Mable Mathew</div>
+                        
+                        <span class="ward-name">St. Thomas Ward</span>
+                        <div class="council-member">Jeff James</div>
+                        <div class="council-member">Sherin Mary George</div>
+                    </div>
+                    
+                    <div class="council-column">
+                        <span class="ward-name">Holy Family Ward</span>
+                        <div class="council-member">Deepak Thomas</div>
+                        <div class="council-member">Rakhi Jackson</div>
+                        
+                        <span class="ward-name">St. Francis Xavier Ward</span>
+                        <div class="council-member">George Jose</div>
+                        <div class="council-member">Jolly Kurian</div>
+                        
+                        <span class="ward-name">St. Joseph Ward</span>
+                        <div class="council-member">Joyce Joseph</div>
+                        <div class="council-member">Neelu Sethu</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Representatives from Ministries & Pious Associations -->
+            <div class="council-section">
+                <h3 class="section-subtitle">Representatives from Ministries & Pious Associations</h3>
+                
+                <div class="council-container">
+                    <div class="council-column">
+                        <div class="council-member">Jojo Jose (Catechism)</div>
+                        <div class="council-member">Prince Antony (Pithruvedhi)</div>
+                        <div class="council-member">Gijo Joseph (Mathruvedhi)</div>
+                        <div class="council-member">Jomin Jessil (SMYM)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nominated Members -->
+            <div class="council-section">
+                <h3 class="section-subtitle">Nominated Members</h3>
+                
+                <div class="council-container">
+                    <div class="council-column">
+                        <div class="council-member">Glory Mathew (Safeguarding)</div>
+                        <div class="council-member">Joshua Jose</div>
+                        <div class="council-member">Anna Mathew</div>
+                        <div class="council-member">Jinto Jose</div>
+                        <div class="council-member">Rinu Abraham</div>
+                        <div class="council-member">Dona Davis</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eparchy Pastoral Council Representatives -->
+            <div class="council-section">
+                <h3 class="section-subtitle">Eparchy Pastoral Council Representatives</h3>
+                
+                <div class="council-container">
+                    <div class="council-column">
+                        <div class="council-member">Sherin Joseph</div>
+                        <div class="council-member">Manju Jose</div>
                     </div>
                 </div>
             </div>
         </div>
-
-       
-        <!-- Ward Representatives -->
-        <div class="council-section">
-            <h3 class="section-subtitle">Ward Representatives</h3>
-            
-            <div class="council-container">
-                <div class="council-column">
-                    <span class="ward-name">St. Alphonsa Ward</span>
-                    <div class="council-member">Linto Antony</div>
-                    <div class="council-member">Sunil George</div>
-                    <div class="council-member">Gifsa Maria Joseph</div>
-                    
-                    <span class="ward-name">St. Chavara Ward</span>
-                    <div class="council-member">Mathew Mani</div>
-                    <div class="council-member">Aneesh Philip</div>
-                    <div class="council-member">Gladis Pathalil George</div>
-                </div>
-                
-                <div class="council-column">
-                    <span class="ward-name">Our Lady of Kapiti Ward</span>
-                    <div class="council-member">Joseph Chacko</div>
-                    <div class="council-member">Mable Mathew</div>
-                    
-                    <span class="ward-name">St. Thomas Ward</span>
-                    <div class="council-member">Jeff James</div>
-                    <div class="council-member">Sherin Mary George</div>
-                </div>
-                
-                <div class="council-column">
-                    <span class="ward-name">Holy Family Ward</span>
-                    <div class="council-member">Deepak Thomas</div>
-                    <div class="council-member">Rakhi Jackson</div>
-                    
-                    <span class="ward-name">St. Francis Xavier Ward</span>
-                    <div class="council-member">George Jose</div>
-                    <div class="council-member">Jolly Kurian</div>
-                    
-                    <span class="ward-name">St. Joseph Ward</span>
-                    <div class="council-member">Joyce Joseph</div>
-                    <div class="council-member">Neelu Sethu</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Representatives from Ministries & Pious Associations -->
-        <div class="council-section">
-            <h3 class="section-subtitle">Representatives from Ministries & Pious Associations</h3>
-            
-            <div class="council-container">
-                <div class="council-column">
-                    <div class="council-member">Jojo Jose (Catechism)</div>
-                    <div class="council-member">Prince Antony (Pithruvedhi)</div>
-                    <div class="council-member">Gijo Joseph (Mathruvedhi)</div>
-                    <div class="council-member">Jomin Jessil (SMYM)</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Nominated Members -->
-        <div class="council-section">
-            <h3 class="section-subtitle">Nominated Members</h3>
-            
-            <div class="council-container">
-                <div class="council-column">
-                    <div class="council-member">Glory Mathew (Safeguarding)</div>
-                    <div class="council-member">Joshua Jose</div>
-                    <div class="council-member">Anna Mathew</div>
-                    <div class="council-member">Jinto Jose</div>
-                    <div class="council-member">Rinu Abraham</div>
-                    <div class="council-member">Dona Davis</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Eparchy Pastoral Council Representatives -->
-        <div class="council-section">
-            <h3 class="section-subtitle">Eparchy Pastoral Council Representatives</h3>
-            
-            <div class="council-container">
-                <div class="council-column">
-                    <div class="council-member">Sherin Joseph</div>
-                    <div class="council-member">Manju Jose</div>
-                </div>
-            </div>
-        </div>
-
     </main>
 
     <!-- Footer Section -->
