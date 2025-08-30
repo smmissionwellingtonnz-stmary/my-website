@@ -15,6 +15,8 @@
             --light: #f8f9fa;
             --text: #333333;
             --white: #ffffff;
+            --menu-bg: linear-gradient(135deg, #0a4d68, #088395);
+            --footer-bg: linear-gradient(135deg, #0a4d68, #088395);
         }
         
         * {
@@ -80,7 +82,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: linear-gradient(135deg, #0a4d68, #088395);
+            background: var(--menu-bg);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
         
@@ -108,6 +110,8 @@
             display: flex;
             justify-content: center;
             list-style: none;
+            flex-wrap: wrap;
+            padding: 0 10px;
         }
         
         .nav-item {
@@ -116,11 +120,12 @@
         
         .nav-link {
             display: block;
-            padding: 1rem 1.2rem;
+            padding: 1rem 1rem;
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 15px;
         }
         
         .nav-link:hover {
@@ -130,7 +135,7 @@
         .nav-link.donate {
             background-color: #ff6b6b;
             border-radius: 4px;
-            margin: 0.5rem 1rem;
+            margin: 0.5rem 0.5rem;
             font-weight: 600;
         }
         
@@ -177,7 +182,7 @@
         
         /* Main content padding to account for fixed nav */
         .main-content {
-            padding-top: 20px; /* Reduced padding since body already has padding */
+            padding-top: 40px; /* Increased padding to move content down */
         }
         
         /* Animated Background */
@@ -206,8 +211,8 @@
         
         /* Header Section */
         .hero {
-            background-color: rgba(10, 46, 56, 0.85);
-            padding: 60px 0 40px;
+            background-color: rgba(10, 77, 104, 0.85);
+            padding: 80px 0 60px;
             text-align: center;
             position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
@@ -219,7 +224,7 @@
         .eparchy-logo {
             width: 120px;
             height: 120px;
-            margin: 0 auto 15px;
+            margin: 0 auto 25px;
             border: 4px solid var(--accent);
             border-radius: 50%;
             background-color: var(--white);
@@ -412,7 +417,7 @@
         
         /* Footer Styles */
         .footer {
-            background: linear-gradient(135deg, #0a4d68, #088395);
+            background: var(--footer-bg);
             color: white;
             padding: 60px 0 20px;
             position: relative;
@@ -426,7 +431,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%;
             animation: pulse 15s infinite linear;
             z-index: 0;
         }
@@ -591,7 +596,7 @@
             }
             
             .hero {
-                padding: 50px 0 30px;
+                padding: 60px 0 40px;
                 clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
             }
             
@@ -627,7 +632,7 @@
                 top: 90px; /* Below notice bar and nav header */
                 left: -100%;
                 flex-direction: column;
-                background: linear-gradient(135deg, #0a4d68, #088395);
+                background: var(--menu-bg);
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
@@ -917,6 +922,3 @@
     </script>
 </body>
 </html>
-
-
-
