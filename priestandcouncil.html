@@ -631,9 +631,9 @@
                 font-size: 14px;
             }
             
-            /* Navigation for mobile */
+            /* Navigation for mobile - FIXED THE GAP */
             .nav-container {
-                top: 40px; /* Adjusted to sit right below notice bar */
+                top: 40px; /* This ensures no gap between notice bar and menu */
             }
             
             .nav-menu {
@@ -794,7 +794,7 @@
             }
         }
 
-        /* Desktop-specific styles */
+        /* Desktop-specific styles - FIXED DONATE MENU */
         @media (min-width: 769px) {
             .nav-menu {
                 flex-wrap: wrap;
@@ -811,6 +811,11 @@
             
             .nav-donate-row .nav-item {
                 margin: 0;
+            }
+            
+            /* Show the donate button in the second row */
+            .nav-donate-row .nav-item {
+                display: block !important;
             }
             
             /* Hide the donate button in the main menu */
