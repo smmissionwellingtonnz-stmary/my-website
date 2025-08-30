@@ -118,19 +118,22 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            flex-wrap: nowrap;
         }
         
         .nav-item {
             position: relative;
+            white-space: nowrap;
         }
         
         .nav-link {
             display: block;
-            padding: 1rem 1.2rem;
+            padding: 1rem 1rem;
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
         
         .nav-link:hover {
@@ -180,6 +183,7 @@
             text-decoration: none;
             border-bottom: 1px solid #f1f1f1;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
         
         .dropdown-item:hover {
@@ -792,13 +796,19 @@
                 flex: 0 0 calc(50% - 30px);
                 max-width: calc(50% - 30px);
             }
+            
+            .nav-link {
+                padding: 1rem 0.8rem;
+                font-size: 0.9rem;
+            }
         }
 
         /* Desktop-specific styles - FIXED DONATE MENU */
         @media (min-width: 769px) {
             .nav-menu {
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 justify-content: center;
+                overflow: visible;
             }
             
             .nav-donate-row {
