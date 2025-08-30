@@ -43,10 +43,43 @@
             scroll-behavior: smooth;
         }
         
+        /* Notice Bar */
+        .notice-bar {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: 500;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .notice-bar p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .notice-close {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+        }
+        
         /* Navigation Menu */
         .nav-container {
             position: fixed;
-            top: 0;
+            top: 40px; /* Adjusted to account for notice bar */
             left: 0;
             width: 100%;
             z-index: 1000;
@@ -185,7 +218,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin-top: 80px; /* Increased space from navigation */
+            margin-top: 120px; /* Increased space from navigation */
         }
         
         .hero::before {
@@ -256,10 +289,24 @@
                 height: 150px; /* Slightly smaller on mobile */
             }
             
+            /* Notice bar for mobile */
+            .notice-bar {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .notice-close {
+                right: 15px;
+            }
+            
             /* Navigation for mobile */
+            .nav-container {
+                top: 40px; /* Adjusted to account for notice bar */
+            }
+            
             .nav-menu {
                 position: fixed;
-                top: 70px;
+                top: 100px; /* Adjusted to account for notice bar and nav header */
                 left: -100%;
                 flex-direction: column;
                 background: linear-gradient(135deg, #0a4d68, #088395);
@@ -268,6 +315,8 @@
                 transition: 0.3s;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
                 padding: 1rem 0;
+                height: calc(100vh - 100px);
+                overflow-y: auto;
             }
             
             .nav-menu.active {
@@ -286,10 +335,15 @@
                 transform: none;
                 box-shadow: none;
                 display: none;
+                background: rgba(0, 0, 0, 0.1);
             }
             
             .nav-item:hover .dropdown-menu {
                 display: block;
+            }
+            
+            .hero {
+                margin-top: 100px; /* Adjusted for mobile */
             }
         }
         
@@ -636,6 +690,14 @@
     </style>
 </head>
 <body>
+    <!-- Notice Bar -->
+    <div class="notice-bar" id="notice-bar">
+        <p>Notice: This is an important announcement for all parish members.</p>
+        <button class="notice-close" id="notice-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
     <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
@@ -803,6 +865,18 @@
     </footer>
 
     <script>
+        // Notice bar functionality
+        const noticeBar = document.getElementById('notice-bar');
+        const noticeClose = document.getElementById('notice-close');
+        
+        noticeClose.addEventListener('click', () => {
+            noticeBar.style.display = 'none';
+            // Adjust navigation position
+            document.querySelector('.nav-container').style.top = '0';
+            // Adjust hero margin
+            document.querySelector('.hero').style.marginTop = '80px';
+        });
+        
         // Navigation toggle functionality
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.getElementById('nav-menu');
@@ -853,7 +927,4 @@
         }
     </script>
 </body>
-
 </html>
-
-
