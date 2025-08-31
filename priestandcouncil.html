@@ -634,11 +634,13 @@
             .notice-bar {
                 padding: 10px 0;
                 font-size: 14px;
+                z-index: 2001; /* Ensure it's above the nav */
             }
             
             /* Navigation for mobile - FIXED THE GAP */
             .nav-container {
                 top: 40px; /* This ensures no gap between notice bar and menu */
+                z-index: 2000; /* Just below the notice bar */
             }
             
             .nav-menu {
