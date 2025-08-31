@@ -634,13 +634,13 @@
             .notice-bar {
                 padding: 10px 0;
                 font-size: 14px;
-                z-index: 2001; /* Ensure it's above the nav */
+                z-index: 2001; /* Higher than nav container */
             }
             
-            /* Navigation for mobile - FIXED THE GAP */
+            /* Navigation for mobile - CRITICAL FIX */
             .nav-container {
-                top: 40px; /* This ensures no gap between notice bar and menu */
-                z-index: 2000; /* Just below the notice bar */
+                top: 40px; /* Matches the height of notice bar */
+                z-index: 2000; /* Just below notice bar */
             }
             
             .nav-menu {
@@ -664,6 +664,7 @@
             
             .nav-toggle {
                 display: block;
+                z-index: 2002; /* Higher than notice bar */
             }
             
             .dropdown-menu {
