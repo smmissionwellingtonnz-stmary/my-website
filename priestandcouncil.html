@@ -101,6 +101,7 @@
         
         .nav-logo {
             height: 50px;
+            cursor: pointer;
         }
         
         .nav-toggle {
@@ -811,26 +812,14 @@
                 overflow: visible;
             }
             
-            .nav-donate-row {
-                display: flex;
-                justify-content: center;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.1);
-                padding: 0.5rem 0;
-            }
-            
-            .nav-donate-row .nav-item {
-                margin: 0;
-            }
-            
-            /* Show the donate button in the second row */
-            .nav-donate-row .nav-item {
+            /* Show the donate button in the main menu */
+            .nav-menu > .nav-item:last-child {
                 display: block !important;
             }
             
-            /* Hide the donate button in the main menu */
-            .nav-menu > .nav-item:last-child {
-                display: none;
+            /* Hide the second row for donate button */
+            .nav-donate-row {
+                display: none !important;
             }
         }
 
@@ -851,7 +840,7 @@
     <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
-            <img src="images/logo.png" alt="Logo" class="nav-logo">
+            <img src="images/logo.png" alt="Logo" class="nav-logo" onclick="window.location.href='index.html'">
             <button class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -908,7 +897,7 @@
             </li>
         </ul>
         
-        <!-- Second row for Donate button on desktop -->
+        <!-- Second row for Donate button on desktop (will be hidden) -->
         <div class="nav-donate-row">
             <ul class="nav-menu">
                 <li class="nav-item">
