@@ -111,6 +111,8 @@
             display: flex;
             justify-content: center;
             list-style: none;
+            flex-wrap: wrap;
+            padding: 0 10px;
         }
         
         .nav-item {
@@ -119,11 +121,12 @@
         
         .nav-link {
             display: block;
-            padding: 1rem 1.2rem;
+            padding: 1rem 1rem;
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 15px;
         }
         
         .nav-link:hover {
@@ -133,7 +136,7 @@
         .nav-link.donate {
             background-color: #ff6b6b;
             border-radius: 4px;
-            margin: 0.5rem 1rem;
+            margin: 0.5rem 0.5rem;
             font-weight: 600;
         }
         
@@ -907,6 +910,10 @@
             <li class="nav-item">
                 <a href="#contact" class="nav-link">Contact</a>
             </li>
+        </ul>
+        
+        <!-- Second line with Donate button -->
+        <ul class="nav-menu">
             <li class="nav-item">
                 <a href="#" class="nav-link donate">DONATE</a>
             </li>
@@ -1206,7 +1213,7 @@
         // Scroll to top functionality
         const scrollTop = document.getElementById('scroll-top');
         
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', () {
             if (window.pageYOffset > 300) {
                 scrollTop.classList.add('active');
             } else {
@@ -1222,4 +1229,4 @@
         });
     </script>
 </body>
-</html>
+                    </html>
