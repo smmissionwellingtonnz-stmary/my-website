@@ -101,6 +101,7 @@
             border: none;
             cursor: pointer;
             display: none;
+            margin-left: auto; /* Push toggle to right */
         }
         
         .nav-menu {
@@ -810,7 +811,7 @@
             
             /* Adjust navigation container position */
             .nav-container {
-                top: 32px; /* Positioned below smaller notice bar */
+                top: 40px; /* Positioned directly below notice bar with no gap */
                 z-index: 2000; /* Higher than content but lower than notice bar */
             }
             
@@ -821,6 +822,7 @@
             .header {
                 height: 150px;
                 clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+                margin-top: 0; /* Remove any top margin */
             }
             
             .choir-grid {
@@ -852,6 +854,11 @@
             .join-section {
                 padding: 20px 15px;
             }
+            
+            /* Mobile menu container adjustment */
+            .mobile-menu-container {
+                top: 40px; /* Directly below notice bar with no gap */
+            }
         }
 
         @media (max-width: 480px) {
@@ -865,7 +872,7 @@
             }
             
             .nav-container {
-                top: 28px; /* Adjusted for very small screens */
+                top: 40px; /* Directly below notice bar with no gap */
             }
             
             .main-content {
@@ -882,6 +889,11 @@
             
             .image-container {
                 padding-bottom: 66.67%; /* Maintain aspect ratio */
+            }
+            
+            /* Mobile menu container adjustment */
+            .mobile-menu-container {
+                top: 40px; /* Directly below notice bar with no gap */
             }
         }
     </style>
@@ -929,7 +941,7 @@
                     <li><a href="catechism.html" class="dropdown-item">Catechism</a></li>
                     <li><a href="altar-servers.html" class="dropdown-item">Altar Servers</a></li>
                     <li><a href="choir.html" class="dropdown-item">Choir</a></li>
-                    <li><a href="family.html" class="dropdown-item">Family Units</a></li>
+                    <li><a href="#" class="dropdown-item">Family Units</a></li>
                     <li><a href="#" class="dropdown-item">SMYM Wellington</a></li>
                     <li><a href="#" class="dropdown-item">Young Couple Ministry</a></li>
                 </ul>
@@ -1011,7 +1023,7 @@
                         <a href="catechism.html" class="mobile-dropdown-item">Catechism</a>
                         <a href="altar-servers.html" class="mobile-dropdown-item">Altar Servers</a>
                         <a href="choir.html" class="mobile-dropdown-item">Choir</a>
-                        <a href="family.html" class="mobile-dropdown-item">Family Units</a>
+                        <a href="#" class="mobile-dropdown-item">Family Units</a>
                         <a href="#" class="mobile-dropdown-item">SMYM Wellington</a>
                         <a href="#" class="mobile-dropdown-item">Young Couple Ministry</a>
                     </div>
@@ -1052,12 +1064,6 @@
             <div class="music-icon">♬</div>
             <div class="music-icon">♪</div>
             <div class="music-icon">♫</div>
-            <div class="music-icon">♪</div>
-            <div class="music-icon">♫</div>
-            <div class="music-icon">♩</div>
-            <div class="music-icon">♬</div>
-            <div class="music-icon">♪</div>
-            <div class="music-icon">♫</div>
             
             <h1>OUR CHOIR TEAMS</h1>
         </div>
@@ -1067,7 +1073,7 @@
                 <!-- Church Choir -->
                 <div class="choir-card">
                     <div class="image-container">
-                        <img src="images/churchchoir.jpg" alt="Church Choir">
+                        <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/466674965_122149855544302343_10172378355930501.jpg/:/rs=w:1440,h:1440" alt="Church Choir">
                     </div>
                     <div class="card-content">
                         <h2>Church Choir</h2>
@@ -1078,7 +1084,7 @@
                 <!-- SMYM Wellington Choir -->
                 <div class="choir-card">
                     <div class="image-container">
-                        <img src="images/smymchoir.jpg" alt="SMYM Wellington Choir">
+                        <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/blob-e8d533a.png/:/rs=w:1440,h:1440" alt="SMYM Wellington Choir">
                     </div>
                     <div class="card-content">
                         <h2>SMYM Wellington Choir</h2>
@@ -1089,7 +1095,7 @@
                 <!-- Catechism Students' Choir -->
                 <div class="choir-card">
                     <div class="image-container">
-                        <img src="images/catechismchoir.jpg" alt="Catechism Students' Choir">
+                        <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/blob-858f887.png/:/rs=w:1440,h:1440" alt="Catechism Students' Choir">
                     </div>
                     <div class="card-content">
                         <h2>Catechism Students' Choir</h2>
