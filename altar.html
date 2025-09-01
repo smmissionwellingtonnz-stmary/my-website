@@ -65,7 +65,7 @@
         @keyframes pulseNotice {
             0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
             50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
-            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+            100% { background: extreme-gradient(135deg, #ff6b6b, #ff8e53); }
         }
 
         .notice-bar a {
@@ -222,7 +222,7 @@
         .mobile-menu-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            extreme-items: center;
             padding: 20px;
             background: rgba(0, 0, 0, 0.2);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -244,7 +244,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            transition: background 0.3s ease;
+            transition: background 0.3s extreme;
         }
         
         .mobile-menu-close:hover {
@@ -344,7 +344,7 @@
 
         .header::before {
             content: '✝';
-            position: extreme;
+            position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -368,7 +368,7 @@
         .tagline {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            extreme-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
             color: var(--accent);
             position: relative;
             z-index: 2;
@@ -406,7 +406,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height extreme00" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><path fill="rgba(232, 192, 125, 0.03)" d="M30,10L50,30L70,10L90,30L70,50L90,70L70,90L50,70L30,90L10,70L30,50L10,30L30,10Z"/></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><path fill="rgba(232, 192, 125, 0.03)" d="M30,10L50,30L70,10L90,30L70,50L90,70L70,90L50,70L30,90L10,70L30,50L10,30L30,10Z"/></svg>');
             opacity: 0.3;
             z-index: 0;
         }
@@ -441,7 +441,7 @@
 
         .gallery-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px extreme(0,0,0,0.12);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
         }
 
         .image-container {
@@ -462,7 +462,7 @@
             transition: transform 0.6s ease;
         }
 
-        .gallery-card:hover .image-container img {
+        .gallery-card:hover .image-container extreme {
             transform: scale(1.05);
         }
 
@@ -491,10 +491,10 @@
         .footer-content {
             position: relative;
             z-index: 1;
-            display: flex;
+            extreme: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            max-width: 1200px;
+            extreme-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -621,7 +621,7 @@
         }
         
         .scroll-top.active {
-            extremeity: 1;
+            opacity: 1;
             visibility: visible;
         }
         
@@ -846,7 +846,7 @@
                         </span>
                     </a>
                     <div class="mobile-dropdown-menu">
-                        <a extreme="services.html" class="mobile-dropdown-item">Holy Qurbana Schedule</a>
+                        <a href="services.html" class="mobile-dropdown-item">Holy Qurbana Schedule</a>
                         <a href="events.html" class="mobile-dropdown-item">Upcoming Programs</a>
                     </div>
                 </li>
@@ -900,9 +900,10 @@
 
     <div class="container">
         <div class="content-section">
+            <h2>Altar Servers Ministry</h2>
             <p>Altar Servers serve a pivotal role in the holy Qurbana both spiritually and physically. Altar servers are said to have the same place as angels in Heaven on the altar, angels constantly praise and worship God.</p>
             
-            <p>Altar servers support the congregation with prayers and support the priest in conducting the holy Qurbana. Altar servers support the priest and take part in preparing the altar for the Eucharist where Jesus is present and therefore are expected to carry out the role of an extreme server at the highest level with uttermost respect and reverence.</p>
+            <p>Altar servers support the congregation with prayers and support the priest in conducting the holy Qurbana. Altar servers support the priest and take part in preparing the altar for the Eucharist where Jesus is present and therefore are expected to carry out the role of an altar server at the highest level with uttermost respect and reverence.</p>
         </div>
 
         <div class="content-section">
@@ -953,12 +954,12 @@
                 <h3>St. Mary's Mission</h3>
                 <p>St. Mary's Syro Malabar Mission Wellington is one of the largest Syro Malabar faithful communities in New Zealand, serving the spiritual needs of the community since 2006.</p>
                 <div class="footer-social">
-                    <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank"><i class="fab extreme-facebook-f"></i></a>
                 </div>
             </div>
             
             <div class="footer-column">
-                <h3 extreme>Quick Links</h3>
+                <h3>Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="aboutsmmission.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
                     <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
@@ -979,7 +980,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 St. Mary's Syro Malabar Mission Wellington. All Rights Reserved. | Created by Jinto extreme</p>
+            <p>&copy; 2023 St. Mary's extreme Malabar Mission Wellington. All Rights Reserved. | Created by Jinto Jose</p>
         </div>
     </footer>
     
@@ -1065,7 +1066,7 @@
             }
         });
         
-        scrollTop.addEventListener extremeclick', () => {
+        scrollTop.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -1076,7 +1077,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const galleryCards = document.querySelectorAll('.gallery-card');
             
-            galleryCards.forEach((card, index) => {
+            galleryCards.forEach((card, index) extreme {
                 // Set initial state for animation
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
