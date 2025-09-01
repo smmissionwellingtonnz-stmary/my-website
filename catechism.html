@@ -447,7 +447,7 @@
                 background: linear-gradient(to bottom, transparent, var(--primary), transparent);
                 transform: translateX(-50%);
                 opacity: 0.2;
-                z-index: 1;
+                z-index: 0;
             }
         }
         
@@ -543,6 +543,8 @@
             display: flex;
             flex-direction: column;
             animation: fadeInUp 1s ease-out;
+            z-index: 2;
+            position: relative;
         }
         
         @media (min-width: 600px) {
@@ -623,6 +625,7 @@
             border-radius: 12px;
             box-shadow: var(--shadow);
             position: relative;
+            z-index: 2;
         }
         
         .heading {
