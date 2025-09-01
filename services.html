@@ -70,12 +70,7 @@
             width: 100%;
             height: 100%;
         }
-
-        .notice-bar span {
-            margin: 0 15px;
-            display: inline-block;
-        }
-
+        
         /* Navigation Menu */
         .nav-container {
             position: fixed;
@@ -83,7 +78,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: var(--nav-gradient);
+            background: linear-gradient(135deg, #0a4d68, #088395);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
         
@@ -105,14 +100,14 @@
             border: none;
             cursor: pointer;
             display: none;
+            z-index: 1002;
+            position: relative;
         }
         
         .nav-menu {
             display: flex;
             justify-content: center;
             list-style: none;
-            flex-wrap: wrap;
-            padding: 0 10px;
         }
         
         .nav-item {
@@ -121,12 +116,11 @@
         
         .nav-link {
             display: block;
-            padding: 1rem 1rem;
+            padding: 1rem 1.2rem;
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            font-size: 15px;
         }
         
         .nav-link:hover {
@@ -136,7 +130,7 @@
         .nav-link.donate {
             background-color: #ff6b6b;
             border-radius: 4px;
-            margin: 0.5rem 0.5rem;
+            margin: 0.5rem 1rem;
             font-weight: 600;
         }
         
@@ -181,7 +175,7 @@
             padding-left: 1.3rem;
         }
 
-        /* Mobile Navigation */
+        /* Mobile Navigation Overlay */
         .mobile-nav-overlay {
             position: fixed;
             top: 0;
@@ -189,7 +183,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1999; /* Lower than notice bar but higher than other content */
+            z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -200,15 +194,16 @@
             visibility: visible;
         }
         
+        /* Mobile menu container */
         .mobile-menu-container {
             position: fixed;
-            top: 40px; /* Start below the notice bar */
+            top: 0;
             right: -100%;
             width: 85%;
             max-width: 400px;
-            height: calc(100% - 40px); /* Adjust height to account for notice bar */
-            background: var(--nav-gradient);
-            z-index: 2000; /* Higher than notice bar */
+            height: 100%;
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            z-index: 1000;
             overflow-y: auto;
             transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
@@ -218,6 +213,7 @@
             right: 0;
         }
         
+        /* Mobile menu header */
         .mobile-menu-header {
             display: flex;
             justify-content: space-between;
@@ -250,6 +246,7 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
+        /* Mobile menu content */
         .mobile-menu-content {
             padding: 20px 0;
         }
@@ -497,6 +494,9 @@
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .contact-button:hover {
@@ -561,11 +561,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: left;
         }
 
         .popup-content i {
             margin-right: 10px;
             color: var(--primary);
+            min-width: 20px;
         }
 
         .popup-close {
@@ -769,20 +771,21 @@
                 z-index: 2001; /* Higher than mobile menu */
             }
             
-            /* Navigation for mobile */
+            /* Adjust navigation container position */
+            .nav-container {
+                top: 32px; /* Positioned below smaller notice bar */
+                z-index: 1001; /* Higher than overlay but lower than notice bar */
+            }
+            
+            /* Mobile navigation for mobile */
             .nav-toggle {
                 display: block;
-                z-index: 2002; /* Higher than notice bar */
+                z-index: 1002; /* Higher than mobile menu container */
             }
             
             /* Hide desktop navigation on mobile */
             .nav-menu {
                 display: none;
-            }
-            
-            .nav-container {
-                top: 32px; /* Adjusted to match notice bar height */
-                z-index: 2000; /* Higher than content but lower than notice bar */
             }
             
             .main-container {
@@ -804,12 +807,8 @@
                 padding: 8px 0;
             }
             
-            .notice-bar span {
-                margin: 0 8px;
-            }
-            
             .nav-container {
-                top: 30px; /* Adjusted to match notice bar height */
+                top: 30px;
             }
             
             .main-container {
@@ -858,7 +857,9 @@
     <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
+            <a href="index.html">
             <img src="images/logo.png" alt="Logo" class="nav-logo">
+            </a>
             <button class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
             </button>
@@ -888,9 +889,9 @@
                 <a href="#" class="nav-link">Ministries <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                     <li><a href="altar.html" class="dropdown-item">Altar Servers</a></li>
-                    <li><a href="#" class="dropdown-item">Catechism</a></li>
-                    <li><a href="#" class="dropdown-item">Choir</a></li>
-                    <li><a href="#" class="dropdown-item">Family Units</a></li>
+                    <li><a href="catechism.html" class="dropdown-item">Catechism</a></li>
+                    <li><a href="choir.html" class="dropdown-item">Choir</a></li>
+                    <li><a href="family.html" class="dropdown-item">Family Units</a></li>
                     <li><a href="#" class="dropdown-item">SMYM Wellington</a></li>
                     <li><a href="#" class="dropdown-item">Young Couple Ministry</a></li>
                 </ul>
@@ -910,10 +911,6 @@
             <li class="nav-item">
                 <a href="#contact" class="nav-link">Contact</a>
             </li>
-        </ul>
-        
-        <!-- Second line with Donate button -->
-        <ul class="nav-menu">
             <li class="nav-item">
                 <a href="#" class="nav-link donate">DONATE</a>
             </li>
@@ -926,7 +923,9 @@
     <!-- Mobile Navigation Menu -->
     <div class="mobile-menu-container" id="mobile-menu-container">
         <div class="mobile-menu-header">
+        <a href="index.html">
             <img src="images/logo.png" alt="Logo" class="mobile-menu-logo">
+        </a>
             <button class="mobile-menu-close" id="mobile-menu-close">
                 <i class="fas fa-times"></i>
             </button>
@@ -972,9 +971,9 @@
                     </a>
                     <div class="mobile-dropdown-menu">
                         <a href="altar.html" class="mobile-dropdown-item">Altar Servers</a>
-                        <a href="#" class="mobile-dropdown-item">Catechism</a>
-                        <a href="#" class="mobile-dropdown-item">Choir</a>
-                        <a href="#" class="mobile-dropdown-item">Family Units</a>
+                        <a href="catechism.html" class="mobile-dropdown-item">Catechism</a>
+                        <a href="choir.html" class="mobile-dropdown-item">Choir</a>
+                        <a href="family.html" class="mobile-dropdown-item">Family Units</a>
                         <a href="#" class="mobile-dropdown-item">SMYM Wellington</a>
                         <a href="#" class="mobile-dropdown-item">Young Couple Ministry</a>
                     </div>
@@ -1113,33 +1112,6 @@
     </div>
     
     <script>
-        // Trigger animations when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mark content as loaded with a slight delay
-            setTimeout(function() {
-                const timingSections = document.querySelectorAll('.timing-section');
-                timingSections.forEach((section, index) => {
-                    setTimeout(() => {
-                        section.style.opacity = '1';
-                        section.style.transform = 'translateY(0)';
-                    }, 300 + (index * 200));
-                });
-                
-                // Mark contact line and button as loaded
-                setTimeout(function() {
-                    const contactLine = document.querySelector('.contact-line');
-                    const contactButton = document.getElementById('contact-button');
-                    contactLine.style.opacity = '1';
-                    contactButton.style.opacity = '1';
-                    contactButton.style.transform = 'translateY(0)';
-                }, 1000);
-            }, 300);
-        });
-
-        function togglePopup() {
-            document.getElementById('popup').classList.toggle('active');
-        }
-
         // Mobile Navigation Functionality
         const navToggle = document.getElementById('nav-toggle');
         const mobileMenuContainer = document.getElementById('mobile-menu-container');
@@ -1213,7 +1185,7 @@
         // Scroll to top functionality
         const scrollTop = document.getElementById('scroll-top');
         
-        window.addEventListener('scroll', () {
+        window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollTop.classList.add('active');
             } else {
@@ -1227,6 +1199,33 @@
                 behavior: 'smooth'
             });
         });
+
+        // Trigger animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mark content as loaded with a slight delay
+            setTimeout(function() {
+                const timingSections = document.querySelectorAll('.timing-section');
+                timingSections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }, 300 + (index * 200));
+                });
+                
+                // Mark contact line and button as loaded
+                setTimeout(function() {
+                    const contactLine = document.querySelector('.contact-line');
+                    const contactButton = document.getElementById('contact-button');
+                    contactLine.style.opacity = '1';
+                    contactButton.style.opacity = '1';
+                    contactButton.style.transform = 'translateY(0)';
+                }, 1000);
+            }, 300);
+        });
+
+        function togglePopup() {
+            document.getElementById('popup').classList.toggle('active');
+        }
     </script>
 </body>
-                    </html>
+</html>
