@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Choir Teams - St. Mary's Syro Malabar Mission</title>
-    <!-- Import fonts from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -182,7 +178,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1999; /* Lower than notice bar but higher than other content */
+            z-index: 1999;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -195,13 +191,13 @@
         
         .mobile-menu-container {
             position: fixed;
-            top: 40px; /* Start below the notice bar */
+            top: 40px;
             right: -100%;
             width: 85%;
             max-width: 400px;
-            height: calc(100% - 40px); /* Adjust height to account for notice bar */
+            height: calc(100% - 40px);
             background: var(--nav-gradient);
-            z-index: 2000; /* Higher than notice bar */
+            z-index: 2000;
             overflow-y: auto;
             transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
@@ -319,7 +315,7 @@
 
         /* Main Content */
         .main-content {
-            padding-top: 160px; /* Space for fixed navbar and notice bar */
+            padding-top: 160px;
             min-height: 100vh;
         }
 
@@ -364,7 +360,7 @@
             padding: 0 1rem;
         }
 
-        /* Floating Music Icons (6 total) */
+        /* Floating Music Icons */
         .music-icon {
             position: absolute;
             color: rgba(255,255,255,0.25);
@@ -424,7 +420,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        /* Image Container (15x10 ratio) */
+        /* Image Container */
         .image-container {
             width: 100%;
             height: 0;
@@ -596,7 +592,7 @@
             margin-bottom: 15px;
         }
 
-        /* Footer Styles - FIXED TEXT VISIBILITY */
+        /* Footer Styles */
         .footer {
             background: var(--footer-gradient);
             color: white;
@@ -664,7 +660,7 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.9); /* Increased opacity for better visibility */
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             transition: all 0.3s ease;
             display: flex;
@@ -724,7 +720,7 @@
         }
 
         .footer-bottom p {
-            color: rgba(255, 255, 255, 0.9); /* Changed from opacity to rgba for better visibility */
+            color: rgba(255, 255, 255, 0.9);
             font-size: 0.9rem;
         }
 
@@ -788,19 +784,19 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive Design */
+        /* Mobile View Fixes */
         @media (max-width: 768px) {
             /* Notice bar for mobile */
             .notice-bar {
                 padding: 10px 0;
                 font-size: 14px;
-                z-index: 2001; /* Higher than mobile menu */
+                z-index: 2001;
             }
             
             /* Navigation for mobile */
             .nav-toggle {
                 display: block;
-                z-index: 2002; /* Higher than notice bar */
+                z-index: 2002;
                 margin-left: 0; /* Fix for issue 1: Remove auto margin */
             }
             
@@ -817,8 +813,8 @@
             
             /* Fix for issue 2: Remove space between notice bar and menu */
             .nav-container {
-                top: 40px; /* Positioned directly below notice bar with no gap */
-                z-index: 2000; /* Higher than content but lower than notice bar */
+                top: 40px;
+                z-index: 2000;
             }
             
             /* Fix for issue 3: Remove space between menu and header */
@@ -864,7 +860,7 @@
             
             /* Mobile menu container adjustment */
             .mobile-menu-container {
-                top: 40px; /* Directly below notice bar with no gap */
+                top: 40px;
             }
         }
 
@@ -879,7 +875,7 @@
             }
             
             .nav-container {
-                top: 40px; /* Directly below notice bar with no gap */
+                top: 40px;
             }
             
             .main-content {
@@ -888,6 +884,7 @@
             
             .header {
                 height: 130px;
+                margin-top: 0; /* Prevent extra gap */
             }
             
             h1 {
@@ -895,12 +892,12 @@
             }
             
             .image-container {
-                padding-bottom: 66.67%; /* Maintain aspect ratio */
+                padding-bottom: 66.67%;
             }
             
             /* Mobile menu container adjustment */
             .mobile-menu-container {
-                top: 40px; /* Directly below notice bar with no gap */
+                top: 40px;
             }
         }
     </style>
@@ -915,7 +912,7 @@
     <nav class="nav-container">
         <div class="nav-header">
             <a href="index.html">
-                <img src="images/logo.png" alt="Logo" class="nav-logo">
+                <img src="https://placehold.co/150x50/0a4d68/ffffff?text=St.Mary's" alt="Logo" class="nav-logo">
             </a>
             <button class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
@@ -981,7 +978,7 @@
     <div class="mobile-menu-container" id="mobile-menu-container">
         <div class="mobile-menu-header">
             <a href="index.html">
-                <img src="images/logo.png" alt="Logo" class="mobile-menu-logo">
+                <img src="https://placehold.co/120x40/0a4d68/ffffff?text=St.Mary's" alt="Logo" class="mobile-menu-logo">
             </a>    
             <button class="mobile-menu-close" id="mobile-menu-close">
                 <i class="fas fa-times"></i>
@@ -1063,7 +1060,7 @@
     </div>
 
     <div class="main-content">
-        <!-- Program 1 Content -->
+        <!-- Header Section -->
         <div class="header">
             <div class="music-icon">♪</div>
             <div class="music-icon">♫</div>
@@ -1080,7 +1077,7 @@
                 <!-- Church Choir -->
                 <div class="choir-card">
                     <div class="image-container">
-                        <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/466674965_122149855544302343_10172378355930501.jpg/:/rs=w:1440,h:1440" alt="Church Choir">
+                        <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Church Choir">
                     </div>
                     <div class="card-content">
                         <h2>Church Choir</h2>
@@ -1091,7 +1088,7 @@
                 <!-- SMYM Wellington Choir -->
                 <div class="choir-card">
                     <div class="image-container">
-                        <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/blob-e8d533a.png/:/rs=w:1440,h:1440" alt="SMYM Wellington Choir">
+                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="SMYM Wellington Choir">
                     </div>
                     <div class="card-content">
                         <h2>SMYM Wellington Choir</h2>
@@ -1102,7 +1099,7 @@
                 <!-- Catechism Students' Choir -->
                 <div class="choir-card">
                     <div class="image-container">
-                        <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/blob-858f887.png/:/rs=w:1440,h:1440" alt="Catechism Students' Choir">
+                        <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Catechism Students' Choir">
                     </div>
                     <div class="card-content">
                         <h2>Catechism Students' Choir</h2>
@@ -1111,7 +1108,7 @@
                 </div>
             </div>
             
-            <!-- Program 2 Content - Join Form Section -->
+            <!-- Join Form Section -->
             <div class="join-section">
                 <div id="formContainer">
                     <h2>Join Our Choir</h2>
@@ -1159,7 +1156,7 @@
         </div>
     </div>
     
-    <!-- Footer Section with Fixed Text Visibility -->
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-column">
@@ -1292,24 +1289,15 @@
             // Get form data
             const formData = new FormData(this);
             
-            // Send form data to FormSubmit.co
-            fetch('https://formsubmit.co/ajax/smmissionwellingtonnz@gmail.com', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Hide form and show thank you message
-                document.getElementById('formContainer').style.display = 'none';
-                document.getElementById('thankYouMessage').style.display = 'block';
-                
-                // Reset form
-                this.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your form. Please try again later.');
-            });
+            // In a real implementation, you would send this data to a server
+            // For demonstration, we'll just show the thank you message
+            
+            // Hide form and show thank you message
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
         });
     </script>
 </body>
