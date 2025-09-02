@@ -101,7 +101,6 @@
             border: none;
             cursor: pointer;
             display: none;
-            margin-left: auto; /* Push toggle to right */
         }
         
         .nav-menu {
@@ -802,6 +801,13 @@
             .nav-toggle {
                 display: block;
                 z-index: 2002; /* Higher than notice bar */
+                margin-left: 0; /* Fix for issue 1: Remove auto margin */
+            }
+            
+            /* Fix for issue 1: Push logo to left, toggle to right */
+            .nav-header {
+                justify-content: space-between;
+                padding: 10px 15px;
             }
             
             /* Hide desktop navigation on mobile */
@@ -809,14 +815,15 @@
                 display: none;
             }
             
-            /* Adjust navigation container position */
+            /* Fix for issue 2: Remove space between notice bar and menu */
             .nav-container {
                 top: 40px; /* Positioned directly below notice bar with no gap */
                 z-index: 2000; /* Higher than content but lower than notice bar */
             }
             
+            /* Fix for issue 3: Remove space between menu and header */
             .main-content {
-                padding-top: 140px; /* Adjusted for mobile */
+                padding-top: 120px; /* Reduced from 140px to eliminate space */
             }
             
             .header {
@@ -876,7 +883,7 @@
             }
             
             .main-content {
-                padding-top: 130px; /* Adjusted for very small screens */
+                padding-top: 110px; /* Further reduced for very small screens */
             }
             
             .header {
