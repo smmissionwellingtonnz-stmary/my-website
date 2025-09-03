@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     <style>
         :root {
             --primary: #1a4b7a;
@@ -284,6 +286,10 @@
         .mobile-nav-link.donate {
             background-color: #ff6b6b;
             font-weight: 600;
+            margin: 10px 20px;
+            border-radius: 4px;
+            text-align: center;
+            justify-content: center;
         }
         
         .mobile-nav-link.donate:hover {
@@ -483,31 +489,10 @@
             height: 500px;
             position: relative;
             border: 1px solid #eee;
+            overflow: auto;
+            background: #f0f0f0;
         }
         
-        .pdf-viewer {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .pdf-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            background: #f9f9f9;
-            color: var(--light-text);
-        }
-        
-        .pdf-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        /* PDF Controls */
         .pdf-controls {
             display: flex;
             justify-content: center;
@@ -544,13 +529,32 @@
             color: var(--dark);
         }
         
-        .pdf-loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .pdf-canvas-container {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        canvas {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+        }
+        
+        .pdf-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: #f9f9f9;
+            color: var(--light-text);
+        }
+        
+        .pdf-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
             color: var(--primary);
-            font-size: 1.2rem;
         }
         
         /* Back Button */
@@ -882,7 +886,7 @@
     <nav class="nav-container">
         <div class="nav-header">
             <a href="index.html">
-                <img src="images/logo.png" alt="Logo" class="nav-logo">
+                <img src="https://via.placeholder.com/150x50/0a4d68/ffffff?text=St.+Chavara+Ward" alt="Logo" class="nav-logo">
             </a>
             <button class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
@@ -948,7 +952,7 @@
     <div class="mobile-menu-container" id="mobile-menu-container">
         <div class="mobile-menu-header">
             <a href="index.html">
-                <img src="images/logo.png" alt="Logo" class="mobile-menu-logo">
+                <img src="https://via.placeholder.com/150x50/0a4d68/ffffff?text=St.+Chavara+Ward" alt="Logo" class="mobile-menu-logo">
             </a>    
             <button class="mobile-menu-close" id="mobile-menu-close">
                 <i class="fas fa-times"></i>
@@ -1033,6 +1037,7 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <h1 class="title">FORMS</h1>
+            <p class="hero-subtitle">Access and download all necessary forms for parish activities</p>
         </section>
         
         <div class="container">
@@ -1053,7 +1058,7 @@
                     <div class="form-card">
                         <div class="form-header">
                             <div class="form-title">Atmasthiti Register</div>
-                            <a href="pdfs/Atmasthiti Register.pdf" class="download-btn" download>
+                            <a href="#" class="download-btn" download>
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -1065,10 +1070,9 @@
                                 <button class="zoom-in"><i class="fas fa-search-plus"></i></button>
                                 <button class="zoom-out"><i class="fas fa-search-minus"></i></button>
                             </div>
-                            <iframe src="pdfs/Atmasthiti Register.pdf#page=1" class="pdf-viewer" frameborder="0" data-pdf-id="1">
-                                Your browser does not support PDF viewing. Please download the PDF to view it.
-                            </iframe>
-                            <div class="pdf-loading" style="display: none;">Loading PDF...</div>
+                            <div class="pdf-canvas-container">
+                                <canvas id="pdf-canvas-1"></canvas>
+                            </div>
                         </div>
                     </div>
                     
@@ -1076,7 +1080,7 @@
                     <div class="form-card">
                         <div class="form-header">
                             <div class="form-title">Application for Baptism</div>
-                            <a href="pdfs/Application for baptism.pdf" class="download-btn" download>
+                            <a href="#" class="download-btn" download>
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -1088,10 +1092,9 @@
                                 <button class="zoom-in"><i class="fas fa-search-plus"></i></button>
                                 <button class="zoom-out"><i class="fas fa-search-minus"></i></button>
                             </div>
-                            <iframe src="pdfs/Application for baptism.pdf#page=1" class="pdf-viewer" frameborder="0" data-pdf-id="2">
-                                Your browser does not support PDF viewing. Please download the PDF to view it.
-                            </iframe>
-                            <div class="pdf-loading" style="display: none;">Loading PDF...</div>
+                            <div class="pdf-canvas-container">
+                                <canvas id="pdf-canvas-2"></canvas>
+                            </div>
                         </div>
                     </div>
                     
@@ -1099,7 +1102,7 @@
                     <div class="form-card">
                         <div class="form-header">
                             <div class="form-title">Application Form for Free State</div>
-                            <a href="pdfs/Application Form for Free State.pdf" class="download-btn" download>
+                            <a href="#" class="download-btn" download>
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -1111,10 +1114,9 @@
                                 <button class="zoom-in"><i class="fas fa-search-plus"></i></button>
                                 <button class="zoom-out"><i class="fas fa-search-minus"></i></button>
                             </div>
-                            <iframe src="pdfs/Application Form for Free State.pdf#page=1" class="pdf-viewer" frameborder="0" data-pdf-id="3">
-                                Your browser does not support PDF viewing. Please download the PDF to view it.
-                            </iframe>
-                            <div class="pdf-loading" style="display: none;">Loading PDF...</div>
+                            <div class="pdf-canvas-container">
+                                <canvas id="pdf-canvas-3"></canvas>
+                            </div>
                         </div>
                     </div>
                     
@@ -1122,7 +1124,7 @@
                     <div class="form-card">
                         <div class="form-header">
                             <div class="form-title">Sponsorship Policy</div>
-                            <a href="pdfs/Sponsorship Policy.pdf" class="download-btn" download>
+                            <a href="#" class="download-btn" download>
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -1134,10 +1136,9 @@
                                 <button class="zoom-in"><i class="fas fa-search-plus"></i></button>
                                 <button class="zoom-out"><i class="fas fa-search-minus"></i></button>
                             </div>
-                            <iframe src="pdfs/Sponsorship Policy.pdf#page=1" class="pdf-viewer" frameborder="0" data-pdf-id="4">
-                                Your browser does not support PDF viewing. Please download the PDF to view it.
-                            </iframe>
-                            <div class="pdf-loading" style="display: none;">Loading PDF...</div>
+                            <div class="pdf-canvas-container">
+                                <canvas id="pdf-canvas-4"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1183,6 +1184,10 @@
     </footer>
 
     <script>
+        // Set the PDF.js worker path
+        pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+
         // Mobile Navigation Functionality
         const navToggle = document.getElementById('nav-toggle');
         const mobileMenuContainer = document.getElementById('mobile-menu-container');
@@ -1286,130 +1291,140 @@
             }
         });
         
-        // Handle PDF viewer errors
-        document.querySelectorAll('.pdf-viewer').forEach(iframe => {
-            iframe.addEventListener('error', function() {
-                this.parentNode.innerHTML = `
-                    <div class="pdf-placeholder">
-                        <i class="fas fa-file-pdf"></i>
-                        <p>Unable to load PDF preview</p>
-                        <p>Please use the download button to get the form</p>
-                    </div>
-                `;
-            });
-        });
-        
-        // PDF Navigation Functionality
+        // PDF Navigation Functionality with PDF.js
         document.addEventListener('DOMContentLoaded', function() {
+            // Sample PDF URLs (replace with your actual PDF URLs)
+            const pdfUrls = [
+                'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf',
+                'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf',
+                'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf',
+                'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf'
+            ];
+            
             // Store PDF information
             const pdfData = {};
             
             // Initialize all PDF viewers
-            document.querySelectorAll('.pdf-viewer').forEach(iframe => {
-                const pdfId = iframe.getAttribute('data-pdf-id');
+            pdfUrls.forEach((url, index) => {
+                const pdfId = index + 1;
                 pdfData[pdfId] = {
+                    pdfDoc: null,
                     currentPage: 1,
-                    totalPages: 1, // Will be updated when PDF loads
-                    scale: 1.0
+                    totalPages: 1,
+                    scale: 1.5
                 };
                 
-                // Show loading indicator
-                iframe.onload = function() {
-                    const loadingElement = iframe.parentNode.querySelector('.pdf-loading');
-                    if (loadingElement) loadingElement.style.display = 'none';
-                    
-                    // Try to extract total pages (this might not work due to cross-origin restrictions)
-                    try {
-                        // This is a workaround since we can't access iframe content directly
-                        // due to cross-origin restrictions
-                        setTimeout(() => {
-                            updatePageControls(pdfId);
-                        }, 2000);
-                    } catch (e) {
-                        console.log("Could not access PDF page count due to security restrictions");
-                    }
-                };
-                
-                // Show loading when PDF starts loading
-                iframe.onloadstart = function() {
-                    const loadingElement = iframe.parentNode.querySelector('.pdf-loading');
-                    if (loadingElement) loadingElement.style.display = 'block';
-                };
+                // Load the PDF
+                loadPDF(pdfId, url);
             });
+            
+            // Function to load PDF
+            function loadPDF(pdfId, url) {
+                const loadingTask = pdfjsLib.getDocument(url);
+                
+                loadingTask.promise.then(function(pdfDoc) {
+                    pdfData[pdfId].pdfDoc = pdfDoc;
+                    pdfData[pdfId].totalPages = pdfDoc.numPages;
+                    
+                    // Update page info
+                    updatePageInfo(pdfId);
+                    
+                    // Render the first page
+                    renderPage(pdfId);
+                }).catch(function(error) {
+                    console.error('Error loading PDF:', error);
+                    showPDFError(pdfId);
+                });
+            }
+            
+            // Function to render a specific page
+            function renderPage(pdfId) {
+                const pdf = pdfData[pdfId];
+                
+                pdf.pdfDoc.getPage(pdf.currentPage).then(function(page) {
+                    const canvas = document.getElementById(`pdf-canvas-${pdfId}`);
+                    const ctx = canvas.getContext('2d');
+                    
+                    const viewport = page.getViewport({ scale: pdf.scale });
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    
+                    const renderContext = {
+                        canvasContext: ctx,
+                        viewport: viewport
+                    };
+                    
+                    page.render(renderContext);
+                });
+            }
+            
+            // Function to update page information
+            function updatePageInfo(pdfId) {
+                const pdf = pdfData[pdfId];
+                const controls = document.getElementById(`controls-${pdfId}`);
+                
+                if (controls) {
+                    const currentPageEl = controls.querySelector('.current-page');
+                    const totalPagesEl = controls.querySelector('.total-pages');
+                    const prevBtn = controls.querySelector('.prev-page');
+                    const nextBtn = controls.querySelector('.next-page');
+                    
+                    currentPageEl.textContent = pdf.currentPage;
+                    totalPagesEl.textContent = pdf.totalPages;
+                    
+                    // Enable/disable navigation buttons
+                    prevBtn.disabled = pdf.currentPage <= 1;
+                    nextBtn.disabled = pdf.currentPage >= pdf.totalPages;
+                }
+            }
+            
+            // Function to show PDF error
+            function showPDFError(pdfId) {
+                const canvasContainer = document.querySelector(`#pdf-canvas-${pdfId}`).parentNode;
+                canvasContainer.innerHTML = `
+                    <div class="pdf-placeholder">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>Unable to load PDF preview</p>
+                        <p>Please use the download button to get the form</p>
+                    </div>
+                `;
+            }
             
             // Set up event listeners for all navigation controls
             document.querySelectorAll('.pdf-controls').forEach(controls => {
                 const pdfId = controls.id.split('-')[1];
-                const iframe = controls.nextElementSibling;
                 
                 // Previous page button
                 controls.querySelector('.prev-page').addEventListener('click', function() {
                     if (pdfData[pdfId].currentPage > 1) {
                         pdfData[pdfId].currentPage--;
-                        updatePDFPage(iframe, pdfId);
+                        renderPage(pdfId);
+                        updatePageInfo(pdfId);
                     }
                 });
                 
                 // Next page button
                 controls.querySelector('.next-page').addEventListener('click', function() {
-                    pdfData[pdfId].currentPage++;
-                    updatePDFPage(iframe, pdfId);
+                    if (pdfData[pdfId].currentPage < pdfData[pdfId].totalPages) {
+                        pdfData[pdfId].currentPage++;
+                        renderPage(pdfId);
+                        updatePageInfo(pdfId);
+                    }
                 });
                 
                 // Zoom in button
                 controls.querySelector('.zoom-in').addEventListener('click', function() {
                     pdfData[pdfId].scale += 0.25;
-                    updatePDFZoom(iframe, pdfId);
+                    renderPage(pdfId);
                 });
                 
                 // Zoom out button
                 controls.querySelector('.zoom-out').addEventListener('click', function() {
                     if (pdfData[pdfId].scale > 0.5) {
                         pdfData[pdfId].scale -= 0.25;
-                        updatePDFZoom(iframe, pdfId);
+                        renderPage(pdfId);
                     }
                 });
-            });
-            
-            // Function to update PDF page
-            function updatePDFPage(iframe, pdfId) {
-                const src = iframe.src.split('#')[0];
-                iframe.src = `${src}#page=${pdfData[pdfId].currentPage}&zoom=${pdfData[pdfId].scale * 100}`;
-                updatePageControls(pdfId);
-            }
-            
-            // Function to update PDF zoom
-            function updatePDFZoom(iframe, pdfId) {
-                const src = iframe.src.split('#')[0];
-                const page = iframe.src.match(/page=(\d+)/);
-                const currentPage = page ? page[1] : 1;
-                iframe.src = `${src}#page=${currentPage}&zoom=${pdfData[pdfId].scale * 100}`;
-            }
-            
-            // Function to update page controls
-            function updatePageControls(pdfId) {
-                const controls = document.getElementById(`controls-${pdfId}`);
-                if (!controls) return;
-                
-                const prevBtn = controls.querySelector('.prev-page');
-                const nextBtn = controls.querySelector('.next-page');
-                const currentPageEl = controls.querySelector('.current-page');
-                const totalPagesEl = controls.querySelector('.total-pages');
-                
-                // Update current page display
-                currentPageEl.textContent = pdfData[pdfId].currentPage;
-                
-                // Enable/disable navigation buttons
-                prevBtn.disabled = pdfData[pdfId].currentPage <= 1;
-                
-                // For total pages, we can't reliably get this info due to security restrictions
-                // So we'll just show the current page and keep next button always enabled
-                totalPagesEl.textContent = '?';
-            }
-            
-            // Initialize all page controls
-            Object.keys(pdfData).forEach(pdfId => {
-                updatePageControls(pdfId);
             });
         });
     </script>
