@@ -1039,15 +1039,6 @@
             <h1 class="title">FORMS</h1>
             <p class="hero-subtitle">Access and download all necessary forms for parish activities</p>
         </section>
-        
-        <div class="container">
-            <!-- Back Button Container -->
-            <div class="back-button-container">
-                <a href="#" class="back-button" id="back-button">
-                    <i class="fas fa-arrow-left"></i> Back
-                </a>
-            </div>
-            
             <!-- Forms Section -->
             <div class="content">
                 <h2>Available Forms</h2>
@@ -1276,21 +1267,6 @@
             });
         });
 
-        // Back button functionality
-        const backButton = document.getElementById('back-button');
-        
-        backButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Check if there's a previous page in session history
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                // If no history, redirect to home page
-                window.location.href = 'index.html';
-            }
-        });
-        
         // PDF Navigation Functionality with PDF.js
         document.addEventListener('DOMContentLoaded', function() {
             // Sample PDF URLs (replace with your actual PDF URLs)
