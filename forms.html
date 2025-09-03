@@ -507,6 +507,52 @@
             color: var(--primary);
         }
         
+        /* PDF Controls */
+        .pdf-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+            gap: 10px;
+        }
+        
+        .pdf-controls button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .pdf-controls button:hover:not(:disabled) {
+            background: var(--primary-light);
+        }
+        
+        .pdf-controls button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .page-info {
+            margin: 0 15px;
+            font-size: 14px;
+            color: var(--dark);
+        }
+        
+        .pdf-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
         /* Back Button */
         .back-button-container {
             display: flex;
@@ -762,6 +808,15 @@
             .download-btn {
                 align-self: flex-end;
             }
+            
+            .pdf-controls {
+                flex-wrap: wrap;
+                padding: 8px;
+            }
+            
+            .page-info {
+                margin: 0 8px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -802,6 +857,15 @@
             .download-btn {
                 padding: 0.4rem 0.8rem;
                 font-size: 0.9rem;
+            }
+            
+            .pdf-controls button {
+                padding: 6px 10px;
+                font-size: 0.85rem;
+            }
+            
+            .page-info {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -994,9 +1058,17 @@
                             </a>
                         </div>
                         <div class="pdf-viewer-container">
-                            <iframe src="pdfs/Atmasthiti Register.pdf" class="pdf-viewer" frameborder="0">
+                            <div class="pdf-controls" id="controls-1">
+                                <button class="prev-page" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                                <span class="page-info">Page <span class="current-page">1</span> of <span class="total-pages">-</span></span>
+                                <button class="next-page">Next <i class="fas fa-chevron-right"></i></button>
+                                <button class="zoom-in"><i class="fas fa-search-plus"></i></button>
+                                <button class="zoom-out"><i class="fas fa-search-minus"></i></button>
+                            </div>
+                            <iframe src="pdfs/Atmasthiti Register.pdf#page=1" class="pdf-viewer" frameborder="0" data-pdf-id="1">
                                 Your browser does not support PDF viewing. Please download the PDF to view it.
                             </iframe>
+                            <div class="pdf-loading" style="display: none;">Loading PDF...</div>
                         </div>
                     </div>
                     
@@ -1009,9 +1081,17 @@
                             </a>
                         </div>
                         <div class="pdf-viewer-container">
-                            <iframe src="pdfs/Application for baptism.pdf" class="pdf-viewer" frameborder="0">
+                            <div class="pdf-controls" id="controls-2">
+                                <button class="prev-page" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                                <span class="page-info">Page <span class="current-page">1</span> of <span class="total-pages">-</span></span>
+                                <button class="next-page">Next <i class="fas fa-chevron-right"></i></button>
+                                <button class="zoom-in"><i class="fas fa-search-plus"></i></button>
+                                <button class="zoom-out"><i class="fas fa-search-minus"></i></button>
+                            </div>
+                            <iframe src="pdfs/Application for baptism.pdf#page=1" class="pdf-viewer" frameborder="0" data-pdf-id="2">
                                 Your browser does not support PDF viewing. Please download the PDF to view it.
                             </iframe>
+                            <div class="pdf-loading" style="display: none;">Loading PDF...</div>
                         </div>
                     </div>
                     
@@ -1024,9 +1104,17 @@
                             </a>
                         </div>
                         <div class="pdf-viewer-container">
-                            <iframe src="pdfs/Application Form for Free State.pdf" class="pdf-viewer" frameborder="0">
+                            <div class="pdf-controls" id="controls-3">
+                                <button class="prev-page" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                                <span class="page-info">Page <span class="current-page">1</span> of <span class="total-pages">-</span></span>
+                                <button class="next-page">Next <i class="fas fa-chevron-right"></i></button>
+                                <button class="zoom-in"><i class="fas fa-search-plus"></i></button>
+                                <button class="zoom-out"><i class="fas fa-search-minus"></i></button>
+                            </div>
+                            <iframe src="pdfs/Application Form for Free State.pdf#page=1" class="pdf-viewer" frameborder="0" data-pdf-id="3">
                                 Your browser does not support PDF viewing. Please download the PDF to view it.
                             </iframe>
+                            <div class="pdf-loading" style="display: none;">Loading PDF...</div>
                         </div>
                     </div>
                     
@@ -1039,9 +1127,17 @@
                             </a>
                         </div>
                         <div class="pdf-viewer-container">
-                            <iframe src="pdfs/Sponsorship Policy.pdf" class="pdf-viewer" frameborder="0">
+                            <div class="pdf-controls" id="controls-4">
+                                <button class="prev-page" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                                <span class="page-info">Page <span class="current-page">1</span> of <span class="total-pages">-</span></span>
+                                <button class="next-page">Next <i class="fas fa-chevron-right"></i></button>
+                                <button class="zoom-in"><i class="fas fa-search-plus"></i></button>
+                                <button class="zoom-out"><i class="fas fa-search-minus"></i></button>
+                            </div>
+                            <iframe src="pdfs/Sponsorship Policy.pdf#page=1" class="pdf-viewer" frameborder="0" data-pdf-id="4">
                                 Your browser does not support PDF viewing. Please download the PDF to view it.
                             </iframe>
+                            <div class="pdf-loading" style="display: none;">Loading PDF...</div>
                         </div>
                     </div>
                 </div>
@@ -1200,6 +1296,120 @@
                         <p>Please use the download button to get the form</p>
                     </div>
                 `;
+            });
+        });
+        
+        // PDF Navigation Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Store PDF information
+            const pdfData = {};
+            
+            // Initialize all PDF viewers
+            document.querySelectorAll('.pdf-viewer').forEach(iframe => {
+                const pdfId = iframe.getAttribute('data-pdf-id');
+                pdfData[pdfId] = {
+                    currentPage: 1,
+                    totalPages: 1, // Will be updated when PDF loads
+                    scale: 1.0
+                };
+                
+                // Show loading indicator
+                iframe.onload = function() {
+                    const loadingElement = iframe.parentNode.querySelector('.pdf-loading');
+                    if (loadingElement) loadingElement.style.display = 'none';
+                    
+                    // Try to extract total pages (this might not work due to cross-origin restrictions)
+                    try {
+                        // This is a workaround since we can't access iframe content directly
+                        // due to cross-origin restrictions
+                        setTimeout(() => {
+                            updatePageControls(pdfId);
+                        }, 2000);
+                    } catch (e) {
+                        console.log("Could not access PDF page count due to security restrictions");
+                    }
+                };
+                
+                // Show loading when PDF starts loading
+                iframe.onloadstart = function() {
+                    const loadingElement = iframe.parentNode.querySelector('.pdf-loading');
+                    if (loadingElement) loadingElement.style.display = 'block';
+                };
+            });
+            
+            // Set up event listeners for all navigation controls
+            document.querySelectorAll('.pdf-controls').forEach(controls => {
+                const pdfId = controls.id.split('-')[1];
+                const iframe = controls.nextElementSibling;
+                
+                // Previous page button
+                controls.querySelector('.prev-page').addEventListener('click', function() {
+                    if (pdfData[pdfId].currentPage > 1) {
+                        pdfData[pdfId].currentPage--;
+                        updatePDFPage(iframe, pdfId);
+                    }
+                });
+                
+                // Next page button
+                controls.querySelector('.next-page').addEventListener('click', function() {
+                    pdfData[pdfId].currentPage++;
+                    updatePDFPage(iframe, pdfId);
+                });
+                
+                // Zoom in button
+                controls.querySelector('.zoom-in').addEventListener('click', function() {
+                    pdfData[pdfId].scale += 0.25;
+                    updatePDFZoom(iframe, pdfId);
+                });
+                
+                // Zoom out button
+                controls.querySelector('.zoom-out').addEventListener('click', function() {
+                    if (pdfData[pdfId].scale > 0.5) {
+                        pdfData[pdfId].scale -= 0.25;
+                        updatePDFZoom(iframe, pdfId);
+                    }
+                });
+            });
+            
+            // Function to update PDF page
+            function updatePDFPage(iframe, pdfId) {
+                const src = iframe.src.split('#')[0];
+                iframe.src = `${src}#page=${pdfData[pdfId].currentPage}&zoom=${pdfData[pdfId].scale * 100}`;
+                updatePageControls(pdfId);
+            }
+            
+            // Function to update PDF zoom
+            function updatePDFZoom(iframe, pdfId) {
+                const src = iframe.src.split('#')[0];
+                const page = iframe.src.match(/page=(\d+)/);
+                const currentPage = page ? page[1] : 1;
+                iframe.src = `${src}#page=${currentPage}&zoom=${pdfData[pdfId].scale * 100}`;
+            }
+            
+            // Function to update page controls
+            function updatePageControls(pdfId) {
+                const controls = document.getElementById(`controls-${pdfId}`);
+                if (!controls) return;
+                
+                const prevBtn = controls.querySelector('.prev-page');
+                const nextBtn = controls.querySelector('.next-page');
+                const currentPageEl = controls.querySelector('.current-page');
+                const totalPagesEl = controls.querySelector('.total-pages');
+                
+                // Update current page display
+                currentPageEl.textContent = pdfData[pdfId].currentPage;
+                
+                // Enable/disable navigation buttons
+                prevBtn.disabled = pdfData[pdfId].currentPage <= 1;
+                
+                // For total pages, we can't reliably get this info due to security restrictions
+                // So we'll just show the current page and keep next button always enabled
+                totalPagesEl.textContent = '?';
+            }
+            
+            // Initialize all page controls
+            Object.keys(pdfData).forEach(pdfId => {
+                updatePageControls(pdfId);
             });
         });
     </script>
