@@ -872,6 +872,19 @@
                 font-size: 0.85rem;
             }
         }
+
+        /* NEW: Grid view for desktop */
+        @media (min-width: 993px) {
+            .forms-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .form-card {
+                margin-bottom: 0;
+            }
+        }
     </style>
 </head>
 <body>
