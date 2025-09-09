@@ -490,6 +490,7 @@
 
         .album-info {
             padding: 1.5rem;
+            text-align: center;
         }
 
         .album-title {
@@ -616,6 +617,7 @@
             max-height: 80vh;
             border-radius: 8px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            transition: opacity 0.2s ease; /* Faster transition */
         }
 
         .lightbox-close {
@@ -628,6 +630,7 @@
             font-size: 2rem;
             cursor: pointer;
             transition: color 0.3s ease;
+            z-index: 3001;
         }
 
         .lightbox-close:hover {
@@ -650,6 +653,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
+            z-index: 3001;
         }
 
         .lightbox-nav:hover {
@@ -670,6 +674,7 @@
             left: 0;
             color: white;
             font-size: 1rem;
+            z-index: 3001;
         }
 
         /* Video Modal */
@@ -687,6 +692,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .video-modal-overlay.active {
@@ -701,6 +707,7 @@
             background: black;
             border-radius: 8px;
             overflow: hidden;
+            cursor: default;
         }
 
         .video-modal-close {
@@ -713,6 +720,7 @@
             font-size: 2rem;
             cursor: pointer;
             transition: color 0.3s ease;
+            z-index: 3001;
         }
 
         .video-modal-close:hover {
@@ -1578,13 +1586,21 @@
         }
 
         document.querySelectorAll('.play-button').forEach(button => {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
                 const videoId = button.getAttribute('data-video');
                 openVideoModal(videoId);
             });
         });
 
         videoModalClose.addEventListener('click', closeVideoModal);
+        
+        // Close video modal when clicking outside the video container
+        videoModalOverlay.addEventListener('click', (e) => {
+            if (e.target === videoModalOverlay) {
+                closeVideoModal();
+            }
+        });
 
         // Close video modal with Escape key
         document.addEventListener('keydown', (e) => {
