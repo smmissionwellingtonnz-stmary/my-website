@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Couple Ministry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4E598C;
+            --secondary: #F9C784;
+            --accent: #FF8C42;
+            --dark: #2F4858;
+            --light: #FCFFF7;
+            --paper: #FFF8F0;
+            --primary-color: #0a4d68;
+            --primary-light: #088395;
+            --nav-gradient: linear-gradient(135deg, #0a4d68, #088395);
+            --footer-gradient: linear-gradient(135deg, #0a4d68, #088395);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Notice Bar */
+        .notice-bar {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: pulseNotice 2s infinite;
+        }
+
+        @keyframes pulseNotice {
+            0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+            50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
+            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+        }
+
+        .notice-bar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .notice-bar span {
+            margin: 0 15px;
+            display: inline-block;
+        }
+        
+        /* Navigation Menu */
+        .nav-container {
+            position: fixed;
+            top: 40px; /* Positioned below notice bar */
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-gradient);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+        
+        .nav-logo {
+            height: 50px;
+        }
+        
+        .nav-toggle {
+            font-size: 1.5rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 1rem 1.2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.donate {
+            background-color: #ff6b6b;
+            border-radius: 4px;
+            margin: 0.5rem 1rem;
+            font-weight: 600;
+        }
+        
+        .nav-link.donate:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: white;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f1f1;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #0a4d68;
+            padding-left: 1.3rem;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-container {
+            position: fixed;
+            top: 40px;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: calc(100% - 40px);
+            background: var(--nav-gradient);
+            z-index: 2000;
+            overflow-y: auto;
+            transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-container.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-logo {
+            height: 40px;
+        }
+        
+        .mobile-menu-close {
+            font-size: 1.5rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-content {
+            padding: 20px 0;
+        }
+        
+        .mobile-nav-menu {
+            list-style: none;
+        }
+        
+        .mobile-nav-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav-link.donate {
+            background-color: #ff6b6b;
+            font-weight: 600;
+        }
+        
+        .mobile-nav-link.donate:hover {
+            background-color: #ff5252;
+        }
+        
+        .mobile-dropdown-toggle {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-dropdown-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            transition: max-height 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        
+        .mobile-dropdown-menu.show {
+            max-height: 500px;
+        }
+        
+        .mobile-dropdown-item {
+            display: block;
+            padding: 14px 20px 14px 40px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding-left: 45px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(47,72,88,0.7)), 
+                        url('https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/WhatsApp%20Image%202024-12-29%20at%203.45.01%20PM.jpeg/:/rs=w:1440,h:1440');
+            background-size: cover;
+            background-position: top center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px 120px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: -40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: headerReveal 2s ease-out forwards;
+        }
+        
+        @keyframes headerReveal {
+            0% {
+                opacity: 0;
+                background-position: top center;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 1;
+                background-position: center center;
+            }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            animation: fadeInDown 1.2s ease-out 0.5s both;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .header-subtitle {
+            font-size: 1.4rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            animation: fadeInUp 1.2s ease-out 0.8s both;
+            font-weight: 300;
+        }
+        
+        .header-decoration {
+            height: 4px;
+            width: 80px;
+            background: var(--secondary);
+            margin: 0 auto;
+            border-radius: 2px;
+            animation: expandLine 1s ease-out 1.2s both;
+        }
+        
+        @keyframes expandLine {
+            0% { width: 0px; opacity: 0; }
+            100% { width: 80px; opacity: 1; }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .content {
+            background-color: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            margin: 0 auto 80px;
+            position: relative;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out 0.5s both;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .content:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-section {
+            text-align: center;
+            margin: 100px 0;
+        }
+        
+        h2 {
+            color: var(--dark);
+            margin-bottom: 80px;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .team-member {
+            position: relative;
+            width: 300px;
+            animation: fadeIn 0.8s ease-out both;
+            perspective: 1000px;
+        }
+        
+        .team-member:nth-child(1) { animation-delay: 0.2s; }
+        .team-member:nth-child(2) { animation-delay: 0.4s; }
+        .team-member:nth-child(3) { animation-delay: 0.6s; }
+        
+        .polaroid-card {
+            background: var(--paper);
+            padding: 20px 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px -5px rgba(0,0,0,0.2);
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member:hover .polaroid-card {
+            transform: rotateY(-5deg) rotateX(5deg) rotateZ(-1deg) translateY(-10px);
+            box-shadow: 0 25px 50px -5px rgba(0,0,0,0.3);
+        }
+        
+        .polaroid-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.03) 0%, transparent 50%, rgba(0,0,0,0.03) 100%);
+            pointer-events: none;
+        }
+        
+        .polaroid-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+            filter: sepia(0.1) contrast(1.1) brightness(1.05);
+            transition: all 0.5s ease;
+            border-radius: 5px;
+        }
+        
+        .team-member:hover .polaroid-image {
+            filter: sepia(0) contrast(1.05) brightness(1.1);
+            transform: scale(1.03);
+        }
+        
+        .member-info {
+            padding: 0 10px;
+        }
+        
+        .member-name {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .member-name::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+        
+        .team-member:hover .member-name::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .member-role {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .polaroid-tape {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 80%;
+            height: 30px;
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            z-index: -1;
+            opacity: 0.8;
+            border-radius: 3px;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+        
+        /* Light rays animation for header */
+        .light-ray {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+            opacity: 0;
+            animation: lightSweep 8s linear infinite;
+        }
+        
+        @keyframes lightSweep {
+            0% {
+                transform: translateX(-100%) skewX(-15deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.4;
+            }
+            10% {
+                opacity: 0.2;
+            }
+            15% {
+                transform: translateX(100%) skewX(-15deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(100%) skewX(-15deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Subtle background pattern animation */
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: patternMove 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes patternMove {
+            from { background-position: 0 0; }
+            to { background-position: 50px 50px; }
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: var(--footer-gradient);
+            color: white;
+            padding: 60px 0 20px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 3rem;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulseFooter 15s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes pulseFooter {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #F8DE7E;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-social a:hover {
+            background: #ffd700;
+            color: #0a4d68;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--nav-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding-top: 160px;
+            min-height: 100vh;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .team-grid {
+                gap: 40px;
+            }
+            
+            .team-member {
+                width: 260px;
+            }
+            
+            .polaroid-image {
+                height: 230px;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            header {
+                padding: 80px 20px 100px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+                margin: 0 20px 60px;
+            }
+            
+            h2 {
+                margin-bottom: 60px;
+                font-size: 2rem;
+            }
+            
+            .team-grid {
+                gap: 50px;
+            }
+            
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .main-content {
+                padding-top: 120px;
+            }
+            
+            .nav-container {
+                top: 32px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .team-member {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            header {
+                padding: 70px 15px 90px;
+            }
+            
+            .content {
+                font-size: 1rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .notice-bar {
+                font-size: 12px;
+                padding: 8px 0;
+            }
+            
+            .notice-bar span {
+                margin: 0 8px;
+            }
+            
+            .nav-container {
+                top: 28px;
+            }
+            
+            .main-content {
+                padding-top: 110px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .polaroid-image {
+                height: 200px;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        <a href="event.html">
+            <span>📢 Vachanabhishekam Retreat 28 - 31 August 2025</span>
+        </a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-container">
+        <div class="nav-header">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo" class="nav-logo">
+            </a>
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="aboutsyromalabarchurch.html" class="dropdown-item">Syro Malabar Church</a></li>
+                    <li><a href="abouteparchy.html" class="dropdown-item">Syro Malabar Melbourne</a></li>
+                    <li><a href="aboutsmmission.html" class="dropdown-item">Syro Malabar Wellington</a></li>
+                    <li><a href="priestandcouncil.html" class="dropdown-item">Priest & Council</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="services.html" class="dropdown-item">Holy Qurbana Schedule</a></li>
+                    <li><a href="event.html" class="dropdown-item">Upcoming Programs</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Ministries <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="altar.html" class="dropdown-item">Altar Servers</a></li>
+                    <li><a href="catechism.html" class="dropdown-item">Catechism</a></li>
+                    <li><a href="choir.html" class="dropdown-item">Choir</a></li>
+                    <li><a href="family.html" class="dropdown-item">Family Units</a></li>
+                    <li><a href="#" class="dropdown-item">SMYM Wellington</a></li>
+                    <li><a href="#" class="dropdown-item">Young Couple Ministry</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Forms</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Resources</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Safeguarding</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Gallery & Social</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link donate">DONATE</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-menu-container" id="mobile-menu-container">
+        <div class="mobile-menu-header">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Logo" class="mobile-menu-logo">
+            </a>    
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-menu">
+                <li class="mobile-nav-item">
+                    <a href="index.html" class="mobile-nav-link">Home</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
+                        <span>About</span>
+                        <span class="mobile-dropdown-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="aboutsyromalabarchurch.html" class="mobile-dropdown-item">Syro Malabar Church</a>
+                        <a href="abouteparchy.html" class="mobile-dropdown-item">Syro Malabar Melbourne</a>
+                        <a href="aboutsmmission.html" class="mobile-dropdown-item">Syro Malabar Wellington</a>
+                        <a href="priestandcouncil.html" class="mobile-dropdown-item">Priest & Council</a>
+                    </div>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
+                        <span>Services</span>
+                        <span class="mobile-dropdown-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="services.html" class="mobile-dropdown-item">Holy Qurbana Schedule</a>
+                        <a href="event.html" class="mobile-dropdown-item">Upcoming Programs</a>
+                    </div>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
+                        <span>Ministries</span>
+                        <span class="mobile-dropdown-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="mobile-dropdown-menu">
+                        <a href="altar.html" class="mobile-dropdown-item">Altar Servers</a>
+                        <a href="catechism.html" class="mobile-dropdown-item">Catechism</a>
+                        <a href="choir.html" class="mobile-dropdown-item">Choir</a>
+                        <a href="family.html" class="mobile-dropdown-item">Family Units</a>
+                        <a href="#" class="mobile-dropdown-item">SMYM Wellington</a>
+                        <a href="#" class="mobile-dropdown-item">Young Couple Ministry</a>
+                    </div>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Forms</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Resources</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Safeguarding</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Gallery & Social</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link">Contact</a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#" class="mobile-nav-link donate">DONATE</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="bg-pattern"></div>
+            <div class="light-ray"></div>
+            <div class="header-content">
+                <h1>YOUNG COUPLE MINISTRY</h1>
+                <div class="header-decoration"></div>
+                <p class="header-subtitle">Building Strong Marriages Through Faith, Fellowship, and Love</p>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </header>
+        
+        <div class="container">
+            <div class="content">
+                <p>The Young Couples Ministry focuses on nurturing and strengthening the bonds of couples married for less than 10 years. This ministry supports their spiritual and emotional growth while fostering meaningful connections and a sense of community, helping them navigate and understand each other's life stages.</p>
+            </div>
+            
+            <div class="team-section">
+                <h2>Our Coordinators</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="polaroid-tape"></div>
+                        <div class="polaroid-card">
+                            <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/WhatsApp%20Image%202024-12-11%20at%2012.03.27%20PM.jpeg/:/rs=w:1440,h:1440" alt="Aquinos Joseph & Megha Mary John" class="polaroid-image">
+                            <div class="member-info">
+                                <h3 class="member-name">Aquinos Joseph & Megha Mary John</h3>
+                                <p class="member-role">Coordinators</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="polaroid-tape"></div>
+                        <div class="polaroid-card">
+                            <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/WhatsApp%20Image%202024-12-11%20at%207.33.19%20PM.jpeg/:/rs=w:1440,h:1440" alt="Tony Thomas & Roshni Joshy" class="polaroid-image">
+                            <div class="member-info">
+                                <h3 class="member-name">Tony Thomas & Roshni Joshy</h3>
+                                <p class="member-role">Coordinators</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="polaroid-tape"></div>
+                        <div class="polaroid-card">
+                            <img src="https://img1.wsimg.com/isteam/ip/ef51e80f-663f-4a79-afed-a30a2fa06741/WhatsApp%20Image%202024-12-11%20at%207.46.53%20PM.jpeg/:/rs=w:1440,h:1440" alt="Pius Joseph & Lipsa Allwin Johny" class="polaroid-image">
+                            <div class="member-info">
+                                <h3 class="member-name">Pius Joseph & Lipsa Allwin Johny</h3>
+                                <p class="member-role">Coordinators</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>St. Mary's Mission</h3>
+                <p>St. Mary's Syro Malabar Mission Wellington is one of the largest Syro Malabar faithful communities in New Zealand, serving the spiritual needs of the community since 2006.</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="aboutsmmission.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="services.html"><i class="fas fa-chevron-right"></i> Mass Schedule</a></li>
+                    <li><a href="event.html"><i class="fas fa-chevron-right"></i> Upcoming Programs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><a href="https://goo.gl/maps/3sRzvQ2VJY9Vp3ENA" target="_blank"><i class="fas fa-map-marker-alt"></i> 27 Trebann Street, Paparangi, Wellington</a></li>
+                    <li><a href="mailto:smmissionwellingtonnz@gmail.com"><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</a></li>
+                    <li><a href="tel:+64272841791"><i class="fas fa-phone"></i> +64 27 284 1791 (Fr. Joseph - Chaplain)</a></li>
+                    <li><a href="tel:+642108217181"><i class="fas fa-phone"></i> +64 21 082 17181 (Joshua Jose - Parish Council Secretary)</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 St. Mary's Syro Malabar Mission Wellington. All Rights Reserved. | Created by Jinto Jose</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Functionality
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileMenuContainer = document.getElementById('mobile-menu-container');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            mobileMenuContainer.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenuContainer.classList.contains('active') ? 'hidden' : '';
+            
+            // Toggle between hamburger and close icon
+            const icon = navToggle.querySelector('i');
+            if (mobileMenuContainer.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+        
+        // Event listeners for mobile menu
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+        
+        mobileMenuClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMobileMenu();
+        });
+        
+        mobileNavOverlay.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMobileMenu();
+        });
+        
+        // Mobile dropdown functionality
+        document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
+            parent.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownMenu = this.nextElementSibling;
+                const dropdownToggle = this.querySelector('.mobile-dropdown-toggle');
+                
+                // Close other dropdowns
+                document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+                    if (menu !== dropdownMenu) {
+                        menu.classList.remove('show');
+                        menu.previousElementSibling.querySelector('.mobile-dropdown-toggle').classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                dropdownMenu.classList.toggle('show');
+                dropdownToggle.classList.toggle('active');
+            });
+        });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMobileMenu();
+            });
+        });
+        
+        // Scroll to top functionality
+        const scrollTop = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+        });
+        
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
