@@ -456,21 +456,23 @@
         }
         
 .register-btn {
-    display: inline-block;
-    background: #0a4d68; /* navy blue */
+    display: inline-block;      /* prevents full width */
+    background: #0a4d68;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 25px;         /* controls button size */
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
-    transition: all 0.3s ease; /* smooth effect */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: auto;                /* make button only as wide as text */
+    text-align: center;
+}
+.register-btn:hover {
+    background: #126e82;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.register-btn:hover {
-    background: #126e82;   /* lighter blue on hover */
-    transform: scale(1.05); /* slight zoom */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* glowing effect */
-}
 
         /* Footer Styles */
         .footer {
@@ -1101,6 +1103,7 @@
     </script>
 </body>
 </html>
+
 
 
 
