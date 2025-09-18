@@ -876,6 +876,72 @@
             .main-content {
                 padding-top: 110px;
             }
+            /* Responsive styles */
+    @media (max-width: 992px) {
+        .nav-toggle {
+            display: block;
+        }
+        
+        .nav-menu {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .title {
+            font-size: 2.5rem;
+        }
+        
+        /* ... other mobile styles ... */
+        
+        /* ADD THE NEW MOBILE FIXES RIGHT HERE */
+        .contact-info {
+            padding: 1rem;
+        }
+        
+        .contact-item {
+            flex-wrap: wrap;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            margin-right: 12px;
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-item span {
+            flex: 1;
+            min-width: 0;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Specifically target the email address */
+        .contact-item:nth-child(2) span {
+            word-break: break-all;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .title {
+            font-size: 2rem;
+        }
+        
+        /* ... other mobile styles ... */
+        
+        /* ADD THIS PART TOO */
+        .contact-item {
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            margin-bottom: 0;
+        }
         }
     </style>
 </head>
