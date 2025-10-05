@@ -522,7 +522,10 @@
     visibility: hidden;
     transition: all 0.3s ease;
 }
-
+/* Hide scrollbar for Chrome, Safari and Opera */
+.notice-popup-content::-webkit-scrollbar {
+    display: none;
+}
 .notice-popup-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -541,7 +544,11 @@
     transition: all 0.3s ease;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.8);
-    overflow-y: auto;
+    overflow-y: scroll;
+    overflow-y: scroll; /* Enable scrolling */
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none;  /* Hide scrollbar for Firefox */
+    
 }
 
 .notice-popup-overlay.active .notice-popup-content {
@@ -1453,15 +1460,13 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Show popup when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Delay the popup to let the page load first
-    setTimeout(showNoticePopup, 500);
-});
+document.addEventListener('DOMContentLoaded', showNoticePopup); // 👈 Shows immediately
 
 // Add this to your existing DOMContentLoaded event if needed
     </script>
 </body>
 </html>
+
 
 
 
