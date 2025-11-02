@@ -133,18 +133,7 @@
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
-        .nav-link.newsletter {
-    background-color: #05bfdb;
-    border-radius: 4px;
-    margin: 0.5rem 1rem;
-    font-weight: 600;
-    color: white;
-}
-
-.nav-link.newsletter:hover {
-    background-color: #0497ac;
-    transform: translateY(-2px);
-}
+        
         .nav-link.donate:hover {
             background-color: #ff5252;
             transform: translateY(-2px);
@@ -289,14 +278,7 @@
             background-color: #ff6b6b;
             font-weight: 600;
         }
-        .mobile-nav-link.newsletter {
-    background-color: #05bfdb;
-    font-weight: 600;
-}
-
-.mobile-nav-link.newsletter:hover {
-    background-color: #0497ac;
-}
+        
         .mobile-nav-link.donate:hover {
             background-color: #ff5252;
         }
@@ -522,157 +504,6 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-        /* October Notice Popup Styles */
-.notice-popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1); /* Transparent white */
-    backdrop-filter: blur(10px); /* Background blur effect */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3000; /* Higher than other elements */
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.notice-popup-content::-webkit-scrollbar {
-    display: none;
-}
-.notice-popup-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.notice-popup-content {
-    background: rgba(255, 255, 255, 0.95);
-    width: 90%;
-    max-width: 600px;
-    max-height: 80vh;
-    padding: 2rem;
-    border-radius: 15px;
-    position: relative;
-    transform: scale(0.9);
-    opacity: 0;
-    transition: all 0.3s ease;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    overflow-y: scroll;
-    overflow-y: scroll; /* Enable scrolling */
-    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
-    scrollbar-width: none;  /* Hide scrollbar for Firefox */
-    
-}
-
-.notice-popup-overlay.active .notice-popup-content {
-    transform: scale(1);
-    opacity: 1;
-}
-
-.notice-popup-content h3 {
-    color: var(--primary);
-    margin-bottom: 1.5rem;
-    font-family: 'Merriweather', serif;
-    font-size: 1.5rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.notice-popup-content h3 i {
-    color: var(--accent);
-}
-
-.notice-intro {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: var(--dark);
-    font-weight: 500;
-    line-height: 1.6;
-}
-
-.october-schedule {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.schedule-day {
-    background: rgba(10, 77, 104, 0.05);
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--primary);
-}
-
-.schedule-day strong {
-    color: var(--primary);
-    font-family: 'Merriweather', serif;
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-.schedule-day p {
-    color: var(--dark);
-    line-height: 1.6;
-    margin: 0;
-}
-
-.notice-popup-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2rem;
-    cursor: pointer;
-    color: var(--gray);
-    transition: all 0.3s ease;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.notice-popup-close:hover {
-    color: var(--primary);
-    background: rgba(10, 77, 104, 0.1);
-    transform: rotate(90deg);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .notice-popup-content {
-        padding: 1.5rem;
-        margin: 1rem;
-    }
-    
-    .october-schedule {
-        grid-template-columns: 1fr;
-    }
-    
-    .notice-popup-content h3 {
-        font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .notice-popup-content {
-        padding: 1rem;
-    }
-    
-    .schedule-day {
-        padding: 0.8rem;
-    }
-}
 
         /* Popup Styles */
         .popup-overlay {
@@ -1019,7 +850,7 @@
     <!-- Notice Bar -->
     <div class="notice-bar">
         <a href="event.html">
-            <span>📢 First Holy Communion - November 8, 2025</span>
+            <span>📢 Career Guidance Workshop - 12th of October - REGISTER NOW</span>
         </a>
     </div>
 
@@ -1079,9 +910,6 @@
             </li>
             <li class="nav-item">
                 <a href="contact.html" class="nav-link">Connect Us</a>
-            </li>
-            <li class="nav-item">
-                <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>Download Latest Newsletter</a>
             </li>
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
@@ -1166,9 +994,6 @@
                     <a href="contact.html" class="mobile-nav-link">Connect Us</a>
                 </li>
                 <li class="mobile-nav-item">
-                    <a href="Newsletter/Oct 12.jpg" class="mobile-nav-link newsletter" download>Download Latest Newsletter</a>
-                </li>
-                <li class="mobile-nav-item">
                     <a href="donate.html" class="mobile-nav-link donate">DONATE</a>
                 </li>
             </ul>
@@ -1237,47 +1062,6 @@
             <button class="contact-button" id="contact-button" onclick="togglePopup()">CONTACT INFORMATION</button>
         </div>
     </div>
-    <!-- October Schedule Notice Popup -->
-<div class="notice-popup-overlay" id="noticePopup">
-    <div class="notice-popup-content">
-        <span class="notice-popup-close" id="noticePopupClose">&times;</span>
-        <h3><i class="fas fa-calendar-alt"></i> October Schedule Notice</h3>
-        <div class="notice-popup-body">
-            <p class="notice-intro">Due to October being the month of the Rosary, the regular schedule has changed. Please see the updated service timetable for October below.</p>
-            
-            <div class="october-schedule">
-                <div class="schedule-day">
-                    <strong>Monday</strong>
-                    <p>6:30 pm - Rosary<br>7:00 pm - Holy Qurbana</p>
-                </div>
-                <div class="schedule-day">
-                    <strong>Tuesday</strong>
-                    <p>6:30 pm - Rosary<br>7:00 pm - Holy Qurbana</p>
-                </div>
-                <div class="schedule-day">
-                    <strong>Wednesday</strong>
-                    <p>6:30 pm - Rosary<br>7:00 pm - Holy Qurbana</p>
-                </div>
-                <div class="schedule-day">
-                    <strong>Thursday</strong>
-                    <p>6:30 pm - Rosary<br>7:00 pm - Holy Qurbana</p>
-                </div>
-                <div class="schedule-day">
-                    <strong>Friday</strong>
-                    <p>6:30 pm - Rosary<br>7:00 pm - Holy Qurbana</p>
-                </div>
-                <div class="schedule-day">
-                    <strong>Saturday</strong>
-                    <p>6:30 pm - Rosary<br>7:00 pm - Holy Qurbana</p>
-                </div>
-                <div class="schedule-day">
-                    <strong>Sunday</strong>
-                    <p>9:30 am - Catechism<br>10:30 am - Rosary<br>11:00 am - Holy Qurbana<br>5:00 pm - Rosary<br>05:30 pm - Holy Qurbana</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
     
     <!-- Footer Section -->
     <footer class="footer">
@@ -1289,7 +1073,6 @@
                     <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.facebook.com/messages/t/331100746743772" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
                     <a href="https://www.instagram.com/smmissionwellington/?next=%2F" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCcM4Eniz3bBUuKlt3olO1Ow" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i>
                 </div>
             </div>
             
@@ -1309,7 +1092,7 @@
                     <li><a href="https://goo.gl/maps/3sRzvQ2VJY9Vp3ENA" target="_blank"><i class="fas fa-map-marker-alt"></i> 27 Trebann Street, Paparangi, Wellington</a></li>
                     <li><a href="mailto:smmissionwellingtonnz@gmail.com"><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</a></li>
                     <li><a href="tel:+64272841791"><i class="fas fa-phone"></i> +64 27 284 1791 (Fr. Joseph - Chaplain)</a></li>
-                    </ul>
+                </ul>
             </div>
         </div>
         
@@ -1444,59 +1227,9 @@
         function togglePopup() {
             document.getElementById('popup').classList.toggle('active');
         }
-        // October Notice Popup Functionality
-const noticePopup = document.getElementById('noticePopup');
-const noticePopupClose = document.getElementById('noticePopupClose');
-
-// Function to show popup
-function showNoticePopup() {
-    // Check if popup was already closed in this session
-    if (!sessionStorage.getItem('noticePopupClosed')) {
-        setTimeout(() => {
-            noticePopup.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }, 1000); // Show after 1 second delay
-    }
-}
-
-// Function to close popup
-function closeNoticePopup() {
-    noticePopup.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-    sessionStorage.setItem('noticePopupClosed', 'true');
-}
-
-// Event listeners
-noticePopupClose.addEventListener('click', closeNoticePopup);
-
-// Close when clicking outside the content
-noticePopup.addEventListener('click', function(e) {
-    if (e.target === noticePopup) {
-        closeNoticePopup();
-    }
-});
-
-// Close with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && noticePopup.classList.contains('active')) {
-        closeNoticePopup();
-    }
-});
-
-// Show popup when page loads
-document.addEventListener('DOMContentLoaded', showNoticePopup); // 👈 Shows immediately
-
-// Add this to your existing DOMContentLoaded event if needed
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
