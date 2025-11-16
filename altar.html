@@ -146,11 +146,7 @@
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
-        .nav-link.donate:hover {
-            background-color: #ff5252;
-            transform: translateY(-2px);
-        }
-         .nav-link.newsletter {
+        .nav-link.newsletter {
     background-color: #05bfdb;
     border-radius: 4px;
     margin: 0.5rem 1rem;
@@ -162,24 +158,38 @@
     background-color: #0497ac;
     transform: translateY(-2px);
 }
-     /* Desktop-only Newsletter hover effect */
+/* Desktop only */
 @media (min-width: 769px) {
     .nav-link.newsletter {
         position: relative;
         overflow: hidden;
+        width: 160px; /* Adjust width as needed */
+        text-align: center;
+        transition: all 0.3s ease;
     }
 
+    /* Hide hover content initially */
     .nav-link.newsletter::after {
-        content: " ⬇ Download latest newsletter";
+        content: "\f019 Download latest Newsletter"; /* FontAwesome download icon + text */
+        font-family: "Font Awesome 6 Free"; 
+        font-weight: 900; 
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         opacity: 0;
+        pointer-events: none;
         white-space: nowrap;
-        font-size: 0.9rem;
-        font-weight: 500;
         transition: opacity 0.3s ease;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Hide original text on hover and show new text */
+    .nav-link.newsletter:hover {
+        color: white; /* Keep text visible color */
     }
 
     .nav-link.newsletter:hover::after {
@@ -187,10 +197,19 @@
     }
 
     .nav-link.newsletter span {
-        visibility: hidden; /* hide original text on hover if needed */
+        display: inline-block;
+        transition: opacity 0.3s ease;
+    }
+
+    .nav-link.newsletter:hover span {
+        opacity: 0; /* Hide original label */
     }
 }
-   
+        .nav-link.donate:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+        
         .dropdown-menu {
             position: absolute;
             left: 0;
@@ -862,9 +881,12 @@
             <li class="nav-item">
                 <a href="contact.html" class="nav-link">Connect Us</a>
             </li>
-            <li class="nav-item">
-                <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>Newsletter</a>
-            </li>
+           <li class="nav-item">
+    <a href="Newsletter/newsleter.jpg" class="nav-link newsletter" download>
+        <span>Newsletter</span>
+    </a> 
+</li>
+
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
             </li>
