@@ -168,9 +168,15 @@
         transition: all 0.3s ease;
     }
 
-    /* Hide hover content initially */
+    /* Original text */
+    .nav-link.newsletter span {
+        display: inline-block;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Hover content with download icon */
     .nav-link.newsletter::after {
-        content: "\f019 Download latest Newsletter"; /* FontAwesome download icon + text */
+        content: "\f019 Download latest newsletter"; /* FontAwesome download icon + text */
         font-family: "Font Awesome 6 Free"; 
         font-weight: 900; 
         position: absolute;
@@ -181,28 +187,19 @@
         pointer-events: none;
         white-space: nowrap;
         transition: opacity 0.3s ease;
-        font-size: 0.9rem;
+        font-size: 9px;  /* Smaller font size */
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 4px;  /* Space between icon and text */
     }
 
-    /* Hide original text on hover and show new text */
-    .nav-link.newsletter:hover {
-        color: white; /* Keep text visible color */
+    /* Show hover content and hide original text */
+    .nav-link.newsletter:hover span {
+        opacity: 0;
     }
 
     .nav-link.newsletter:hover::after {
         opacity: 1;
-    }
-
-    .nav-link.newsletter span {
-        display: inline-block;
-        transition: opacity 0.3s ease;
-    }
-
-    .nav-link.newsletter:hover span {
-        opacity: 0; /* Hide original label */
     }
 }
         .nav-link.donate:hover {
@@ -1177,4 +1174,5 @@
     </script>
 </body>
 </html>
+
 
