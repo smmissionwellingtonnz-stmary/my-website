@@ -146,7 +146,11 @@
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
-        .nav-link.newsletter {
+        .nav-link.donate:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+         .nav-link.newsletter {
     background-color: #05bfdb;
     border-radius: 4px;
     margin: 0.5rem 1rem;
@@ -158,12 +162,35 @@
     background-color: #0497ac;
     transform: translateY(-2px);
 }
+     /* Desktop-only Newsletter hover effect */
+@media (min-width: 769px) {
+    .nav-link.newsletter {
+        position: relative;
+        overflow: hidden;
+    }
 
-        .nav-link.donate:hover {
-            background-color: #ff5252;
-            transform: translateY(-2px);
-        }
-        
+    .nav-link.newsletter::after {
+        content: " ⬇ Download latest newsletter";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        white-space: nowrap;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: opacity 0.3s ease;
+    }
+
+    .nav-link.newsletter:hover::after {
+        opacity: 1;
+    }
+
+    .nav-link.newsletter span {
+        visibility: hidden; /* hide original text on hover if needed */
+    }
+}
+   
         .dropdown-menu {
             position: absolute;
             left: 0;
@@ -836,7 +863,7 @@
                 <a href="contact.html" class="nav-link">Connect Us</a>
             </li>
             <li class="nav-item">
-                <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>Download Latest Newsletter</a>
+                <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>Newsletter</a>
             </li>
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
@@ -1128,3 +1155,4 @@
     </script>
 </body>
 </html>
+
