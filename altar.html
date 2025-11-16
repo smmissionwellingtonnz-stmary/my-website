@@ -158,33 +158,47 @@
         justify-content: center;
         min-width: 170px;
         background-color: #05bfdb;
-        transition: all 0.3s ease;
         border-radius: 4px;
         cursor: pointer;
+        padding: 0 18px;
+        transition: background-color 0.3s ease;
     }
 
-    /* Default text */
+    /* Default text styling */
     .newsletter-default {
         position: absolute;
         opacity: 1;
+        font-size: 16px;
+        font-weight: 600;
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    /* Hover text */
+    /* Hover text (smaller size) */
     .newsletter-hover {
         position: absolute;
         opacity: 0;
         transform: translateY(10px);
+        font-size: 14px;       /* Smaller text */
+        font-weight: 500;      /* Slightly lighter weight */
         white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 6px;
         transition: opacity 0.3s ease, transform 0.3s ease;
-        font-weight: 600;
+        color: white;
     }
 
-    /* Hover effect */
+    /* Icon styling */
+    .newsletter-hover i {
+        font-size: 14px;   /* Small icon */
+    }
+
+    /* Background color change on hover */
     .nav-link.newsletter:hover {
         background-color: #0497ac;
     }
 
+    /* Swap text on hover */
     .nav-link.newsletter:hover .newsletter-default {
         opacity: 0;
         transform: translateY(-10px);
@@ -192,7 +206,7 @@
 
     .nav-link.newsletter:hover .newsletter-hover {
         opacity: 1;
-        transform: translateY(0px);
+        transform: translateY(0);
     }
 }
         .nav-link.donate:hover {
@@ -874,9 +888,13 @@
             <li class="nav-item">
     <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>
         <span class="newsletter-default">Newsletter</span>
-        <span class="newsletter-hover">Download Latest Newsletter</span>
+
+        <span class="newsletter-hover">
+            <i class="fas fa-download"></i>
+            Download Latest Newsletter
+        </span>
     </a>
-</li> 
+</li>
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
             </li>
@@ -1167,6 +1185,7 @@
     </script>
 </body>
 </html>
+
 
 
 
