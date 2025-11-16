@@ -146,24 +146,59 @@
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
-        .nav-link.newsletter {
-    background-color: #05bfdb;
-    border-radius: 4px;
-    margin: 0.5rem 1rem;
-    font-weight: 600;
-    color: white;
-}
-
-.nav-link.newsletter:hover {
-    background-color: #0497ac;
-    transform: translateY(-2px);
-}
-
         .nav-link.donate:hover {
             background-color: #ff5252;
             transform: translateY(-2px);
         }
-        
+
+        /* DESKTOP ONLY */
+@media (min-width: 993px) {
+
+    .nav-link.newsletter {
+        position: relative;
+        overflow: hidden;
+        width: 180px;
+        text-align: center;
+    }
+
+    /* Hide hover content by default */
+    .nav-link.newsletter .hover-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 0.9rem;
+        padding: 0 5px;
+    }
+
+    /* Show only the main text normally */
+    .nav-link.newsletter .text {
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Hover effect */
+    .nav-link.newsletter:hover .text {
+        opacity: 0;
+    }
+
+    .nav-link.newsletter:hover .hover-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-link.newsletter .hover-content i {
+        font-size: 1.2rem;
+    }
+}
         .dropdown-menu {
             position: absolute;
             left: 0;
@@ -835,9 +870,13 @@
             <li class="nav-item">
                 <a href="contact.html" class="nav-link">Connect Us</a>
             </li>
-            <li class="nav-item">
-                <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>Download Latest Newsletter</a>
-            </li>
+           <a href="newsletter.pdf" download class="nav-link newsletter">
+    <span class="text">Newsletter</span>
+    <span class="hover-content">
+        <i class="fa-solid fa-download"></i>
+        <span class="tagline">Download latest newsletter</span>
+    </span>
+</a>
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
             </li>
@@ -1128,5 +1167,6 @@
     </script>
 </body>
 </html>
+
 
 
