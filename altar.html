@@ -151,54 +151,36 @@
             transform: translateY(-2px);
         }
 
-        /* DESKTOP ONLY */
-@media (min-width: 993px) {
-
-    .nav-link.newsletter {
-        position: relative;
-        overflow: hidden;
-        width: 180px;
-        text-align: center;
-    }
-
-    /* Hide hover content by default */
-    .nav-link.newsletter .hover-content {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-
-        opacity: 0;
-        transform: translateY(10px);
-        transition: all 0.3s ease;
-        color: white;
-        font-size: 0.9rem;
-        padding: 0 5px;
-    }
-
-    /* Show only the main text normally */
-    .nav-link.newsletter .text {
-        display: block;
-        transition: opacity 0.3s ease;
-    }
-
-    /* Hover effect */
-    .nav-link.newsletter:hover .text {
-        opacity: 0;
-    }
-
-    .nav-link.newsletter:hover .hover-content {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .nav-link.newsletter .hover-content i {
-        font-size: 1.2rem;
-    }
+       /* Desktop Newsletter Hover Effect */
+.nav-link.newsletter {
+    position: relative;
+    overflow: hidden;
 }
+
+.nav-link.newsletter .newsletter-hover-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem; /* smaller font size */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-link.newsletter .newsletter-hover-content i {
+    font-size: 0.9rem; /* smaller download icon */
+}
+
+/* Show on hover */
+.nav-link.newsletter:hover .newsletter-hover-content {
+    opacity: 1;
+}
+
         .dropdown-menu {
             position: absolute;
             left: 0;
@@ -870,13 +852,14 @@
             <li class="nav-item">
                 <a href="contact.html" class="nav-link">Connect Us</a>
             </li>
-           <a href="newsletter.pdf" download class="nav-link newsletter">
-    <span class="text">Newsletter</span>
-    <span class="hover-content">
-        <i class="fa-solid fa-download"></i>
-        <span class="tagline">Download latest newsletter</span>
-    </span>
-</a>
+  <li class="nav-item">
+    <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>
+        Newsletter
+        <span class="newsletter-hover-content">
+            <i class="fas fa-download"></i> Download latest newsletter
+        </span>
+    </a>
+</li>
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
             </li>
@@ -1167,6 +1150,7 @@
     </script>
 </body>
 </html>
+
 
 
 
