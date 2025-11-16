@@ -140,80 +140,25 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
         
-   .nav-link.donate {
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        .nav-link.donate {
+            background-color: #ff6b6b;
+            border-radius: 4px;
+            margin: 0.5rem 1rem;
+            font-weight: 600;
+        }
+        .nav-link.newsletter {
+    background-color: #05bfdb;
     border-radius: 4px;
-    margin: 0.5rem 0.5rem;
+    margin: 0.5rem 1rem;
     font-weight: 600;
-    min-width: 140px;
-    background-color: #ff6b6b;
+    color: white;
 }
-/* Newsletter Hover Effect - Desktop Only */
-@media (min-width: 769px) {
 
-    .nav-link.newsletter {
-        position: relative;
-        overflow: hidden;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 140px;
-        background-color: #05bfdb;
-        border-radius: 4px;
-        cursor: pointer;
-        padding: 0 18px;
-        transition: background-color 0.3s ease;
-    }
-
-    /* Default text styling */
-    .newsletter-default {
-        position: absolute;
-        opacity: 1;
-        font-size: 16px;
-        font-weight: 600;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    /* Hover text (smaller size) */
-    .newsletter-hover {
-        position: absolute;
-        opacity: 0;
-        transform: translateY(10px);
-        font-size: 12px;       /* Smaller text */
-        font-weight: 500;      /* Slightly lighter weight */
-        white-space: nowrap;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        color: white;
-    }
-
-    /* Icon styling */
-    .newsletter-hover i {
-        font-size: 14px;   /* Small icon */
-    }
-
-    /* Background color change on hover */
-    .nav-link.newsletter:hover {
-        background-color: #0497ac;
-    }
-
-    /* Swap text on hover */
-    .nav-link.newsletter:hover .newsletter-default {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    .nav-link.newsletter:hover .newsletter-hover {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.nav-link.newsletter:hover {
+    background-color: #0497ac;
+    transform: translateY(-2px);
 }
+
         .nav-link.donate:hover {
             background-color: #ff5252;
             transform: translateY(-2px);
@@ -829,7 +774,7 @@
     <!-- Notice Bar -->
     <div class="notice-bar">
         <a href="event.html">
-            <span>📢 Pilgrims of Hope | Intercession Retreat - 3rd December 2025</span>
+            <span>📢 Formation Program for all nurses and families, 15th November 2025 | Register Now</span>
         </a>
     </div>
 
@@ -851,9 +796,9 @@
             <li class="nav-item">
                 <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="aboutsyromalabarchurch.html" class="dropdown-item">Syro-Malabar Church</a></li>
-                    <li><a href="abouteparchy.html" class="dropdown-item">Syro-Malabar Melbourne</a></li>
-                    <li><a href="aboutsmmission.html" class="dropdown-item">Syro-Malabar Wellington</a></li>
+                    <li><a href="Syro-Malabar Church.html" class="dropdown-item">Syro-Malabar Church</a></li>
+                    <li><a href="Syro-Malabar Eparchy of St. Thomas Apostle.html" class="dropdown-item">Syro-Malabar Melbourne</a></li>
+                    <li><a href="St. Mar's Syro-Malabar Mission Wellington.html" class="dropdown-item">Syro-Malabar Wellington</a></li>
                     <li><a href="priestandcouncil.html" class="dropdown-item">Priest & Council</a></li>
                 </ul>
             </li>
@@ -867,7 +812,7 @@
             <li class="nav-item">
                 <a href="#" class="nav-link">Ministries <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="altar.html" class="dropdown-item">Altar Servers</a></li>
+                    <li><a href="altarservers.html" class="dropdown-item">Altar Servers</a></li>
                     <li><a href="catechism.html" class="dropdown-item">Catechism</a></li>
                     <li><a href="choir.html" class="dropdown-item">Choir</a></li>
                     <li><a href="family.html" class="dropdown-item">Family Wards</a></li>
@@ -891,15 +836,8 @@
                 <a href="contact.html" class="nav-link">Connect Us</a>
             </li>
             <li class="nav-item">
-    <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>
-        <span class="newsletter-default">Newsletter</span>
-
-        <span class="newsletter-hover">
-            <i class="fas fa-download"></i>
-            Download Latest Newsletter
-        </span>
-    </a>
-</li>
+                <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>Download Latest Newsletter</a>
+            </li>
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
             </li>
@@ -983,7 +921,7 @@
                     <a href="contact.html" class="mobile-nav-link">Connect Us</a>
                 </li>
                 <li class="mobile-nav-item">
-                    <a href="Newsletter/newsletter.jpg" class="mobile-nav-link newsletter" download>Download Latest Newsletter</a>
+                    <a href="Newsletter/Oct 12.jpg" class="mobile-nav-link newsletter" download>Download Latest Newsletter</a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="donate.html" class="mobile-nav-link donate">DONATE</a>
@@ -1190,27 +1128,4 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
