@@ -163,19 +163,21 @@
     .nav-link.newsletter {
         position: relative;
         display: inline-block;
-        width: 160px;   /* Adjust as needed */
+        width: 160px;   /* adjust as needed */
         text-align: center;
         padding: 8px 12px;
         overflow: hidden;
         transition: all 0.3s ease;
         font-family: Arial, sans-serif;
     }
-/* Default menu text - same font size as other menu items */
+
+    /* Default menu text - same font size as other menu items */
     .nav-link.newsletter .default-text {
         display: inline-block;
         transition: opacity 0.3s ease;
         font-size: 14px; /* same as your other menu items */
     }
+
     /* Hide hover text by default */
     .nav-link.newsletter .hover-text {
         position: absolute;
@@ -183,20 +185,13 @@
         left: 50%;
         transform: translate(-50%, -50%);
         opacity: 0;
-        font-size: 9px;  /* Smaller font to fit */
+        font-size: 9px;  /* small to fit inside button */
         white-space: nowrap;
         display: flex;
         align-items: center;
         gap: 4px;  /* space between icon and text */
         pointer-events: none;
         transition: opacity 0.3s ease;
-    }
-
-    /* Show original text */
-    .nav-link.newsletter .default-text {
-        display: inline-block;
-        transition: opacity 0.3s ease;
-        font-size: 12px;
     }
 
     /* Hover effect */
@@ -1187,6 +1182,7 @@
     </script>
 </body>
 </html>
+
 
 
 
