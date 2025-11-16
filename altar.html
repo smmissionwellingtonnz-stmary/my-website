@@ -162,44 +162,50 @@
 @media (min-width: 769px) {
     .nav-link.newsletter {
         position: relative;
-        overflow: hidden;
-        width: 160px; /* Adjust width as needed */
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-
-    /* Original text */
-    .nav-link.newsletter span {
         display: inline-block;
-        transition: opacity 0.3s ease;
+        width: 160px;   /* Adjust as needed */
+        text-align: center;
+        padding: 8px 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        font-family: Arial, sans-serif;
     }
 
-    /* Hover content with download icon */
-    .nav-link.newsletter::after {
-        content: "\f019 Download latest newsletter"; /* FontAwesome download icon + text */
-        font-family: "Font Awesome 6 Free"; 
-        font-weight: 900; 
+    /* Hide hover text by default */
+    .nav-link.newsletter .hover-text {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         opacity: 0;
-        pointer-events: none;
+        font-size: 9px;  /* Smaller font to fit */
         white-space: nowrap;
-        transition: opacity 0.3s ease;
-        font-size: 9px;  /* Smaller font size */
         display: flex;
         align-items: center;
-        gap: 4px;  /* Space between icon and text */
+        gap: 4px;  /* space between icon and text */
+        pointer-events: none;
+        transition: opacity 0.3s ease;
     }
 
-    /* Show hover content and hide original text */
-    .nav-link.newsletter:hover span {
-        opacity: 0;
+    /* Show original text */
+    .nav-link.newsletter .default-text {
+        display: inline-block;
+        transition: opacity 0.3s ease;
+        font-size: 12px;
     }
 
-    .nav-link.newsletter:hover::after {
-        opacity: 1;
+    /* Hover effect */
+    .nav-link.newsletter:hover .default-text {
+        opacity: 0;  /* hide original text */
+    }
+
+    .nav-link.newsletter:hover .hover-text {
+        opacity: 1;  /* show download icon + text */
+    }
+
+    /* Download icon styling */
+    .nav-link.newsletter .hover-text i {
+        font-size: 12px;  /* adjust icon size */
     }
 }
         .nav-link.donate:hover {
@@ -878,12 +884,14 @@
             <li class="nav-item">
                 <a href="contact.html" class="nav-link">Connect Us</a>
             </li>
-           <li class="nav-item">
-    <a href="Newsletter/newsleter.jpg" class="nav-link newsletter" download>
-        <span>Newsletter</span>
-    </a> 
+          <li class="nav-item">
+    <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>
+        <span class="default-text">Newsletter</span>
+        <span class="hover-text">
+            <i class="fa fa-download"></i> Download latest newsletter
+        </span>
+    </a>
 </li>
-
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
             </li>
@@ -1174,5 +1182,6 @@
     </script>
 </body>
 </html>
+
 
 
