@@ -158,7 +158,56 @@
     background-color: #0497ac;
     transform: translateY(-2px);
 }
-
+/* Desktop-only newsletter button styles */
+@media (min-width: 769px) {
+    .nav-link.newsletter {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link.newsletter .button-text {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-link.newsletter .hover-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link.newsletter .hover-content .download-icon {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+    
+    .nav-link.newsletter .hover-content .tagline {
+        font-size: 10px;
+        line-height: 1.2;
+        text-align: center;
+        max-width: 90%;
+        font-weight: 500;
+    }
+    
+    .nav-link.newsletter:hover .button-text {
+        transform: translateY(-100%);
+    }
+    
+    .nav-link.newsletter:hover .hover-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
         .nav-link.donate:hover {
             background-color: #ff5252;
             transform: translateY(-2px);
@@ -836,8 +885,14 @@
                 <a href="contact.html" class="nav-link">Connect Us</a>
             </li>
             <li class="nav-item">
-                <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>Download Latest Newsletter</a>
-            </li>
+    <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>
+        <span class="button-text">Newsletter</span>
+        <div class="hover-content">
+            <i class="fas fa-download download-icon"></i>
+            <span class="tagline">Download latest newsletter</span>
+        </div>
+    </a>
+</li>
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
             </li>
@@ -1128,3 +1183,4 @@
     </script>
 </body>
 </html>
+
