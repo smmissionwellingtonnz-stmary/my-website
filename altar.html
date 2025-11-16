@@ -146,41 +146,24 @@
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
+        .nav-link.newsletter {
+    background-color: #05bfdb;
+    border-radius: 4px;
+    margin: 0.5rem 1rem;
+    font-weight: 600;
+    color: white;
+}
+
+.nav-link.newsletter:hover {
+    background-color: #0497ac;
+    transform: translateY(-2px);
+}
+
         .nav-link.donate:hover {
             background-color: #ff5252;
             transform: translateY(-2px);
         }
-
-       /* Desktop Newsletter Hover Effect */
-.nav-link.newsletter {
-    position: relative;
-    overflow: hidden;
-}
-
-.nav-link.newsletter .newsletter-hover-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.8rem; /* smaller font size */
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    white-space: nowrap;
-}
-
-.nav-link.newsletter .newsletter-hover-content i {
-    font-size: 0.9rem; /* smaller download icon */
-}
-
-/* Show on hover */
-.nav-link.newsletter:hover .newsletter-hover-content {
-    opacity: 1;
-}
-
+        
         .dropdown-menu {
             position: absolute;
             left: 0;
@@ -791,7 +774,7 @@
     <!-- Notice Bar -->
     <div class="notice-bar">
         <a href="event.html">
-            <span>📢 Pilgrims of Hope | Intercession Retreat - 3rd December 2025</span>
+            <span>📢 Formation Program for all nurses and families, 15th November 2025 | Register Now</span>
         </a>
     </div>
 
@@ -852,14 +835,9 @@
             <li class="nav-item">
                 <a href="contact.html" class="nav-link">Connect Us</a>
             </li>
-  <li class="nav-item">
-    <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>
-        Newsletter
-        <span class="newsletter-hover-content">
-            <i class="fas fa-download"></i> Download latest newsletter
-        </span>
-    </a>
-</li>
+            <li class="nav-item">
+                <a href="Newsletter/Oct 12.jpg" class="nav-link newsletter" download>Download Latest Newsletter</a>
+            </li>
             <li class="nav-item">
                 <a href="donate.html" class="nav-link donate">DONATE</a>
             </li>
@@ -1150,7 +1128,3 @@
     </script>
 </body>
 </html>
-
-
-
-
