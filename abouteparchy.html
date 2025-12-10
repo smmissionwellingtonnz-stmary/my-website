@@ -400,6 +400,37 @@
             background-color: rgba(255, 255, 255, 0.1);
             padding-left: 45px;
         }
+
+/* Reduce navbar height only on desktop */
+@media (min-width: 1025px) {
+
+    /* Reduce the overall navbar height */
+    .nav-header {
+        padding: 6px 20px !important;
+    }
+
+    /* Make the logo smaller so the bar height reduces */
+    .nav-logo {
+        height: 38px !important; 
+    }
+
+    /* Reduce height of each menu link */
+    .nav-link {
+        padding: 0.55rem 1rem !important;
+        font-size: 15px;
+    }
+
+    /* Reduce spacing inside dropdowns */
+    .dropdown-item {
+        padding: 0.6rem 1rem !important;
+    }
+
+    /* Fix dropdown alignment after height change */
+    .nav-item .dropdown-menu {
+        top: 90% !important;
+    }
+}
+
         
         /* Navigation for mobile */
         @media (max-width: 768px) {
@@ -1328,6 +1359,7 @@
     </script>
 </body>
 </html>
+
 
 
 
