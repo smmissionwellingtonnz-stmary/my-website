@@ -10,15 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4a6b8a;
-            --secondary: #5d4d6a;
-            --accent: #a75d7e;
-            --light: #f8f5f2;
-            --dark: #2a2a2a;
-            --gold: #c9a66b;
+            /* New color scheme */
+            --primary: #7b3f5d; /* Deep rose */
+            --secondary: #4a7b8a; /* Teal blue */
+            --accent: #e8a87c; /* Peach accent */
+            --light: #f9f5f3; /* Warm off-white */
+            --dark: #2c2c2c; /* Dark charcoal */
+            --gold: #d4af37; /* Warm gold */
             --image-ratio: 66.67%;
             --section-spacing: 4rem;
             
@@ -54,7 +56,7 @@
             flex-direction: column;
         }
 
-        /* Notice Bar */
+        /* Notice Bar - KEPT INTACT */
         .notice-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
@@ -84,7 +86,7 @@
             height: 100%;
         }
         
-        /* Navigation Menu */
+        /* Navigation Menu - KEPT INTACT */
         .nav-container {
             position: fixed;
             top: 40px; /* Positioned below notice bar */
@@ -147,67 +149,69 @@
             font-weight: 600;
         }
         .nav-link.newsletter {
-    background-color: #05bfdb;
-    border-radius: 4px;
-    margin: 0.5rem 1rem;
-    font-weight: 600;
-    color: white;
-}
+            background-color: #05bfdb;
+            border-radius: 4px;
+            margin: 0.5rem 1rem;
+            font-weight: 600;
+            color: white;
+        }
 
-.nav-link.newsletter:hover {
-    background-color: #0497ac;
-    transform: translateY(-2px);
-}
-/* Desktop only */
-@media (min-width: 769px) {
-    .nav-link.newsletter {
-        position: relative;
-        display: inline-block;
-        width: 160px;   /* adjust as needed */
-        text-align: center;
-        padding: 8px 12px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        font-family: Arial, sans-serif;
-    }
+        .nav-link.newsletter:hover {
+            background-color: #0497ac;
+            transform: translateY(-2px);
+        }
+        
+        /* Desktop only */
+        @media (min-width: 769px) {
+            .nav-link.newsletter {
+                position: relative;
+                display: inline-block;
+                width: 160px;   /* adjust as needed */
+                text-align: center;
+                padding: 8px 12px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                font-family: Arial, sans-serif;
+            }
 
-    /* Default menu text - same font size as other menu items */
-    .nav-link.newsletter .default-text {
-        display: inline-block;
-        transition: opacity 0.3s ease;
-        font-size: 14px; /* same as your other menu items */
-    }
+            /* Default menu text - same font size as other menu items */
+            .nav-link.newsletter .default-text {
+                display: inline-block;
+                transition: opacity 0.3s ease;
+                font-size: 14px; /* same as your other menu items */
+            }
 
-    /* Hide hover text by default */
-    .nav-link.newsletter .hover-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        font-size: 9px;  /* small to fit inside button */
-        white-space: nowrap;
-        display: flex;
-        align-items: center;
-        gap: 4px;  /* space between icon and text */
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
+            /* Hide hover text by default */
+            .nav-link.newsletter .hover-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                font-size: 9px;  /* small to fit inside button */
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+                gap: 4px;  /* space between icon and text */
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
 
-    /* Hover effect */
-    .nav-link.newsletter:hover .default-text {
-        opacity: 0;  /* hide original text */
-    }
+            /* Hover effect */
+            .nav-link.newsletter:hover .default-text {
+                opacity: 0;  /* hide original text */
+            }
 
-    .nav-link.newsletter:hover .hover-text {
-        opacity: 1;  /* show download icon + text */
-    }
+            .nav-link.newsletter:hover .hover-text {
+                opacity: 1;  /* show download icon + text */
+            }
 
-    /* Download icon styling */
-    .nav-link.newsletter .hover-text i {
-        font-size: 12px;  /* adjust icon size */
-    }
-}
+            /* Download icon styling */
+            .nav-link.newsletter .hover-text i {
+                font-size: 12px;  /* adjust icon size */
+            }
+        }
+        
         .nav-link.donate:hover {
             background-color: #ff5252;
             transform: translateY(-2px);
@@ -249,7 +253,7 @@
             padding-left: 1.3rem;
         }
 
-        /* Mobile Navigation Overlay */
+        /* Mobile Navigation Overlay - KEPT INTACT */
         .mobile-nav-overlay {
             position: fixed;
             top: 0;
@@ -268,7 +272,7 @@
             visibility: visible;
         }
         
-        /* Mobile menu container */
+        /* Mobile menu container - KEPT INTACT */
         .mobile-menu-container {
             position: fixed;
             top: 0;
@@ -287,7 +291,7 @@
             right: 0;
         }
         
-        /* Mobile menu header */
+        /* Mobile menu header - KEPT INTACT */
         .mobile-menu-header {
             display: flex;
             justify-content: space-between;
@@ -320,7 +324,7 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
-        /* Mobile menu content */
+        /* Mobile menu content - KEPT INTACT */
         .mobile-menu-content {
             padding: 20px 0;
         }
@@ -353,13 +357,14 @@
             font-weight: 600;
         }
         .mobile-nav-link.newsletter {
-    background-color: #05bfdb;
-    font-weight: 600;
-}
+            background-color: #05bfdb;
+            font-weight: 600;
+        }
 
-.mobile-nav-link.newsletter:hover {
-    background-color: #0497ac;
-}
+        .mobile-nav-link.newsletter:hover {
+            background-color: #0497ac;
+        }
+        
         .mobile-nav-link.donate:hover {
             background-color: #ff5252;
         }
@@ -402,41 +407,39 @@
             padding-left: 45px;
         }
 
-       /* Reduce navbar height only on desktop */
-@media (min-width: 1025px) {
+        /* Reduce navbar height only on desktop - KEPT INTACT */
+        @media (min-width: 1025px) {
+            /* Reduce the overall navbar height */
+            .nav-header {
+                padding: 6px 20px !important;
+            }
 
-    /* Reduce the overall navbar height */
-    .nav-header {
-        padding: 6px 20px !important;
-    }
+            /* Make the logo smaller so the bar height reduces */
+            .nav-logo {
+                height: 38px !important; 
+            }
 
-    /* Make the logo smaller so the bar height reduces */
-    .nav-logo {
-        height: 38px !important; 
-    }
+            /* Reduce height of each menu link */
+            .nav-link {
+                padding: 0.55rem 1rem !important;
+                font-size: 15px;
+            }
 
-    /* Reduce height of each menu link */
-    .nav-link {
-        padding: 0.55rem 1rem !important;
-        font-size: 15px;
-    }
+            /* Reduce spacing inside dropdowns */
+            .dropdown-item {
+                padding: 0.6rem 1rem !important;
+            }
 
-    /* Reduce spacing inside dropdowns */
-    .dropdown-item {
-        padding: 0.6rem 1rem !important;
-    }
-
-    /* Fix dropdown alignment after height change */
-    .nav-item .dropdown-menu {
-        top: 90% !important;
-    }
-}
- 
-
-        /* Sacred Header with Cross Motif */
+            /* Fix dropdown alignment after height change */
+            .nav-item .dropdown-menu {
+                top: 90% !important;
+            }
+        }
+        
+        /* REDESIGNED HEADER WITH ANIMATIONS */
         .header {
             position: relative;
-            height: 280px;
+            height: 360px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -444,79 +447,188 @@
             text-align: center;
             padding: 2rem;
             overflow: hidden;
-            background: linear-gradient(rgba(74, 107, 138, 0.9), rgba(93, 77, 106, 0.9));
             margin-bottom: var(--section-spacing);
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             margin-top: 160px; /* Account for fixed header */
-        }
-
-        .header::before {
-            content: '✝';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20rem;
-            color: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, 
+                rgba(123, 63, 93, 0.95) 0%, 
+                rgba(74, 123, 138, 0.85) 50%, 
+                rgba(123, 63, 93, 0.95) 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 95%);
             z-index: 1;
         }
 
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 6vw, 4rem);
-            font-weight: 700;
-            color: white;
-            position: relative;
-            z-index: 2;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-            color: var(--gold);
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 500;
-        }
-
-        /* Main Content Container */
-        .container {
-            flex: 1;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem var(--section-spacing);
-            position: relative;
-        }
-
-        /* Section Styling */
-        .content-section {
-            background: white;
-            border-radius: 8px;
-            padding: 3rem;
-            margin-bottom: var(--section-spacing);
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--gold);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .content-section::before {
+        /* Animated background */
+        .header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><path fill="rgba(201, 166, 107, 0.03)" d="M30,10L50,30L70,10L90,30L70,50L90,70L70,90L50,70L30,90L10,70L30,50L10,30L30,10Z"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(232, 168, 124, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(74, 123, 138, 0.1) 0%, transparent 50%);
+            animation: pulseBackground 10s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes pulseBackground {
+            0% {
+                background: 
+                    radial-gradient(circle at 20% 30%, rgba(232, 168, 124, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 80%, rgba(74, 123, 138, 0.1) 0%, transparent 50%);
+            }
+            100% {
+                background: 
+                    radial-gradient(circle at 25% 35%, rgba(232, 168, 124, 0.2) 0%, transparent 50%),
+                    radial-gradient(circle at 75% 65%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+                    radial-gradient(circle at 45% 75%, rgba(74, 123, 138, 0.15) 0%, transparent 50%);
+            }
+        }
+
+        /* Floating cross elements */
+        .cross-decoration {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
             z-index: 0;
+            animation: floatCross 15s infinite linear;
+        }
+
+        .cross-decoration:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .cross-decoration:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: -5s;
+            font-size: 2.5rem;
+        }
+
+        .cross-decoration:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: -10s;
+            font-size: 1.8rem;
+        }
+
+        @keyframes floatCross {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--gold);
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 500;
+            animation: fadeInUp 1.2s ease-out 0.3s both;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* NEW LAYOUT: Main Content Container */
+        .container {
+            flex: 1;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem var(--section-spacing);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: var(--section-spacing);
+        }
+
+        /* Redesigned Section Styling */
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(123, 63, 93, 0.08);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(123, 63, 93, 0.12);
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary) 0%, transparent 70%);
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
         }
 
         .content-section p {
@@ -524,139 +636,300 @@
             font-size: 1.1rem;
             position: relative;
             z-index: 1;
+            line-height: 1.8;
         }
 
         .content-section p:last-child {
             margin-bottom: 0;
         }
 
-        /* Slideshow Section */
+        /* REDESIGNED FILMSTRIP SLIDESHOW */
         .slideshow-container {
             position: relative;
             width: 100%;
-            height: 500px;
-            margin-bottom: var(--section-spacing);
+            height: 550px;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+            padding: 30px 0;
+            border: 15px solid #2c2c2c;
+            border-top-width: 40px;
+            border-bottom-width: 40px;
         }
 
-        .slide {
+        /* Filmstrip sprocket holes effect */
+        .slideshow-container::before,
+        .slideshow-container::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.1) 20px,
+                rgba(255, 255, 255, 0.1) 40px
+            );
+            z-index: 2;
+        }
+
+        .slideshow-container::before {
+            top: 0;
+        }
+
+        .slideshow-container::after {
+            bottom: 0;
+        }
+
+        /* Filmstrip track */
+        .filmstrip-track {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            animation: scrollFilmstrip 40s linear infinite;
+            gap: 20px;
+            padding: 0 20px;
+            will-change: transform;
+        }
+
+        @keyframes scrollFilmstrip {
+            0% {
+                transform: translateY(-50%) translateX(0);
+            }
+            100% {
+                transform: translateY(-50%) translateX(calc(-50% - 10px));
+            }
+        }
+
+        /* Individual film frames */
+        .film-frame {
+            flex: 0 0 auto;
+            width: 350px;
+            height: 400px;
+            position: relative;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: 8px solid #111;
+            border-top: 12px solid #111;
+            border-bottom: 12px solid #111;
+        }
+
+        /* Film perforations (sprocket holes) */
+        .film-frame::before,
+        .film-frame::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            width: 10px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 15px,
+                #444 15px,
+                #444 30px
+            );
+            z-index: 1;
+        }
+
+        .film-frame::after {
+            left: auto;
+            right: -10px;
+        }
+
+        .film-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .film-frame:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            z-index: 5;
+        }
+
+        .film-frame:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Film frame label */
+        .film-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .film-frame:hover .film-label {
+            opacity: 1;
+        }
+
+        /* Pause animation on hover */
+        .slideshow-container:hover .filmstrip-track {
+            animation-play-state: paused;
+        }
+
+        /* PARTICLE DISPERSION EFFECT */
+        .particles-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000;
         }
 
-        .slide.active {
-            opacity: 1;
+        /* Top particles */
+        .particle.top {
+            top: -50px;
+            background: radial-gradient(circle, 
+                rgba(232, 168, 124, 0.6) 0%, 
+                rgba(212, 175, 55, 0.4) 30%,
+                transparent 70%);
         }
 
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            background-color: #000;
+        /* Bottom particles */
+        .particle.bottom {
+            bottom: -50px;
+            background: radial-gradient(circle, 
+                rgba(74, 123, 138, 0.6) 0%, 
+                rgba(123, 63, 93, 0.4) 30%,
+                transparent 70%);
         }
 
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(calc(-100vh - 100px)) translateX(calc(var(--x-move) * 100px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Slideshow controls */
         .slideshow-controls {
             position: absolute;
-            bottom: 20px;
+            bottom: 60px;
             left: 0;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10;
+            gap: 20px;
         }
 
-        .slideshow-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .slideshow-dot {
-            width: 12px;
-            height: 12px;
+        .slideshow-btn {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--gold);
+            color: white;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
-        .slideshow-dot.active {
-            background-color: white;
-            transform: scale(1.2);
+        .slideshow-btn:hover {
+            background: var(--gold);
+            color: #000;
+            transform: scale(1.1);
         }
 
-        .slideshow-dot:hover {
-            background-color: rgba(255, 255, 255, 0.8);
+        .slideshow-counter {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            font-family: 'Courier New', monospace;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Leadership Section */
+        /* REDESIGNED Leadership Section */
         .leadership-section {
-            margin-bottom: var(--section-spacing);
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--gold);
-            border-radius: 2px;
+            margin-bottom: 0;
         }
 
         .leadership-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
             width: 100%;
         }
 
         .leader-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(123, 63, 93, 0.1);
             transition: all 0.4s ease;
             height: 100%;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s forwards;
+            position: relative;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .leader-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: 1;
         }
 
         .leader-image {
             width: 100%;
-            height: 300px;
+            height: 280px;
             position: relative;
             overflow: hidden;
         }
@@ -669,92 +942,136 @@
         }
 
         .leader-card:hover .leader-image img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .leader-info {
-            padding: 1.5rem;
+            padding: 1.8rem;
             text-align: center;
+            background: linear-gradient(to bottom, white, #fcf9f7);
         }
 
         .leader-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
 
         .leader-position {
-            font-size: 1rem;
-            color: var(--accent);
+            font-size: 0.95rem;
+            color: var(--secondary);
             font-weight: 600;
             margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            padding: 0.3rem 1rem;
+            background: rgba(232, 168, 124, 0.1);
+            border-radius: 20px;
+            display: inline-block;
         }
 
-        /* WhatsApp Button */
+        /* REDESIGNED WhatsApp Button */
         .whatsapp-section {
-            text-align: center;
-            margin-bottom: var(--section-spacing);
+            margin-bottom: 0;
+            background: linear-gradient(135deg, #fcf9f7, white);
+            border: 1px solid rgba(232, 168, 124, 0.3);
         }
 
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            background-color: #25D366;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #25D366, #1da851);
             color: white;
-            padding: 18px 32px;
+            padding: 20px 35px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             text-decoration: none;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
             transition: all 0.3s ease;
             margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .whatsapp-btn:hover::before {
+            left: 100%;
         }
 
         .whatsapp-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
-            background-color: #1da851;
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
         }
 
         .whatsapp-btn i {
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
 
         .whatsapp-text {
             font-size: 1rem;
             color: var(--dark);
             margin-top: 1rem;
+            text-align: center;
+            opacity: 0.9;
         }
 
-        /* Gallery Section */
+        /* REDESIGNED Gallery Section */
         .gallery-section {
-            margin-bottom: var(--section-spacing);
+            margin-bottom: 0;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
             width: 100%;
         }
 
         .gallery-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(123, 63, 93, 0.1);
             transition: all 0.4s ease;
             height: 100%;
             opacity: 0;
             transform: scale(0.95);
             animation: zoomIn 0.8s forwards;
             cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-card:hover::after {
+            opacity: 1;
         }
 
         @keyframes zoomIn {
@@ -767,7 +1084,7 @@
         .image-container {
             width: 100%;
             height: 0;
-            padding-bottom: 66.67%;
+            padding-bottom: 75%;
             position: relative;
             overflow: hidden;
         }
@@ -783,12 +1100,15 @@
         }
 
         .gallery-card:hover .image-container img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .gallery-title {
-            padding: 1.5rem;
+            padding: 1.8rem;
             text-align: center;
+            position: relative;
+            z-index: 2;
+            background: white;
         }
 
         .gallery-title h3 {
@@ -802,7 +1122,7 @@
         .gallery-title p {
             font-size: 0.95rem;
             color: var(--dark);
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
         /* Image Gallery Modal */
@@ -833,7 +1153,7 @@
             max-width: 1000px;
             height: 85vh;
             background-color: #000;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             animation: modalFadeIn 0.3s ease;
         }
@@ -853,23 +1173,25 @@
             position: absolute;
             top: 15px;
             right: 20px;
-            background: none;
+            background: rgba(0, 0, 0, 0.5);
             border: none;
             color: white;
             font-size: 2rem;
             cursor: pointer;
             z-index: 10;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
         .gallery-modal-close:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
         }
 
         .gallery-modal-image {
@@ -903,15 +1225,16 @@
             background-color: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
         .gallery-modal-prev:hover,
@@ -924,9 +1247,13 @@
             color: white;
             font-size: 1.2rem;
             font-weight: 500;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
         }
 
-        /* Footer Styles */
+        /* Footer Styles - KEPT INTACT */
         .footer {
             background: var(--footer-gradient);
             color: white;
@@ -1065,7 +1392,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: var(--nav-gradient);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-radius: 50%;
             display: flex;
@@ -1073,7 +1400,7 @@
             justify-content: center;
             font-size: 1.2rem;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 10px rgba(123, 63, 93, 0.3);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -1087,25 +1414,37 @@
         
         .scroll-top:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(123, 63, 93, 0.4);
         }
 
         /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .film-frame {
+                width: 300px;
+                height: 350px;
+            }
+        }
+
         @media (max-width: 992px) {
             :root {
                 --section-spacing: 3rem;
             }
             
             .header {
-                height: 240px;
+                height: 300px;
             }
             
             .content-section {
-                padding: 2.5rem;
+                padding: 2rem;
             }
             
             .slideshow-container {
-                height: 400px;
+                height: 500px;
+            }
+            
+            .film-frame {
+                width: 280px;
+                height: 330px;
             }
             
             .leader-image {
@@ -1119,9 +1458,9 @@
             }
             
             .header {
-                height: 220px;
-                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+                height: 260px;
                 margin-top: 100px;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
             }
             
             .container {
@@ -1129,24 +1468,29 @@
             }
             
             .content-section {
-                padding: 2rem;
+                padding: 1.8rem;
             }
             
             .slideshow-container {
-                height: 350px;
+                height: 450px;
+            }
+            
+            .film-frame {
+                width: 240px;
+                height: 300px;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .leadership-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 2rem;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
             }
             
             .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
                 gap: 1.5rem;
             }
             
@@ -1186,13 +1530,13 @@
             }
             
             .header {
-                height: 200px;
+                height: 220px;
                 padding: 1.5rem;
                 margin-top: 90px;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .tagline {
@@ -1204,7 +1548,16 @@
             }
             
             .slideshow-container {
-                height: 300px;
+                height: 380px;
+                padding: 20px 0;
+                border-width: 10px;
+                border-top-width: 30px;
+                border-bottom-width: 30px;
+            }
+            
+            .film-frame {
+                width: 200px;
+                height: 250px;
             }
             
             .leadership-grid {
@@ -1226,8 +1579,23 @@
             }
             
             .whatsapp-btn {
-                padding: 15px 25px;
+                padding: 18px 25px;
+                font-size: 1.1rem;
+            }
+            
+            .slideshow-controls {
+                bottom: 40px;
+            }
+            
+            .slideshow-btn {
+                width: 40px;
+                height: 40px;
                 font-size: 1rem;
+            }
+            
+            .slideshow-counter {
+                font-size: 1rem;
+                padding: 8px 15px;
             }
         }
 
@@ -1238,14 +1606,14 @@
     </style>
 </head>
 <body>
-    <!-- Notice Bar -->
+    <!-- Notice Bar - KEPT INTACT -->
     <div class="notice-bar">
         <a href="event.html">
             <span>📢 From December 6, Sunday morning Holy Qurbana will be at 10:00 AM due to school holidays</span>
         </a>
     </div>
 
-    <!-- Navigation Menu -->
+    <!-- Navigation Menu - KEPT INTACT -->
     <nav class="nav-container">
         <div class="nav-header">
             <a href="index.html">
@@ -1317,10 +1685,10 @@
         </ul>
     </nav>
 
-    <!-- Mobile Navigation Overlay -->
+    <!-- Mobile Navigation Overlay - KEPT INTACT -->
     <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
 
-    <!-- Mobile Navigation Menu -->
+    <!-- Mobile Navigation Menu - KEPT INTACT -->
     <div class="mobile-menu-container" id="mobile-menu-container">
         <div class="mobile-menu-header">
             <a href="index.html">
@@ -1404,34 +1772,37 @@
         </div>
     </div>
 
-    <!-- Main Header -->
+    <!-- REDESIGNED Main Header with Animations -->
     <div class="header">
+        <div class="cross-decoration">✝</div>
+        <div class="cross-decoration">✝</div>
+        <div class="cross-decoration">✝</div>
         <h1>Mathruvedi</h1>
         <p class="tagline">Building Strong Families, Nurturing Faith, Empowering Mothers</p>
     </div>
 
     <div class="container">
-        <!-- Photo Slideshow -->
+        <!-- NEW FILMSTRIP SLIDESHOW WITH PARTICLE EFFECTS -->
         <div class="slideshow-container">
-            <div class="slide active">
-                <img src="images/mathruvedicover.jpg" alt="Mathruvedi Cover Image 1">
+            <!-- Particle dispersion effect -->
+            <div class="particles-container" id="particles-container"></div>
+            
+            <!-- Filmstrip track -->
+            <div class="filmstrip-track" id="filmstrip-track">
+                <!-- Film frames will be added dynamically -->
             </div>
-            <div class="slide">
-                <img src="images/mathruvedicover1.jpg" alt="Mathruvedi Cover Image 2">
-            </div>
-            <div class="slide">
-                <img src="images/mathruvedicover2.jpg" alt="Mathruvedi Cover Image 3">
-            </div>
-            <div class="slide">
-                <img src="images/mathruvedicover3.jpg" alt="Mathruvedi Cover Image 4">
-            </div>
+            
+            <!-- Slideshow controls -->
             <div class="slideshow-controls">
-                <div class="slideshow-dots">
-                    <div class="slideshow-dot active" data-slide="0"></div>
-                    <div class="slideshow-dot" data-slide="1"></div>
-                    <div class="slideshow-dot" data-slide="2"></div>
-                    <div class="slideshow-dot" data-slide="3"></div>
+                <button class="slideshow-btn" id="prev-btn">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <div class="slideshow-counter">
+                    <span id="current-frame">1</span> / <span id="total-frames">12</span>
                 </div>
+                <button class="slideshow-btn" id="next-btn">
+                    <i class="fas fa-play"></i>
+                </button>
             </div>
         </div>
 
@@ -1440,6 +1811,7 @@
             <h2 class="section-title">About Mathruvedi</h2>
             <p>SM Mission Wellington Mathruvedhi launched on March 9, 2024 the day after International Women's Day. Mathruvedhi focuses on building strong families, nurturing faith, providing mutual support and empowering mothers within the church and community.</p>
             <p>Mathruvedhi actively participates in church activities and assisting with spiritual events. A core mission is to help mothers nurture the faith of their children and pass on Christian values to future generations.</p>
+            <p>Through regular gatherings, prayer meetings, and community service, Mathruvedhi creates a supportive network where mothers can share experiences, strengthen their spiritual lives, and contribute to the growth of the parish community.</p>
         </div>
 
         <!-- Leadership Section -->
@@ -1593,7 +1965,7 @@
         </div>
     </div>
     
-    <!-- Footer Section -->
+    <!-- Footer Section - KEPT INTACT -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-column">
@@ -1642,7 +2014,7 @@
     </div>
     
     <script>
-        // Mobile Navigation Functionality
+        // Mobile Navigation Functionality - KEPT INTACT
         const navToggle = document.getElementById('nav-toggle');
         const mobileMenuContainer = document.getElementById('mobile-menu-container');
         const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
@@ -1730,44 +2102,188 @@
             });
         });
 
-        // Slideshow functionality
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slideshow-dot');
-        
-        function showSlide(index) {
-            // Hide all slides
-            slides.forEach(slide => {
-                slide.classList.remove('active');
+        // Filmstrip Slideshow Data
+        const filmstripImages = [
+            { src: 'images/mathruvedicover.jpg', label: 'Mathruvedi Gathering' },
+            { src: 'images/mathruvedicover1.jpg', label: 'Community Event' },
+            { src: 'images/mathruvedicover2.jpg', label: 'Prayer Meeting' },
+            { src: 'images/mathruvedicover3.jpg', label: 'Fellowship' },
+            { src: 'images/mathruvedidecoration1.jpg', label: 'Church Decoration' },
+            { src: 'images/mathruvedidecoration2.jpg', label: 'Altar Preparation' },
+            { src: 'images/kozhukattasaturday1.jpg', label: 'Kozhukatta Preparation' },
+            { src: 'images/kozhukattasaturday2.jpg', label: 'Traditional Cooking' },
+            { src: 'images/kozhukattasaturday3.jpg', label: 'Sharing Food' },
+            { src: 'images/kozhukattasaturday4.jpg', label: 'Family Gathering' },
+            { src: 'images/kozhukattasaturday5.jpg', label: 'Community Bonding' },
+            { src: 'images/kozhukattasaturday6.jpg', label: 'Cultural Exchange' }
+        ];
+
+        // Filmstrip Slideshow Functionality
+        const filmstripTrack = document.getElementById('filmstrip-track');
+        const currentFrameSpan = document.getElementById('current-frame');
+        const totalFramesSpan = document.getElementById('total-frames');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const playPauseBtn = document.getElementById('prev-btn'); // Using prev as pause
+        const playBtn = document.getElementById('next-btn'); // Using next as play
+
+        let isPlaying = true;
+        let currentFrameIndex = 0;
+        let animationSpeed = 40; // seconds for full animation
+
+        // Initialize filmstrip
+        function initFilmstrip() {
+            // Clear existing content
+            filmstripTrack.innerHTML = '';
+            
+            // Set total frames
+            totalFramesSpan.textContent = filmstripImages.length;
+            
+            // Create duplicate images for seamless loop (2 sets)
+            const imagesToShow = [...filmstripImages, ...filmstripImages];
+            
+            imagesToShow.forEach((image, index) => {
+                const filmFrame = document.createElement('div');
+                filmFrame.className = 'film-frame';
+                filmFrame.dataset.index = index % filmstripImages.length;
+                
+                filmFrame.innerHTML = `
+                    <img src="${image.src}" alt="${image.label}">
+                    <div class="film-label">${image.label}</div>
+                `;
+                
+                filmstripTrack.appendChild(filmFrame);
             });
             
-            // Remove active class from all dots
-            dots.forEach(dot => {
-                dot.classList.remove('active');
-            });
+            // Set animation duration based on number of images
+            filmstripTrack.style.animationDuration = `${animationSpeed}s`;
             
-            // Show current slide and activate corresponding dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            slideIndex = index;
-        }
-        
-        // Initialize slideshow
-        function initSlideshow() {
-            // Add click event to dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showSlide(index);
+            // Update frame counter based on position
+            updateFrameCounter();
+            
+            // Add click event to frames
+            document.querySelectorAll('.film-frame').forEach(frame => {
+                frame.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    currentFrameIndex = idx;
+                    updateFrameCounter();
+                    highlightCurrentFrame();
                 });
             });
             
-            // Auto advance slides
-            setInterval(() => {
-                slideIndex = (slideIndex + 1) % slides.length;
-                showSlide(slideIndex);
-            }, 5000);
+            // Control buttons
+            prevBtn.addEventListener('click', togglePlayPause);
+            nextBtn.addEventListener('click', playAnimation);
+            
+            // Highlight current frame initially
+            highlightCurrentFrame();
+            
+            // Update frame counter periodically
+            setInterval(updateFrameCounter, 1000);
         }
-        
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                filmstripTrack.style.animationPlayState = 'paused';
+                prevBtn.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                filmstripTrack.style.animationPlayState = 'running';
+                prevBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function playAnimation() {
+            filmstripTrack.style.animationPlayState = 'running';
+            prevBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            isPlaying = true;
+        }
+
+        function updateFrameCounter() {
+            // Calculate current frame based on animation progress
+            const trackWidth = filmstripTrack.scrollWidth / 2; // Divide by 2 because we duplicated
+            const transform = getComputedStyle(filmstripTrack).transform;
+            
+            if (transform && transform !== 'none') {
+                const matrix = new DOMMatrixReadOnly(transform);
+                const currentTranslateX = matrix.m41;
+                
+                // Calculate which frame is roughly in the middle
+                const progress = Math.abs(currentTranslateX) / trackWidth;
+                currentFrameIndex = Math.floor(progress * filmstripImages.length) % filmstripImages.length;
+            }
+            
+            currentFrameSpan.textContent = currentFrameIndex + 1;
+        }
+
+        function highlightCurrentFrame() {
+            // Remove highlight from all frames
+            document.querySelectorAll('.film-frame').forEach(frame => {
+                frame.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+                frame.style.zIndex = '1';
+            });
+            
+            // Highlight current frame
+            const currentFrames = document.querySelectorAll(`.film-frame[data-index="${currentFrameIndex}"]`);
+            currentFrames.forEach(frame => {
+                frame.style.boxShadow = '0 20px 40px rgba(212, 175, 55, 0.7)';
+                frame.style.zIndex = '10';
+            });
+        }
+
+        // Particle Dispersion Effect
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-container');
+            const particleCount = 80;
+            
+            // Clear existing particles
+            particlesContainer.innerHTML = '';
+            
+            // Create top particles (gold/peach colored)
+            for (let i = 0; i < particleCount / 2; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle top';
+                
+                // Random properties
+                const size = Math.random() * 15 + 5;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 10 + 15;
+                const xMove = Math.random() * 2 - 1; // -1 to 1
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.setProperty('--x-move', xMove);
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Create bottom particles (teal/rose colored)
+            for (let i = 0; i < particleCount / 2; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle bottom';
+                
+                // Random properties
+                const size = Math.random() * 15 + 5;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 10 + 15;
+                const xMove = Math.random() * 2 - 1; // -1 to 1
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.setProperty('--x-move', xMove);
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
         // Image Galleries Data
         const liturgicalImages = [
             'images/mathruvedidecoration1.jpg',
@@ -1916,9 +2432,13 @@
                 card.style.animationDelay = `${index * 0.1 + 0.3}s`;
             });
             
-            // Initialize slideshow and galleries
-            initSlideshow();
+            // Initialize filmstrip slideshow and particles
+            initFilmstrip();
+            createParticles();
             initGalleries();
+            
+            // Regenerate particles every 30 seconds
+            setInterval(createParticles, 30000);
         });
     </script>
 </body>
