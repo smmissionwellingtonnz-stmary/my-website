@@ -13,14 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #7c3aed;
-            --secondary: #10b981;
-            --accent: #f59e0b;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --gold: #d4af37;
-            --rose: #fda4af;
-            --lavender: #c4b5fd;
+            --primary: #4a6b8a;
+            --secondary: #5d4d6a;
+            --accent: #a75d7e;
+            --light: #f8f5f2;
+            --dark: #2a2a2a;
+            --gold: #c9a66b;
             --image-ratio: 66.67%;
             --section-spacing: 4rem;
             
@@ -47,7 +45,7 @@
             overflow-x: hidden;
             width: 100%;
             scroll-behavior: smooth;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.7;
@@ -86,7 +84,7 @@
             height: 100%;
         }
         
-        /* Navigation Menu - FIXED GAP ISSUE */
+        /* Navigation Menu */
         .nav-container {
             position: fixed;
             top: 40px; /* Positioned below notice bar */
@@ -149,67 +147,67 @@
             font-weight: 600;
         }
         .nav-link.newsletter {
-            background-color: #05bfdb;
-            border-radius: 4px;
-            margin: 0.5rem 1rem;
-            font-weight: 600;
-            color: white;
-        }
+    background-color: #05bfdb;
+    border-radius: 4px;
+    margin: 0.5rem 1rem;
+    font-weight: 600;
+    color: white;
+}
 
-        .nav-link.newsletter:hover {
-            background-color: #0497ac;
-            transform: translateY(-2px);
-        }
-        /* Desktop only */
-        @media (min-width: 769px) {
-            .nav-link.newsletter {
-                position: relative;
-                display: inline-block;
-                width: 160px;   /* adjust as needed */
-                text-align: center;
-                padding: 8px 12px;
-                overflow: hidden;
-                transition: all 0.3s ease;
-                font-family: Arial, sans-serif;
-            }
+.nav-link.newsletter:hover {
+    background-color: #0497ac;
+    transform: translateY(-2px);
+}
+/* Desktop only */
+@media (min-width: 769px) {
+    .nav-link.newsletter {
+        position: relative;
+        display: inline-block;
+        width: 160px;   /* adjust as needed */
+        text-align: center;
+        padding: 8px 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        font-family: Arial, sans-serif;
+    }
 
-            /* Default menu text - same font size as other menu items */
-            .nav-link.newsletter .default-text {
-                display: inline-block;
-                transition: opacity 0.3s ease;
-                font-size: 14px; /* same as your other menu items */
-            }
+    /* Default menu text - same font size as other menu items */
+    .nav-link.newsletter .default-text {
+        display: inline-block;
+        transition: opacity 0.3s ease;
+        font-size: 14px; /* same as your other menu items */
+    }
 
-            /* Hide hover text by default */
-            .nav-link.newsletter .hover-text {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                opacity: 0;
-                font-size: 9px;  /* small to fit inside button */
-                white-space: nowrap;
-                display: flex;
-                align-items: center;
-                gap: 4px;  /* space between icon and text */
-                pointer-events: none;
-                transition: opacity 0.3s ease;
-            }
+    /* Hide hover text by default */
+    .nav-link.newsletter .hover-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        font-size: 9px;  /* small to fit inside button */
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 4px;  /* space between icon and text */
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
 
-            /* Hover effect */
-            .nav-link.newsletter:hover .default-text {
-                opacity: 0;  /* hide original text */
-            }
+    /* Hover effect */
+    .nav-link.newsletter:hover .default-text {
+        opacity: 0;  /* hide original text */
+    }
 
-            .nav-link.newsletter:hover .hover-text {
-                opacity: 1;  /* show download icon + text */
-            }
+    .nav-link.newsletter:hover .hover-text {
+        opacity: 1;  /* show download icon + text */
+    }
 
-            /* Download icon styling */
-            .nav-link.newsletter .hover-text i {
-                font-size: 12px;  /* adjust icon size */
-            }
-        }
+    /* Download icon styling */
+    .nav-link.newsletter .hover-text i {
+        font-size: 12px;  /* adjust icon size */
+    }
+}
         .nav-link.donate:hover {
             background-color: #ff5252;
             transform: translateY(-2px);
@@ -355,13 +353,13 @@
             font-weight: 600;
         }
         .mobile-nav-link.newsletter {
-            background-color: #05bfdb;
-            font-weight: 600;
-        }
+    background-color: #05bfdb;
+    font-weight: 600;
+}
 
-        .mobile-nav-link.newsletter:hover {
-            background-color: #0497ac;
-        }
+.mobile-nav-link.newsletter:hover {
+    background-color: #0497ac;
+}
         .mobile-nav-link.donate:hover {
             background-color: #ff5252;
         }
@@ -405,39 +403,40 @@
         }
 
        /* Reduce navbar height only on desktop */
-        @media (min-width: 1025px) {
+@media (min-width: 1025px) {
 
-            /* Reduce the overall navbar height */
-            .nav-header {
-                padding: 6px 20px !important;
-            }
+    /* Reduce the overall navbar height */
+    .nav-header {
+        padding: 6px 20px !important;
+    }
 
-            /* Make the logo smaller so the bar height reduces */
-            .nav-logo {
-                height: 38px !important; 
-            }
+    /* Make the logo smaller so the bar height reduces */
+    .nav-logo {
+        height: 38px !important; 
+    }
 
-            /* Reduce height of each menu link */
-            .nav-link {
-                padding: 0.55rem 1rem !important;
-                font-size: 15px;
-            }
+    /* Reduce height of each menu link */
+    .nav-link {
+        padding: 0.55rem 1rem !important;
+        font-size: 15px;
+    }
 
-            /* Reduce spacing inside dropdowns */
-            .dropdown-item {
-                padding: 0.6rem 1rem !important;
-            }
+    /* Reduce spacing inside dropdowns */
+    .dropdown-item {
+        padding: 0.6rem 1rem !important;
+    }
 
-            /* Fix dropdown alignment after height change */
-            .nav-item .dropdown-menu {
-                top: 90% !important;
-            }
-        }
+    /* Fix dropdown alignment after height change */
+    .nav-item .dropdown-menu {
+        top: 90% !important;
+    }
+}
+ 
 
-        /* New Header Design - REMOVED GAP */
+        /* Sacred Header with Cross Motif */
         .header {
             position: relative;
-            height: 500px;
+            height: 280px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -445,114 +444,45 @@
             text-align: center;
             padding: 2rem;
             overflow: hidden;
+            background: linear-gradient(rgba(74, 107, 138, 0.9), rgba(93, 77, 106, 0.9));
             margin-bottom: var(--section-spacing);
-            margin-top: 40px; /* Only notice bar height, no gap */
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            clip-path: ellipse(100% 85% at 50% 15%);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-top: 160px; /* Account for fixed header */
         }
 
         .header::before {
-            content: '';
+            content: '✝';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"/></svg>');
-            background-size: 100% auto;
-            z-index: 1;
-        }
-
-        .header-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            color: rgba(255, 255, 255, 0.05);
             z-index: 1;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
             font-weight: 700;
             color: white;
             position: relative;
             z-index: 2;
-            letter-spacing: -0.5px;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         }
 
         .tagline {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: rgba(255, 255, 255, 0.95);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: var(--gold);
             position: relative;
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        /* Cover Slideshow */
-        .slideshow-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-        
-        .slideshow-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-        
-        .slideshow-slide.active {
-            opacity: 1;
-        }
-        
-        .slideshow-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.7);
-        }
-        
-        .slideshow-dots {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            z-index: 3;
-        }
-        
-        .dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .dot.active {
-            background-color: white;
-            transform: scale(1.3);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-weight: 500;
         }
 
         /* Main Content Container */
@@ -565,81 +495,28 @@
             position: relative;
         }
 
-        /* New Section Design */
+        /* Section Styling */
         .content-section {
             background: white;
-            border-radius: 20px;
-            padding: 3.5rem;
+            border-radius: 8px;
+            padding: 3rem;
             margin-bottom: var(--section-spacing);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--gold);
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            border: 1px solid rgba(0,0,0,0.03);
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .content-section:nth-child(1) { animation-delay: 0.1s; }
-        .content-section:nth-child(2) { animation-delay: 0.2s; }
-        .content-section:nth-child(3) { animation-delay: 0.3s; }
-        .content-section:nth-child(4) { animation-delay: 0.4s; }
 
         .content-section::before {
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, var(--lavender) 0%, transparent 70%);
-            border-radius: 0 0 0 100px;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .content-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
             left: 0;
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(135deg, var(--rose) 0%, transparent 70%);
-            border-radius: 0 100px 0 0;
-            opacity: 0.1;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" width="100" height="100"/><path fill="rgba(201, 166, 107, 0.03)" d="M30,10L50,30L70,10L90,30L70,50L90,70L70,90L50,70L30,90L10,70L30,50L10,30L30,10Z"/></svg>');
+            opacity: 0.3;
             z-index: 0;
-        }
-
-        .section-title {
-            color: var(--primary);
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--secondary));
-            border-radius: 2px;
         }
 
         .content-section p {
@@ -647,181 +524,237 @@
             font-size: 1.1rem;
             position: relative;
             z-index: 1;
-            color: #4a5568;
-            line-height: 1.8;
         }
 
         .content-section p:last-child {
             margin-bottom: 0;
         }
 
+        /* Slideshow Section */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin-bottom: var(--section-spacing);
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            background-color: #000;
+        }
+
+        .slideshow-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .slideshow-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .slideshow-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .slideshow-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .slideshow-dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
         /* Leadership Section */
+        .leadership-section {
+            margin-bottom: var(--section-spacing);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold);
+            border-radius: 2px;
+        }
+
         .leadership-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
             width: 100%;
         }
 
         .leader-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
             height: 100%;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeInUp 0.8s ease-out forwards;
-            border: 1px solid rgba(0,0,0,0.05);
+            animation: fadeInUp 0.8s forwards;
         }
 
-        .leader-card:nth-child(1) { animation-delay: 0.1s; }
-        .leader-card:nth-child(2) { animation-delay: 0.2s; }
-        .leader-card:nth-child(3) { animation-delay: 0.3s; }
-        .leader-card:nth-child(4) { animation-delay: 0.4s; }
-        .leader-card:nth-child(5) { animation-delay: 0.5s; }
-        .leader-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .leader-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .leader-image-container {
+        .leader-image {
             width: 100%;
-            height: 0;
-            padding-bottom: 100%;
+            height: 300px;
             position: relative;
             overflow: hidden;
         }
 
-        .leader-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .leader-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
 
-        .leader-card:hover .leader-image-container img {
-            transform: scale(1.08);
+        .leader-card:hover .leader-image img {
+            transform: scale(1.05);
         }
 
         .leader-info {
             padding: 1.5rem;
             text-align: center;
-            position: relative;
-            z-index: 1;
-            background: white;
-        }
-
-        .leader-role {
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 20px;
         }
 
         .leader-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
             font-weight: 700;
-            font-size: 1.3rem;
+            color: var(--primary);
             margin-bottom: 0.5rem;
-            color: var(--dark);
+        }
+
+        .leader-position {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* WhatsApp Button */
         .whatsapp-section {
             text-align: center;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            border-top: none;
+            margin-bottom: var(--section-spacing);
         }
 
-        .whatsapp-section .section-title {
-            color: white;
-        }
-
-        .whatsapp-section .section-title::after {
-            background: white;
-        }
-
-        .whatsapp-section p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .whatsapp-button {
+        .whatsapp-btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 12px;
-            background-color: white;
-            color: #128C7E;
-            padding: 18px 36px;
+            background-color: #25D366;
+            color: white;
+            padding: 18px 32px;
             border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
             font-size: 1.2rem;
-            margin-top: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            margin-top: 1.5rem;
         }
 
-        .whatsapp-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.7s ease;
-            z-index: -1;
-        }
-
-        .whatsapp-button:hover {
+        .whatsapp-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+            background-color: #1da851;
         }
 
-        .whatsapp-button:hover::before {
-            left: 100%;
-        }
-
-        .whatsapp-button i {
+        .whatsapp-btn i {
             font-size: 1.8rem;
         }
 
+        .whatsapp-text {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-top: 1rem;
+        }
+
         /* Gallery Section */
+        .gallery-section {
+            margin-bottom: var(--section-spacing);
+        }
+
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
             width: 100%;
         }
 
         .gallery-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.4s ease;
             height: 100%;
             opacity: 0;
             transform: scale(0.95);
             animation: zoomIn 0.8s forwards;
-            border: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer;
         }
 
         @keyframes zoomIn {
@@ -831,20 +764,12 @@
             }
         }
 
-        .gallery-card:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-card:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-card:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-card:nth-child(4) { animation-delay: 0.4s; }
-        .gallery-card:nth-child(5) { animation-delay: 0.5s; }
-        .gallery-card:nth-child(6) { animation-delay: 0.6s; }
-
         .image-container {
             width: 100%;
             height: 0;
-            padding-bottom: 75%;
+            padding-bottom: 66.67%;
             position: relative;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .image-container img {
@@ -854,34 +779,34 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: transform 0.6s ease;
         }
 
         .gallery-card:hover .image-container img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
-        .gallery-info {
+        .gallery-title {
             padding: 1.5rem;
             text-align: center;
         }
 
-        .gallery-title {
+        .gallery-title h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
             color: var(--primary);
+            margin-bottom: 0.5rem;
         }
 
-        .gallery-description {
+        .gallery-title p {
+            font-size: 0.95rem;
             color: var(--dark);
-            opacity: 0.7;
-            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
-        /* Lightbox Gallery Modal */
-        .lightbox-modal {
-            display: none;
+        /* Image Gallery Modal */
+        .gallery-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -889,145 +814,119 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.95);
             z-index: 2000;
+            display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
-        .lightbox-modal.active {
-            display: flex;
+        .gallery-modal.active {
             opacity: 1;
+            visibility: visible;
         }
 
-        .lightbox-content {
+        .gallery-modal-content {
             position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            width: auto;
-            height: auto;
-            background: transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            width: 90%;
+            max-width: 1000px;
+            height: 85vh;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s ease;
         }
 
-        .lightbox-image-container {
-            max-width: 100%;
-            max-height: 80vh;
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .gallery-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .gallery-modal-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-modal-image {
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .lightbox-image-container img {
+        .gallery-modal-image img {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            display: block;
         }
 
-        .lightbox-nav {
+        .gallery-modal-nav {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: 20px;
+            left: 0;
             width: 100%;
             display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-        }
-
-        .lightbox-nav-btn {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            color: white;
-            border: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.2);
+            gap: 30px;
         }
 
-        .lightbox-nav-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.1);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            color: white;
+        .gallery-modal-prev,
+        .gallery-modal-next {
+            background-color: rgba(255, 255, 255, 0.2);
             border: none;
+            color: white;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.2);
-            z-index: 2001;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(90deg);
-        }
-
-        .lightbox-caption {
-            color: white;
-            text-align: center;
-            padding: 20px 0;
             font-size: 1.2rem;
-            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .gallery-modal-prev:hover,
+        .gallery-modal-next:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .gallery-modal-counter {
+            color: white;
+            font-size: 1.2rem;
             font-weight: 500;
         }
 
-        .lightbox-thumbnails {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-            max-width: 90%;
-        }
-
-        .lightbox-thumbnail {
-            width: 70px;
-            height: 70px;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .lightbox-thumbnail:hover, .lightbox-thumbnail.active {
-            opacity: 1;
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .lightbox-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Footer Styles - WITH WORKING ANIMATION */
+        /* Footer Styles */
         .footer {
             background: var(--footer-gradient);
             color: white;
@@ -1166,7 +1065,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--nav-gradient);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -1174,12 +1073,11 @@
             justify-content: center;
             font-size: 1.2rem;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 999;
-            border: none;
         }
         
         .scroll-top.active {
@@ -1188,8 +1086,8 @@
         }
         
         .scroll-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         /* Responsive Adjustments */
@@ -1199,15 +1097,19 @@
             }
             
             .header {
-                height: 450px;
+                height: 240px;
             }
             
             .content-section {
-                padding: 3rem;
+                padding: 2.5rem;
             }
             
-            .leadership-grid, .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            .slideshow-container {
+                height: 400px;
+            }
+            
+            .leader-image {
+                height: 250px;
             }
         }
 
@@ -1217,8 +1119,9 @@
             }
             
             .header {
-                height: 400px;
-                margin-top: 32px; /* Mobile: notice bar height */
+                height: 220px;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+                margin-top: 100px;
             }
             
             .container {
@@ -1226,11 +1129,24 @@
             }
             
             .content-section {
-                padding: 2.5rem;
+                padding: 2rem;
             }
             
-            .leadership-grid, .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            .slideshow-container {
+                height: 350px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .leadership-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 1.5rem;
             }
             
@@ -1238,19 +1154,19 @@
             .notice-bar {
                 padding: 10px 0;
                 font-size: 14px;
-                z-index: 2001;
+                z-index: 2001; /* Higher than mobile menu */
             }
             
             /* Adjust navigation container position */
             .nav-container {
-                top: 32px;
-                z-index: 1001;
+                top: 32px; /* Positioned below smaller notice bar */
+                z-index: 1001; /* Higher than overlay but lower than notice bar */
             }
             
             /* Mobile navigation for mobile */
             .nav-toggle {
                 display: block;
-                z-index: 1002;
+                z-index: 1002; /* Higher than mobile menu container */
             }
             
             /* Hide desktop navigation on mobile */
@@ -1258,15 +1174,9 @@
                 display: none;
             }
             
-            .lightbox-nav-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            
-            .lightbox-thumbnail {
-                width: 55px;
-                height: 55px;
+            .gallery-modal-content {
+                width: 95%;
+                height: 80vh;
             }
         }
 
@@ -1276,30 +1186,33 @@
             }
             
             .header {
-                height: 350px;
+                height: 200px;
                 padding: 1.5rem;
-                margin-top: 30px; /* Mobile: notice bar height */
-                clip-path: ellipse(120% 85% at 50% 15%);
+                margin-top: 90px;
             }
             
             h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .tagline {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .content-section {
-                padding: 2rem;
-                border-radius: 15px;
+                padding: 1.5rem;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .slideshow-container {
+                height: 300px;
             }
             
-            .leadership-grid, .gallery-grid {
+            .leadership-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1312,92 +1225,15 @@
                 top: 30px;
             }
             
-            .lightbox-nav {
-                padding: 0 10px;
-            }
-            
-            .lightbox-nav-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
-            
-            .lightbox-thumbnail {
-                width: 45px;
-                height: 45px;
+            .whatsapp-btn {
+                padding: 15px 25px;
+                font-size: 1rem;
             }
         }
 
-        /* EXACT PULSE ANIMATION FROM REFERENCE CODE - CORRECTED */
         @keyframes pulse {
-            0% { transform: rotate(0deg) translate(-50%, -50%); }
-            100% { transform: rotate(360deg) translate(-50%, -50%); }
-        }
-
-        /* Floating decoration elements */
-        .floating-element {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--lavender), var(--rose));
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            opacity: 0.1;
-            z-index: 0;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            }
-            25% {
-                transform: translate(20px, 20px) rotate(90deg);
-                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
-            }
-            50% {
-                transform: translate(0, 40px) rotate(180deg);
-                border-radius: 30% 70% 70% 30% / 70% 70% 30% 30%;
-            }
-            75% {
-                transform: translate(-20px, 20px) rotate(270deg);
-                border-radius: 70% 30% 30% 70% / 30% 30% 70% 70%;
-            }
-            100% {
-                transform: translate(0, 0) rotate(360deg);
-                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            }
-        }
-
-        /* Mission Statement Highlight */
-        .mission-highlight {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(16, 185, 129, 0.05));
-            border-left: 5px solid var(--secondary);
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 0 15px 15px 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mission-highlight::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 6rem;
-            color: var(--lavender);
-            opacity: 0.3;
-            font-family: 'Playfair Display', serif;
-            z-index: -1;
-        }
-
-        .mission-highlight p {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--primary);
-            font-weight: 500;
-            margin: 0;
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1449,6 +1285,7 @@
                     <li><a href="family.html" class="dropdown-item">Family Wards</a></li>
                     <li><a href="smym.html" class="dropdown-item">SMYM Wellington</a></li>
                     <li><a href="youngcouple.html" class="dropdown-item">Young Couple Ministry</a></li>
+                    <li><a href="mathruvedi.html" class="dropdown-item">Mathruvedi</a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -1539,6 +1376,7 @@
                         <a href="family.html" class="mobile-dropdown-item">Family Wards</a>
                         <a href="smym.html" class="mobile-dropdown-item">SMYM Wellington</a>
                         <a href="youngcouple.html" class="mobile-dropdown-item">Young Couple Ministry</a>
+                        <a href="mathruvedi.html" class="mobile-dropdown-item">Mathruvedi</a>
                     </div>
                 </li>
                 <li class="mobile-nav-item">
@@ -1566,237 +1404,191 @@
         </div>
     </div>
 
-    <!-- Header with Slideshow -->
+    <!-- Main Header -->
     <div class="header">
+        <h1>Mathruvedi</h1>
+        <p class="tagline">Building Strong Families, Nurturing Faith, Empowering Mothers</p>
+    </div>
+
+    <div class="container">
+        <!-- Photo Slideshow -->
         <div class="slideshow-container">
-            <div class="slideshow-slide active">
-                <img src="images\mathruvedicover.jpg" alt="Mathruvedi Cover Image">
+            <div class="slide active">
+                <img src="images/mathruvedicover.jpg" alt="Mathruvedi Cover Image 1">
             </div>
-            <div class="slideshow-slide">
-                <img src="images\mathruvedicover1.jpg" alt="Mathruvedi Cover Image 1">
+            <div class="slide">
+                <img src="images/mathruvedicover1.jpg" alt="Mathruvedi Cover Image 2">
             </div>
-            <div class="slideshow-slide">
-                <img src="images\mathruvedicover2.jpg" alt="Mathruvedi Cover Image 2">
+            <div class="slide">
+                <img src="images/mathruvedicover2.jpg" alt="Mathruvedi Cover Image 3">
             </div>
-            <div class="slideshow-slide">
-                <img src="images\mathruvedicover3.jpg" alt="Mathruvedi Cover Image 3">
+            <div class="slide">
+                <img src="images/mathruvedicover3.jpg" alt="Mathruvedi Cover Image 4">
             </div>
-            <div class="slideshow-dots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
-                <span class="dot" data-slide="3"></span>
+            <div class="slideshow-controls">
+                <div class="slideshow-dots">
+                    <div class="slideshow-dot active" data-slide="0"></div>
+                    <div class="slideshow-dot" data-slide="1"></div>
+                    <div class="slideshow-dot" data-slide="2"></div>
+                    <div class="slideshow-dot" data-slide="3"></div>
+                </div>
             </div>
         </div>
-        <div class="header-overlay"></div>
-        <h1>Mathruvedi</h1>
-        <p class="tagline">Empowering Mothers, Nurturing Faith, Building Strong Families</p>
-        <div class="floating-element" style="top: 20%; left: 10%; width: 80px; height: 80px;"></div>
-        <div class="floating-element" style="bottom: 30%; right: 15%; width: 120px; height: 120px; animation-delay: -10s;"></div>
-    </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- About Section -->
-        <section class="content-section">
-            <div class="floating-element" style="top: 10%; right: 5%; width: 60px; height: 60px;"></div>
+        <!-- Page Description -->
+        <div class="content-section">
             <h2 class="section-title">About Mathruvedi</h2>
-            <p>SM Mission Wellington Mathruvedhi was launched on March 9, 2024, the day after International Women's Day. This special timing highlights our commitment to honoring and empowering women within our church and community.</p>
-            
-            <div class="mission-highlight">
-                <p>Our core mission is to help mothers nurture the faith of their children and pass on Christian values to future generations.</p>
-            </div>
-            
-            <p>Mathruvedhi focuses on building strong families, nurturing faith, providing mutual support, and empowering mothers within the church and community. We believe that when mothers are spiritually nourished and supported, they can better nurture the faith of their children and pass on Christian values to future generations.</p>
-            
-            <p>Mathruvedhi actively participates in church activities and assists with spiritual events. Through regular gatherings, prayer meetings, and community service, we create a supportive network where mothers can grow in their faith and find fellowship with other women facing similar challenges and joys.</p>
-            
-            <p>We organize various activities including family prayer sessions, Bible study groups, parenting workshops, and community outreach programs. These activities are designed to strengthen the spiritual foundation of our families while building meaningful connections within our community.</p>
-        </section>
+            <p>SM Mission Wellington Mathruvedhi launched on March 9, 2024 the day after International Women's Day. Mathruvedhi focuses on building strong families, nurturing faith, providing mutual support and empowering mothers within the church and community.</p>
+            <p>Mathruvedhi actively participates in church activities and assisting with spiritual events. A core mission is to help mothers nurture the faith of their children and pass on Christian values to future generations.</p>
+        </div>
 
         <!-- Leadership Section -->
-        <section class="content-section">
+        <div class="leadership-section">
             <h2 class="section-title">Our Leadership Team</h2>
             <div class="leadership-grid">
-                <!-- Director -->
                 <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images\frjoseph1.jpg" alt="Fr. Joseph Kunnackat">
+                    <div class="leader-image">
+                        <img src="images/frjoseph1.jpg" alt="Fr. Joseph Kunnackat">
                     </div>
                     <div class="leader-info">
-                        <div class="leader-role">Director</div>
-                        <div class="leader-name">Fr. Joseph Kunnackat</div>
-                        <p style="font-size: 0.85rem; color: var(--dark); opacity: 0.7; margin-top: 0.5rem;">Spiritual Guide and Mentor</p>
+                        <h3 class="leader-name">Fr. Joseph Kunnackat</h3>
+                        <p class="leader-position">Director</p>
                     </div>
                 </div>
                 
-                <!-- President -->
                 <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images\jolly.jpg" alt="Jolly Kurian">
+                    <div class="leader-image">
+                        <img src="images/jolly.jpg" alt="Jolly Kurian">
                     </div>
                     <div class="leader-info">
-                        <div class="leader-role">President</div>
-                        <div class="leader-name">Jolly Kurian</div>
-                        <p style="font-size: 0.85rem; color: var(--dark); opacity: 0.7; margin-top: 0.5rem;">Leading with Faith and Vision</p>
+                        <h3 class="leader-name">Jolly Kurian</h3>
+                        <p class="leader-position">President</p>
                     </div>
                 </div>
                 
-                <!-- Vice President -->
                 <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images\meera.jpg" alt="Meera Tharayil">
+                    <div class="leader-image">
+                        <img src="images/meera.jpg" alt="Meera Tharayil">
                     </div>
                     <div class="leader-info">
-                        <div class="leader-role">Vice President</div>
-                        <div class="leader-name">Meera Tharayil</div>
-                        <p style="font-size: 0.85rem; color: var(--dark); opacity: 0.7; margin-top: 0.5rem;">Supporting and Guiding</p>
+                        <h3 class="leader-name">Meera Tharayil</h3>
+                        <p class="leader-position">Vice President</p>
                     </div>
                 </div>
                 
-                <!-- Secretary -->
                 <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images\priya.jpg" alt="Priya Sebastian">
+                    <div class="leader-image">
+                        <img src="images/priya.jpg" alt="Priya Sebastian">
                     </div>
                     <div class="leader-info">
-                        <div class="leader-role">Secretary</div>
-                        <div class="leader-name">Priya Sebastian</div>
-                        <p style="font-size: 0.85rem; color: var(--dark); opacity: 0.7; margin-top: 0.5rem;">Organizing and Communicating</p>
+                        <h3 class="leader-name">Priya Sebastian</h3>
+                        <p class="leader-position">Secretary</p>
                     </div>
                 </div>
                 
-                <!-- Joint Secretary -->
                 <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images\mini.jpg" alt="Mini Jessil">
+                    <div class="leader-image">
+                        <img src="images/mini.jpg" alt="Mini Jessil">
                     </div>
                     <div class="leader-info">
-                        <div class="leader-role">Joint Secretary</div>
-                        <div class="leader-name">Mini Jessil</div>
-                        <p style="font-size: 0.85rem; color: var(--dark); opacity: 0.7; margin-top: 0.5rem;">Assisting and Coordinating</p>
+                        <h3 class="leader-name">Mini Jessil</h3>
+                        <p class="leader-position">Joint Secretary</p>
                     </div>
                 </div>
                 
-                <!-- Treasurer -->
                 <div class="leader-card">
-                    <div class="leader-image-container">
-                        <img src="images\gijo.jpg" alt="Gijo Joseph">
+                    <div class="leader-image">
+                        <img src="images/gijo.jpg" alt="Gijo Joseph">
                     </div>
                     <div class="leader-info">
-                        <div class="leader-role">Treasurer</div>
-                        <div class="leader-name">Gijo Joseph</div>
-                        <p style="font-size: 0.85rem; color: var(--dark); opacity: 0.7; margin-top: 0.5rem;">Managing Resources Faithfully</p>
+                        <h3 class="leader-name">Gijo Joseph</h3>
+                        <p class="leader-position">Treasurer</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- WhatsApp Group Section -->
-        <section class="content-section whatsapp-section">
+        <!-- WhatsApp Group Join Button -->
+        <div class="whatsapp-section content-section">
             <h2 class="section-title">Join Our Community</h2>
-            <p>Stay connected with other mothers in our Mathruvedi community! Join our WhatsApp group to receive updates about upcoming events, prayer meetings, and community activities.</p>
-            <p>If you would like to be part of our supportive network of mothers, click the button below to join our WhatsApp group. This is a great way to stay informed and connected with other families in our community.</p>
-            
-            <a href="https://chat.whatsapp.com/FQmHv3SvyorETOQ7UEzDh4" target="_blank" class="whatsapp-button">
+            <p>Connect with other mothers, stay updated on upcoming events, and be part of our supportive community.</p>
+            <a href="https://chat.whatsapp.com/FQmHv3SvyorETOQ7UEzDh4" target="_blank" class="whatsapp-btn">
                 <i class="fab fa-whatsapp"></i> Join WhatsApp Group
             </a>
-            
-            <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.9;">Request to join if you would like to connect with other mothers and stay updated on Mathruvedi activities.</p>
-        </section>
+            <p class="whatsapp-text">Click above to join our Mathruvedi WhatsApp group. Request to join if you would like to be part of our community.</p>
+        </div>
 
-        <!-- Gallery Section -->
-        <section class="content-section">
-            <h2 class="section-title">Our Activities & Events</h2>
-            <p>Here are some photos from our various activities and events. Mathruvedi organizes regular gatherings, prayer meetings, and community service activities that bring families together in faith and fellowship.</p>
-            
+        <!-- Photo Galleries -->
+        <div class="gallery-section">
+            <h2 class="section-title">Our Photo Galleries</h2>
             <div class="gallery-grid">
-                <!-- Decoration Images -->
-                <div class="gallery-card">
+                <!-- Liturgical Decorations Gallery -->
+                <div class="gallery-card" id="liturgical-gallery">
                     <div class="image-container">
-                        <img src="images\mathruvedidecoration1.jpg" alt="Mathruvedi Decoration 1">
+                        <img src="images/mathruvedidecoration1.jpg" alt="Liturgical Decorations">
                     </div>
-                    <div class="gallery-info">
-                        <div class="gallery-title">Community Gathering</div>
-                        <div class="gallery-description">Prayer meeting and fellowship</div>
+                    <div class="gallery-title">
+                        <h3>Liturgical Decorations</h3>
+                        <p>Beautiful decorations for our church services and events</p>
                     </div>
                 </div>
                 
-                <div class="gallery-card">
+                <!-- Kozhukatta Saturday Gallery -->
+                <div class="gallery-card" id="kozhukatta-gallery">
                     <div class="image-container">
-                        <img src="images\mathruvedidecoration2.jpg" alt="Mathruvedi Decoration 2">
+                        <img src="images/mathruvedicover1.jpg" alt="Kozhukatta Saturday">
                     </div>
-                    <div class="gallery-info">
-                        <div class="gallery-title">Family Event</div>
-                        <div class="gallery-description">Celebrating faith together</div>
-                    </div>
-                </div>
-                
-                <div class="gallery-card">
-                    <div class="image-container">
-                        <img src="images\mathruvedidecoration3.jpg" alt="Mathruvedi Decoration 3">
-                    </div>
-                    <div class="gallery-info">
-                        <div class="gallery-title">Special Celebration</div>
-                        <div class="gallery-description">Honoring our mothers</div>
-                    </div>
-                </div>
-                
-                <div class="gallery-card">
-                    <div class="image-container">
-                        <img src="images\mathruvedidecoration4.jpg" alt="Mathruvedi Decoration 4">
-                    </div>
-                    <div class="gallery-info">
-                        <div class="gallery-title">Prayer Session</div>
-                        <div class="gallery-description">Coming together in prayer</div>
-                    </div>
-                </div>
-                
-                <div class="gallery-card">
-                    <div class="image-container">
-                        <img src="images\mathruvedidecoration5.jpg" alt="Mathruvedi Decoration 5">
-                    </div>
-                    <div class="gallery-info">
-                        <div class="gallery-title">Community Service</div>
-                        <div class="gallery-description">Serving with love</div>
-                    </div>
-                </div>
-                
-                <div class="gallery-card" id="kozhukatta-gallery-thumbnail">
-                    <div class="image-container">
-                        <img src="images\mathruvedicover1.jpg" alt="Kozhukatta Saturday Gallery">
-                    </div>
-                    <div class="gallery-info">
-                        <div class="gallery-title">Kozhukatta Saturday</div>
-                        <div class="gallery-description">Click to view gallery</div>
+                    <div class="gallery-title">
+                        <h3>Kozhukatta Saturday</h3>
+                        <p>Community gatherings and fellowship events</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
     
-    <!-- Lightbox Gallery Modal -->
-    <div class="lightbox-modal" id="lightbox-modal">
-        <button class="lightbox-close" id="lightbox-close">×</button>
-        
-        <div class="lightbox-content">
-            <div class="lightbox-nav">
-                <button class="lightbox-nav-btn" id="lightbox-prev">
+    <!-- Liturgical Decorations Gallery Modal -->
+    <div class="gallery-modal" id="liturgical-modal">
+        <div class="gallery-modal-content">
+            <button class="gallery-modal-close" id="liturgical-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="gallery-modal-image">
+                <img id="liturgical-current-img" src="" alt="">
+            </div>
+            <div class="gallery-modal-nav">
+                <button class="gallery-modal-prev" id="liturgical-prev">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="lightbox-nav-btn" id="lightbox-next">
+                <div class="gallery-modal-counter">
+                    <span id="liturgical-current-index">1</span> / <span id="liturgical-total">6</span>
+                </div>
+                <button class="gallery-modal-next" id="liturgical-next">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-            
-            <div class="lightbox-image-container">
-                <img id="lightbox-image" src="" alt="">
+        </div>
+    </div>
+
+    <!-- Kozhukatta Saturday Gallery Modal -->
+    <div class="gallery-modal" id="kozhukatta-modal">
+        <div class="gallery-modal-content">
+            <button class="gallery-modal-close" id="kozhukatta-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="gallery-modal-image">
+                <img id="kozhukatta-current-img" src="" alt="">
             </div>
-            
-            <div class="lightbox-caption" id="lightbox-caption">Kozhukatta Saturday - Image 1</div>
-            
-            <div class="lightbox-thumbnails" id="lightbox-thumbnails">
-                <!-- Thumbnails will be generated by JavaScript -->
+            <div class="gallery-modal-nav">
+                <button class="gallery-modal-prev" id="kozhukatta-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="gallery-modal-counter">
+                    <span id="kozhukatta-current-index">1</span> / <span id="kozhukatta-total">18</span>
+                </div>
+                <button class="gallery-modal-next" id="kozhukatta-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -1812,6 +1604,7 @@
                     <a href="https://www.facebook.com/messages/t/331100746743772" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
                     <a href="https://www.instagram.com/smmissionwellington/?next=%2F" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.youtube.com/channel/UCcM4Eniz3bBUuKlt3olO1Ow" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i>
+
                 </div>
             </div>
             
@@ -1834,7 +1627,7 @@
                     <li style="margin-top: 15px; font-weight:bold; color:#ffd700;">Kaikkarans / Persons in Contact</li>
                     <li><a href="tel:+6427 248 2270"><i class="fas fa-user"></i> Tony Thomas – 027 248 2270</a></li>
                     <li><a href="tel:+6422 620 6677"><i class="fas fa-user"></i> Joshy Abraham – 022 620 6677</a></li>
-                </ul>
+                   </ul>
             </div>
         </div>
         
@@ -1937,48 +1730,55 @@
             });
         });
 
-        // Cover Slideshow Functionality
-        const slides = document.querySelectorAll('.slideshow-slide');
-        const dots = document.querySelectorAll('.dot');
-        let currentSlide = 0;
-        let slideInterval;
-
-        function showSlide(n) {
-            // Reset all slides and dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            // Set current slide
-            currentSlide = (n + slides.length) % slides.length;
-            
-            // Show current slide and activate dot
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        // Start slideshow
-        function startSlideshow() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        // Event listeners for dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                clearInterval(slideInterval);
-                showSlide(index);
-                startSlideshow();
+        // Slideshow functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slideshow-dot');
+        
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
             });
-        });
-
+            
+            // Remove active class from all dots
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show current slide and activate corresponding dot
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            slideIndex = index;
+        }
+        
         // Initialize slideshow
-        startSlideshow();
-
-        // Kozhukatta Saturday Gallery Functionality
-        const galleryImages = [
+        function initSlideshow() {
+            // Add click event to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+            
+            // Auto advance slides
+            setInterval(() => {
+                slideIndex = (slideIndex + 1) % slides.length;
+                showSlide(slideIndex);
+            }, 5000);
+        }
+        
+        // Image Galleries Data
+        const liturgicalImages = [
+            'images/mathruvedidecoration1.jpg',
+            'images/mathruvedidecoration2.jpg',
+            'images/mathruvedidecoration3.jpg',
+            'images/mathruvedidecoration4.jpg',
+            'images/mathruvedidecoration5.jpg',
+            'images/mathruvedidecoration6.jpg'
+        ];
+        
+        const kozhukattaImages = [
             'images/kozhukattasaturday10.jpg',
             'images/kozhukattasaturday11.jpg',
             'images/kozhukattasaturday12.jpg',
@@ -1998,107 +1798,127 @@
             'images/kozhukattasaturday17.jpg',
             'images/kozhukattasaturday18.jpg'
         ];
-
-        const lightboxModal = document.getElementById('lightbox-modal');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        const lightboxPrev = document.getElementById('lightbox-prev');
-        const lightboxNext = document.getElementById('lightbox-next');
-        const lightboxClose = document.getElementById('lightbox-close');
-        const lightboxThumbnails = document.getElementById('lightbox-thumbnails');
-        let currentImageIndex = 0;
-
-        // Open gallery when thumbnail is clicked
-        document.getElementById('kozhukatta-gallery-thumbnail').addEventListener('click', () => {
-            openLightbox(0);
-        });
-
-        function openLightbox(index) {
-            currentImageIndex = index;
-            updateLightbox();
-            lightboxModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        
+        // Gallery Functionality
+        let currentLiturgicalIndex = 0;
+        let currentKozhukattaIndex = 0;
+        
+        const liturgicalModal = document.getElementById('liturgical-modal');
+        const kozhukattaModal = document.getElementById('kozhukatta-modal');
+        
+        const liturgicalCurrentImg = document.getElementById('liturgical-current-img');
+        const liturgicalCurrentIndex = document.getElementById('liturgical-current-index');
+        const liturgicalTotal = document.getElementById('liturgical-total');
+        
+        const kozhukattaCurrentImg = document.getElementById('kozhukatta-current-img');
+        const kozhukattaCurrentIndex = document.getElementById('kozhukatta-current-index');
+        const kozhukattaTotal = document.getElementById('kozhukatta-total');
+        
+        // Initialize galleries
+        function initGalleries() {
+            // Set total counts
+            liturgicalTotal.textContent = liturgicalImages.length;
+            kozhukattaTotal.textContent = kozhukattaImages.length;
+            
+            // Liturgical gallery click
+            document.getElementById('liturgical-gallery').addEventListener('click', () => {
+                currentLiturgicalIndex = 0;
+                updateLiturgicalGallery();
+                liturgicalModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Kozhukatta gallery click
+            document.getElementById('kozhukatta-gallery').addEventListener('click', () => {
+                currentKozhukattaIndex = 0;
+                updateKozhukattaGallery();
+                kozhukattaModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close buttons
+            document.getElementById('liturgical-close').addEventListener('click', closeLiturgicalGallery);
+            document.getElementById('kozhukatta-close').addEventListener('click', closeKozhukattaGallery);
+            
+            // Navigation buttons
+            document.getElementById('liturgical-prev').addEventListener('click', () => {
+                currentLiturgicalIndex = (currentLiturgicalIndex - 1 + liturgicalImages.length) % liturgicalImages.length;
+                updateLiturgicalGallery();
+            });
+            
+            document.getElementById('liturgical-next').addEventListener('click', () => {
+                currentLiturgicalIndex = (currentLiturgicalIndex + 1) % liturgicalImages.length;
+                updateLiturgicalGallery();
+            });
+            
+            document.getElementById('kozhukatta-prev').addEventListener('click', () => {
+                currentKozhukattaIndex = (currentKozhukattaIndex - 1 + kozhukattaImages.length) % kozhukattaImages.length;
+                updateKozhukattaGallery();
+            });
+            
+            document.getElementById('kozhukatta-next').addEventListener('click', () => {
+                currentKozhukattaIndex = (currentKozhukattaIndex + 1) % kozhukattaImages.length;
+                updateKozhukattaGallery();
+            });
+            
+            // Close gallery when clicking outside the content
+            liturgicalModal.addEventListener('click', (e) => {
+                if (e.target === liturgicalModal) {
+                    closeLiturgicalGallery();
+                }
+            });
+            
+            kozhukattaModal.addEventListener('click', (e) => {
+                if (e.target === kozhukattaModal) {
+                    closeKozhukattaGallery();
+                }
+            });
+            
+            // Close gallery with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeLiturgicalGallery();
+                    closeKozhukattaGallery();
+                }
+            });
         }
-
-        function closeLightbox() {
-            lightboxModal.classList.remove('active');
+        
+        function updateLiturgicalGallery() {
+            liturgicalCurrentImg.src = liturgicalImages[currentLiturgicalIndex];
+            liturgicalCurrentIndex.textContent = currentLiturgicalIndex + 1;
+        }
+        
+        function updateKozhukattaGallery() {
+            kozhukattaCurrentImg.src = kozhukattaImages[currentKozhukattaIndex];
+            kozhukattaCurrentIndex.textContent = currentKozhukattaIndex + 1;
+        }
+        
+        function closeLiturgicalGallery() {
+            liturgicalModal.classList.remove('active');
             document.body.style.overflow = '';
         }
-
-        function updateLightbox() {
-            lightboxImage.src = galleryImages[currentImageIndex];
-            lightboxCaption.textContent = `Kozhukatta Saturday - Image ${currentImageIndex + 1}`;
-            
-            // Update thumbnails
-            lightboxThumbnails.innerHTML = '';
-            galleryImages.forEach((image, index) => {
-                const thumbnail = document.createElement('div');
-                thumbnail.className = `lightbox-thumbnail ${index === currentImageIndex ? 'active' : ''}`;
-                thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}">`;
-                thumbnail.addEventListener('click', () => {
-                    currentImageIndex = index;
-                    updateLightbox();
-                });
-                lightboxThumbnails.appendChild(thumbnail);
-            });
+        
+        function closeKozhukattaGallery() {
+            kozhukattaModal.classList.remove('active');
+            document.body.style.overflow = '';
         }
-
-        function showPrevImage() {
-            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-            updateLightbox();
-        }
-
-        function showNextImage() {
-            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-            updateLightbox();
-        }
-
-        // Event listeners for lightbox
-        lightboxPrev.addEventListener('click', showPrevImage);
-        lightboxNext.addEventListener('click', showNextImage);
-        lightboxClose.addEventListener('click', closeLightbox);
-
-        // Close lightbox when clicking outside the image
-        lightboxModal.addEventListener('click', (e) => {
-            if (e.target === lightboxModal) {
-                closeLightbox();
-            }
-        });
-
-        // Keyboard navigation for lightbox
-        document.addEventListener('keydown', (e) => {
-            if (!lightboxModal.classList.contains('active')) return;
-            
-            switch(e.key) {
-                case 'Escape':
-                    closeLightbox();
-                    break;
-                case 'ArrowLeft':
-                    showPrevImage();
-                    break;
-                case 'ArrowRight':
-                    showNextImage();
-                    break;
-            }
-        });
-
-        // Add animation delay to gallery cards for staggered effect
+        
+        // Add animation delay to cards for staggered effect
         document.addEventListener('DOMContentLoaded', function() {
-            const galleryCards = document.querySelectorAll('.gallery-card');
             const leaderCards = document.querySelectorAll('.leader-card');
-            const contentSections = document.querySelectorAll('.content-section');
-            
-            galleryCards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-            });
+            const galleryCards = document.querySelectorAll('.gallery-card');
             
             leaderCards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
             });
             
-            contentSections.forEach((section, index) => {
-                section.style.animationDelay = `${index * 0.1}s`;
+            galleryCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1 + 0.3}s`;
             });
+            
+            // Initialize slideshow and galleries
+            initSlideshow();
+            initGalleries();
         });
     </script>
 </body>
