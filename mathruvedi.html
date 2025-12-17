@@ -945,6 +945,15 @@
 .meera-fix {
     object-position: top;
 }
+        /* Fix ONLY Meera Tharayil photo cropping */
+.meera-card .leader-image {
+    height: 320px; /* increase only for her */
+}
+
+.meera-card .leader-image img {
+    object-position: center top;
+}
+
 
         .leader-card:hover .leader-image img {
             transform: scale(1.1);
@@ -1843,16 +1852,15 @@
                     </div>
                 </div>
                 
-                <div class="leader-card">
-                    <div class="leader-image">
-                        <<img src="images/meera.jpg" alt="Meera Tharayil" class="meera-fix">
-                    </div>
-                    <div class="leader-info">
-                        <h3 class="leader-name">Meera Tharayil</h3>
-                        <p class="leader-position">Vice President</p>
-                    </div>
-                </div>
-                
+                <div class="leader-card meera-card">
+                <div class="leader-image">
+                <img src="images/meera.jpg" alt="Meera Tharayil">
+            </div>
+                <div class="leader-info">
+                <h3 class="leader-name">Meera Tharayil</h3>
+                <p class="leader-position">Vice President</p>
+            </div>
+        </div>
                 <div class="leader-card">
                     <div class="leader-image">
                         <img src="images/priya.jpg" alt="Priya Sebastian">
