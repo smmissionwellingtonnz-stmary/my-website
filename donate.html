@@ -633,6 +633,26 @@
             font-size: 0.9rem;
         }
 
+        /* Seed of Hope Image Styling */
+        .seedofhope-container {
+            margin: 2rem 0 3rem 0;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .seedofhope-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .seedofhope-image:hover {
+            transform: scale(1.01);
+        }
+
         /* Success message */
         .success-message {
             position: fixed;
@@ -886,6 +906,15 @@
                 gap: 1.5rem;
             }
 
+            .seedofhope-container {
+                margin: 1.5rem 0 2.5rem 0;
+                padding: 0 15px;
+            }
+
+            .seedofhope-image {
+                max-width: 90%;
+            }
+
             .success-message {
                 bottom: 1rem;
                 right: 1rem;
@@ -941,6 +970,10 @@
             
             .main-content {
                 padding-top: 110px;
+            }
+
+            .seedofhope-image {
+                max-width: 100%;
             }
         }
     </style>
@@ -1168,6 +1201,11 @@
 
         Thank you for your continued support.</p>
             </div>
+        </div>
+        
+        <!-- Seed of Hope Image -->
+        <div class="seedofhope-container">
+            <img src="images/seedofhope.jpg" alt="Seed of Hope" class="seedofhope-image">
         </div>
 
         <!-- Success Message -->
