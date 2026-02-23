@@ -969,15 +969,7 @@
     </style>
 </head>
 <body>
-   <!-- Notice Bar -->
-<div class="notice-bar">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWgF44cPSljYYKSEC7GqS5-RbR801-KWqmKN6VtLqOHC5Ujg/viewform?usp=pp_url&entry.643631175=FRN-" target="_blank">
-        <span>
-            📢 Catechism Registration 2026 – Click here to register 
-            
-        </span>
-    </a>
-</div>
+   <div id="notice-container"></div>
 
     <!-- Navigation Menu - EXACT FROM FIRST PAGE -->
     <nav class="nav-container">
@@ -1362,8 +1354,17 @@
             });
         }
     </script>
+    <script>
+fetch("notice.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("notice-container").innerHTML = data;
+  })
+  .catch(error => console.log("Notice loading error:", error));
+</script>
 </body>
 </html>
+
 
 
 
