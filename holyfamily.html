@@ -982,19 +982,7 @@
     </style>
 </head>
 <body>
-   <!-- Notice Bar -->
-<div class="notice-bar">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWgF44cPSljYYKSEC7GqS5-RbR801-KWqmKN6VtLqOHC5Ujg/viewform?usp=pp_url&entry.643631175=FRN-" target="_blank" style="text-decoration: none; color: inherit;">
-        <span>
-            📢 Catechism Registration 2026 – 
-            <span style="color: #ffd700; text-decoration: underline; font-weight: bold;">
-                Click here to register
-            </span>
-            | Ash Monday Service - 16/02/2026 at 7:00 pm
-        </span>
-    </a>
-</div>
-
+   <div id="notice-container"></div>
     <!-- Navigation Menu -->
     <nav class="nav-container">
         <div class="nav-header">
@@ -1362,5 +1350,13 @@
             }
         });
     </script>
+    <script>
+fetch("notice.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("notice-container").innerHTML = data;
+  })
+  .catch(error => console.log("Notice loading error:", error));
+</script>
 </body>
 </html>
