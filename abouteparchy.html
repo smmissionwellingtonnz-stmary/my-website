@@ -34,7 +34,7 @@
             overflow-x: hidden;
             opacity: 0;
             animation: fadeIn 1s ease-in forwards;
-            padding-top: 110px; /* Added padding to prevent content from being hidden under fixed header */
+            padding-top: 0; /* Will be handled by dynamic header */
         }
         
         html {
@@ -76,410 +76,6 @@
             display: block;
             width: 100%;
             height: 100%;
-        }
-        
-        /* Navigation Menu - EXACT FROM FIRST PAGE */
-        .nav-container {
-            position: fixed;
-            top: 40px; /* Positioned below notice bar */
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: var(--menu-bg);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
-        }
-        
-        .nav-logo {
-            height: 50px;
-        }
-        
-        .nav-toggle {
-            font-size: 1.5rem;
-            color: white;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            display: none;
-            z-index: 1002;
-            position: relative;
-        }
-        
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            flex-wrap: wrap;
-            padding: 0 10px;
-        }
-        
-        .nav-item {
-            position: relative;
-        }
-        
-        .nav-link {
-            display: block;
-            padding: 1rem 1rem;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 15px;
-        }
-        
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .nav-link.donate {
-            background-color: #ff6b6b;
-            border-radius: 4px;
-            margin: 0.5rem 0.5rem;
-            font-weight: 600;
-        }
-       .nav-link.newsletter {
-    background-color: #05bfdb;
-    border-radius: 4px;
-    margin: 0.5rem 1rem;
-    font-weight: 600;
-    color: white;
-}
-
-.nav-link.newsletter:hover {
-    background-color: #0497ac;
-    transform: translateY(-2px);
-} 
-        /* Desktop only */
-@media (min-width: 769px) {
-    .nav-link.newsletter {
-        position: relative;
-        display: inline-block;
-        width: 160px;   /* adjust as needed */
-        text-align: center;
-        padding: 8px 12px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        font-family: Arial, sans-serif;
-    }
-
-    /* Default menu text - same font size as other menu items */
-    .nav-link.newsletter .default-text {
-        display: inline-block;
-        transition: opacity 0.3s ease;
-        font-size: 14px; /* same as your other menu items */
-    }
-
-    /* Hide hover text by default */
-    .nav-link.newsletter .hover-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        font-size: 9px;  /* small to fit inside button */
-        white-space: nowrap;
-        display: flex;
-        align-items: center;
-        gap: 4px;  /* space between icon and text */
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
-
-    /* Hover effect */
-    .nav-link.newsletter:hover .default-text {
-        opacity: 0;  /* hide original text */
-    }
-
-    .nav-link.newsletter:hover .hover-text {
-        opacity: 1;  /* show download icon + text */
-    }
-
-    /* Download icon styling */
-    .nav-link.newsletter .hover-text i {
-        font-size: 12px;  /* adjust icon size */
-    }
-}
-        .nav-link.donate:hover {
-            background-color: #ff5252;
-            transform: translateY(-2px);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            left: 0;
-            top: 100%;
-            background: white;
-            width: 220px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .dropdown-menu li {
-    list-style-type: circle;
-}
-        .dropdown-item {
-            display: block;
-            padding: 0.8rem 1rem;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #f1f1f1;
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
-            color: #0a4d68;
-            padding-left: 1.3rem;
-        }
-
-        /* MOBILE NAVIGATION - EXACT FROM FIRST PAGE */
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .mobile-menu-container {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 400px;
-            height: 100%;
-            background: var(--menu-bg);
-            z-index: 1000;
-            overflow-y: auto;
-            transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .mobile-menu-container.active {
-            right: 0;
-        }
-        
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        
-        .mobile-menu-logo {
-            height: 40px;
-        }
-        
-        .mobile-menu-close {
-            font-size: 1.5rem;
-            color: white;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-        
-        .mobile-menu-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-menu-content {
-            padding: 20px 0;
-        }
-        
-        .mobile-nav-menu {
-            list-style: none;
-        }
-        
-        .mobile-nav-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-nav-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-nav-link.donate {
-            background-color: #ff6b6b;
-            font-weight: 600;
-        }
-        .mobile-nav-link.newsletter {
-    background-color: #05bfdb;
-    font-weight: 600;
-}
-
-.mobile-nav-link.newsletter:hover {
-    background-color: #0497ac;
-}
-        .mobile-nav-link.donate:hover {
-            background-color: #ff5252;
-        }
-        
-        .mobile-dropdown-toggle {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .mobile-dropdown-toggle.active {
-            transform: rotate(180deg);
-        }
-        
-        .mobile-dropdown-menu {
-            max-height: 0;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.2);
-            transition: max-height 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-        
-        .mobile-dropdown-menu.show {
-            max-height: 500px;
-        }
-        
-        .mobile-dropdown-item {
-            display: block;
-            padding: 14px 20px 14px 40px;
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-dropdown-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding-left: 45px;
-        }
-
-/* Reduce navbar height only on desktop */
-@media (min-width: 1025px) {
-
-    /* Reduce the overall navbar height */
-    .nav-header {
-        padding: 6px 20px !important;
-    }
-
-    /* Make the logo smaller so the bar height reduces */
-    .nav-logo {
-        height: 38px !important; 
-    }
-
-    /* Reduce height of each menu link */
-    .nav-link {
-        padding: 0.55rem 1rem !important;
-        font-size: 15px;
-    }
-
-    /* Reduce spacing inside dropdowns */
-    .dropdown-item {
-        padding: 0.6rem 1rem !important;
-    }
-
-    /* Fix dropdown alignment after height change */
-    .nav-item .dropdown-menu {
-        top: 90% !important;
-    }
-}
-
-        
-        /* Navigation for mobile */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 100px; /* Adjusted for mobile */
-            }
-            
-            .nav-toggle {
-                display: block;
-                z-index: 1002; /* Higher than mobile menu container */
-            }
-            
-            /* Hide desktop navigation on mobile */
-            .nav-menu {
-                display: none;
-            }
-            
-            /* Adjust navigation container position */
-            .nav-container {
-                top: 32px; /* Positioned below smaller notice bar */
-                z-index: 1001; /* Higher than overlay but lower than notice bar */
-            }
-            
-            /* Adjust notice bar for mobile */
-            .notice-bar {
-                padding: 8px 0;
-                font-size: 14px;
-                z-index: 2001; /* Higher than mobile menu */
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding-top: 90px; /* Adjusted for very small screens */
-            }
-            
-            .nav-container {
-                top: 30px;
-            }
-            
-            .notice-bar {
-                padding: 6px 0;
-                font-size: 12px;
-            }
-        }
-        
-        /* Main content padding to account for fixed nav */
-        .main-content {
-            padding-top: 40px; /* Increased padding to move content down */
         }
         
         /* Animated Background */
@@ -712,137 +308,6 @@
             font-weight: bold;
         }
         
-        /* Footer Styles */
-        .footer {
-            background: var(--footer-bg);
-            color: white;
-            padding: 60px 0 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            animation: pulse 15s infinite linear;
-            z-index: 0;
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 40px;
-            padding: 0 15px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            color: #F8DE7E;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: #ffd700;
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-links a i {
-            margin-right: 10px;
-            font-size: 14px;
-            color: #ffd700;
-        }
-
-        .footer-links a:hover {
-            color: #ffd700;
-            transform: translateX(5px);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-social a:hover {
-            background: #ffd700;
-            color: #0a4d68;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .footer-bottom {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .footer-bottom p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
         /* Animations */
         @keyframes fadeInUp {
             from { 
@@ -888,10 +353,6 @@
         }
         
         @media (max-width: 768px) {
-            body {
-                padding-top: 100px; /* Maintain padding for mobile */
-            }
-            
             .hero {
                 padding: 60px 0 40px; /* Adjusted for mobile */
                 clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
@@ -921,21 +382,9 @@
             .leader-row:last-child .leader-image {
                 height: 280px; /* Smaller height on mobile */
             }
-
-            .footer-content {
-                flex-direction: column;
-            }
-            
-            .footer-column {
-                margin-bottom: 30px;
-            }
         }
         
         @media (max-width: 576px) {
-            body {
-                padding-top: 90px; /* Maintain padding for very small screens */
-            }
-            
             .eparchy-logo {
                 width: 100px;
                 height: 100px;
@@ -969,166 +418,10 @@
     </style>
 </head>
 <body>
-   <div id="notice-container"></div>
+    <div id="notice-container"></div>
 
-    <!-- Navigation Menu - EXACT FROM FIRST PAGE -->
-    <nav class="nav-container">
-        <div class="nav-header">
-        <a href="index.html">
-            <img src="images/logo.png" alt="Logo" class="nav-logo">
-        </a>
-            <button class="nav-toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        
-        <ul class="nav-menu" id="nav-menu">
-            <li class="nav-item">
-                <a href="index.html" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="aboutsyromalabarchurch.html" class="dropdown-item">Syro-Malabar Church</a></li>
-                    <li><a href="abouteparchy" class="dropdown-item">Syro-Malabar Melbourne</a></li>
-                    <li><a href="aboutsmmission.html" class="dropdown-item">Syro-Malabar Wellington</a></li>
-                    <li><a href="priestandcouncil.html" class="dropdown-item">Priest & Council</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="services.html" class="dropdown-item">Holy Qurbana Schedule</a></li>
-                    <li><a href="event.html" class="dropdown-item">Upcoming Programs</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Ministries <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="altar.html" class="dropdown-item">Altar Servers</a></li>
-                    <li><a href="catechism.html" class="dropdown-item">Catechism</a></li>
-                    <li><a href="choir.html" class="dropdown-item">Choir</a></li>
-                    <li><a href="family.html" class="dropdown-item">Family Wards</a></li>
-                    <li><a href="mathruvedi.html" class="dropdown-item">Mathruvedi</a></li>
-                    <li><a href="smym.html" class="dropdown-item">SMYM Wellington</a></li>
-                    <li><a href="youngcouple.html" class="dropdown-item">Young Couple Ministry</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="forms.html" class="nav-link">Forms</a>
-            </li>
-            <li class="nav-item">
-                <a href="resources.html" class="nav-link">Resources</a>
-            </li>
-            <li class="nav-item">
-                <a href="safeguard.html" class="nav-link">Safeguarding</a>
-            </li>
-            <li class="nav-item">
-                <a href="gallery.html" class="nav-link">Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a href="contact.html" class="nav-link">Connect Us</a>
-            </li>
-            <li class="nav-item">
-    <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
-        <span class="default-text">Newsletter</span>
-        <span class="hover-text">
-            <i class="fa fa-download"></i> Download latest newsletter
-        </span>
-    </a>
-</li>
-            <li class="nav-item">
-                <a href="donate.html" class="nav-link donate">DONATE</a>
-            </li>
-        </ul>
-    </nav>
-
-    <!-- Mobile Navigation Overlay - EXACT FROM FIRST PAGE -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-
-    <!-- Mobile Navigation Menu - EXACT FROM FIRST PAGE -->
-    <div class="mobile-menu-container" id="mobile-menu-container">
-        <div class="mobile-menu-header">
-        <a href="index.html">
-            <img src="images/logo.png" alt="Logo" class="mobile-menu-logo">
-        </a>
-            <button class="mobile-menu-close" id="mobile-menu-close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="mobile-menu-content">
-            <ul class="mobile-nav-menu">
-                <li class="mobile-nav-item">
-                    <a href="index.html" class="mobile-nav-link">Home</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
-                        <span>About</span>
-                        <span class="mobile-dropdown-toggle">
-                            <i class="fas fa-chevron-down"></i>
-                        </span>
-                    </a>
-                    <div class="mobile-dropdown-menu">
-                        <a href="aboutsyromalabarchurch.html" class="mobile-dropdown-item">Syro-Malabar Church</a>
-                        <a href="abouteparchy.html" class="mobile-dropdown-item">Syro-Malabar Melbourne</a>
-                        <a href="aboutsmmission.html" class="mobile-dropdown-item">Syro-Malabar Wellington</a>
-                        <a href="priestandcouncil.html" class="mobile-dropdown-item">Priest & Council</a>
-                    </div>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
-                        <span>Services</span>
-                        <span class="mobile-dropdown-toggle">
-                            <i class="fas fa-chevron-down"></i>
-                        </span>
-                    </a>
-                    <div class="mobile-dropdown-menu">
-                        <a href="services.html" class="mobile-dropdown-item">Holy Qurbana Schedule</a>
-                        <a href="event.html" class="mobile-dropdown-item">Upcoming Programs</a>
-                    </div>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="#" class="mobile-nav-link mobile-dropdown-parent">
-                        <span>Ministries</span>
-                        <span class="mobile-dropdown-toggle">
-                            <i class="fas fa-chevron-down"></i>
-                        </span>
-                    </a>
-                    <div class="mobile-dropdown-menu">
-                        <a href="altar.html" class="mobile-dropdown-item">Altar Servers</a>
-                        <a href="catechism.html" class="mobile-dropdown-item">Catechism</a>
-                        <a href="choir.html" class="mobile-dropdown-item">Choir</a>
-                        <a href="family.html" class="mobile-dropdown-item">Family Wards</a>
-                        <a href="mathruvedi.html" class="mobile-dropdown-item">Mathruvedi</a>
-                        <a href="smym.html" class="mobile-dropdown-item">SMYM Wellington</a>
-                        <a href="youngcouple.html" class="mobile-dropdown-item">Young Couple Ministry</a>
-                    </div>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="forms.html" class="mobile-nav-link">Forms</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="resources.html" class="mobile-nav-link">Resources</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="safeguard.html" class="mobile-nav-link">Safeguarding</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="gallery.html" class="mobile-nav-link">Gallery</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="contact.html" class="mobile-nav-link">Connect Us</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="Newsletter/newsletter.jpg" class="mobile-nav-link newsletter" download>Download Latest Newsletter</a>
-                </li>
-                <li class="mobile-nav-item">
-                    <a href="donate.html" class="mobile-nav-link donate">DONATE</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <!-- Header Include -->
+    <div id="header-placeholder"></div>
 
     <div class="bg-animation"></div>
     
@@ -1218,88 +511,91 @@
         </main>
     </div>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>St. Mary's Mission</h3>
-                <p>St. Mary's Syro-Malabar Mission Wellington is one of the largest Syro Malabar faithful communities in New Zealand, serving the spiritual needs of the community since 2006.</p>
-                <div class="footer-social">
-                    <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.facebook.com/messages/t/331100746743772" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
-                    <a href="https://www.instagram.com/smmissionwellington/?next=%2F" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCcM4Eniz3bBUuKlt3olO1Ow" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i>
-                </div>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="aboutsmmission.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Connect Us</a></li>
-                    <li><a href="services.html" target="_blank"><i class="fas fa-chevron-right"></i> Holy Qurbana Schedule</a></li>
-                    <li><a href="event.html" target="_blank"><i class="fas fa-chevron-right"></i> Upcoming Programs</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Contact Info</h3>
-                <ul class="footer-links">
-                    <li><a href="https://goo.gl/maps/3sRzvQ2VJY9Vp3ENA" target="_blank"><i class="fas fa-map-marker-alt"></i> 27 Trebann Street, Paparangi, Wellington</a></li>
-                    <li><a href="mailto:smmissionwellingtonnz@gmail.com"><i class="fas fa-envelope"></i> smmissionwellingtonnz@gmail.com</a></li>
-                    <li style="margin-top: 15px; font-weight:bold; color:#ffd700;">Chaplain  </li><li><a href="tel:+6427 2841 791"><i class="fas fa-cross role-icon"></i> Fr. Joseph – +6427 284 1791</a></li>
-                    <li style="margin-top: 15px; font-weight:bold; color:#ffd700;">Kaikkarans / Persons in Contact</li>
-                    <li><a href="tel:+6427 248 2270"><i class="fas fa-user"></i> Tony Thomas – +6427 248 2270</a></li>
-                    <li><a href="tel:+6422 620 6677"><i class="fas fa-user"></i> Joshy Abraham – +6422 620 6677</a></li>
-                    </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2024 St. Mary's Syro-Malabar Mission Wellington. All Rights Reserved. | Created by <a href="https://m.me/jintoj2" class="creator-link" target="_blank">Jinto Jose</a></p>
-        </div>
-    </footer>
+    <!-- Footer Include -->
+    <div id="footer-placeholder"></div>
 
     <script>
-        // Mobile Navigation Functionality - EXACT FROM FIRST PAGE
+    // Main initialization
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // Load header first
+        fetch('includes/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                
+                // Initialize mobile navigation AFTER header is loaded
+                initializeMobileNavigation();
+            })
+            .catch(error => console.log("Header loading error:", error));
+        
+        // Load notice bar
+        fetch("notice.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("notice-container").innerHTML = data;
+            })
+            .catch(error => console.log("Notice loading error:", error));
+        
+        // Load footer
+        fetch('includes/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.log("Footer loading error:", error));
+    });
+
+    function initializeMobileNavigation() {
+        // Mobile Navigation Functionality
         const navToggle = document.getElementById('nav-toggle');
         const mobileMenuContainer = document.getElementById('mobile-menu-container');
         const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
         const mobileMenuClose = document.getElementById('mobile-menu-close');
-        
-        // Toggle mobile menu
+
         function toggleMobileMenu() {
-            mobileMenuContainer.classList.toggle('active');
-            mobileNavOverlay.classList.toggle('active');
-            document.body.style.overflow = mobileMenuContainer.classList.contains('active') ? 'hidden' : '';
+            if (mobileMenuContainer) {
+                mobileMenuContainer.classList.toggle('active');
+            }
+            if (mobileNavOverlay) {
+                mobileNavOverlay.classList.toggle('active');
+            }
+            // Prevent body scrolling when menu is open
+            document.body.style.overflow = mobileMenuContainer?.classList.contains('active') ? 'hidden' : '';
             
             // Toggle between hamburger and close icon
-            const icon = navToggle.querySelector('i');
-            if (mobileMenuContainer.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+            const icon = navToggle?.querySelector('i');
+            if (icon) {
+                if (mobileMenuContainer?.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
             }
         }
+
+        if (navToggle) {
+            navToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleMobileMenu();
+            });
+        }
         
-        // Event listeners for mobile menu
-        navToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleMobileMenu();
-        });
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleMobileMenu();
+            });
+        }
         
-        mobileMenuClose.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleMobileMenu();
-        });
-        
-        mobileNavOverlay.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleMobileMenu();
-        });
+        if (mobileNavOverlay) {
+            mobileNavOverlay.addEventListener('click', () => {
+                toggleMobileMenu();
+            });
+        }
         
         // Mobile dropdown functionality
         document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
@@ -1314,13 +610,20 @@
                 document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
                     if (menu !== dropdownMenu) {
                         menu.classList.remove('show');
-                        menu.previousElementSibling.querySelector('.mobile-dropdown-toggle').classList.remove('active');
+                        if (menu.previousElementSibling) {
+                            const toggle = menu.previousElementSibling.querySelector('.mobile-dropdown-toggle');
+                            if (toggle) toggle.classList.remove('active');
+                        }
                     }
                 });
                 
                 // Toggle current dropdown
-                dropdownMenu.classList.toggle('show');
-                dropdownToggle.classList.toggle('active');
+                if (dropdownMenu) {
+                    dropdownMenu.classList.toggle('show');
+                }
+                if (dropdownToggle) {
+                    dropdownToggle.classList.toggle('active');
+                }
             });
         });
         
@@ -1330,70 +633,7 @@
                 toggleMobileMenu();
             });
         });
-        
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-item') && !e.target.closest('.nav-toggle')) {
-                const dropdowns = document.querySelectorAll('.dropdown-menu');
-                dropdowns.forEach(dropdown => {
-                    dropdown.style.display = 'none';
-                });
-            }
-        });
-        
-        // Handle dropdowns on mobile
-        if (window.innerWidth <= 768) {
-            document.querySelectorAll('.nav-link').forEach(link => {
-                if (link.nextElementSibling && link.nextElementSibling.classList.contains('dropdown-menu')) {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const dropdown = link.nextElementSibling;
-                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                    });
-                }
-            });
-        }
+    }
     </script>
-    <script>
-fetch("notice.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("notice-container").innerHTML = data;
-  })
-  .catch(error => console.log("Notice loading error:", error));
-</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
