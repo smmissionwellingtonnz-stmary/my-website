@@ -1863,13 +1863,9 @@
 <body>
     <div id="notice-container"></div>
     
-    <!-- Header Include -->
-<div id="header-placeholder"></div>
-<script>
-fetch('includes/header.html')
-  .then(response => response.text())
-  .then(data => document.getElementById('header-placeholder').innerHTML = data);
-</script>
+    <!-- Header Include (loaded dynamically) -->
+    <div id="header-placeholder"></div>
+    
     <!-- Scroll to top button -->
     <div class="scroll-top" id="scroll-top">
         <i class="fas fa-arrow-up"></i>
@@ -2082,20 +2078,52 @@ fetch('includes/header.html')
             </div>
         </div>
     </section>
+    
     <!-- Footer Include -->
-<div id="footer-placeholder"></div>
-<script>
-fetch('includes/footer.html')
-  .then(response => response.text())
-  .then(data => document.getElementById('footer-placeholder').innerHTML = data);
-</script>
+    <div id="footer-placeholder"></div>
+    
     <script>
-// Wait for DOM and all includes to load
+// Main initialization
 document.addEventListener("DOMContentLoaded", function() {
     
+    // Load header first
+    fetch('includes/header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+            
+            // Initialize mobile navigation AFTER header is loaded
+            initializeMobileNavigation();
+            
+            // Initialize other features that depend on DOM elements
+            initializeOtherFeatures();
+        })
+        .catch(error => {
+            console.log("Header loading error:", error);
+            // Still try to initialize other features even if header fails
+            initializeOtherFeatures();
+        });
+    
+    // Load notice bar
+    fetch("notice.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("notice-container").innerHTML = data;
+        })
+        .catch(error => console.log("Notice loading error:", error));
+    
+    // Load footer
+    fetch('includes/footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        })
+        .catch(error => console.log("Footer loading error:", error));
+});
+
+function initializeMobileNavigation() {
     // Mobile Navigation Functionality
     const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
     const mobileMenuContainer = document.getElementById('mobile-menu-container');
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
     const mobileMenuClose = document.getElementById('mobile-menu-close');
@@ -2107,6 +2135,8 @@ document.addEventListener("DOMContentLoaded", function() {
         if (mobileNavOverlay) {
             mobileNavOverlay.classList.toggle('active');
         }
+        // Prevent body scrolling when menu is open
+        document.body.style.overflow = mobileMenuContainer?.classList.contains('active') ? 'hidden' : '';
     }
 
     if (navToggle) {
@@ -2125,8 +2155,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
     if (mobileNavOverlay) {
-        mobileNavOverlay.addEventListener('click', (e) => {
-            e.preventDefault();
+        mobileNavOverlay.addEventListener('click', () => {
             toggleMobileMenu();
         });
     }
@@ -2167,7 +2196,9 @@ document.addEventListener("DOMContentLoaded", function() {
             toggleMobileMenu();
         });
     });
-    
+}
+
+function initializeOtherFeatures() {
     // Scroll to top functionality
     const scrollTop = document.getElementById('scroll-top');
     
@@ -2477,15 +2508,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     window.addEventListener('resize', handleResize);
     handleResize();
-});
-
-// Notice bar loading
-fetch("notice.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("notice-container").innerHTML = data;
-  })
-  .catch(error => console.log("Notice loading error:", error));
+}
     </script>
 </body>
 </html>
