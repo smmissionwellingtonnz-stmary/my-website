@@ -104,20 +104,21 @@
         
         /* Header Section */
         .hero {
-            background-color: rgba(10, 77, 104, 0.85); /* Matched with navigation color */
-            padding: 80px 0 60px; /* Increased top padding to lower the logo */
+            background-color: rgba(10, 77, 104, 0.85);
+            padding: 80px 0 60px;
             text-align: center;
             position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             margin-bottom: 40px;
             backdrop-filter: blur(2px);
             width: 100%;
+            margin-top: 100px; /* Add space for fixed header */
         }
         
         .eparchy-logo {
             width: 120px;
             height: 120px;
-            margin: 0 auto 25px; /* Increased bottom margin to lower the logo */
+            margin: 0 auto 25px;
             border: 4px solid var(--accent);
             border-radius: 50%;
             background-color: var(--white);
@@ -203,7 +204,7 @@
         }
         
         .leader-image {
-            height: 420px; /* Increased height for first row */
+            height: 420px;
             overflow: hidden;
             position: relative;
         }
@@ -308,6 +309,138 @@
             font-weight: bold;
         }
         
+        /* Footer Styles */
+        .footer {
+            background: var(--footer-bg);
+            color: white;
+            padding: 60px 0 20px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite linear;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #F8DE7E;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-social a:hover {
+            background: #ffd700;
+            color: #0a4d68;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from { 
@@ -333,6 +466,10 @@
         
         /* Responsive Design */
         @media (max-width: 992px) {
+            .hero {
+                margin-top: 90px;
+            }
+            
             .main-title {
                 font-size: 1.8rem;
             }
@@ -354,7 +491,8 @@
         
         @media (max-width: 768px) {
             .hero {
-                padding: 60px 0 40px; /* Adjusted for mobile */
+                margin-top: 80px;
+                padding: 60px 0 40px;
                 clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
             }
             
@@ -370,21 +508,31 @@
                 gap: 15px;
             }
             
-            /* Smaller cards on mobile */
             .leader-row:first-child .leader-card,
             .leader-row:last-child .leader-card {
                 width: 100%;
-                max-width: 320px; /* Smaller width on mobile */
+                max-width: 320px;
             }
             
-            /* Smaller images on mobile */
             .leader-row:first-child .leader-image,
             .leader-row:last-child .leader-image {
-                height: 280px; /* Smaller height on mobile */
+                height: 280px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-bottom: 30px;
             }
         }
         
         @media (max-width: 576px) {
+            .hero {
+                margin-top: 70px;
+            }
+            
             .eparchy-logo {
                 width: 100px;
                 height: 100px;
@@ -398,19 +546,16 @@
                 font-size: 1rem;
             }
             
-            /* Even smaller cards on very small screens */
             .leader-row:first-child .leader-card,
             .leader-row:last-child .leader-card {
                 max-width: 280px;
             }
             
-            /* Even smaller images on very small screens */
             .leader-row:first-child .leader-image,
             .leader-row:last-child .leader-image {
                 height: 240px;
             }
             
-            /* Adjust Mar Bosco Puthur's image specifically on mobile */
             .leader-card:nth-child(2) .leader-image img {
                 object-position: center 20%;
             }
@@ -525,7 +670,7 @@
                 document.getElementById('header-placeholder').innerHTML = data;
                 
                 // Initialize mobile navigation AFTER header is loaded
-                initializeMobileNavigation();
+                setTimeout(initializeMobileNavigation, 100); // Small delay to ensure DOM is updated
             })
             .catch(error => console.log("Header loading error:", error));
         
@@ -553,20 +698,20 @@
         const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
         const mobileMenuClose = document.getElementById('mobile-menu-close');
 
+        if (!navToggle || !mobileMenuContainer || !mobileNavOverlay || !mobileMenuClose) {
+            console.log("Mobile navigation elements not found yet");
+            return;
+        }
+
         function toggleMobileMenu() {
-            if (mobileMenuContainer) {
-                mobileMenuContainer.classList.toggle('active');
-            }
-            if (mobileNavOverlay) {
-                mobileNavOverlay.classList.toggle('active');
-            }
-            // Prevent body scrolling when menu is open
-            document.body.style.overflow = mobileMenuContainer?.classList.contains('active') ? 'hidden' : '';
+            mobileMenuContainer.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenuContainer.classList.contains('active') ? 'hidden' : '';
             
             // Toggle between hamburger and close icon
-            const icon = navToggle?.querySelector('i');
+            const icon = navToggle.querySelector('i');
             if (icon) {
-                if (mobileMenuContainer?.classList.contains('active')) {
+                if (mobileMenuContainer.classList.contains('active')) {
                     icon.classList.remove('fa-bars');
                     icon.classList.add('fa-times');
                 } else {
@@ -576,26 +721,20 @@
             }
         }
 
-        if (navToggle) {
-            navToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleMobileMenu();
-            });
-        }
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
         
-        if (mobileMenuClose) {
-            mobileMenuClose.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleMobileMenu();
-            });
-        }
+        mobileMenuClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMobileMenu();
+        });
         
-        if (mobileNavOverlay) {
-            mobileNavOverlay.addEventListener('click', () => {
-                toggleMobileMenu();
-            });
-        }
+        mobileNavOverlay.addEventListener('click', () => {
+            toggleMobileMenu();
+        });
         
         // Mobile dropdown functionality
         document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
