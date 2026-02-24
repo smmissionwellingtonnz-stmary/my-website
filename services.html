@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== EXACT STYLES FROM INDEX(2).HTML ===== */
         
         /* Global Styles */
         * {
@@ -571,16 +570,14 @@
             font-size: 0.9rem;
         }
 
-        /* ===== PAGE SPECIFIC STYLES (from original services.html) ===== */
         .main-container {
             display: flex;
-            min-height: 100vh;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
+            min-height: calc(100vh - 110px); /* full height minus header */
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Sidebar with Image */
         .sidebar {
             width: 40%;
             background: linear-gradient(rgba(10, 77, 104, 0.7), rgba(10, 77, 104, 0.8)), url('./images/holyqurbana.jpg');
@@ -594,7 +591,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            border-radius: 15px 0 0 15px;
+            /* NO border-radius, NO box-shadow */
         }
 
         .sidebar-content {
@@ -611,14 +608,13 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        /* Content Area */
+      
         .content-area {
             width: 60%;
             padding: 3rem 2rem;
             background: white;
             overflow-y: auto;
-            border-radius: 0 15px 15px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          
         }
 
         .content-header {
@@ -659,8 +655,6 @@
             margin-bottom: 2rem;
             padding: 1.5rem;
             background: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-left: 5px solid #0a4d68;
             transition: all 0.3s ease;
             opacity: 0;
@@ -682,7 +676,7 @@
 
         .timing-section:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            background: #f0f2f5;
         }
 
         .day-heading {
@@ -725,7 +719,6 @@
             font-size: 0.9rem;
             background: #f1f8e9;
             padding: 0.8rem;
-            border-radius: 5px;
             border-left: 3px solid #2e7d32;
             display: flex;
             align-items: center;
@@ -744,7 +737,6 @@
             font-size: 1.1rem;
             padding: 1rem;
             background: rgba(10, 77, 104, 0.05);
-            border-radius: 8px;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease 1s forwards;
@@ -759,7 +751,6 @@
             background: #0a4d68;
             color: white;
             text-align: center;
-            border-radius: 30px;
             font-weight: 600;
             font-size: 1rem;
             text-decoration: none;
@@ -806,7 +797,6 @@
             width: 90%;
             max-width: 450px;
             padding: 2rem;
-            border-radius: 10px;
             text-align: center;
             position: relative;
             transform: scale(0.9);
@@ -867,7 +857,6 @@
         @media (max-width: 1024px) {
             .main-container {
                 flex-direction: column;
-                padding: 10px;
             }
             
             .sidebar, .content-area {
@@ -877,11 +866,6 @@
             .sidebar {
                 min-height: 40vh;
                 padding: 2rem;
-                border-radius: 15px 15px 0 0;
-            }
-            
-            .content-area {
-                border-radius: 0 0 15px 15px;
             }
             
             .main-heading { font-size: 2.5rem; }
@@ -930,16 +914,16 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- MAIN CONTENT (unique to this page) -->
+    <!-- MAIN CONTENT (unique to this page) - NOW STRETCHED EDGE TO EDGE -->
     <div class="main-container">
-        <!-- Sidebar with Image -->
+        <!-- Sidebar with Image - stretched -->
         <div class="sidebar">
             <div class="sidebar-content">
                 <h1 class="main-heading">Holy Qurbana Timings</h1>
             </div>
         </div>
         
-        <!-- Content Area -->
+        <!-- Content Area - stretched -->
         <div class="content-area">
             <div class="content-header">
                 <h2 class="content-title">Service Schedule</h2>
