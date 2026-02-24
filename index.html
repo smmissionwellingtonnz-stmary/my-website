@@ -71,7 +71,7 @@
         /* Navigation Menu */
         .nav-container {
             position: fixed;
-            top: 32px; /* Positioned below notice bar */
+            top: 32px;
             left: 0;
             width: 100%;
             z-index: 1000;
@@ -147,7 +147,7 @@
     .nav-link.newsletter {
         position: relative;
         display: inline-block;
-        width: 160px;   /* adjust as needed */
+        width: 160px;
         text-align: center;
         padding: 8px 12px;
         overflow: hidden;
@@ -155,41 +155,37 @@
         font-family: Arial, sans-serif;
     }
 
-    /* Default menu text - same font size as other menu items */
     .nav-link.newsletter .default-text {
         display: inline-block;
         transition: opacity 0.3s ease;
-        font-size: 14px; /* same as your other menu items */
+        font-size: 14px;
     }
 
-    /* Hide hover text by default */
     .nav-link.newsletter .hover-text {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         opacity: 0;
-        font-size: 9px;  /* small to fit inside button */
+        font-size: 9px;
         white-space: nowrap;
         display: flex;
         align-items: center;
-        gap: 4px;  /* space between icon and text */
+        gap: 4px;
         pointer-events: none;
         transition: opacity 0.3s ease;
     }
 
-    /* Hover effect */
     .nav-link.newsletter:hover .default-text {
-        opacity: 0;  /* hide original text */
+        opacity: 0;
     }
 
     .nav-link.newsletter:hover .hover-text {
-        opacity: 1;  /* show download icon + text */
+        opacity: 1;
     }
 
-    /* Download icon styling */
     .nav-link.newsletter .hover-text i {
-        font-size: 12px;  /* adjust icon size */
+        font-size: 12px;
     }
 }      
         .nav-link.donate:hover {
@@ -274,7 +270,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            margin-top: 100px; /* Added margin to prevent overlap with navigation */
+            margin-top: 100px;
         }
         
         .bg-image {
@@ -1646,28 +1642,23 @@
 /* Reduce navbar height only on desktop */
 @media (min-width: 1025px) {
 
-    /* Reduce the overall navbar height */
     .nav-header {
         padding: 6px 20px !important;
     }
 
-    /* Make the logo smaller so the bar height reduces */
     .nav-logo {
         height: 38px !important; 
     }
 
-    /* Reduce height of each menu link */
     .nav-link {
         padding: 0.55rem 1rem !important;
         font-size: 15px;
     }
 
-    /* Reduce spacing inside dropdowns */
     .dropdown-item {
         padding: 0.6rem 1rem !important;
     }
 
-    /* Fix dropdown alignment after height change */
     .nav-item .dropdown-menu {
         top: 90% !important;
     }
@@ -1700,21 +1691,19 @@
         }
         
         @media (max-width: 768px) {
-            /* Smaller notice bar for mobile */
             .notice-bar {
                 padding: 6px 0;
                 font-size: 14px;
-                z-index: 2001; /* Higher than mobile menu */
+                z-index: 2001;
             }
             
-            /* Adjust navigation container position */
             .nav-container {
-                top: 30px; /* Positioned below smaller notice bar */
-                z-index: 1001; /* Higher than overlay but lower than notice bar */
+                top: 30px;
+                z-index: 1001;
             }
             .cover {
         align-items: flex-start;
-        padding-top: 50px; /* Adjust this value as needed to fine-tune the position */
+        padding-top: 50px;
     }
             .heading-main {
                 font-size: 55px;
@@ -1762,20 +1751,17 @@
                 font-size: 2rem;
             }
             
-            /* Navigation for mobile - FIXED */
             .nav-toggle {
                 display: block;
-                z-index: 1002; /* Higher than mobile menu container */
+                z-index: 1002;
             }
             
-            /* Hide desktop navigation on mobile */
             .nav-menu {
                 display: none;
             }
             
-            /* Header */
             .cover-container {
-                margin-top: 90px; /* Adjusted for mobile */
+                margin-top: 90px;
             }
         }
         
@@ -1863,7 +1849,7 @@
             }
             
             .cover-container {
-                margin-top: 80px; /* Adjusted for very small screens */
+                margin-top: 80px;
             }
         }
         
@@ -2104,8 +2090,9 @@ fetch('includes/footer.html')
   .then(data => document.getElementById('footer-placeholder').innerHTML = data);
 </script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-
+// Wait for DOM and all includes to load
+document.addEventListener("DOMContentLoaded", function() {
+    
     // Mobile Navigation Functionality
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -2113,181 +2100,188 @@ fetch('includes/footer.html')
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
     const mobileMenuClose = document.getElementById('mobile-menu-close');
 
+    function toggleMobileMenu() {
+        if (mobileMenuContainer) {
+            mobileMenuContainer.classList.toggle('active');
+        }
+        if (mobileNavOverlay) {
+            mobileNavOverlay.classList.toggle('active');
+        }
+    }
+
     if (navToggle) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('nav-menu_visible');
-            mobileMenuContainer.classList.add('active');
-            mobileNavOverlay.classList.add('active');
-        });
-    }
-
-    if (mobileMenuClose) {
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenuContainer.classList.remove('active');
-            mobileNavOverlay.classList.remove('active');
-        });
-    }
-
-    if (mobileNavOverlay) {
-        mobileNavOverlay.addEventListener('click', () => {
-            mobileMenuContainer.classList.remove('active');
-            mobileNavOverlay.classList.remove('active');
-        });
-    }
-
-    document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
-        parent.addEventListener('click', () => {
-            parent.nextElementSibling.classList.toggle('active');
-        });
-    });
-        
-        // Event listeners for mobile menu
         navToggle.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             toggleMobileMenu();
         });
-        
+    }
+    
+    if (mobileMenuClose) {
         mobileMenuClose.addEventListener('click', (e) => {
             e.preventDefault();
             toggleMobileMenu();
         });
-        
+    }
+    
+    if (mobileNavOverlay) {
         mobileNavOverlay.addEventListener('click', (e) => {
             e.preventDefault();
             toggleMobileMenu();
         });
-        
-        // Mobile dropdown functionality
-        document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
-            parent.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const dropdownMenu = this.nextElementSibling;
-                const dropdownToggle = this.querySelector('.mobile-dropdown-toggle');
-                
-                // Close other dropdowns
-                document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
-                    if (menu !== dropdownMenu) {
-                        menu.classList.remove('show');
-                        menu.previousElementSibling.querySelector('.mobile-dropdown-toggle').classList.remove('active');
+    }
+    
+    // Mobile dropdown functionality
+    document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
+        parent.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const dropdownMenu = this.nextElementSibling;
+            const dropdownToggle = this.querySelector('.mobile-dropdown-toggle');
+            
+            // Close other dropdowns
+            document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+                if (menu !== dropdownMenu) {
+                    menu.classList.remove('show');
+                    if (menu.previousElementSibling) {
+                        const toggle = menu.previousElementSibling.querySelector('.mobile-dropdown-toggle');
+                        if (toggle) toggle.classList.remove('active');
                     }
-                });
-                
-                // Toggle current dropdown
+                }
+            });
+            
+            // Toggle current dropdown
+            if (dropdownMenu) {
                 dropdownMenu.classList.toggle('show');
+            }
+            if (dropdownToggle) {
                 dropdownToggle.classList.toggle('active');
-            });
+            }
         });
-        
-        // Close menu when clicking on links
-        document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
-            link.addEventListener('click', () => {
-                toggleMobileMenu();
-            });
+    });
+    
+    // Close menu when clicking on links
+    document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
+        link.addEventListener('click', () => {
+            toggleMobileMenu();
         });
-        
-        // Scroll to top functionality
-        const scrollTop = document.getElementById('scroll-top');
-        
-        window.addEventListener('scroll', () => {
+    });
+    
+    // Scroll to top functionality
+    const scrollTop = document.getElementById('scroll-top');
+    
+    window.addEventListener('scroll', () => {
+        if (scrollTop) {
             if (window.pageYOffset > 300) {
                 scrollTop.classList.add('active');
             } else {
                 scrollTop.classList.remove('active');
             }
-        });
-        
+        }
+    });
+    
+    if (scrollTop) {
         scrollTop.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
+    }
+    
+    // Cover page animation restart
+    function restartAnimation() {
+        // Reset all animations
+        const elementsToReset = [
+            '.heading-main',
+            '.heading-sub',
+            '.border-top',
+            '.border-right',
+            '.border-bottom',
+            '.border-left',
+            '.corner',
+            '.logo'
+        ];
         
-        // Cover page animation restart
-        document.addEventListener('DOMContentLoaded', function() {
-            function restartAnimation() {
-                // Reset all animations
-                const elementsToReset = [
-                    '.heading-main',
-                    '.heading-sub',
-                    '.border-top',
-                    '.border-right',
-                    '.border-bottom',
-                    '.border-left',
-                    '.corner',
-                    '.logo'
-                ];
-                
-                elementsToReset.forEach(selector => {
-                    const element = document.querySelector(selector);
-                    if (element) {
-                        element.style.animation = 'none';
-                        void element.offsetWidth; // Trigger reflow
-                    }
-                });
-                
-                // Restart animations with proper delays
-                document.querySelector('.heading-main').style.animation = 'fadeIn 1.5s forwards 0.5s';
-                document.querySelector('.heading-sub').style.animation = 'fadeIn 1.5s forwards 1s';
-                document.querySelector('.border-top').style.animation = 'expandWidth 1s forwards 1.5s';
-                document.querySelector('.border-right').style.animation = 'expandHeight 1s forwards 2s';
-                document.querySelector('.border-bottom').style.animation = 'expandWidth 1s forwards 2.5s';
-                document.querySelector('.border-left').style.animation = 'expandHeight 1s forwards 3s';
-                
-                document.querySelectorAll('.corner').forEach(corner => {
-                    corner.style.animation = 'fadeIn 0.5s forwards 3.5s';
-                });
-                
-                document.querySelector('.logo').style.animation = 'fadeIn 1s forwards 1.5s';
+        elementsToReset.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.style.animation = 'none';
+                void element.offsetWidth; // Trigger reflow
             }
-            
-            // Set interval to restart animation every 20 seconds
-            setInterval(restartAnimation, 20000);
-            
-            // Program section reveal on scroll
-            const programSection = document.querySelector('.program-section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        programSection.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            observer.observe(programSection);
         });
         
-        // Scroll to program section function
-        function scrollToProgram() {
-            document.getElementById('program').scrollIntoView({ 
-                behavior: 'smooth' 
-            });
-        }
+        // Restart animations with proper delays
+        const headingMain = document.querySelector('.heading-main');
+        const headingSub = document.querySelector('.heading-sub');
+        const borderTop = document.querySelector('.border-top');
+        const borderRight = document.querySelector('.border-right');
+        const borderBottom = document.querySelector('.border-bottom');
+        const borderLeft = document.querySelector('.border-left');
+        const corners = document.querySelectorAll('.corner');
+        const logo = document.querySelector('.logo');
         
-        // Gallery Slideshow Code
-        // Image URLs - Using higher resolution versions
-        const images = [
-            "images/bishoprafel.jpg",
-            "images/bishopjohn.jpg",
-            "images/frjosephgallery.jpg",
-            "images/biblequiz.jpg",
-            "images/Ekklesia2.jpg",
-            "images/ekklesia.jpg",
-            "images/priests.jpg",
-            "images/frdaniel.jpg",
-            "images/noticeboard.jpg",
-        ];
+        if (headingMain) headingMain.style.animation = 'fadeIn 1.5s forwards 0.5s';
+        if (headingSub) headingSub.style.animation = 'fadeIn 1.5s forwards 1s';
+        if (borderTop) borderTop.style.animation = 'expandWidth 1s forwards 1.5s';
+        if (borderRight) borderRight.style.animation = 'expandHeight 1s forwards 2s';
+        if (borderBottom) borderBottom.style.animation = 'expandWidth 1s forwards 2.5s';
+        if (borderLeft) borderLeft.style.animation = 'expandHeight 1s forwards 3s';
+        
+        corners.forEach(corner => {
+            if (corner) corner.style.animation = 'fadeIn 0.5s forwards 3.5s';
+        });
+        
+        if (logo) logo.style.animation = 'fadeIn 1s forwards 1.5s';
+    }
+    
+    // Set interval to restart animation every 20 seconds
+    setInterval(restartAnimation, 20000);
+    
+    // Program section reveal on scroll
+    const programSection = document.querySelector('.program-section');
+    if (programSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    programSection.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(programSection);
+    }
+    
+    // Scroll to program section function
+    window.scrollToProgram = function() {
+        document.getElementById('program').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    };
+    
+    // Gallery Slideshow Code
+    // Image URLs
+    const images = [
+        "images/bishoprafel.jpg",
+        "images/bishopjohn.jpg",
+        "images/frjosephgallery.jpg",
+        "images/biblequiz.jpg",
+        "images/Ekklesia2.jpg",
+        "images/ekklesia.jpg",
+        "images/priests.jpg",
+        "images/frdaniel.jpg",
+        "images/noticeboard.jpg",
+    ];
 
-        // DOM elements for gallery
-        const slideWrapper = document.querySelector('#gallery .slide-wrapper');
-        const dotsContainer = document.querySelector('#gallery .dots-container');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const progressBar = document.querySelector('#gallery .progress-bar');
+    // DOM elements for gallery
+    const slideWrapper = document.querySelector('#gallery .slide-wrapper');
+    const dotsContainer = document.querySelector('#gallery .dots-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const progressBar = document.querySelector('#gallery .progress-bar');
 
+    if (slideWrapper && dotsContainer && prevBtn && nextBtn && progressBar) {
         // Create slides and dots for gallery
         images.forEach((image, index) => {
             // Create slide
@@ -2325,71 +2319,69 @@ fetch('includes/footer.html')
         // Function to update progress bar
         function updateProgressBar() {
             progress = 0;
-            progressBar.style.width = '0%';
+            if (progressBar) progressBar.style.width = '0%';
             
             if (progressInterval) clearInterval(progressInterval);
             
             progressInterval = setInterval(() => {
                 progress += 1;
-                progressBar.style.width = `${progress}%`;
+                if (progressBar) progressBar.style.width = `${progress}%`;
                 
                 if (progress >= 100) {
                     clearInterval(progressInterval);
                     nextSlide();
                 }
-            }, 50); // 5000ms total (5 seconds) / 100 = 50ms per 1%
+            }, 50);
         }
 
         // Function to show slide
         function showSlide(index) {
-            // Wrap around if index is out of bounds
+            if (!slides.length) return;
+            
             if (index >= slides.length) {
                 currentIndex = 0;
             } else if (index < 0) {
                 currentIndex = slides.length - 1;
             } else {
-                 currentIndex = index;
+                currentIndex = index;
             }
             
-            // Update slides
             slides.forEach((slide, i) => {
-                slide.classList.remove('active', 'prev', 'next');
-                
-                if (i === currentIndex) {
-                    slide.classList.add('active');
-                } else if (i === (currentIndex + 1) % slides.length) {
-                    slide.classList.add('next');
-                } else if (i === (currentIndex - 1 + slides.length) % slides.length) {
-                    slide.classList.add('prev');
+                if (slide) {
+                    slide.classList.remove('active', 'prev', 'next');
+                    
+                    if (i === currentIndex) {
+                        slide.classList.add('active');
+                    } else if (i === (currentIndex + 1) % slides.length) {
+                        slide.classList.add('next');
+                    } else if (i === (currentIndex - 1 + slides.length) % slides.length) {
+                        slide.classList.add('prev');
+                    }
                 }
             });
             
-            // Update dots
             dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
+                if (dot) {
+                    dot.classList.toggle('active', i === currentIndex);
+                }
             });
             
-            // Reset progress bar
             updateProgressBar();
         }
 
-        // Function for next slide
         function nextSlide() {
             showSlide(currentIndex + 1);
         }
 
-        // Function for previous slide
         function prevSlide() {
             showSlide(currentIndex - 1);
         }
 
-        // Start automatic slideshow
         function startSlideshow() {
             updateProgressBar();
-            slideInterval = setInterval(nextSlide, 5000); // Change every 5 seconds
+            slideInterval = setInterval(nextSlide, 5000);
         }
 
-        // Reset slideshow timer
         function resetSlideshow() {
             clearInterval(slideInterval);
             clearInterval(progressInterval);
@@ -2397,12 +2389,12 @@ fetch('includes/footer.html')
         }
 
         // Event listeners for gallery
-        nextBtn.addEventListener('click', () => {
+        if (nextBtn) nextBtn.addEventListener('click', () => {
             nextSlide();
             resetSlideshow();
         });
 
-        prevBtn.addEventListener('click', () => {
+        if (prevBtn) prevBtn.addEventListener('click', () => {
             prevSlide();
             resetSlideshow();
         });
@@ -2433,27 +2425,28 @@ fetch('includes/footer.html')
         let touchStartX = 0;
         let touchEndX = 0;
 
-        slideWrapper.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
+        if (slideWrapper) {
+            slideWrapper.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
 
-        slideWrapper.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, {passive: true});
-
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                nextSlide();
-                resetSlideshow();
-            } else if (touchEndX > touchStartX + 50) {
-                prevSlide();
-                resetSlideshow();
-            }
+            slideWrapper.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchEndX < touchStartX - 50) {
+                    nextSlide();
+                    resetSlideshow();
+                } else if (touchEndX > touchStartX + 50) {
+                    prevSlide();
+                    resetSlideshow();
+                }
+            }, {passive: true});
         }
+    }
 
-        // Contact Form JavaScript
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // Contact Form JavaScript
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const form = this;
             const formData = new FormData(form);
@@ -2465,7 +2458,8 @@ fetch('includes/footer.html')
             .then(response => response.json())
             .then(data => {
                 form.style.display = 'none';
-                document.getElementById('thankYouMessage').style.display = 'block';
+                const thankYouMessage = document.getElementById('thankYouMessage');
+                if (thankYouMessage) thankYouMessage.style.display = 'block';
                 form.reset();
             })
             .catch(error => {
@@ -2473,113 +2467,25 @@ fetch('includes/footer.html')
                 alert('There was an error submitting your form. Please try again later.');
             });
         });
+    }
 
-        // Handle viewport changes
-        function handleResize() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
+    // Handle viewport changes
+    function handleResize() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
 
-        window.addEventListener('resize', handleResize);
-        handleResize();
-    </script>
-    <script>
+    window.addEventListener('resize', handleResize);
+    handleResize();
+});
+
+// Notice bar loading
 fetch("notice.html")
   .then(response => response.text())
   .then(data => {
     document.getElementById("notice-container").innerHTML = data;
   })
   .catch(error => console.log("Notice loading error:", error));
-</script>
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
