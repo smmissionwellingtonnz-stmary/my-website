@@ -35,7 +35,6 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             padding: 0;
             padding-top: 110px;
         }
@@ -678,7 +677,7 @@
             width: 50%;
             text-align: center;
             color: var(--primary);
-            margin: 0 auto;
+            margin: 0 auto 3rem;
         }
         
         .chaplains-container {
@@ -688,6 +687,7 @@
             margin: 3rem 0;
             padding: 0 2rem;
             max-width: 1200px;
+            width: 100%;
         }
         
         @media (max-width: 768px) {
@@ -776,15 +776,19 @@
             font-weight: 600;
         }
         
-        /* Footer Styles - EXACT FROM REFERENCE */
+        /* Footer Styles - EXACT FROM REFERENCE - FULL WIDTH FIX */
         .footer {
             background: var(--footer-bg);
             color: white;
             padding: 60px 0 20px;
             position: relative;
             overflow: hidden;
-            width: 100%;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
             margin-top: 3rem;
+            left: 0;
+            right: 0;
         }
 
         .footer::before {
@@ -1030,6 +1034,9 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-placeholder').innerHTML = data;
+                    
+                    // After footer is loaded, ensure it's full width
+                    fixFooterWidth();
                 })
                 .catch(error => console.log("Footer loading error:", error));
             
@@ -1133,10 +1140,22 @@
             });
         }
 
+        function fixFooterWidth() {
+            const footer = document.querySelector('.footer');
+            if (footer) {
+                footer.style.width = '100vw';
+                footer.style.marginLeft = 'calc(-50vw + 50%)';
+                footer.style.marginRight = 'calc(-50vw + 50%)';
+                footer.style.left = '0';
+                footer.style.right = '0';
+            }
+        }
+
         // Handle viewport changes
         function handleResize() {
             const vh = window.innerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
+            fixFooterWidth();
         }
 
         window.addEventListener('resize', handleResize);
