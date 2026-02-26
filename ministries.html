@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ----- identical global styles from donate.html (preserved) ----- */
         :root {
             --primary: #1a4b7a;
             --secondary: #b38a58;
@@ -21,8 +20,6 @@
             --accent: #e8c07d;
             --nav-gradient: linear-gradient(135deg, #0a4d68, #088395);
             --footer-gradient: linear-gradient(135deg, #0a4d68, #088395);
-            --text-color: #333;
-            --light-text: #666;
             --card-bg: rgba(255, 255, 255, 0.98);
         }
 
@@ -46,44 +43,9 @@
             flex-direction: column;
         }
 
-        /* Notice bar container – will be filled dynamically, but we keep same styles */
-        #notice-container .notice-bar {
-            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-            color: white;
-            text-align: center;
-            padding: 12px 0;
-            font-weight: 600;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 2000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: pulseNotice 2s infinite;
-        }
-
-        @keyframes pulseNotice {
-            0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
-            50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
-            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
-        }
-
-        .notice-bar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
-        .notice-bar span {
-            margin: 0 15px;
-            display: inline-block;
-        }
-
-        /* main content spacing – notice bar is fixed, header loaded dynamically */
+        /* main content wrapper (pushes footer down) */
         .main-content {
-            padding-top: 160px;  /* enough space for notice+nav */
+            padding-top: 140px;   /* space for fixed header + notice */
             min-height: 100vh;
             flex: 1;
             width: 100%;
@@ -127,14 +89,14 @@
             100% { transform: translateY(-100px) rotate(360deg); }
         }
 
-        /* header styling (replicated, but header itself will be loaded from header.html) */
-        .header {
+        /* header / title style */
+        .page-header {
             text-align: center;
-            margin: 2rem 0 1.5rem;
-            position: relative;
-            z-index: 1;
+            margin: 1.5rem 0 2rem;
+            z-index: 2;
             width: 100%;
             max-width: 800px;
+            padding: 0 20px;
         }
 
         .title-container {
@@ -143,8 +105,6 @@
             border-radius: 16px;
             display: inline-block;
             box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            transform-style: preserve-3d;
-            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
@@ -183,14 +143,14 @@
             100% { text-shadow: 0 0 20px rgba(26, 75, 122, 0.5); }
         }
 
-        /* ----- 8 large buttons grid (main content) ----- */
+        /* ----- 8 large buttons grid (ministries) ----- */
         .ministries-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
             width: 100%;
             max-width: 1200px;
-            margin: 2rem auto 4rem;
+            margin: 1rem auto 4rem;
             padding: 0 20px;
             z-index: 2;
             position: relative;
@@ -217,6 +177,7 @@
             animation: fadeInUp 0.6s ease backwards;
         }
 
+        /* staggered animation */
         .ministry-card:nth-child(1) { animation-delay: 0.05s; }
         .ministry-card:nth-child(2) { animation-delay: 0.1s; }
         .ministry-card:nth-child(3) { animation-delay: 0.15s; }
@@ -307,8 +268,20 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* footer will be loaded dynamically, but we keep global styles */
-        /* scroll top button (same) */
+        /* responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content { padding-top: 120px; }
+            .ministries-grid { gap: 1.2rem; }
+            .ministry-card { padding: 1.8rem 0.8rem; }
+            .ministry-icon { font-size: 3rem; width: 80px; height: 80px; }
+            .ministry-name { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 480px) {
+            .title-container { padding: 1.2rem 1.5rem; }
+        }
+
+        /* scroll to top button (same style) */
         .scroll-top {
             position: fixed;
             bottom: 30px;
@@ -340,89 +313,79 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        @media (max-width: 768px) {
-            .main-content { padding-top: 130px; }
-            .ministries-grid { gap: 1.2rem; }
-            .ministry-card { padding: 1.8rem 0.8rem; }
-            .ministry-icon { font-size: 3rem; width: 80px; height: 80px; }
-            .ministry-name { font-size: 1.4rem; }
-        }
-        @media (max-width: 480px) {
-            .title-container { padding: 1.2rem 1.5rem; }
-        }
-
-        /* Ensure the loaded header and footer work well */
-        .nav-container, .footer {
-            flex-shrink: 0;
+        /* containers for injected partials */
+        #notice-container, #header-container, #footer-container {
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <!-- notice container – external notice.html will be loaded here -->
+    <!-- Notice bar will be injected here -->
     <div id="notice-container"></div>
 
-    <!-- header container – external header.html (navigation) will be loaded here -->
+    <!-- Header / navigation will be injected here -->
     <div id="header-container"></div>
 
-    <!-- Scroll to top button (same as donate.html) -->
+    <!-- Scroll to top button -->
     <div class="scroll-top" id="scroll-top"><i class="fas fa-arrow-up"></i></div>
 
-    <!-- MAIN CONTENT (unique to this page) -->
+    <!-- MAIN CONTENT (ministries grid) -->
     <div class="main-content">
-        <div class="bg-shapes" id="shapes-container"></div>  <!-- floating shapes -->
+        <!-- Floating geometric background (created by JS) -->
+        <div class="bg-shapes" id="shapes-container"></div>
 
-        <!-- Page title (static, because it's specific to ministries) -->
-        <header class="header">
+        <!-- Page title -->
+        <header class="page-header">
             <div class="title-container">
                 <h1 class="title">OUR MINISTRIES</h1>
             </div>
         </header>
 
-        <!-- 8 large clickable ministry cards -->
+        <!-- 8 large clickable ministry cards with correct links -->
         <div class="ministries-grid">
-            <!-- 1. Altar Servers -->
+            <!-- 1. Altar Servers -> altar.html -->
             <a href="altar.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-child"></i></div>
                 <span class="ministry-name">Altar Servers</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 2. Catechism -->
+            <!-- 2. Catechism -> catechism.html -->
             <a href="catechism.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-bible"></i></div>
                 <span class="ministry-name">Catechism</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 3. Choir -->
+            <!-- 3. Choir -> choir.html -->
             <a href="choir.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-music"></i></div>
                 <span class="ministry-name">Choir</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 4. Family Wards -->
+            <!-- 4. Family Wards -> family.html -->
             <a href="family.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-home"></i></div>
                 <span class="ministry-name">Family Wards</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 5. Mathrivedhi -->
+            <!-- 5. Mathrivedhi -> mathruvedi.html -->
             <a href="mathruvedi.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-female"></i></div>
                 <span class="ministry-name">Mathrivedhi</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 6. Pithruvedhi (using same family link as placeholder) -->
-            <a href="family.html" class="ministry-card">
+            <!-- 6. Pithruvedhi -> pithruvedhi.html -->
+            <a href="pithruvedhi.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-male"></i></div>
                 <span class="ministry-name">Pithruvedhi</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 7. SMYM Wellington -->
+            <!-- 7. SMYM Wellington -> smym.html -->
             <a href="smym.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fab fa-react"></i></div>
                 <span class="ministry-name">SMYM Wellington</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 8. Young Couple Ministry -->
+            <!-- 8. Young Couple Ministry -> youngcouple.html -->
             <a href="youngcouple.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-heart"></i></div>
                 <span class="ministry-name">Young Couple</span>
@@ -431,15 +394,16 @@
         </div>
     </div>
 
-    <!-- footer container – external footer.html will be loaded here -->
+    <!-- Footer will be injected here -->
     <div id="footer-container"></div>
 
     <script>
-        // Create floating shapes (identical to donate.html)
+        // Function to create floating shapes (same as donate page)
         function createShapes() {
             const container = document.getElementById('shapes-container');
             if (!container) return;
-            container.innerHTML = ''; // clear existing
+            // clear existing shapes (if any)
+            container.innerHTML = '';
             const shapeCount = window.innerWidth > 768 ? 12 : 6;
             for (let i = 0; i < shapeCount; i++) {
                 const shape = document.createElement('div');
@@ -460,116 +424,57 @@
             }
         }
 
-        // Scroll to top logic
+        // Load header, footer, notice via fetch (with fallback)
+        async function loadComponent(id, url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Failed to load ${url}`);
+                const html = await response.text();
+                document.getElementById(id).innerHTML = html;
+            } catch (err) {
+                console.warn(`Could not load ${url}:`, err);
+                // Optionally inject a simple fallback message (but keep empty for production)
+            }
+        }
+
+        // load all partials
+        function loadPartials() {
+            loadComponent('notice-container', 'notice.html');
+            loadComponent('header-container', 'header.html');
+            loadComponent('footer-container', 'footer.html');
+        }
+
+        // scroll to top logic
         const scrollTop = document.getElementById('scroll-top');
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) scrollTop.classList.add('active');
-            else scrollTop.classList.remove('active');
-        });
-        scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // touch effect for cards (mobile)
-        document.querySelectorAll('.ministry-card').forEach(c => {
-            c.addEventListener('touchstart', function() { this.style.transform = 'translateY(-5px) scale(0.98)'; });
-            c.addEventListener('touchend', function() { this.style.transform = ''; });
-        });
-
-        // Load external components: notice, header, footer (exactly like donate.html)
-        function loadComponent(elementId, filePath) {
-            return fetch(filePath)
-                .then(response => {
-                    if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById(elementId).innerHTML = data;
-                })
-                .catch(err => {
-                    console.warn(`${filePath} not loaded:`, err);
-                    // fallback silent
-                });
-        }
-
-        // Load all fragments, then initialize shapes and mobile nav (which may be inside header)
-        Promise.all([
-            loadComponent('notice-container', 'notice.html'),
-            loadComponent('header-container', 'header.html'),
-            loadComponent('footer-container', 'footer.html')
-        ]).then(() => {
-            // After header is loaded, reinitialize mobile navigation functionality
-            // because the header contains the nav toggle and mobile menu.
-            initMobileNav();
-            // Also recreate shapes (already called, but safe to recall)
-            createShapes();
-        }).catch(() => {
-            // Still create shapes even if fragments fail
-            createShapes();
-        });
-
-        // Mobile navigation initializer (copied from donate.html's script)
-        function initMobileNav() {
-            const navToggle = document.getElementById('nav-toggle');
-            const mobileMenu = document.getElementById('mobile-menu-container');
-            const mobileOverlay = document.getElementById('mobile-nav-overlay');
-            const mobileClose = document.getElementById('mobile-menu-close');
-
-            if (!navToggle || !mobileMenu || !mobileOverlay || !mobileClose) {
-                // Elements not found – maybe header not loaded correctly
-                return;
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
             }
-
-            function toggleMobileMenu() {
-                mobileMenu.classList.toggle('active');
-                mobileOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-                const icon = navToggle.querySelector('i');
-                if (mobileMenu.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
-
-            navToggle.addEventListener('click', (e) => { e.preventDefault(); toggleMobileMenu(); });
-            mobileClose.addEventListener('click', (e) => { e.preventDefault(); toggleMobileMenu(); });
-            mobileOverlay.addEventListener('click', toggleMobileMenu);
-
-            // Mobile dropdowns
-            document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
-                parent.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const dropdownMenu = this.nextElementSibling;
-                    const toggleIcon = this.querySelector('.mobile-dropdown-toggle');
-                    // Close others
-                    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
-                        if (menu !== dropdownMenu) menu.classList.remove('show');
-                    });
-                    document.querySelectorAll('.mobile-dropdown-toggle').forEach(icon => {
-                        if (icon !== toggleIcon) icon.classList.remove('active');
-                    });
-                    dropdownMenu.classList.toggle('show');
-                    toggleIcon.classList.toggle('active');
-                });
-            });
-
-            // Close menu on link click
-            document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenu.classList.contains('active')) toggleMobileMenu();
-                });
-            });
-        }
-
-        // Also ensure shapes on resize
-        window.addEventListener('resize', () => {
-            createShapes();
+        });
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Initial createShapes called after load, but also call now for immediate bg (will be overwritten after load, but fine)
+        // Initialize on load
         window.addEventListener('load', () => {
-            // if fragments haven't finished, shapes may already exist; re-call to be safe
+            createShapes();
+            loadPartials();
+
+            // subtle touch effect for ministry cards (mobile)
+            document.querySelectorAll('.ministry-card').forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    this.style.transform = 'translateY(-5px) scale(0.98)';
+                }, { passive: true });
+                card.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                });
+            });
+        });
+
+        // resize: regenerate shapes
+        window.addEventListener('resize', () => {
             createShapes();
         });
     </script>
