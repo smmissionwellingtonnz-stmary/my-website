@@ -398,116 +398,115 @@
     <div id="footer-container"></div>
 
     <script>
-        // Function to create floating shapes (same as donate page)
-        function createShapes() {
-            const container = document.getElementById('shapes-container');
-            if (!container) return;
-            // clear existing shapes (if any)
-            container.innerHTML = '';
-            const shapeCount = window.innerWidth > 768 ? 12 : 6;
-            for (let i = 0; i < shapeCount; i++) {
-                const shape = document.createElement('div');
-                const isCircle = Math.random() > 0.5;
-                if (isCircle) {
-                    shape.classList.add('shape', 'shape-circle');
-                    const size = Math.random() * 150 + 50;
-                    shape.style.width = `${size}px`;
-                    shape.style.height = `${size}px`;
-                } else {
-                    shape.classList.add('shape', 'shape-triangle');
-                }
-                shape.style.left = `${Math.random() * 100}%`;
-                shape.style.animationDuration = `${Math.random() * 30 + 20}s`;
-                shape.style.animationDelay = `-${Math.random() * 20}s`;
-                shape.style.transform = `scale(${0.5 + Math.random() * 0.5})`;
-                container.appendChild(shape);
-            }
+document.addEventListener("DOMContentLoaded", function() {
+
+  // Load notice bar (if you have notice.html at root; change to 'includes/notice.html' if yours is inside includes/)
+  fetch('notice.html')
+    .then(r => r.text())
+    .then(html => { const el = document.getElementById('notice-container'); if (el) el.innerHTML = html; })
+    .catch(err => console.warn('Notice load failed:', err));
+
+  // Load header
+  fetch('includes/header.html')
+    .then(r => r.text())
+    .then(html => {
+      const el = document.getElementById('header-container');
+      if (el) el.innerHTML = html;
+
+      // Initialize mobile navigation AFTER header is injected
+      if (typeof initializeMobileNavigation === 'function') initializeMobileNavigation();
+
+      // Initialize scroll to top button
+      if (typeof initializeScrollTop === 'function') initializeScrollTop();
+    })
+    .catch(err => console.warn('Header load failed:', err));
+
+  // Load footer
+  fetch('includes/footer.html')
+    .then(r => r.text())
+    .then(html => { const el = document.getElementById('footer-container'); if (el) el.innerHTML = html; })
+    .catch(err => console.warn('Footer load failed:', err));
+
+});
+
+// ===== Your existing helper functions (from this page) =====
+
+// Toggle mobile menu
+function toggleMobileMenu() {
+  const navMenu = document.getElementById('nav-menu');
+  const navToggle = document.getElementById('nav-toggle');
+
+  if (navMenu) navMenu.classList.toggle('active');
+  if (navToggle) navToggle.classList.toggle('active');
+
+  document.body.classList.toggle('no-scroll', navMenu && navMenu.classList.contains('active'));
+}
+
+// Initialize mobile navigation (hamburger + dropdowns)
+function initializeMobileNavigation() {
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Dropdown parents
+  document.querySelectorAll('.dropdown-parent').forEach(parent => {
+    parent.addEventListener('click', function(e) {
+      if (window.innerWidth <= 992) {
+        e.preventDefault();
+        const dropdown = this.nextElementSibling;
+        if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+          dropdown.classList.toggle('active');
+          this.classList.toggle('active');
         }
+      }
+    });
+  });
 
-        // Load header, footer, notice via fetch (with fallback)
-        async function loadComponent(id, url) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`Failed to load ${url}`);
-                const html = await response.text();
-                document.getElementById(id).innerHTML = html;
-            } catch (err) {
-                console.warn(`Could not load ${url}:`, err);
-                // Optionally inject a simple fallback message (but keep empty for production)
-            }
-        }
+  // Close menu when clicking a link (mobile)
+  document.querySelectorAll('.nav-link:not(.dropdown-parent), .dropdown-item').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 992) {
+        const navMenu = document.getElementById('nav-menu');
+        if (navMenu && navMenu.classList.contains('active')) toggleMobileMenu();
+      }
+    });
+  });
 
-        // load all partials
-        async function loadPartials() {
-            // Notice bar (optional)
-            await loadComponent('notice-container', 'notice.html');
+  // Close menu if you resize to desktop
+  window.addEventListener('resize', () => {
+    const navMenu = document.getElementById('nav-menu');
+    const navToggle = document.getElementById('nav-toggle');
 
-            // Header
-            await loadComponent('header-container', 'includes/header.html');
-            // Initialize mobile navigation AFTER header is loaded
-            if (typeof initializeMobileNavigation === 'function') initializeMobileNavigation();
-            if (typeof initializeScrollTop === 'function') initializeScrollTop();
+    if (window.innerWidth > 992) {
+      if (navMenu) navMenu.classList.remove('active');
+      if (navToggle) navToggle.classList.remove('active');
+      document.body.classList.remove('no-scroll');
 
-            // Footer
-            await loadComponent('footer-container', 'includes/footer.html');
-        }
+      // Reset dropdowns
+      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('active'));
+      document.querySelectorAll('.dropdown-parent').forEach(p => p.classList.remove('active'));
+    }
+  });
+}
 
-        // scroll to top logic
-        const scrollTop = document.getElementById('scroll-top');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTop.classList.add('active');
-            } else {
-                scrollTop.classList.remove('active');
-            }
-        });
-        scrollTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+// Scroll-to-top button
+function initializeScrollTop() {
+  const scrollTop = document.getElementById('scroll-top');
+  if (!scrollTop) return;
 
-        
-        // Same nav + scroll-top initializers used on other pages
-        function initializeMobileNavigation() {
-                        // Mobile Navigation Functionality
-                        const navToggle = document.getElementById('nav-toggle');
-                        const mobileMenuContainer = document.getElementById('mobile-menu-container');
-                        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-                        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        
-                        function toggleMobileMenu() {
-                            if (mobileMenuContainer) {
-                                mobileMenuContainer.classList.toggle('active');
-                            }
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) scrollTop.classList.add('active');
+    else scrollTop.classList.remove('active');
+  });
 
-        function initializeScrollTop() {
-                        const scrollTop = document.getElementById('scroll-top');
-                        
-                        window.addEventListener('scroll', () => {
-                            if (scrollTop) {
-                                if (window.pageYOffset > 300) {
-                                    scrollTop.classList.add('active');
-                                }
-
-// Initialize on load
-        window.addEventListener('load', async () => {
-            createShapes();
-            await loadPartials();
-
-            // subtle touch effect for ministry cards (mobile)
-            document.querySelectorAll('.ministry-card').forEach(card => {
-                card.addEventListener('touchstart', function() {
-                    this.style.transform = 'translateY(-5px) scale(0.98)';
-                }, { passive: true });
-                card.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                });
-            });
-        });
-
-        // resize: regenerate shapes
-        window.addEventListener('resize', () => {
-            createShapes();
-        });
-    </script>
+  scrollTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+</script>
 </body>
 </html>
