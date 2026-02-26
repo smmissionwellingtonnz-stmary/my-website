@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Donate · St. Mary's Syro-Malabar Mission</title>
+    <title>Support Our Mission · St. Mary's Syro-Malabar Mission</title>
+    <!-- same fonts as index -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== EXACT STYLES FROM INDEX(2).HTML ===== */
         
         /* Global Styles */
         * {
@@ -572,312 +574,286 @@
 
         /* ===== PAGE SPECIFIC STYLES (from original donate.html) ===== */
         
-        /* Hero section - edge to edge */
-        .hero-section {
-            width: 100%;
-            background: linear-gradient(135deg, #0a4d68, #088395);
-            padding: 7rem 0 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 3rem;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
+        /* Floating Geometric Background */
+        .bg-shapes {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
-            background-size: cover;
-            animation: pulseBg 15s infinite alternate;
+            z-index: -1;
+            overflow: hidden;
         }
-        
-        @keyframes pulseBg {
-            0% { opacity: 0.1; }
-            100% { opacity: 0.2; }
-        }
-        
-        .title {
-            font-family: 'Cinzel Decorative', cursive;
-            color: white;
-            font-size: 3.5rem;
-            margin: 1rem 1rem 1.5rem;
-            position: relative;
-            display: inline-block;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            max-width: 90%;
-        }
-        
-        .title::after {
-            content: '';
+
+        .shape {
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: #b38a58;
-            animation: lineGrow 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            opacity: 0.08;
+            animation: floatShape 25s linear infinite;
         }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 600px;
-            margin: 0 auto;
+
+        .shape-circle {
+            border-radius: 50%;
+            background: radial-gradient(circle, #1a4b7a, #b38a58);
         }
-        
-        @keyframes lineGrow {
-            0% { width: 0; }
-            100% { width: 80px; }
+
+        .shape-triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid #1a4b7a;
         }
-        
+
         /* Main Content */
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px 4rem;
+            padding: 2rem 20px 4rem;
         }
         
-        /* Introduction Card */
-        .intro-card {
-            background-color: white;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 3rem;
+        /* Header section */
+        .header {
+            text-align: center;
+            margin: 0 0 3rem;
             position: relative;
-            text-align: center;
-        }
-        
-        .intro-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(135deg, #0a4d68, #088395);
-        }
-        
-        .intro-card h2 {
-            font-family: 'Cinzel Decorative', cursive;
-            color: #0a4d68;
-            margin-bottom: 1rem;
-            font-size: 2rem;
-        }
-        
-        .intro-card p {
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Donation Options */
-        .donation-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin: 3rem 0;
-            justify-content: center;
-        }
-        
-        .option-card {
-            background: white;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1;
             width: 100%;
-            max-width: 350px;
-            text-align: center;
-            transition: all 0.3s ease;
+        }
+
+        .title-container {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 2rem 3rem;
+            display: inline-block;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transform-style: preserve-3d;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
-        
-        .option-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .option-card::before {
+
+        .title-container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #0a4d68, #088395);
-        }
-        
-        .option-icon {
-            font-size: 3rem;
-            color: #0a4d68;
-            margin-bottom: 1.5rem;
-        }
-        
-        .option-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #0a4d68;
-        }
-        
-        .option-description {
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-        
-        .bank-details {
-            background: #f9f9f9;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            text-align: left;
-            border-left: 4px solid #0a4d68;
-        }
-        
-        .bank-detail-item {
-            display: flex;
-            margin-bottom: 0.8rem;
-            align-items: flex-start;
-        }
-        
-        .bank-detail-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .detail-label {
-            font-weight: 600;
-            min-width: 90px;
-            color: #0a4d68;
-        }
-        
-        .detail-value {
-            color: #333;
-            word-break: break-word;
-            flex: 1;
-        }
-        
-        .copy-btn {
-            background: none;
-            border: 1px solid #0a4d68;
-            color: #0a4d68;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            margin-left: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .copy-btn:hover {
-            background: #0a4d68;
-            color: white;
-        }
-        
-        .qrcode-container {
-            background: white;
-            padding: 1.5rem;
-            margin: 1rem auto;
-            max-width: 250px;
-            text-align: center;
-        }
-        
-        .qrcode-image {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-        
-        .donate-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #0a4d68;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(10, 77, 104, 0.3);
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1.1rem;
-        }
-        
-        .donate-btn:hover {
-            background: #088395;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(10, 77, 104, 0.4);
-        }
-        
-        .paypal-btn {
-            background: #003087;
-        }
-        
-        .paypal-btn:hover {
-            background: #002266;
-        }
-        
-        /* Thank You Message */
-        .thankyou-message {
-            text-align: center;
-            padding: 3rem;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-top: 3rem;
-        }
-        
-        .thankyou-message i {
-            font-size: 4rem;
-            color: #0a4d68;
-            margin-bottom: 1rem;
-        }
-        
-        .thankyou-message h3 {
-            font-size: 1.8rem;
-            color: #0a4d68;
-            margin-bottom: 1rem;
-        }
-        
-        .thankyou-message p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Notification Toast */
-        .notification {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #0a4d68;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            z-index: 3000;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .notification.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-        
-        .notification i {
-            margin-right: 8px;
+            background: linear-gradient(90deg, #1a4b7a, #b38a58);
+            animation: gradientFlow 6s linear infinite;
+            background-size: 200% 100%;
         }
 
-        /* Animation */
+        .title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            color: #1a4b7a;
+            margin: 0;
+            position: relative;
+            background: linear-gradient(135deg, #1a4b7a, #b38a58);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+        
+        /* Cards container */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            width: 100%;
+            margin-bottom: 2rem;
+            perspective: 1000px;
+            z-index: 1;
+        }
+
+        /* Individual cards */
+        .card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: clamp(1.5rem, 3vw, 2rem);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 500px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #1a4b7a, #b38a58);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h2 {
+            color: #1a4b7a;
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.4rem, 2vw, 1.6rem);
+            position: relative;
+            display: inline-block;
+        }
+
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #1a4b7a;
+            transition: width 0.3s ease;
+        }
+
+        .card:hover h2::after {
+            width: 100%;
+        }
+
+        .card p {
+            color: #455A64;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            white-space: pre-line;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Copy button styles */
+        .copy-btn {
+            background: rgba(26, 75, 122, 0.1);
+            color: #1a4b7a;
+            border: none;
+            border-radius: 50px;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-left: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(26, 75, 122, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .copy-btn:hover::after {
+            left: 100%;
+        }
+
+        .copy-btn:hover {
+            background: rgba(26, 75, 122, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .copy-btn i {
+            font-size: 0.9rem;
+        }
+
+        /* Seed of Hope Image Styling */
+        .seedofhope-container {
+            margin: 2rem 0 3rem 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .seedofhope-image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .seedofhope-image:hover {
+            transform: scale(1.01);
+        }
+
+        /* Success message */
+        .success-message {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #00C853;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            animation: pulse 2s infinite;
+        }
+
+        .success-message.show {
+            transform: translateX(0);
+        }
+
+        /* Animations */
+        @keyframes floatShape {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(26, 75, 122, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(26, 75, 122, 0.5); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes pulse {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0%, 100% { transform: translateX(0) scale(1); }
+            50% { transform: translateX(0) scale(1.05); }
         }
 
         /* Responsive */
@@ -892,30 +868,24 @@
             .nav-menu { display: none; }
             .nav-container { top: 30px; }
             
-            .title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .hero-section { padding: 5rem 0 3rem; }
+            .main-content { padding: 1.5rem 15px 3rem; }
             
-            .main-content { padding: 0 15px 3rem; }
-            .intro-card { padding: 1.5rem; }
-            .intro-card h2 { font-size: 1.8rem; }
+            .title-container { padding: 1.5rem 2rem; }
             
-            .donation-options { gap: 1.5rem; }
-            .option-card { padding: 1.5rem; }
+            .cards-container { gap: 1.5rem; }
             
-            .bank-detail-item {
-                flex-direction: column;
+            .seedofhope-container { margin: 1.5rem 0 2.5rem 0; }
+            .seedofhope-image { max-width: 90%; }
+            
+            .success-message {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                transform: translateY(150%);
+                justify-content: center;
+                max-width: calc(100% - 2rem);
             }
-            
-            .detail-label {
-                margin-bottom: 0.3rem;
-            }
-            
-            .copy-btn {
-                margin-left: 0;
-                margin-top: 5px;
-                display: inline-block;
-            }
+            .success-message.show { transform: translateY(0); }
         }
 
         @media (max-width: 480px) {
@@ -924,21 +894,19 @@
             .nav-container { top: 25px; }
             .notice-bar { padding: 5px 0; font-size: 12px; }
             
-            .title { font-size: 2rem; }
+            .main-content { padding: 1rem 10px 2rem; }
             
-            .intro-card h2 { font-size: 1.5rem; }
+            .title-container { padding: 1.2rem 1.5rem; }
             
-            .option-title { font-size: 1.3rem; }
-            
-            .donate-btn { padding: 0.8rem 1.5rem; }
-            
-            .thankyou-message { padding: 2rem; }
-            .thankyou-message h3 { font-size: 1.5rem; }
-            
-            .notification {
-                width: 90%;
-                text-align: center;
+            .copy-btn {
+                margin-top: 0.5rem;
+                margin-left: 0;
+                display: inline-flex;
+                width: 100%;
+                justify-content: center;
             }
+            
+            .seedofhope-image { max-width: 100%; }
         }
     </style>
 </head>
@@ -954,124 +922,65 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Notification Toast -->
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        <span id="notification-message">Copied to clipboard!</span>
-    </div>
+    <!-- Floating Geometric Background -->
+    <div class="bg-shapes" id="shapes-container"></div>
 
-    <!-- Hero Section - edge to edge -->
-    <section class="hero-section">
-        <h1 class="title">SUPPORT OUR MISSION</h1>
-        <p class="hero-subtitle">Your generous donations help us serve our community and spread God's love</p>
-    </section>
-
+    <!-- Main Content -->
     <div class="main-content">
-        <!-- Introduction Card -->
-        <div class="intro-card">
-            <h2>Why Donate?</h2>
-            <p>Your contributions help us maintain our church facilities, support our ministries, and continue our mission of serving the Syro-Malabar Catholic community in Wellington. Every donation, no matter the size, makes a difference in our ability to serve God and our community.</p>
-        </div>
-
-        <!-- Donation Options -->
-        <div class="donation-options">
-            <!-- Bank Transfer Option -->
-            <div class="option-card">
-                <div class="option-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <h3 class="option-title">Bank Transfer</h3>
-                <p class="option-description">Transfer directly to our church bank account</p>
-                
-                <div class="bank-details">
-                    <div class="bank-detail-item">
-                        <span class="detail-label">Account Name:</span>
-                        <span class="detail-value">St. Mary's Syro Malabar Mission Wellington</span>
-                        <button class="copy-btn" data-copy="St. Mary's Syro Malabar Mission Wellington">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                    <div class="bank-detail-item">
-                        <span class="detail-label">Bank:</span>
-                        <span class="detail-value">ANZ Bank</span>
-                        <button class="copy-btn" data-copy="ANZ Bank">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                    <div class="bank-detail-item">
-                        <span class="detail-label">Account No:</span>
-                        <span class="detail-value">01-1839-0136969-00</span>
-                        <button class="copy-btn" data-copy="01-1839-0136969-00">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
+        <!-- Header section -->
+        <header class="header">
+            <div class="title-container">
+                <h1 class="title">SUPPORT OUR MISSION</h1>
             </div>
+        </header>
 
-            <!-- Cash/In-Person Option -->
-            <div class="option-card">
-                <div class="option-icon">
-                    <i class="fas fa-hand-holding-heart"></i>
-                </div>
-                <h3 class="option-title">Cash / In-Person</h3>
-                <p class="option-description">Donate during our Sunday Holy Qurbana services</p>
-                
-                <div class="bank-details">
-                    <div class="bank-detail-item">
-                        <span class="detail-label">Location:</span>
-                        <span class="detail-value">27 Trebann Street, Paparangi, Wellington</span>
-                    </div>
-                    <div class="bank-detail-item">
-                        <span class="detail-label">Time:</span>
-                        <span class="detail-value">Sundays at 11:00 AM & 5:30 PM</span>
-                    </div>
-                </div>
-                
-                <p style="color: #666; margin-top: 1rem; font-style: italic;">
-                    You can also contact any of our council members for donation envelopes
+        <!-- Cards container -->
+        <div class="cards-container">
+            <!-- Account Details Card -->
+            <div class="card">
+                <h2>Account Details</h2>
+                <p>
+                    <strong>Account Name:</strong> 
+                    St Mary's Syro-Malabar Mission Wellington
+                    <button class="copy-btn" onclick="copyToClipboard('St Mary\'s Syro Malabar Mission Wellington', this)">
+                        <i class="far fa-copy"></i> Copy
+                    </button>
+                    
+                    <strong>Bank:</strong> BNZ
+                    
+                    <strong>Account Number:</strong> 
+                    02-0506-0320095-000
+                    <button class="copy-btn" onclick="copyToClipboard('02-0506-0320095-000', this)">
+                        <i class="far fa-copy"></i> Copy
+                    </button>
                 </p>
             </div>
 
-            <!-- PayPal Option -->
-            <div class="option-card">
-                <div class="option-icon">
-                    <i class="fab fa-paypal"></i>
-                </div>
-                <h3 class="option-title">PayPal</h3>
-                <p class="option-description">Donate securely via PayPal</p>
-                
-                <div class="bank-details">
-                    <div class="bank-detail-item">
-                        <span class="detail-label">Email:</span>
-                        <span class="detail-value">smmissionwellingtonnz@gmail.com</span>
-                        <button class="copy-btn" data-copy="smmissionwellingtonnz@gmail.com">
-                            <i class="fas fa-copy"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <a href="https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID" target="_blank" class="donate-btn paypal-btn">
-                    <i class="fab fa-paypal"></i> Donate with PayPal
-                </a>
+            <!-- Donation Instructions Card -->
+            <div class="card">
+                <h2>Your Reference Details</h2>
+                <p>When making your donation, please ensure the following details are filled out correctly:
+
+        <strong>Particulars:</strong> Your First Name
+
+        <strong>Code:</strong> Your Last Name
+
+        <strong>Reference:</strong> FRN
+
+        *FRN* - Family Reference Number
+
+        Thank you for your continued support.</p>
             </div>
         </div>
-
-        <!-- QR Code Option -->
-        <div class="intro-card" style="text-align: center;">
-            <h2>Scan to Donate</h2>
-            <p>Scan the QR code below with your banking app to donate instantly</p>
-            
-            <div class="qrcode-container">
-                <img src="images/donation-qrcode.png" alt="Donation QR Code" class="qrcode-image">
-                <p style="color: #666; font-size: 0.9rem;">Scan with your banking app</p>
-            </div>
+        
+        <!-- Seed of Hope Image -->
+        <div class="seedofhope-container">
+            <img src="images/seedofhope.jpg" alt="Seed of Hope" class="seedofhope-image">
         </div>
 
-        <!-- Thank You Message -->
-        <div class="thankyou-message">
-            <i class="fas fa-heart"></i>
-            <h3>Thank You for Your Generosity</h3>
-            <p>Your support enables us to continue our mission and serve our community. May God bless you abundantly for your kindness.</p>
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i> Copied to clipboard!
         </div>
     </div>
 
@@ -1079,6 +988,70 @@
     <div id="footer-placeholder"></div>
 
     <script>
+        // Create floating shapes
+        function createShapes() {
+            const container = document.getElementById('shapes-container');
+            if (!container) return;
+            
+            const shapeCount = window.innerWidth > 768 ? 12 : 6;
+            
+            for (let i = 0; i < shapeCount; i++) {
+                const shape = document.createElement('div');
+                const isCircle = Math.random() > 0.5;
+                
+                if (isCircle) {
+                    shape.classList.add('shape', 'shape-circle');
+                    const size = Math.random() * 150 + 50;
+                    shape.style.width = `${size}px`;
+                    shape.style.height = `${size}px`;
+                } else {
+                    shape.classList.add('shape', 'shape-triangle');
+                }
+                
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 30 + 20;
+                const sizeFactor = 0.5 + Math.random() * 0.5;
+                
+                shape.style.left = `${posX}%`;
+                shape.style.animationDuration = `${duration}s`;
+                shape.style.animationDelay = `-${delay}s`;
+                shape.style.transform = `scale(${sizeFactor})`;
+                
+                container.appendChild(shape);
+            }
+        }
+
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Change button appearance
+                const icon = button.querySelector('i');
+                icon.classList.remove('fa-copy');
+                icon.classList.add('fa-check');
+                button.style.background = 'rgba(0, 200, 83, 0.2)';
+                button.style.color = '#00C853';
+                
+                // Show success message
+                const successMessage = document.getElementById('successMessage');
+                successMessage.classList.add('show');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    icon.classList.remove('fa-check');
+                    icon.classList.add('fa-copy');
+                    button.style.background = 'rgba(26, 75, 122, 0.1)';
+                    button.style.color = '#1a4b7a';
+                }, 2000);
+                
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             // Load notice bar
             fetch("notice.html")
@@ -1141,36 +1114,28 @@
                 });
             });
 
-            // Copy to clipboard functionality
-            const copyButtons = document.querySelectorAll('.copy-btn');
-            const notification = document.getElementById('notification');
-            const notificationMessage = document.getElementById('notification-message');
+            // Initialize shapes
+            createShapes();
             
-            let timeoutId;
-            
-            copyButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const textToCopy = this.getAttribute('data-copy');
-                    
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        // Show notification
-                        notification.classList.add('show');
-                        notificationMessage.textContent = `Copied: ${textToCopy}`;
-                        
-                        // Clear previous timeout
-                        if (timeoutId) {
-                            clearTimeout(timeoutId);
-                        }
-                        
-                        // Hide notification after 2 seconds
-                        timeoutId = setTimeout(() => {
-                            notification.classList.remove('show');
-                        }, 2000);
-                    }).catch(err => {
-                        console.error('Could not copy text: ', err);
-                    });
+            // Add touch effect for mobile
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    this.style.transform = 'translateY(-5px) scale(0.98)';
+                });
+                
+                card.addEventListener('touchend', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
                 });
             });
+        });
+
+        // Recreate shapes on resize
+        window.addEventListener('resize', () => {
+            const container = document.getElementById('shapes-container');
+            if (container) {
+                container.innerHTML = '';
+                createShapes();
+            }
         });
 
         // Mobile navigation functionality (same as index)
