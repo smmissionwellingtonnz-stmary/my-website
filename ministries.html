@@ -43,9 +43,376 @@
             flex-direction: column;
         }
 
-        /* main content wrapper (pushes footer down) */
+        /* Notice Bar - will be injected but keeping style reference */
+        .notice-bar {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: pulseNotice 2s infinite;
+        }
+
+        @keyframes pulseNotice {
+            0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+            50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
+            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
+        }
+
+        .notice-bar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .notice-bar span {
+            margin: 0 15px;
+            display: inline-block;
+        }
+
+        /* Navigation Menu Styles - for reference */
+        .nav-container {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--nav-gradient);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+        }
+        
+        .nav-logo {
+            height: 50px;
+        }
+        
+        .nav-toggle {
+            font-size: 1.5rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 1rem 1.2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.donate {
+            background-color: #ff6b6b;
+            border-radius: 4px;
+            margin: 0.5rem 1rem;
+            font-weight: 600;
+        }
+
+        .nav-link.newsletter {
+            background-color: #05bfdb;
+            border-radius: 4px;
+            margin: 0.5rem 1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .nav-link.newsletter:hover {
+            background-color: #0497ac;
+            transform: translateY(-2px);
+        }
+
+        @media (min-width: 769px) {
+            .nav-link.newsletter {
+                position: relative;
+                display: inline-block;
+                width: 160px;
+                text-align: center;
+                padding: 8px 12px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                font-family: Arial, sans-serif;
+            }
+
+            .nav-link.newsletter .default-text {
+                display: inline-block;
+                transition: opacity 0.3s ease;
+                font-size: 14px;
+            }
+
+            .nav-link.newsletter .hover-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                font-size: 9px;
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+
+            .nav-link.newsletter:hover .default-text {
+                opacity: 0;
+            }
+
+            .nav-link.newsletter:hover .hover-text {
+                opacity: 1;
+            }
+
+            .nav-link.newsletter .hover-text i {
+                font-size: 12px;
+            }
+        }
+
+        .nav-link.donate:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: white;
+            width: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f1f1;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+            color: #0a4d68;
+            padding-left: 1.3rem;
+        }
+
+        @media (min-width: 1025px) {
+            .nav-header {
+                padding: 6px 20px !important;
+            }
+            .nav-logo {
+                height: 38px !important; 
+            }
+            .nav-link {
+                padding: 0.55rem 1rem !important;
+                font-size: 15px;
+            }
+            .dropdown-item {
+                padding: 0.6rem 1rem !important;
+            }
+            .nav-item .dropdown-menu {
+                top: 90% !important;
+            }
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-container {
+            position: fixed;
+            top: 40px;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: calc(100% - 40px);
+            background: var(--nav-gradient);
+            z-index: 2000;
+            overflow-y: auto;
+            transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-menu-container.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-logo {
+            height: 40px;
+        }
+        
+        .mobile-menu-close {
+            font-size: 1.5rem;
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-content {
+            padding: 20px 0;
+        }
+        
+        .mobile-nav-menu {
+            list-style: none;
+        }
+        
+        .mobile-nav-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav-link.donate {
+            background-color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .mobile-nav-link.newsletter {
+            background-color: #05bfdb;
+            font-weight: 600;
+        }
+
+        .mobile-nav-link.newsletter:hover {
+            background-color: #0497ac;
+        }
+
+        .mobile-nav-link.donate:hover {
+            background-color: #ff5252;
+        }
+        
+        .mobile-dropdown-toggle {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-dropdown-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            transition: max-height 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        
+        .mobile-dropdown-menu.show {
+            max-height: 500px;
+        }
+        
+        .mobile-dropdown-item {
+            display: block;
+            padding: 14px 20px 14px 40px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding-left: 45px;
+        }
+
+        /* main content wrapper */
         .main-content {
-            padding-top: 140px;   /* space for fixed header + notice */
+            padding-top: 160px;
             min-height: 100vh;
             flex: 1;
             width: 100%;
@@ -54,7 +421,7 @@
             align-items: center;
         }
 
-        /* floating shapes (same as donate) */
+        /* floating shapes */
         .bg-shapes {
             position: fixed;
             top: 0;
@@ -177,7 +544,6 @@
             animation: fadeInUp 0.6s ease backwards;
         }
 
-        /* staggered animation */
         .ministry-card:nth-child(1) { animation-delay: 0.05s; }
         .ministry-card:nth-child(2) { animation-delay: 0.1s; }
         .ministry-card:nth-child(3) { animation-delay: 0.15s; }
@@ -268,7 +634,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* responsive adjustments */
         @media (max-width: 768px) {
             .main-content { padding-top: 120px; }
             .ministries-grid { gap: 1rem; }
@@ -279,9 +644,12 @@
 
         @media (max-width: 480px) {
             .title-container { padding: 1.2rem 1.5rem; }
+            .notice-bar { font-size: 12px; padding: 8px 0; }
+            .notice-bar span { margin: 0 8px; }
+            .nav-container { top: 28px; }
+            .main-content { padding-top: 110px; }
         }
 
-        /* scroll to top button (same style) */
         .scroll-top {
             position: fixed;
             bottom: 30px;
@@ -313,8 +681,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        /* containers for injected partials (like stthomas.html) */
-        #notice-container, #header-container, #footer-container {
+        #notice-container, #footer-container {
             width: 100%;
         }
     </style>
@@ -323,15 +690,17 @@
     <!-- Notice bar will be injected here (like stthomas.html) -->
     <div id="notice-container"></div>
 
-    <!-- Header / navigation will be injected here (like stthomas.html) -->
+    <!-- Navigation Menu will be injected here (like stthomas.html) -->
     <div id="header-container"></div>
 
     <!-- Scroll to top button -->
-    <div class="scroll-top" id="scroll-top"><i class="fas fa-arrow-up"></i></div>
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
 
     <!-- MAIN CONTENT (ministries grid) -->
     <div class="main-content">
-        <!-- Floating geometric background (created by JS) -->
+        <!-- Floating geometric background -->
         <div class="bg-shapes" id="shapes-container"></div>
 
         <!-- Page title -->
@@ -341,51 +710,43 @@
             </div>
         </header>
 
-        <!-- 8 large clickable ministry cards with correct links (slightly reduced size) -->
+        <!-- 8 large clickable ministry cards with correct links -->
         <div class="ministries-grid">
-            <!-- 1. Altar Servers -> altar.html -->
             <a href="altar.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-child"></i></div>
                 <span class="ministry-name">Altar Servers</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 2. Catechism -> catechism.html -->
             <a href="catechism.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-bible"></i></div>
                 <span class="ministry-name">Catechism</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 3. Choir -> choir.html -->
             <a href="choir.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-music"></i></div>
                 <span class="ministry-name">Choir</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 4. Family Wards -> family.html -->
             <a href="family.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-home"></i></div>
                 <span class="ministry-name">Family Wards</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 5. Mathrivedhi -> mathruvedi.html -->
             <a href="mathruvedi.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-female"></i></div>
                 <span class="ministry-name">Mathrivedhi</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 6. Pithruvedhi -> pithruvedhi.html -->
             <a href="pithruvedhi.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-male"></i></div>
                 <span class="ministry-name">Pithruvedhi</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 7. SMYM Wellington -> smym.html -->
             <a href="smym.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fab fa-react"></i></div>
                 <span class="ministry-name">SMYM Wellington</span>
                 <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
             </a>
-            <!-- 8. Young Couple Ministry -> youngcouple.html -->
             <a href="youngcouple.html" class="ministry-card">
                 <div class="ministry-icon"><i class="fas fa-heart"></i></div>
                 <span class="ministry-name">Young Couple</span>
@@ -398,11 +759,10 @@
     <div id="footer-container"></div>
 
     <script>
-        // Function to create floating shapes (same as donate page)
+        // Function to create floating shapes
         function createShapes() {
             const container = document.getElementById('shapes-container');
             if (!container) return;
-            // clear existing shapes (if any)
             container.innerHTML = '';
             const shapeCount = window.innerWidth > 768 ? 12 : 6;
             for (let i = 0; i < shapeCount; i++) {
@@ -424,7 +784,7 @@
             }
         }
 
-        // Load header, footer, notice via fetch (like stthomas.html)
+        // Load header, footer, notice via fetch (EXACTLY like stthomas.html)
         async function loadComponent(id, url) {
             try {
                 const response = await fetch(url);
@@ -433,18 +793,17 @@
                 document.getElementById(id).innerHTML = html;
             } catch (err) {
                 console.warn(`Could not load ${url}:`, err);
-                // Optionally inject a simple fallback message (but keep empty for production)
             }
         }
 
-        // load all partials
+        // Load all partials
         function loadPartials() {
             loadComponent('notice-container', 'notice.html');
             loadComponent('header-container', 'header.html');
             loadComponent('footer-container', 'footer.html');
         }
 
-        // scroll to top logic
+        // Scroll to top functionality
         const scrollTop = document.getElementById('scroll-top');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
@@ -453,6 +812,7 @@
                 scrollTop.classList.remove('active');
             }
         });
+        
         scrollTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
@@ -462,7 +822,7 @@
             createShapes();
             loadPartials();
 
-            // subtle touch effect for ministry cards (mobile)
+            // Touch effect for ministry cards
             document.querySelectorAll('.ministry-card').forEach(card => {
                 card.addEventListener('touchstart', function() {
                     this.style.transform = 'translateY(-5px) scale(0.98)';
@@ -473,7 +833,7 @@
             });
         });
 
-        // resize: regenerate shapes
+        // Resize: regenerate shapes
         window.addEventListener('resize', () => {
             createShapes();
         });
