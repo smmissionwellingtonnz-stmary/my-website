@@ -627,7 +627,7 @@
       }
     }
 
-    /* ========== Ministries page styles (keeping original design) ========== */
+    /* ========== Ministries page styles with enhanced hover effects ========== */
     :root {
       --primary: #1a4b7a;
       --secondary: #b38a58;
@@ -700,6 +700,14 @@
       box-shadow: var(--shadow);
       border: 2px solid rgba(179, 138, 88, 0.3);
       backdrop-filter: blur(5px);
+      transition: all 0.4s ease;
+    }
+
+    .title-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      border-color: var(--secondary);
+      background: rgba(255, 255, 255, 0.95);
     }
 
     .title {
@@ -708,6 +716,12 @@
       letter-spacing: 1px;
       color: var(--primary);
       text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .title-container:hover .title {
+      color: #0a4d68;
+      letter-spacing: 2px;
     }
 
     .ministries-grid {
@@ -737,6 +751,7 @@
       transform: translateY(20px);
       opacity: 0;
       animation: cardIn 0.7s ease forwards;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     @keyframes cardIn {
@@ -758,15 +773,37 @@
       inset: 0;
       background: radial-gradient(circle at top left, rgba(179, 138, 88, 0.18), transparent 60%);
       opacity: 0;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.4s ease;
     }
 
-    .ministry-card:hover::before { opacity: 1; }
+    .ministry-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--secondary), var(--primary), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
 
     .ministry-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(0,0,0,0.15);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
       border-color: rgba(179, 138, 88, 0.45);
+    }
+
+    .ministry-card:hover::before {
+      opacity: 1;
+    }
+
+    .ministry-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .ministry-card:active {
+      transform: translateY(-5px) scale(0.98);
     }
 
     .ministry-icon {
@@ -781,6 +818,24 @@
       font-size: 2rem;
       margin-bottom: 14px;
       box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ministry-card:hover .ministry-icon {
+      transform: scale(1.1) rotate(5deg);
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      box-shadow: 0 12px 25px rgba(179, 138, 88, 0.4);
+    }
+
+    .ministry-card:hover .ministry-icon i {
+      animation: iconPulse 1s ease infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     .ministry-name {
@@ -788,6 +843,14 @@
       font-weight: 700;
       text-align: center;
       margin-bottom: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ministry-card:hover .ministry-name {
+      color: var(--primary);
+      transform: scale(1.05);
     }
 
     .click-hint {
@@ -796,6 +859,35 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ministry-card:hover .click-hint {
+      color: var(--primary);
+      gap: 10px;
+    }
+
+    .click-hint i {
+      transition: all 0.3s ease;
+      font-size: 0.8rem;
+    }
+
+    .ministry-card:hover .click-hint i {
+      transform: translateX(3px) scale(1.2);
+      color: var(--secondary);
+    }
+
+    /* Additional hover effect for ministry cards */
+    .ministry-card .click-hint i:last-child {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    .ministry-card:hover .click-hint i:last-child {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     /* injected partial containers */
@@ -826,49 +918,49 @@
       <a href="altar.html" class="ministry-card">
         <div class="ministry-icon"><i class="fas fa-child"></i></div>
         <span class="ministry-name">Altar Servers</span>
-        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
+        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> <i class="fas fa-arrow-right"></i> click</span>
       </a>
 
       <a href="catechism.html" class="ministry-card">
         <div class="ministry-icon"><i class="fas fa-bible"></i></div>
         <span class="ministry-name">Catechism</span>
-        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
+        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> <i class="fas fa-arrow-right"></i> click</span>
       </a>
 
       <a href="choir.html" class="ministry-card">
         <div class="ministry-icon"><i class="fas fa-music"></i></div>
         <span class="ministry-name">Choir</span>
-        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
+        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> <i class="fas fa-arrow-right"></i> click</span>
       </a>
 
       <a href="family.html" class="ministry-card">
         <div class="ministry-icon"><i class="fas fa-home"></i></div>
         <span class="ministry-name">Family Wards</span>
-        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
+        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> <i class="fas fa-arrow-right"></i> click</span>
       </a>
 
       <a href="mathruvedi.html" class="ministry-card">
         <div class="ministry-icon"><i class="fas fa-female"></i></div>
         <span class="ministry-name">Mathrivedhi</span>
-        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
+        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> <i class="fas fa-arrow-right"></i> click</span>
       </a>
 
       <a href="pithruvedhi.html" class="ministry-card">
         <div class="ministry-icon"><i class="fas fa-male"></i></div>
         <span class="ministry-name">Pithruvedhi</span>
-        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
+        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> <i class="fas fa-arrow-right"></i> click</span>
       </a>
 
       <a href="smym.html" class="ministry-card">
         <div class="ministry-icon"><i class="fab fa-react"></i></div>
         <span class="ministry-name">SMYM Wellington</span>
-        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
+        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> <i class="fas fa-arrow-right"></i> click</span>
       </a>
 
       <a href="youngcouple.html" class="ministry-card">
         <div class="ministry-icon"><i class="fas fa-heart"></i></div>
         <span class="ministry-name">Young Couple</span>
-        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> click</span>
+        <span class="click-hint"><i class="fas fa-mouse-pointer"></i> <i class="fas fa-arrow-right"></i> click</span>
       </a>
     </div>
   </div>
@@ -1018,13 +1110,28 @@
         })
         .catch(err => console.log('Footer loading error:', err));
 
-      // Touch effect for ministry cards
+      // Enhanced hover effects for ministry cards
       document.querySelectorAll('.ministry-card').forEach(card => {
-        card.addEventListener('touchstart', function() {
-          this.style.transform = 'translateY(-5px) scale(0.98)';
+        // Mouse enter effect
+        card.addEventListener('mouseenter', function() {
+          this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        });
+
+        // Mouse leave effect
+        card.addEventListener('mouseleave', function() {
+          this.style.transition = 'all 0.3s ease';
+        });
+
+        // Touch events for mobile
+        card.addEventListener('touchstart', function(e) {
+          e.preventDefault();
+          this.style.transform = 'translateY(-8px) scale(0.98)';
+          this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.15)';
         }, { passive: true });
+        
         card.addEventListener('touchend', function() { 
-          this.style.transform = ''; 
+          this.style.transform = '';
+          this.style.boxShadow = '';
         });
       });
     });
