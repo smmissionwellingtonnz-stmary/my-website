@@ -681,24 +681,19 @@
             opacity: 0;
             transform: scale(0.95);
             animation: zoomIn 0.8s forwards;
+            border-radius: 20px; /* Rounded corners for the card */
         }
 
-        @keyframes zoomIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .image-container {
+        .gallery-card .image-container {
             width: 100%;
             height: 0;
             padding-bottom: 66.67%; /* 3:2 aspect ratio */
             position: relative;
             overflow: hidden;
+            border-radius: 20px 20px 0 0; /* Rounded top corners for container */
         }
 
-        .image-container img {
+        .gallery-card .image-container img {
             position: absolute;
             top: 0;
             left: 0;
@@ -706,10 +701,18 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
+            border-radius: 20px 20px 0 0; /* Rounded top corners for image */
         }
 
         .gallery-card:hover .image-container img {
             transform: scale(1.05);
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Animation */
@@ -766,6 +769,68 @@
             .content-section { padding: 1.5rem; }
             .gallery-grid { grid-template-columns: 1fr; }
         }
+
+        /* ===== BACK ARROW STYLES ===== */
+        .back-arrow-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem 20px 0; /* top/bottom left/right */
+            width: 100%;
+            background: #f5f7fa; /* match body background so it flows */
+            position: relative;
+            z-index: 5;
+        }
+
+        .back-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #0a4d68;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border: 2px solid transparent;
+        }
+
+        .back-arrow i {
+            line-height: 1;
+        }
+
+        .back-arrow:hover {
+            background: #e8c07d;
+            color: #0a4d68;
+            transform: scale(1.1) translateX(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            border-color: #0a4d68;
+        }
+
+        /* Mobile adjustment */
+        @media (max-width: 768px) {
+            .back-arrow-wrapper {
+                padding: 0.4rem 15px 0; 
+            }
+            .back-arrow {
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .back-arrow-wrapper {
+                padding: 0.3rem 12px 0;
+            }
+            .back-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -774,6 +839,13 @@
 
     <!-- Header placeholder (will be replaced with header.html content) -->
     <div id="header-placeholder"></div>
+
+    <!-- BACK ARROW – just below header, far left, no label -->
+    <div class="back-arrow-wrapper">
+        <a href="ministries.html" class="back-arrow" aria-label="Back to ministries">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
 
     <!-- Scroll to top button (exactly like index) -->
     <div class="scroll-top" id="scroll-top">
