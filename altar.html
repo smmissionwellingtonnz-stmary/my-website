@@ -570,12 +570,12 @@
             font-size: 0.9rem;
         }
 
-        /* ===== PAGE SPECIFIC STYLES (from original altar.html) ===== */
+        /* ===== PAGE SPECIFIC STYLES – FIXED TRANSPARENT HEADER ===== */
         
-        /* Sacred Header with Cross Motif - edge to edge */
+        /* Sacred Header with image background – fully transparent overlay removed */
         .page-header {
             position: relative;
-            height: 280px;
+            height: 320px; /* a bit taller to let text breathe */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -583,45 +583,76 @@
             text-align: center;
             padding: 2rem;
             overflow: hidden;
-            background: linear-gradient(rgba(74, 107, 138, 0.9), rgba(93, 77, 106, 0.9));
+            /* Replace gradient with a subtle darkening using background-blend-mode or semi-transparent overlay via pseudo */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.pexels.com/photos/2359862/pexels-photo-2359862.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover no-repeat;
+            background-blend-mode: overlay;
             margin-bottom: 4rem;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             width: 100%;
         }
 
+        /* Remove the big cross background, it interferes with transparency */
         .page-header::before {
-            content: '✝';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20rem;
-            color: rgba(255, 255, 255, 0.05);
-            z-index: 1;
+            display: none;
         }
 
         .page-header h1 {
             font-family: 'Cinzel Decorative', cursive;
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 700;
             color: white;
             position: relative;
             z-index: 2;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.7);
+            text-transform: uppercase;
+            background: transparent; /* no bar */
+            padding: 0;
+            border: none;
         }
 
         .page-header .tagline {
             font-family: 'Cinzel Decorative', cursive;
             font-style: italic;
-            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-            color: #e8c07d;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #f5e6c6; /* light gold */
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             font-weight: 500;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+            background: transparent;
+            padding: 0 1rem;
+        }
+
+        /* optional: adjust for mobile */
+        @media (max-width: 768px) {
+            .page-header {
+                height: 260px;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            }
+            .page-header h1 {
+                font-size: 2.4rem;
+                margin-bottom: 0.5rem;
+            }
+            .page-header .tagline {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                height: 220px;
+                padding: 1.5rem;
+            }
+            .page-header h1 {
+                font-size: 1.9rem;
+            }
+            .page-header .tagline {
+                font-size: 1rem;
+            }
         }
 
         /* Main Content Container - centered but content sections edge-to-edge */
@@ -723,7 +754,6 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .page-header { height: 240px; }
             .content-section { padding: 2.5rem; }
             .nav-menu { flex-wrap: wrap; justify-content: center; }
         }
@@ -734,14 +764,6 @@
             .nav-toggle { display: block; }
             .nav-menu { display: none; }
             .nav-container { top: 30px; }
-            
-            .page-header {
-                height: 220px;
-                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            }
-            
-            .page-header h1 { font-size: 2rem; }
-            .page-header .tagline { font-size: 1.1rem; }
             
             .main-content { padding: 0 15px 3rem; }
             .content-section { padding: 2rem; }
@@ -757,14 +779,6 @@
             
             .nav-container { top: 25px; }
             .notice-bar { padding: 5px 0; font-size: 12px; }
-            
-            .page-header {
-                height: 200px;
-                padding: 1.5rem;
-            }
-            
-            .page-header h1 { font-size: 1.8rem; }
-            .page-header .tagline { font-size: 1rem; }
             
             .content-section { padding: 1.5rem; }
             .gallery-grid { grid-template-columns: 1fr; }
@@ -852,9 +866,9 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Page Header - edge to edge -->
+    <!-- Page Header - transparent look with background image -->
     <div class="page-header">
-        <h1>Altar Servers</h1>
+        <h1>ALTAR SERVERS</h1>
         <p class="tagline">"If anyone serves Me, let him follow Me; and where I am, there My servant will be also."</p>
     </div>
 
