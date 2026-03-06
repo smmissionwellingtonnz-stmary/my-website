@@ -33,8 +33,13 @@
 
         /* Navigation Menu (exact copy) */
         .nav-container {
-            position: fixed; top: 32px; left: 0; width: 100%; z-index: 1000;
-            background: linear-gradient(135deg, #0a4d68, #088395); box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 32px; /* adjusted by media query for mobile */
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
         .nav-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; }
         .nav-logo { height: 50px; }
@@ -138,11 +143,48 @@
             .nav-item .dropdown-menu { top: 90% !important; }
         }
 
-        /* Additional styles for Pithruvedhi content (with separate About & Mission) */
+        /* ---------- FIXED HEADER OVERLAP ON MOBILE (adjust top values) ---------- */
+        @media (max-width: 768px) {
+            .notice-bar {
+                padding: 6px 0;
+                font-size: 14px;
+                z-index: 2001;
+            }
+            .nav-container {
+                top: 30px !important;  /* ensure it sits below notice bar */
+                z-index: 1001;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+            }
+            /* adjust page header margin to clear fixed nav+notice */
+            header.page-header {
+                margin-top: 110px;  /* 30(notice) + 80(nav approx) = 110 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .notice-bar {
+                padding: 5px 0;
+                font-size: 12px;
+            }
+            .nav-container {
+                top: 25px !important;
+            }
+            header.page-header {
+                margin-top: 100px;
+            }
+        }
+
+        /* Additional styles for Pithruvedhi content */
         header.page-header {
             background: linear-gradient(135deg, #0a4d68, #088395);
             color: white; padding: 40px 0; text-align: center; position: relative;
-            overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 110px;
+            overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            /* margin-top set dynamically above */
         }
         header.page-header::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -153,7 +195,6 @@
         header.page-header h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 700; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); animation: fadeInDown 1s ease; }
         header.page-header .subtitle { font-size: 1.3rem; max-width: 800px; margin: 0 auto; opacity: 0; animation: fadeInUp 1s ease 0.3s forwards; }
 
-        /* Pithruvedhi content sections */
         .pithru-section { padding: 60px 0; background: white; position: relative; }
         .section-title {
             color: #0a4d68; font-size: 2.2rem; margin-bottom: 30px; position: relative;
@@ -164,7 +205,6 @@
             background: #ffd700; border-radius: 2px;
         }
 
-        /* Two separate cards for About and Mission */
         .about-card, .mission-card {
             background: #f8faff; border-radius: 30px; padding: 35px; margin-bottom: 40px;
             box-shadow: 0 15px 35px rgba(5,191,219,0.1); transition: 0.4s;
@@ -223,7 +263,7 @@
         @keyframes pulseBtn { 0% { transform: scale(1); } 50% { transform: scale(1.05); } }
         .video-popup-trigger:hover { background: #ffe152; transform: scale(1.08); }
 
-        /* video overlay */
+        /* video overlay with fullscreen button */
         .video-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95);
             z-index: 3000; display: none; justify-content: center; align-items: center;
@@ -232,10 +272,10 @@
         .video-overlay.active { display: flex; }
         .video-player-container {
             width: 90%; max-width: 900px; background: #111; border-radius: 30px; padding: 20px;
-            border: 2px solid #ffd700;
+            border: 2px solid #ffd700; position: relative;
         }
         .video-wrapper { aspect-ratio: 16/9; background: black; border-radius: 20px; overflow: hidden; }
-        .video-wrapper video { width: 100%; height: 100%; }
+        .video-wrapper video { width: 100%; height: 100%; display: block; }
         .custom-controls {
             display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 15px;
             padding: 15px 0 5px; color: white;
@@ -248,6 +288,12 @@
         .ctrl-btn:hover { background: #ffd700; color: #0a4d68; transform: scale(1.1); }
         .ctrl-btn.skip { width: auto; padding: 0 20px; gap: 5px; font-size: 1rem; }
         .ctrl-text { color: #ffd700; font-weight: 600; font-size: 1.2rem; }
+        .fullscreen-btn {
+            background: rgba(255,255,255,0.15); border: 2px solid #ffd700; color: white;
+            width: 50px; height: 50px; border-radius: 40px; display: inline-flex; align-items: center;
+            justify-content: center; cursor: pointer; transition: 0.3s; font-size: 1.3rem;
+        }
+        .fullscreen-btn:hover { background: #ffd700; color: #0a4d68; }
         .close-overlay {
             position: absolute; top: 20px; right: 30px; background: #ff6b6b; color: white;
             border: none; font-size: 2.5rem; width: 60px; height: 60px; border-radius: 50%;
@@ -257,13 +303,6 @@
 
         @keyframes fadeInDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
         @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-
-        @media (max-width: 768px) {
-            .nav-toggle { display: block; }
-            .nav-menu { display: none; }
-            header.page-header { margin-top: 100px; }
-            header.page-header h1 { font-size: 2rem; }
-        }
     </style>
 </head>
 <body>
@@ -279,7 +318,7 @@
     <!-- Pithruvedhi Page Header -->
     <header class="page-header">
         <div class="container">
-            <h1>Pithruvedhi · പിതൃവേദി</h1>
+            <h1>Pithruvedhi · പിത്യഭവദി</h1>
             <p class="subtitle">"Be perfect as your Heavenly Father is perfect" (Mt 5:48)</p>
         </div>
     </header>
@@ -351,7 +390,7 @@
         <button class="video-popup-trigger" id="openVideoPlayer"><i class="fas fa-play-circle"></i>  Watch our fundraising videos  <i class="fas fa-video"></i></button>
     </section>
 
-    <!-- video overlay player (six videos) -->
+    <!-- video overlay player (six videos) with fullscreen button -->
     <div class="video-overlay" id="videoOverlay">
         <button class="close-overlay" id="closeVideoOverlay"><i class="fas fa-times"></i></button>
         <div class="video-player-container">
@@ -364,6 +403,7 @@
                 <button class="ctrl-btn skip" id="skipBackBtn"><i class="fas fa-backward"></i> 10s</button>
                 <button class="ctrl-btn skip" id="skipForwardBtn">10s <i class="fas fa-forward"></i></button>
                 <button class="ctrl-btn" id="nextVideoBtn"><i class="fas fa-step-forward"></i></button>
+                <button class="fullscreen-btn" id="fullscreenBtn" title="Full screen"><i class="fas fa-expand"></i></button>
                 <span class="ctrl-text" id="videoCounter">1/6</span>
             </div>
         </div>
@@ -402,7 +442,7 @@
             }, { threshold: 0.2, rootMargin: '0px 0px -20px 0px' });
             revealElements.forEach(el => observer.observe(el));
 
-            // --- VIDEO PLAYER (six videos) ---
+            // --- VIDEO PLAYER (six videos) with fullscreen API ---
             const videoList = [
                 'videos/pithurvedhivideo1.mp4','videos/pithurvedhivideo2.mp4','videos/pithurvedhivideo3.mp4',
                 'videos/pithurvedhivideo4.mp4','videos/pithurvedhivideo5.mp4','videos/pithurvedhivideo6.mp4'
@@ -419,6 +459,7 @@
             const counterSpan = document.getElementById('videoCounter');
             const openBtn = document.getElementById('openVideoPlayer');
             const closeBtn = document.getElementById('closeVideoOverlay');
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
 
             function loadVideo(index) {
                 if (index < 0) index = videoList.length-1;
@@ -445,19 +486,45 @@
             if (skipForward) skipForward.addEventListener('click', function() { videoPlayer.currentTime = Math.min(videoPlayer.duration, videoPlayer.currentTime+10); });
             if (skipBack) skipBack.addEventListener('click', function() { videoPlayer.currentTime = Math.max(0, videoPlayer.currentTime-10); });
 
+            // fullscreen toggle (works on mobile & desktop)
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', function() {
+                    if (videoPlayer.requestFullscreen) {
+                        videoPlayer.requestFullscreen();
+                    } else if (videoPlayer.webkitRequestFullscreen) { /* Safari */
+                        videoPlayer.webkitRequestFullscreen();
+                    } else if (videoPlayer.msRequestFullscreen) { /* IE/Edge */
+                        videoPlayer.msRequestFullscreen();
+                    } else if (videoPlayer.webkitEnterFullscreen) { /* iOS Safari */
+                        videoPlayer.webkitEnterFullscreen();
+                    }
+                });
+            }
+
             overlay.addEventListener('click', function(e) { if (e.target === overlay) { overlay.classList.remove('active'); videoPlayer.pause(); } });
 
-            // dummy initializeMobileNavigation (will be overridden after header loads)
+            // mobile navigation initializer (called after header loads)
             window.initializeMobileNavigation = function() {
                 const toggle = document.getElementById('nav-toggle');
                 const menu = document.getElementById('mobile-menu-container');
                 const overlayNav = document.getElementById('mobile-nav-overlay');
                 const close = document.getElementById('mobile-menu-close');
                 if (toggle && menu && overlayNav) {
-                    toggle.onclick = (e) => { e.preventDefault(); menu.classList.toggle('active'); overlayNav.classList.toggle('active'); };
-                    if (close) close.onclick = () => { menu.classList.remove('active'); overlayNav.classList.remove('active'); };
-                    if (overlayNav) overlayNav.onclick = () => { menu.classList.remove('active'); overlayNav.classList.remove('active'); };
+                    toggle.onclick = (e) => { e.preventDefault(); menu.classList.toggle('active'); overlayNav.classList.toggle('active'); document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : ''; };
+                    if (close) close.onclick = () => { menu.classList.remove('active'); overlayNav.classList.remove('active'); document.body.style.overflow = ''; };
+                    if (overlayNav) overlayNav.onclick = () => { menu.classList.remove('active'); overlayNav.classList.remove('active'); document.body.style.overflow = ''; };
                 }
+                // mobile dropdowns
+                document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
+                    parent.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const dropdownMenu = this.nextElementSibling;
+                        const toggleIcon = this.querySelector('.mobile-dropdown-toggle');
+                        if (dropdownMenu) dropdownMenu.classList.toggle('show');
+                        if (toggleIcon) toggleIcon.classList.toggle('active');
+                    });
+                });
             };
             setTimeout(() => { if (typeof initializeMobileNavigation === 'function') initializeMobileNavigation(); }, 500);
         })();
