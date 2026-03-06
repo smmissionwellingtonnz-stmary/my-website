@@ -138,11 +138,11 @@
             .nav-item .dropdown-menu { top: 90% !important; }
         }
 
-        /* Additional animations & colors for Pithruvedhi content (but header/footer exactly as index) */
+        /* Additional styles for Pithruvedhi content (with separate About & Mission) */
         header.page-header {
-            background: linear-gradient(135deg, #0a4d68, #088395); /* same as original header gradient */
+            background: linear-gradient(135deg, #0a4d68, #088395);
             color: white; padding: 40px 0; text-align: center; position: relative;
-            overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 110px; /* leave space for fixed nav */
+            overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 110px;
         }
         header.page-header::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -153,7 +153,7 @@
         header.page-header h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 700; text-shadow: 1px 1px 3px rgba(0,0,0,0.3); animation: fadeInDown 1s ease; }
         header.page-header .subtitle { font-size: 1.3rem; max-width: 800px; margin: 0 auto; opacity: 0; animation: fadeInUp 1s ease 0.3s forwards; }
 
-        /* Pithruvedhi content sections with rich colors and scroll animations */
+        /* Pithruvedhi content sections */
         .pithru-section { padding: 60px 0; background: white; position: relative; }
         .section-title {
             color: #0a4d68; font-size: 2.2rem; margin-bottom: 30px; position: relative;
@@ -163,12 +163,15 @@
             content: ''; position: absolute; bottom: 0; left: 0; width: 70px; height: 4px;
             background: #ffd700; border-radius: 2px;
         }
-        .mission-card {
-            background: #f8faff; border-radius: 30px; padding: 40px; margin-bottom: 50px;
-            border-left: 8px solid #05bfdb; box-shadow: 0 15px 35px rgba(5,191,219,0.1);
-            transition: 0.4s; opacity: 0; transform: translateY(40px);
+
+        /* Two separate cards for About and Mission */
+        .about-card, .mission-card {
+            background: #f8faff; border-radius: 30px; padding: 35px; margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(5,191,219,0.1); transition: 0.4s;
+            opacity: 0; transform: translateY(40px); border-left: 8px solid #05bfdb;
         }
-        .mission-card.revealed { opacity: 1; transform: translateY(0); }
+        .about-card.revealed, .mission-card.revealed { opacity: 1; transform: translateY(0); }
+        .about-card p, .mission-card p { font-size: 1.15rem; margin-bottom: 15px; }
 
         .leaders-grid {
             display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0;
@@ -205,7 +208,7 @@
         .rep-card h4 { color: #0a4d68; font-size: 1.3rem; margin-top: 15px; }
         .rep-card p { color: #666; font-style: italic; }
 
-        /* video gallery section (vibrant) */
+        /* video gallery section */
         .video-gallery-section {
             background: linear-gradient(135deg, #0a4d68, #088395, #05bfdb);
             padding: 80px 20px; color: white; text-align: center;
@@ -220,7 +223,7 @@
         @keyframes pulseBtn { 0% { transform: scale(1); } 50% { transform: scale(1.05); } }
         .video-popup-trigger:hover { background: #ffe152; transform: scale(1.08); }
 
-        /* video overlay (exact same as before) */
+        /* video overlay */
         .video-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95);
             z-index: 3000; display: none; justify-content: center; align-items: center;
@@ -252,31 +255,28 @@
         }
         .close-overlay:hover { background: #ff5252; transform: rotate(90deg); }
 
-        /* animations for content reveal */
         @keyframes fadeInDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
         @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
-        /* responsive */
         @media (max-width: 768px) {
             .nav-toggle { display: block; }
             .nav-menu { display: none; }
             header.page-header { margin-top: 100px; }
             header.page-header h1 { font-size: 2rem; }
-            .video-popup-trigger { font-size: 1.2rem; padding: 14px 30px; }
         }
     </style>
 </head>
 <body>
-    <!-- notice container (loaded dynamically but styled exactly as index) -->
+    <!-- notice container (loaded dynamically) -->
     <div id="notice-container"></div>
     
     <!-- header placeholder (will be filled with includes/header.html) -->
     <div id="header-placeholder"></div>
 
-    <!-- scroll to top button (exact) -->
+    <!-- scroll to top button -->
     <div class="scroll-top" id="scroll-top"><i class="fas fa-arrow-up"></i></div>
 
-    <!-- Pithruvedhi Page Header (gradient same as original header) -->
+    <!-- Pithruvedhi Page Header -->
     <header class="page-header">
         <div class="container">
             <h1>Pithruvedhi · പിതൃവേദി</h1>
@@ -284,17 +284,22 @@
         </div>
     </header>
 
-    <!-- main content with scroll reveal classes -->
+    <!-- main content with separate About and Mission cards -->
     <section class="pithru-section">
         <div class="container">
-            <!-- about card -->
-            <div class="mission-card" id="aboutCard">
+            <!-- About Pithruvedhi (separate) -->
+            <div class="about-card" id="aboutCard">
                 <h2 class="section-title">About Pithruvedhi</h2>
                 <p>In our parish, Pithruvedhi was started in the year 2024. We had selected representatives from each ward of our parish and formed Pithruvedhi Committee. We considered all married men within our parish community will be a Pithruvedhi member by default. <strong>“Be perfect as your Heavenly Father is perfect” (Mt 5:48)</strong> is the slogan of Pithruvedhi and St. Joseph is the heavenly patron of Pithruvedhi.</p>
-                <p><strong>Mission:</strong> Our mission is to unite the fathers in the parish to reflect the image of God the Father: one who loves, cares, protects, teaches, and guides the family. Our major role is to unify the community in divine faith, safeguarding the spirituality of our parish through sacrificial service and the fostering of spiritual ideologies. Pithruvedhi actively supports parish activities and are instrumental in organizing a range of fundraising events for community welfare initiatives and are key to coordinating seasonal celebrations like the Parish Feast, Christmas, and Holy Week. For our Parish, Pithruvedhi is a group of dedicated members safeguarding faith and community life.</p>
             </div>
 
-            <!-- leadership -->
+            <!-- Our Mission (separate) -->
+            <div class="mission-card" id="missionCard">
+                <h2 class="section-title">Our Mission</h2>
+                <p>Our mission is to unite the fathers in the parish to reflect the image of God the Father: one who loves, cares, protects, teaches, and guides the family. Our major role is to unify the community in divine faith, safeguarding the spirituality of our parish through sacrificial service and the fostering of spiritual ideologies. Pithruvedhi actively supports parish activities and are instrumental in organizing a range of fundraising events for community welfare initiatives and are key to coordinating seasonal celebrations like the Parish Feast, Christmas, and Holy Week. For our Parish, Pithruvedhi is a group of dedicated members safeguarding faith and community life.</p>
+            </div>
+
+            <!-- Leadership -->
             <h2 class="section-title">Leadership</h2>
             <div class="leaders-grid">
                 <div class="leader-card" style="transition-delay:0.1s">
@@ -317,7 +322,7 @@
                 </div>
             </div>
 
-            <!-- representatives -->
+            <!-- Ward Representatives -->
             <h2 class="section-title">Ward Representatives</h2>
             <div class="reps-grid">
                 <div class="rep-card" style="transition-delay:0.1s">
@@ -339,7 +344,7 @@
         </div>
     </section>
 
-    <!-- video gallery section with button -->
+    <!-- video gallery section -->
     <section class="video-gallery-section">
         <h2>🙌 Fundraising Memories</h2>
         <p style="font-size:1.3rem; margin-bottom:30px;">Watch the spirit of Pithruvedhi in action</p>
@@ -369,7 +374,7 @@
 
     <script>
         (function() {
-            // --- load notice, header, footer exactly as index.html does ---
+            // load notice, header, footer exactly as index.html does
             function loadComponent(id, url) {
                 fetch(url)
                     .then(r => r.text())
@@ -388,8 +393,8 @@
             });
             scrollBtn.addEventListener('click', function() { window.scrollTo({ top:0, behavior:'smooth' }); });
 
-            // scroll reveal for mission, leaders, reps
-            const revealElements = document.querySelectorAll('.mission-card, .leader-card, .rep-card');
+            // scroll reveal for cards, leaders, reps
+            const revealElements = document.querySelectorAll('.about-card, .mission-card, .leader-card, .rep-card');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('revealed');
@@ -442,7 +447,7 @@
 
             overlay.addEventListener('click', function(e) { if (e.target === overlay) { overlay.classList.remove('active'); videoPlayer.pause(); } });
 
-            // dummy initializeMobileNavigation (will be overridden after header loads, but we keep reference)
+            // dummy initializeMobileNavigation (will be overridden after header loads)
             window.initializeMobileNavigation = function() {
                 const toggle = document.getElementById('nav-toggle');
                 const menu = document.getElementById('mobile-menu-container');
@@ -454,7 +459,6 @@
                     if (overlayNav) overlayNav.onclick = () => { menu.classList.remove('active'); overlayNav.classList.remove('active'); };
                 }
             };
-            // if header already loaded, call it
             setTimeout(() => { if (typeof initializeMobileNavigation === 'function') initializeMobileNavigation(); }, 500);
         })();
     </script>
