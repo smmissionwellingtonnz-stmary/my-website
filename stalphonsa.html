@@ -53,7 +53,7 @@
             z-index: 2000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             animation: pulseNotice 2s infinite;
-            border-radius: 0; /* edge-to-edge bar, no rounding needed */
+            border-radius: 0;
         }
 
         @keyframes pulseNotice {
@@ -79,7 +79,7 @@
             z-index: 1000;
             background: linear-gradient(135deg, #0a4d68, #088395);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 0; /* full width no rounding */
+            border-radius: 0;
         }
         
         .nav-header {
@@ -129,14 +129,14 @@
         
         .nav-link.donate {
             background-color: #ff6b6b;
-            border-radius: 30px; /* rounded button */
+            border-radius: 30px;
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
         
         .nav-link.newsletter {
             background-color: #05bfdb;
-            border-radius: 30px; /* rounded button */
+            border-radius: 30px;
             margin: 0.5rem 1rem;
             font-weight: 600;
             color: white;
@@ -147,7 +147,6 @@
             transform: translateY(-2px);
         }
 
-        /* Desktop only newsletter hover effect */
         @media (min-width: 769px) {
             .nav-link.newsletter {
                 position: relative;
@@ -206,7 +205,7 @@
             background: white;
             width: 220px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 20px; /* rounded dropdown */
+            border-radius: 20px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -236,7 +235,7 @@
             padding-left: 1.3rem;
         }
         
-        /* MOBILE NAVIGATION (exact from index) */
+        /* MOBILE NAVIGATION */
         .mobile-nav-overlay {
             position: fixed;
             top: 0;
@@ -267,7 +266,7 @@
             overflow-y: auto;
             transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
-            border-radius: 0; /* full height panel, no rounding needed */
+            border-radius: 0;
         }
         
         .mobile-menu-container.active {
@@ -298,7 +297,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%; /* round close button */
+            border-radius: 50%;
             transition: background 0.3s ease;
         }
         
@@ -336,14 +335,14 @@
         .mobile-nav-link.donate {
             background-color: #ff6b6b;
             font-weight: 600;
-            border-radius: 30px; /* rounded */
+            border-radius: 30px;
             margin: 5px 15px;
         }
         
         .mobile-nav-link.newsletter {
             background-color: #05bfdb;
             font-weight: 600;
-            border-radius: 30px; /* rounded */
+            border-radius: 30px;
             margin: 5px 15px;
         }
 
@@ -393,7 +392,6 @@
             padding-left: 45px;
         }
 
-        /* Reduce navbar height only on desktop */
         @media (min-width: 1025px) {
             .nav-header {
                 padding: 6px 20px !important;
@@ -422,7 +420,7 @@
             height: 50px;
             background: linear-gradient(135deg, #0a4d68, #088395);
             color: white;
-            border-radius: 50%; /* round */
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -445,7 +443,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        /* Footer Styles (exact from index) */
+        /* Footer Styles */
         .footer {
             background: linear-gradient(135deg, #0a4d68, #088395);
             color: white;
@@ -544,7 +542,7 @@
             width: 40px;
             height: 40px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%; /* round */
+            border-radius: 50%;
             color: white;
             font-size: 18px;
             transition: all 0.3s ease;
@@ -579,7 +577,7 @@
 
         /* ===== PAGE SPECIFIC STYLES ===== */
         
-        /* Hero section - edge to edge */
+        /* Hero section */
         .hero-section {
             width: 100%;
             background: linear-gradient(135deg, #0a4d68, #088395);
@@ -668,7 +666,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(26, 75, 122, 0.3);
-            border-radius: 40px; /* ROUNDED BUTTON */
+            border-radius: 40px;
         }
 
         .back-button:hover {
@@ -714,7 +712,7 @@
             width: 100%;
             max-width: 350px;
             height: 350px;
-            border-radius: 50%; /* round frame */
+            border-radius: 50%;
             overflow: hidden;
             position: relative;
             transition: all 0.4s ease;
@@ -745,7 +743,7 @@
             transform: scale(1.03);
         }
 
-        /* WARD INFO CARD with fly-in from right animation */
+        /* WARD INFO CARD - rounded, but animation removed from container */
         .ward-info {
             flex: 1;
             min-width: 300px;
@@ -757,20 +755,10 @@
                           rgba(255,255,255,0.9) 0%,
                           rgba(255,255,255,0.95) 100%);
             border-radius: 30px; /* ROUNDED CARD */
-            animation: flyInRight 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+            /* container no longer has fly-in; children will animate */
         }
 
-        @keyframes flyInRight {
-            0% {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
+        /* Individual content elements fly in from right */
         .info-item {
             margin-bottom: 25px;
         }
@@ -786,6 +774,9 @@
             font-size: 1.4rem;
             margin-bottom: 15px;
             font-weight: 600;
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            opacity: 0; /* start invisible */
+            transform: translateX(30px);
         }
 
         .info-title i {
@@ -797,13 +788,21 @@
             padding-left: 35px;
         }
 
+        /* Individual leaders with fly-in, each with slight delay */
         .leader {
             margin-bottom: 15px;
             padding: 15px;
             background: rgba(10, 77, 104, 0.05);
             transition: all 0.3s ease;
-            border-radius: 25px; /* rounded leader cards */
+            border-radius: 25px;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
+
+        .leader:nth-of-type(1) { animation-delay: 0.1s; }
+        .leader:nth-of-type(2) { animation-delay: 0.2s; }
+        .leader:nth-of-type(3) { animation-delay: 0.3s; }
 
         .leader:hover {
             background: rgba(10, 77, 104, 0.1);
@@ -826,13 +825,18 @@
         .leader-mob {
             color: #333;
             font-size: 0.95rem;
+            /* mobile number inside leader inherits animation, but we can also animate separately if needed */
         }
 
         .meeting-schedule {
             background: rgba(179, 138, 88, 0.1);
             padding: 20px;
             border-left: 4px solid #b38a58;
-            border-radius: 25px; /* rounded schedule box */
+            border-radius: 25px;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.4s;
         }
 
         .meeting-schedule p {
@@ -843,9 +847,13 @@
             margin-top: 20px;
             font-weight: 500;
             color: #0a4d68;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.5s;
         }
-        
-        /* WhatsApp Button - rounded */
+
+        /* WhatsApp Button - also fly in */
         .whatsapp-button {
             display: inline-flex;
             align-items: center;
@@ -859,10 +867,14 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
             border-radius: 40px; /* ROUNDED BUTTON */
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.6s;
         }
         
         .whatsapp-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) translateX(0); /* maintain fly-in position on hover */
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             background: linear-gradient(135deg, #20bd5c, #0e7a63);
         }
@@ -870,6 +882,18 @@
         .whatsapp-button i {
             margin-right: 10px;
             font-size: 1.2rem;
+        }
+
+        /* Fly-in keyframes */
+        @keyframes flyInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         /* Animation */
@@ -941,12 +965,12 @@
     <!-- Header placeholder (will be replaced with header.html content) -->
     <div id="header-placeholder"></div>
 
-    <!-- Scroll to top button (exactly like index) -->
+    <!-- Scroll to top button -->
     <div class="scroll-top" id="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Hero Section - edge to edge -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <h1 class="title">ST. ALPHONSA WARD</h1>
     </section>
