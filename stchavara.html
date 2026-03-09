@@ -56,6 +56,7 @@
             z-index: 2000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             animation: pulseNotice 2s infinite;
+            border-radius: 0; /* full width */
         }
 
         @keyframes pulseNotice {
@@ -81,6 +82,7 @@
             z-index: 1000;
             background: linear-gradient(135deg, #0a4d68, #088395);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0; /* full width */
         }
         
         .nav-header {
@@ -130,14 +132,14 @@
         
         .nav-link.donate {
             background-color: #ff6b6b;
-            border-radius: 4px;
+            border-radius: 30px; /* ROUNDED */
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
         
         .nav-link.newsletter {
             background-color: #05bfdb;
-            border-radius: 4px;
+            border-radius: 30px; /* ROUNDED */
             margin: 0.5rem 1rem;
             font-weight: 600;
             color: white;
@@ -207,12 +209,13 @@
             background: white;
             width: 220px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
+            border-radius: 20px; /* ROUNDED DROPDOWN */
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: all 0.3s ease;
             z-index: 1000;
+            overflow: hidden;
         }
         
         .nav-item:hover .dropdown-menu {
@@ -267,6 +270,7 @@
             overflow-y: auto;
             transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+            border-radius: 0;
         }
         
         .mobile-menu-container.active {
@@ -297,7 +301,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
+            border-radius: 50%; /* ROUND CLOSE */
             transition: background 0.3s ease;
         }
         
@@ -335,11 +339,15 @@
         .mobile-nav-link.donate {
             background-color: #ff6b6b;
             font-weight: 600;
+            border-radius: 30px; /* ROUNDED */
+            margin: 5px 15px;
         }
         
         .mobile-nav-link.newsletter {
             background-color: #05bfdb;
             font-weight: 600;
+            border-radius: 30px; /* ROUNDED */
+            margin: 5px 15px;
         }
 
         .mobile-nav-link.newsletter:hover {
@@ -417,7 +425,7 @@
             height: 50px;
             background: linear-gradient(135deg, #0a4d68, #088395);
             color: white;
-            border-radius: 50%;
+            border-radius: 50%; /* ROUND */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -539,7 +547,7 @@
             width: 40px;
             height: 40px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            border-radius: 50%; /* ROUND */
             color: white;
             font-size: 18px;
             transition: all 0.3s ease;
@@ -572,7 +580,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== PAGE SPECIFIC STYLES (from original stchavara.html) ===== */
+        /* ===== PAGE SPECIFIC STYLES ===== */
         
         /* Hero section - edge to edge */
         .hero-section {
@@ -602,6 +610,7 @@
             100% { opacity: 0.2; }
         }
         
+        /* FADE-IN animation for title */
         .title {
             font-family: 'Cinzel Decorative', cursive;
             color: white;
@@ -611,6 +620,12 @@
             display: inline-block;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             max-width: 90%;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
         }
         
         .title::after {
@@ -637,7 +652,7 @@
             padding: 0 20px 4rem;
         }
         
-        /* Back Button */
+        /* Back Button - ROUNDED */
         .back-button-container {
             display: flex;
             justify-content: center;
@@ -656,6 +671,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(26, 75, 122, 0.3);
+            border-radius: 40px; /* ROUNDED */
         }
 
         .back-button:hover {
@@ -679,6 +695,7 @@
             margin-bottom: 60px;
         }
 
+        /* FADE-IN animation for image container */
         .image-container {
             flex: 1;
             min-width: 300px;
@@ -688,13 +705,19 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            animation: fadeInImage 1.2s ease-out;
+        }
+
+        @keyframes fadeInImage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .image-frame {
             width: 100%;
             max-width: 350px;
             height: 350px;
-            border-radius: 50%;
+            border-radius: 50%; /* ROUND FRAME */
             overflow: hidden;
             position: relative;
             transition: all 0.4s ease;
@@ -725,6 +748,7 @@
             transform: scale(1.03);
         }
 
+        /* WARD INFO CARD - rounded, but animation removed from container */
         .ward-info {
             flex: 1;
             min-width: 300px;
@@ -735,6 +759,7 @@
             background: linear-gradient(to bottom, 
                           rgba(255,255,255,0.9) 0%,
                           rgba(255,255,255,0.95) 100%);
+            border-radius: 30px; /* ROUNDED CARD */
         }
 
         .info-item {
@@ -745,6 +770,7 @@
             margin-bottom: 0;
         }
 
+        /* Individual elements fly in from right */
         .info-title {
             display: flex;
             align-items: center;
@@ -752,6 +778,9 @@
             font-size: 1.4rem;
             margin-bottom: 15px;
             font-weight: 600;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
         .info-title i {
@@ -768,7 +797,15 @@
             padding: 15px;
             background: rgba(10, 77, 104, 0.05);
             transition: all 0.3s ease;
+            border-radius: 25px; /* ROUNDED LEADER CARD */
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
+
+        .leader:nth-of-type(1) { animation-delay: 0.1s; }
+        .leader:nth-of-type(2) { animation-delay: 0.2s; }
+        .leader:nth-of-type(3) { animation-delay: 0.3s; }
 
         .leader:hover {
             background: rgba(10, 77, 104, 0.1);
@@ -797,6 +834,11 @@
             background: rgba(179, 138, 88, 0.1);
             padding: 20px;
             border-left: 4px solid #b38a58;
+            border-radius: 25px; /* ROUNDED */
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.4s;
         }
 
         .meeting-schedule p {
@@ -807,9 +849,13 @@
             margin-top: 20px;
             font-weight: 500;
             color: #0a4d68;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.5s;
         }
         
-        /* WhatsApp Button */
+        /* WhatsApp Button - rounded and fly-in */
         .whatsapp-button {
             display: inline-flex;
             align-items: center;
@@ -822,10 +868,15 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border-radius: 40px; /* ROUNDED BUTTON */
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.6s;
         }
         
         .whatsapp-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) translateX(0);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             background: linear-gradient(135deg, #20bd5c, #0e7a63);
         }
@@ -833,6 +884,18 @@
         .whatsapp-button i {
             margin-right: 10px;
             font-size: 1.2rem;
+        }
+
+        /* Fly-in keyframes */
+        @keyframes flyInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         /* Animation */
