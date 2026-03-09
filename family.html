@@ -570,7 +570,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== PAGE SPECIFIC STYLES (from original family.html) ===== */
+        /* ===== PAGE SPECIFIC STYLES ===== */
         
         /* Hero section - edge to edge */
         .hero {
@@ -639,6 +639,65 @@
             padding: 0 20px 4rem;
         }
         
+        /* ===== FADE-IN ANIMATIONS ON SCROLL ===== */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: opacity, transform;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* content-grid cards staggered */
+        .content-grid .description-card,
+        .content-grid .search-card {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+        }
+        .content-grid.visible .description-card,
+        .content-grid.visible .search-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* map container fade */
+        .map-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .map-section.visible .map-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Our Wards heading (already visible, no transition needed) */
+        
+        /* ===== ROUND-EDGED BUTTONS & SEQUENTIAL FADE-IN ===== */
+        .wards-grid .ward-button {
+            border-radius: 50px;               /* fully round edges */
+            padding: 1.2rem 0.8rem;
+            opacity: 0;                          /* initially hidden */
+            transform: scale(0.95);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, background 0.3s ease;
+            transition-delay: calc(0.08s * var(--btn-index)); /* sequential delay */
+        }
+
+        .wards-section.visible .ward-button {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* extra hover effect for round buttons */
+        .ward-button:hover {
+            border-radius: 50px;
+        }
+
         .content-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -926,6 +985,7 @@
             transition: all 0.3s ease;
             position: relative;
             text-align: center;
+            border-radius: 20px;
         }
 
         .popup-overlay.active .popup-card {
@@ -1019,14 +1079,15 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Hero Section - edge to edge -->
+    <!-- Hero Section - edge to edge (always visible, no fade needed) -->
     <section class="hero">
         <h1 class="title">FAMILY WARDS</h1>
         <p class="hero-subtitle">Strengthening our community through faith, gatherings, and shared activities</p>
     </section>
     
     <div class="main-content">
-        <div class="content-grid">
+        <!-- each major section gets class "fade-section" -->
+        <div class="content-grid fade-section" id="grid-section">
             <div class="description-card">
                 <p class="description-text">
                     We have family units that come together with monthly rosaries, unit gatherings and fun activities to strengthen our community. We have different wards based on different locations. The wards have 2 leaders each and help bring the unit together. We have 7 family wards.
@@ -1046,36 +1107,37 @@
         </div>
         
         <!-- Our Wards Section - Centered and Standout -->
-        <div class="wards-section">
+        <div class="wards-section fade-section" id="wards-section">
             <h2 class="wards-heading">Our Wards</h2>
             <div class="wards-container">
                 <p>Click on any ward to learn more about it and connect with your ward community.</p>
                 <div class="wards-grid">
-                    <a href="stalphonsa.html" class="ward-button">
+                    <!-- each button gets a custom property for sequential delay (0 to 6) -->
+                    <a href="stalphonsa.html" class="ward-button" style="--btn-index:0;">
                         <i class="fas fa-church"></i>
                         St. Alphonsa Ward
                     </a>
-                    <a href="stchavara.html" class="ward-button">
+                    <a href="stchavara.html" class="ward-button" style="--btn-index:1;">
                         <i class="fas fa-church"></i>
                         St. Chavara Ward
                     </a>
-                    <a href="ladykapiti.html" class="ward-button">
+                    <a href="ladykapiti.html" class="ward-button" style="--btn-index:2;">
                         <i class="fas fa-church"></i>
                         Our Lady of Kapiti Ward
                     </a>
-                    <a href="stthomas.html" class="ward-button">
+                    <a href="stthomas.html" class="ward-button" style="--btn-index:3;">
                         <i class="fas fa-church"></i>
                         St. Thomas Ward
                     </a>
-                    <a href="holyfamily.html" class="ward-button">
+                    <a href="holyfamily.html" class="ward-button" style="--btn-index:4;">
                         <i class="fas fa-church"></i>
                         Holy Family Ward
                     </a>
-                    <a href="stfrancis.html" class="ward-button">
+                    <a href="stfrancis.html" class="ward-button" style="--btn-index:5;">
                         <i class="fas fa-church"></i>
                         St. Francis Xavier Ward
                     </a>
-                    <a href="stjoseph.html" class="ward-button">
+                    <a href="stjoseph.html" class="ward-button" style="--btn-index:6;">
                         <i class="fas fa-church"></i>
                         St. Joseph Ward
                     </a>
@@ -1084,7 +1146,7 @@
         </div>
         
         <!-- Map Section -->
-        <div class="map-section">
+        <div class="map-section fade-section" id="map-section">
             <h1>Map of the Parish Wards</h1>
             <div class="map-container">
                 <iframe src="https://tominjessil.github.io/wardmap/" title="Map of the wards of our parish"></iframe>
@@ -1295,6 +1357,29 @@
                     }
                 }
             });
+
+            // ===== SCROLL REVEAL (FADE-IN) =====
+            const fadeSections = document.querySelectorAll('.fade-section');
+            
+            function checkVisibility() {
+                const windowHeight = window.innerHeight;
+                const revealThreshold = 0.15; // visible when 15% of element is in view
+                
+                fadeSections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    const visiblePart = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+                    const elementHeight = rect.height;
+                    
+                    if (visiblePart > elementHeight * revealThreshold && rect.top < windowHeight - 50) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
+            
+            // initial check after a tiny delay to ensure layout is stable
+            setTimeout(checkVisibility, 150);
+            window.addEventListener('scroll', checkVisibility);
+            window.addEventListener('resize', checkVisibility);
         });
 
         // Mobile navigation functionality (same as index)
