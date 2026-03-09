@@ -647,13 +647,53 @@
             padding: 0 20px 4rem;
         }
         
+        /* ========= SCROLL ANIMATIONS (fade + up) ========= */
+        .content-row,
+        .profile-section,
+        .teachers-section,
+        .action-button {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+
+        .content-row.revealed,
+        .profile-section.revealed,
+        .teachers-section.revealed,
+        .action-button.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays for action buttons inside teachers-section when parent is revealed */
+        .teachers-section.revealed .action-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Individual button delays (keep original cascade) */
+        .action-button:nth-child(1) { transition-delay: 0.05s; }
+        .action-button:nth-child(2) { transition-delay: 0.1s; }
+        .action-button:nth-child(3) { transition-delay: 0.15s; }
+        .action-button:nth-child(4) { transition-delay: 0.2s; }
+        .action-button:nth-child(5) { transition-delay: 0.25s; }
+        .action-button:nth-child(6) { transition-delay: 0.3s; }
+        .action-button:nth-child(7) { transition-delay: 0.35s; }
+        .action-button:nth-child(8) { transition-delay: 0.4s; }
+        .action-button:nth-child(9) { transition-delay: 0.45s; }
+        .action-button:nth-child(10) { transition-delay: 0.5s; }
+        .action-button:nth-child(11) { transition-delay: 0.55s; }
+        .action-button:nth-child(12) { transition-delay: 0.6s; }
+        .action-button:nth-child(13) { transition-delay: 0.65s; }
+        .action-button:nth-child(14) { transition-delay: 0.7s; }
+        .action-button:nth-child(15) { transition-delay: 0.75s; }
+        
         /* Content Rows with Alternating Layout */
         .content-row {
             display: flex;
             flex-direction: column;
             margin: 2rem 0;
             gap: 1.5rem;
-            animation: fadeInUp 0.8s ease-out;
         }
         
         @media (min-width: 768px) {
@@ -751,7 +791,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            animation: fadeInUp 1s ease-out;
+            animation: none; /* removed initial animation, handled by scroll */
             z-index: 2;
             position: relative;
         }
@@ -926,8 +966,7 @@
             justify-content: center;
             align-items: center;
             line-height: 1.2;
-            opacity: 0;
-            animation: reveal 0.5s ease forwards;
+            /* initial opacity and transform removed — now handled by global .action-button */
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
             position: relative;
             overflow: hidden;
@@ -951,39 +990,6 @@
         
         .action-button:hover::before {
             left: 100%;
-        }
-        
-        @keyframes reveal {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) rotate(15deg);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) rotate(0);
-            }
-        }
-        
-        .button-container .action-button:nth-child(1) { animation-delay: 0.1s; }
-        .button-container .action-button:nth-child(2) { animation-delay: 0.2s; }
-        .button-container .action-button:nth-child(3) { animation-delay: 0.3s; }
-        .button-container .action-button:nth-child(4) { animation-delay: 0.4s; }
-        .button-container .action-button:nth-child(5) { animation-delay: 0.5s; }
-        .button-container .action-button:nth-child(6) { animation-delay: 0.6s; }
-        .button-container .action-button:nth-child(7) { animation-delay: 0.7s; }
-        .button-container .action-button:nth-child(8) { animation-delay: 0.8s; }
-        .button-container .action-button:nth-child(9) { animation-delay: 0.9s; }
-        .button-container .action-button:nth-child(10) { animation-delay: 1s; }
-        .button-container .action-button:nth-child(11) { animation-delay: 1.1s; }
-        .button-container .action-button:nth-child(12) { animation-delay: 1.2s; }
-        .button-container .action-button:nth-child(13) { animation-delay: 1.3s; }
-        .button-container .action-button:nth-child(14) { animation-delay: 1.4s; }
-        .button-container .action-button:nth-child(15) { animation-delay: 1.5s; }
-        
-        .action-button span {
-            display: block;
-            position: relative;
-            z-index: 1;
         }
         
         .action-button[data-year="5"],
@@ -1417,18 +1423,19 @@
                 });
             });
 
-            // Add intersection observer for scroll animations
-            const animateElements = document.querySelectorAll('.content-row, .profile-section');
+            // ---------- SCROLL REVEAL (Intersection Observer) ----------
+            const revealElements = document.querySelectorAll('.content-row, .profile-section, .teachers-section, .action-button');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('revealed');
+                        // Optionally unobserve after reveal to reduce load
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" }); // subtle offset
             
-            animateElements.forEach(el => {
+            revealElements.forEach(el => {
                 observer.observe(el);
             });
             
