@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Syro-Malabar Church · History</title>
-    <!-- same fonts as index -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ===== EXACT STYLES FROM INDEX(2).HTML ===== */
-        
         /* Global Styles */
         * {
             margin: 0;
@@ -806,14 +803,16 @@
             width: 150px;
             margin-bottom: 20px;
             filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-            animation: pulse 2s infinite alternate;
             position: relative;
             z-index: 1;
+            /* replaced rotation with gentle zoom animation */
+            animation: gentleZoom 4s infinite ease-in-out;
         }
 
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.05); }
+        @keyframes gentleZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
         }
 
         .history-title {
@@ -832,29 +831,51 @@
             padding: 40px;
         }
 
-        .history-content p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .highlight {
-            background-color: rgba(142, 28, 28, 0.1);
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: 600;
-            color: #8e1c1c;
-        }
-
+        /* ===== NEW SCROLL ANIMATIONS ===== */
+        .history-content p,
+        .image-wrapper,
         .quote {
-            font-style: italic;
-            color: #5e1914;
-            border-left: 4px solid #d4af37;
-            padding-left: 20px;
-            margin: 30px 0;
-            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+            will-change: opacity, transform;
         }
 
-        /* Image containers */
+        .history-content p.revealed,
+        .image-wrapper.revealed,
+        .quote.revealed {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* images get a slightly different touch */
+        .image-wrapper {
+            transition-delay: 0.1s;
+        }
+        .image-wrapper img {
+            transition: transform 0.5s ease;
+        }
+        .image-wrapper.revealed img {
+            transform: scale(1);
+        }
+        .image-wrapper:not(.revealed) img {
+            transform: scale(0.95);
+        }
+
+        .history-content p {
+            transition-delay: 0.05s;
+        }
+        .quote {
+            transition-delay: 0.2s;
+        }
+
+        .history-content p,
+        .history-content .image-container,
+        .history-content .quote {
+            margin-bottom: 30px;
+        }
+
+        /* existing image styles remain */
         .image-container {
             margin: 40px 0;
             display: flex;
@@ -867,19 +888,6 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-        }
-
-        .image-wrapper:nth-child(1) { animation-delay: 0.3s; }
-        .image-wrapper:nth-child(2) { animation-delay: 0.6s; }
-        .image-wrapper:nth-child(3) { animation-delay: 0.9s; }
-        .image-wrapper:nth-child(4) { animation-delay: 1.2s; }
-        .image-wrapper:nth-child(5) { animation-delay: 1.5s; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .image-caption {
@@ -1207,6 +1215,21 @@
                     }, 500);
                 }, { passive: true });
             });
+
+            // ===== SCROLL REVEAL FOR HISTORY CONTENT =====
+            const revealElements = document.querySelectorAll('.history-content p, .history-content .image-wrapper, .history-content .quote');
+            
+            const scrollRevealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        // optionally unobserve after reveal
+                        scrollRevealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -20px 0px' });
+            
+            revealElements.forEach(el => scrollRevealObserver.observe(el));
         });
 
         // Mobile navigation functionality (same as index)
