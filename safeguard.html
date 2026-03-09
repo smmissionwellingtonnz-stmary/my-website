@@ -7,8 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -20,11 +18,31 @@
             font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.7;
             color: #1e1e1e;
-            background-color: #f5f7fa;
+            background: linear-gradient(145deg, #eef5f9 0%, #d9e4ed 100%);
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
-            padding-top: 110px; /* space for fixed header */
+            padding-top: 110px;
+            position: relative;
+        }
+        /* nice animated background overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(200, 230, 255, 0.3) 0%, transparent 30%),
+                        radial-gradient(circle at 80% 70%, rgba(170, 210, 240, 0.3) 0%, transparent 35%),
+                        radial-gradient(circle at 40% 80%, rgba(220, 240, 255, 0.4) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: -1;
+            animation: floatBackground 22s infinite alternate ease-in-out;
+        }
+        @keyframes floatBackground {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.02); }
         }
         
         html {
@@ -571,7 +589,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== PAGE SPECIFIC STYLES (from original safeguard.html) ===== */
+        /* ===== PAGE SPECIFIC STYLES + BEAUTIFUL SCROLL ANIMATIONS ===== */
         
         /* Hero section - edge to edge */
         .hero-section {
@@ -610,6 +628,13 @@
             display: inline-block;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             max-width: 90%;
+            opacity: 0;
+            transform: perspective(600px) rotateX(15deg) translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1), transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+        }
+        .title.reveal {
+            opacity: 1;
+            transform: perspective(600px) rotateX(0) translateY(0);
         }
         
         .title::after {
@@ -622,6 +647,10 @@
             height: 3px;
             background-color: #b38a58;
             animation: lineGrow 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+            animation-play-state: paused;
+        }
+        .title.reveal::after {
+            animation-play-state: running;
         }
         
         .hero-subtitle {
@@ -629,6 +658,13 @@
             color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+        }
+        .hero-subtitle.reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         @keyframes lineGrow {
@@ -649,6 +685,14 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             margin-bottom: 3rem;
             position: relative;
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            border-radius: 0; /* keep as original, not rounded */
+        }
+        .content-card.reveal {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
         
         .content-card::before {
@@ -670,12 +714,17 @@
         
         .safeguarding-intro p {
             margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        
-        .safeguarding-intro p:last-child {
-            margin-bottom: 0;
+        .safeguarding-intro p.reveal {
+            opacity: 1;
+            transform: translateX(0);
         }
+        .safeguarding-intro p:nth-child(2) { transition-delay: 0.1s; }
         
+        /* Safeguarding points - now rounded rectangles */
         .safeguarding-points {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -688,11 +737,29 @@
             padding: 1.5rem;
             border-left: 4px solid #0a4d68;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s, border-color 0.3s;
+            /* rounded rectangle */
+            border-radius: 20px;
+            border-left-width: 4px;
+            border-left-style: solid;
+            border-left-color: #0a4d68;
+            border-top: 1px solid rgba(10,77,104,0.1);
+            border-right: 1px solid rgba(10,77,104,0.1);
+            border-bottom: 1px solid rgba(10,77,104,0.1);
         }
+        .safeguarding-point.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .safeguarding-point:nth-child(2) { transition-delay: 0.15s; }
+        .safeguarding-point:nth-child(3) { transition-delay: 0.3s; }
         
         .safeguarding-point:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-left-color: #e8c07d;
         }
         
         .safeguarding-point i {
@@ -700,6 +767,11 @@
             color: #0a4d68;
             margin-bottom: 1rem;
             display: block;
+            transition: transform 0.3s ease;
+        }
+        .safeguarding-point:hover i {
+            transform: scale(1.15);
+            color: #088395;
         }
         
         .safeguarding-point h3 {
@@ -713,6 +785,14 @@
             padding: 2rem;
             margin: 2.5rem 0;
             border: 1px solid #e0d9c9;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
+            border-radius: 20px; /* rounded rectangle */
+        }
+        .reporting-section.reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .reporting-section h2 {
@@ -722,15 +802,33 @@
             align-items: center;
             font-family: 'Cinzel Decorative', cursive;
             font-size: 1.8rem;
+            opacity: 0;
+            transform: perspective(400px) rotateX(15deg);
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+        }
+        .reporting-section h2.reveal {
+            opacity: 1;
+            transform: perspective(400px) rotateX(0);
         }
         
         .reporting-section h2 i {
             margin-right: 10px;
             font-size: 1.8rem;
+            transition: transform 0.3s;
+        }
+        .reporting-section:hover h2 i {
+            transform: rotate(-5deg) scale(1.1);
         }
         
         .reporting-section p {
             margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+        }
+        .reporting-section p.reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .contact-info {
@@ -738,6 +836,7 @@
             padding: 1.5rem;
             background: white;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-radius: 16px; /* rounded */
         }
         
         .contact-info h3 {
@@ -749,7 +848,16 @@
             display: flex;
             align-items: center;
             margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
+        .contact-item.reveal {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .contact-item:nth-child(2) { transition-delay: 0.1s; }
+        .contact-item:nth-child(3) { transition-delay: 0.2s; }
         
         .contact-item i {
             margin-right: 15px;
@@ -761,6 +869,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .contact-item:hover i {
+            background: #e8c07d;
+            transform: scale(1.2);
         }
         
         .contact-item span {
@@ -778,6 +891,13 @@
             margin-bottom: 2rem;
             position: relative;
             padding-bottom: 15px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .policies-header.reveal {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .policies-header h2 {
@@ -796,6 +916,10 @@
             width: 80px;
             height: 3px;
             background-color: #b38a58;
+            transition: width 0.5s ease;
+        }
+        .policies-header.reveal::after {
+            width: 120px;
         }
         
         .policy-cards {
@@ -811,11 +935,21 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
+            border-radius: 24px; /* rounded rectangle */
         }
+        .policy-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .policy-card:nth-child(2) { transition-delay: 0.15s; }
+        .policy-card:nth-child(3) { transition-delay: 0.3s; }
         
         .policy-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .policy-card-header {
@@ -823,6 +957,27 @@
             color: white;
             padding: 1.2rem 1.5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .policy-card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            animation: rotateGlow 8s infinite linear;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .policy-card:hover .policy-card-header::before {
+            opacity: 1;
+        }
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .policy-card-header h3 {
@@ -842,6 +997,7 @@
             flex-grow: 1;
         }
         
+        /* Download button - now rounded rectangle, same style as policy cards */
         .policy-download-btn {
             background: #0a4d68;
             color: white;
@@ -852,50 +1008,27 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s, box-shadow 0.3s;
             font-weight: 500;
             margin-top: auto;
+            border-radius: 30px; /* fully rounded rectangle */
+            box-shadow: 0 4px 10px rgba(10,77,104,0.2);
         }
         
         .policy-download-btn:hover {
             background: #088395;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(8, 131, 149, 0.3);
         }
         
         .policy-download-btn i {
             margin-right: 0.5rem;
+            transition: transform 0.2s;
+        }
+        .policy-download-btn:hover i {
+            transform: translateY(2px);
         }
         
-        /* Back Button */
-        .back-button-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 25px;
-            background: #0a4d68;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(26, 75, 122, 0.3);
-        }
-
-        .back-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(26, 75, 122, 0.4);
-            background: #153c5f;
-        }
-
-        .back-button i {
-            margin-right: 10px;
-            font-size: 1.1rem;
-        }
-
         /* Animation */
         @keyframes pulse {
             0% { transform: rotate(0deg); }
@@ -963,11 +1096,6 @@
             
             .title { font-size: 2rem; }
             
-            .back-button {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
             .safeguarding-point { padding: 1.2rem; }
             .reporting-section { padding: 1.5rem; }
             .contact-info { padding: 1rem; }
@@ -991,13 +1119,13 @@
 
     <!-- Hero Section - edge to edge -->
     <section class="hero-section">
-        <h1 class="title">SAFEGUARDING OUR COMMUNITY</h1>
-        <p class="hero-subtitle">Protection and Care for Children, Young People, and Vulnerable Adults</p>
+        <h1 class="title" id="heroTitle">SAFEGUARDING OUR COMMUNITY</h1>
+        <p class="hero-subtitle" id="heroSub">Protection and Care for Children, Young People, and Vulnerable Adults</p>
     </section>
 
     <div class="main-content">
         <!-- Content Section -->
-        <div class="content-card">
+        <div class="content-card" id="contentCard">
             <div class="safeguarding-intro">
                 <p>Safeguarding is a vital commitment for the protection of vulnerable individuals from abuse and neglect, particularly within the church community. It is our shared responsibility to ensure the safety of children, young people, and adults at risk.</p>
                 
@@ -1091,11 +1219,7 @@
                 </div>
             </div>
             
-            <div class="back-button-container">
-                <a href="index.html" class="back-button">
-                    <i class="fas fa-arrow-left"></i> Back to Home
-                </a>
-            </div>
+            <!-- Back to Home button removed as requested -->
         </div>
     </div>
 
@@ -1117,12 +1241,10 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('header-placeholder').innerHTML = data;
-                    // Initialize mobile navigation after header is loaded
                     initializeMobileNavigation();
                 })
                 .catch(error => {
                     console.log("Header loading error:", error);
-                    // Fallback: try to load from root
                     fetch('header.html')
                         .then(response => response.text())
                         .then(data => {
@@ -1164,6 +1286,40 @@
                     behavior: 'smooth'
                 });
             });
+
+            // ---------- SCROLL REVEAL ANIMATIONS ----------
+            const revealElements = [
+                document.getElementById('heroTitle'),
+                document.getElementById('heroSub'),
+                document.getElementById('contentCard'),
+                ...document.querySelectorAll('.safeguarding-intro p'),
+                ...document.querySelectorAll('.safeguarding-point'),
+                document.querySelector('.reporting-section'),
+                document.querySelector('.reporting-section h2'),
+                ...document.querySelectorAll('.reporting-section p'),
+                ...document.querySelectorAll('.contact-item'),
+                document.querySelector('.policies-header'),
+                ...document.querySelectorAll('.policy-card')
+            ].filter(el => el != null); // remove nulls
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal');
+                        observer.unobserve(entry.target); // reveal once
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -10px 0px' });
+
+            revealElements.forEach(el => observer.observe(el));
+
+            // also force reveal for hero (already visible) – optional but safe
+            setTimeout(() => {
+                if (document.getElementById('heroTitle').getBoundingClientRect().top < window.innerHeight) {
+                    document.getElementById('heroTitle').classList.add('reveal');
+                    document.getElementById('heroSub').classList.add('reveal');
+                }
+            }, 200);
         });
 
         // Mobile navigation functionality (same as index)
@@ -1182,7 +1338,6 @@
                 mobileNavOverlay.classList.toggle('active');
                 document.body.style.overflow = mobileMenuContainer.classList.contains('active') ? 'hidden' : '';
                 
-                // Toggle between hamburger and close icon
                 const icon = navToggle.querySelector('i');
                 if (mobileMenuContainer.classList.contains('active')) {
                     icon.classList.remove('fa-bars');
@@ -1208,7 +1363,6 @@
                 toggleMobileMenu();
             });
 
-            // Mobile dropdown functionality
             document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
                 parent.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1217,7 +1371,6 @@
                     const dropdownMenu = this.nextElementSibling;
                     const dropdownToggle = this.querySelector('.mobile-dropdown-toggle');
                     
-                    // Close other dropdowns
                     document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
                         if (menu !== dropdownMenu) {
                             menu.classList.remove('show');
@@ -1228,7 +1381,6 @@
                         }
                     });
                     
-                    // Toggle current dropdown
                     if (dropdownMenu) {
                         dropdownMenu.classList.toggle('show');
                     }
@@ -1238,7 +1390,6 @@
                 });
             });
 
-            // Close menu when clicking on links
             document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
                 link.addEventListener('click', () => {
                     if (mobileMenuContainer.classList.contains('active')) {
