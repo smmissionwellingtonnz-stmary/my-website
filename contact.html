@@ -570,7 +570,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== PAGE SPECIFIC STYLES (from original contact.html) ===== */
+        /* ===== PAGE SPECIFIC STYLES ===== */
         
         /* Main Content */
         .main-content {
@@ -579,7 +579,7 @@
             padding: 2rem 20px 4rem;
         }
         
-        /* Header section */
+        /* Header section with 3D flip animation per letter */
         .header {
             text-align: center;
             margin: 0 0 3rem;
@@ -611,21 +611,148 @@
             background-size: 200% 100%;
         }
 
+        /* Title split into spans for 3D effect */
         .title {
             font-family: 'Cinzel Decorative', cursive;
             font-size: clamp(2.5rem, 6vw, 3.5rem);
             font-weight: 700;
-            color: #1a4b7a;
             margin: 0;
-            position: relative;
+            display: inline-block;
+        }
+
+        .title span {
+            display: inline-block;
+            opacity: 0;
+            transform: rotateY(90deg);
+            animation: flipInLetter 0.5s ease-out forwards;
+            transform-origin: 50% 50%;
             background: linear-gradient(135deg, #1a4b7a, #b38a58);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: textGlow 3s ease-in-out infinite alternate;
         }
+
+        @keyframes flipInLetter {
+            0% {
+                opacity: 0;
+                transform: rotateX(90deg) scale(0.8);
+            }
+            80% {
+                transform: rotateX(-10deg) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: rotateX(0) scale(1);
+            }
+        }
+
+        /* ========== SCROLL-TRIGGERED ANIMATIONS ========== */
+        .social-card, .contact-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1),
+                        box-shadow 0.4s ease;
+        }
+
+        .social-card.revealed, .contact-card.revealed {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Card hover effect upgrade */
+        .social-card:hover, .contact-card:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow: 0 25px 45px -12px rgba(0,60,90,0.35);
+            transition: all 0.3s ease;
+        }
+
+        /* Staggered inner fade after card appears */
+        .social-card.revealed .social-icon,
+        .contact-card.revealed .contact-title i {
+            animation: softRise 0.5s ease-out forwards;
+            animation-delay: 0.1s;
+        }
+        .social-card.revealed .social-title,
+        .contact-card.revealed .contact-title span {
+            animation: softRise 0.5s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+        .social-card.revealed .social-description,
+        .contact-card.revealed .contact-detail:nth-child(1) {
+            animation: softRise 0.5s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+        .social-card.revealed .social-button:nth-of-type(1) {
+            animation: softRise 0.5s ease-out forwards;
+            animation-delay: 0.45s;
+        }
+        .social-card.revealed .social-button:nth-of-type(2) {
+            animation: softRise 0.5s ease-out forwards;
+            animation-delay: 0.6s;
+        }
+        .contact-card.revealed .contact-detail:nth-child(2) {
+            animation: softRise 0.5s ease-out forwards;
+            animation-delay: 0.4s;
+        }
+        .contact-card.revealed .map-button {
+            animation: softRise 0.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes softRise {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Fade-in for section headers (already visible but we add subtle parallax) */
+        .header {
+            animation: none; /* title flips handle it */
+        }
+
+        /* Background glow effect for revealed cards */
+        .social-card.revealed, .contact-card.revealed {
+            position: relative;
+        }
+
+        .social-card.revealed::after, .contact-card.revealed::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.5), rgba(255,215,0,0.2));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .social-card.revealed:hover::after, .contact-card.revealed:hover::after {
+            opacity: 1;
+        }
+
+        /* Background moving gradient while scrolling (subtle) */
+        .main-content {
+            background: radial-gradient(circle at 20% 30%, rgba(26,75,122,0.02) 0%, transparent 30%),
+                        radial-gradient(circle at 80% 70%, rgba(179,138,88,0.02) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Enhance title container floating effect */
+        .title-container {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .title-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 45px rgba(26,75,122,0.2);
+        }
+
+        /* Keep existing card styles */
         
-        /* Social Media Section */
         .social-section {
             width: 100%;
             max-width: 1000px;
@@ -650,11 +777,6 @@
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .social-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         .social-icon {
@@ -707,6 +829,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             margin: 0.3rem;
+            opacity: 0; /* hidden until revealed */
         }
 
         .facebook-button {
@@ -793,6 +916,7 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 1rem;
+            opacity: 0;
         }
 
         .contact-detail i {
@@ -832,6 +956,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(26, 75, 122, 0.3);
             margin-top: 1rem;
+            opacity: 0;
         }
 
         .map-button:hover {
@@ -935,11 +1060,6 @@
             100% { background-position: 200% 50%; }
         }
 
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 10px rgba(26, 75, 122, 0.3); }
-            100% { text-shadow: 0 0 20px rgba(26, 75, 122, 0.5); }
-        }
-
         @keyframes pulse {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -1021,10 +1141,13 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Header section -->
+        <!-- Header section with 3D flipped letters -->
         <header class="header">
             <div class="title-container">
-                <h1 class="title">Connect With Us</h1>
+                <h1 class="title" id="animated-title">
+                    <!-- JavaScript will set delays -->
+                    <span>C</span><span>o</span><span>n</span><span>n</span><span>e</span><span>c</span><span>t</span><span> </span><span>W</span><span>i</span><span>t</span><span>h</span><span> </span><span>U</span><span>s</span>
+                </h1>
             </div>
         </header>
 
@@ -1089,7 +1212,7 @@
             <div class="contact-container">
                 <!-- Address Card -->
                 <div class="contact-card">
-                    <h3 class="contact-title"><i class="fas fa-map-marker-alt"></i> Our Address</h3>
+                    <h3 class="contact-title"><i class="fas fa-map-marker-alt"></i> <span>Our Address</span></h3>
                     <div class="contact-info">
                         <div class="contact-detail">
                             <i class="fas fa-home"></i>
@@ -1103,7 +1226,7 @@
 
                 <!-- Contact Card -->
                 <div class="contact-card">
-                    <h3 class="contact-title"><i class="fas fa-envelope"></i> Contact Information</h3>
+                    <h3 class="contact-title"><i class="fas fa-envelope"></i> <span>Contact Information</span></h3>
                     <div class="contact-info">
                         <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
@@ -1232,6 +1355,30 @@
                     closeWhatsappModal();
                 }
             });
+
+            // Title letter delays
+            const titleSpans = document.querySelectorAll('#animated-title span');
+            titleSpans.forEach((span, index) => {
+                span.style.animationDelay = `${index * 0.08}s`;
+            });
+
+            // ========== SCROLL REVEAL (Intersection Observer) ==========
+            const cards = document.querySelectorAll('.social-card, .contact-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        // Optional: keep watching, but we can unobserve after reveal
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -30px 0px' // subtle offset
+            });
+
+            cards.forEach(card => observer.observe(card));
         });
 
         // Mobile navigation functionality (same as index)
