@@ -62,6 +62,7 @@
             z-index: 2000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             animation: pulseNotice 2s infinite;
+            border-radius: 0; /* full width */
         }
 
         @keyframes pulseNotice {
@@ -92,6 +93,7 @@
             z-index: 1000;
             background: var(--nav-gradient);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0; /* full width */
         }
         
         .nav-header {
@@ -139,72 +141,68 @@
         
         .nav-link.donate {
             background-color: #ff6b6b;
-            border-radius: 4px;
+            border-radius: 30px; /* ROUNDED */
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
         .nav-link.newsletter {
-    background-color: #05bfdb;
-    border-radius: 4px;
-    margin: 0.5rem 1rem;
-    font-weight: 600;
-    color: white;
-}
+            background-color: #05bfdb;
+            border-radius: 30px; /* ROUNDED */
+            margin: 0.5rem 1rem;
+            font-weight: 600;
+            color: white;
+        }
 
-.nav-link.newsletter:hover {
-    background-color: #0497ac;
-    transform: translateY(-2px);
-}
+        .nav-link.newsletter:hover {
+            background-color: #0497ac;
+            transform: translateY(-2px);
+        }
         /* Desktop only */
-@media (min-width: 769px) {
-    .nav-link.newsletter {
-        position: relative;
-        display: inline-block;
-        width: 160px;   /* adjust as needed */
-        text-align: center;
-        padding: 8px 12px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        font-family: Arial, sans-serif;
-    }
+        @media (min-width: 769px) {
+            .nav-link.newsletter {
+                position: relative;
+                display: inline-block;
+                width: 160px;
+                text-align: center;
+                padding: 8px 12px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                font-family: Arial, sans-serif;
+            }
 
-    /* Default menu text - same font size as other menu items */
-    .nav-link.newsletter .default-text {
-        display: inline-block;
-        transition: opacity 0.3s ease;
-        font-size: 14px; /* same as your other menu items */
-    }
+            .nav-link.newsletter .default-text {
+                display: inline-block;
+                transition: opacity 0.3s ease;
+                font-size: 14px;
+            }
 
-    /* Hide hover text by default */
-    .nav-link.newsletter .hover-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
-        font-size: 9px;  /* small to fit inside button */
-        white-space: nowrap;
-        display: flex;
-        align-items: center;
-        gap: 4px;  /* space between icon and text */
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-    }
+            .nav-link.newsletter .hover-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                font-size: 9px;
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
 
-    /* Hover effect */
-    .nav-link.newsletter:hover .default-text {
-        opacity: 0;  /* hide original text */
-    }
+            .nav-link.newsletter:hover .default-text {
+                opacity: 0;
+            }
 
-    .nav-link.newsletter:hover .hover-text {
-        opacity: 1;  /* show download icon + text */
-    }
+            .nav-link.newsletter:hover .hover-text {
+                opacity: 1;
+            }
 
-    /* Download icon styling */
-    .nav-link.newsletter .hover-text i {
-        font-size: 12px;  /* adjust icon size */
-    }
-}
+            .nav-link.newsletter .hover-text i {
+                font-size: 12px;
+            }
+        }
 
         .nav-link.donate:hover {
             background-color: #ff5252;
@@ -218,12 +216,13 @@
             background: white;
             width: 220px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
+            border-radius: 20px; /* ROUNDED DROPDOWN */
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: all 0.3s ease;
             z-index: 1000;
+            overflow: hidden;
         }
         
         .nav-item:hover .dropdown-menu {
@@ -246,35 +245,25 @@
             color: #0a4d68;
             padding-left: 1.3rem;
         }
-/* Reduce navbar height only on desktop */
-@media (min-width: 1025px) {
-
-    /* Reduce the overall navbar height */
-    .nav-header {
-        padding: 6px 20px !important;
-    }
-
-    /* Make the logo smaller so the bar height reduces */
-    .nav-logo {
-        height: 38px !important; 
-    }
-
-    /* Reduce height of each menu link */
-    .nav-link {
-        padding: 0.55rem 1rem !important;
-        font-size: 15px;
-    }
-
-    /* Reduce spacing inside dropdowns */
-    .dropdown-item {
-        padding: 0.6rem 1rem !important;
-    }
-
-    /* Fix dropdown alignment after height change */
-    .nav-item .dropdown-menu {
-        top: 90% !important;
-    }
-}
+        /* Reduce navbar height only on desktop */
+        @media (min-width: 1025px) {
+            .nav-header {
+                padding: 6px 20px !important;
+            }
+            .nav-logo {
+                height: 38px !important; 
+            }
+            .nav-link {
+                padding: 0.55rem 1rem !important;
+                font-size: 15px;
+            }
+            .dropdown-item {
+                padding: 0.6rem 1rem !important;
+            }
+            .nav-item .dropdown-menu {
+                top: 90% !important;
+            }
+        }
 
         
         /* Mobile Navigation */
@@ -308,6 +297,7 @@
             overflow-y: auto;
             transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+            border-radius: 0;
         }
         
         .mobile-menu-container.active {
@@ -338,7 +328,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
+            border-radius: 50%; /* ROUND */
             transition: background 0.3s ease;
         }
         
@@ -376,15 +366,19 @@
         .mobile-nav-link.donate {
             background-color: #ff6b6b;
             font-weight: 600;
+            border-radius: 30px; /* ROUNDED */
+            margin: 5px 15px;
         }
         .mobile-nav-link.newsletter {
-    background-color: #05bfdb;
-    font-weight: 600;
-}
+            background-color: #05bfdb;
+            font-weight: 600;
+            border-radius: 30px; /* ROUNDED */
+            margin: 5px 15px;
+        }
 
-.mobile-nav-link.newsletter:hover {
-    background-color: #0497ac;
-}
+        .mobile-nav-link.newsletter:hover {
+            background-color: #0497ac;
+        }
         .mobile-nav-link.donate:hover {
             background-color: #ff5252;
         }
@@ -460,6 +454,7 @@
             100% { opacity: 0.2; }
         }
         
+        /* FADE-IN animation for title */
         .title {
             font-family: 'Playfair Display', serif;
             color: white;
@@ -469,6 +464,12 @@
             display: inline-block;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             max-width: 90%;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
         }
         
         .title::after {
@@ -504,7 +505,7 @@
         .content {
             background-color: white;
             padding: 2.5rem;
-            border-radius: 8px;
+            border-radius: 30px; /* ROUNDED */
             box-shadow: var(--shadow);
             margin-bottom: 3rem;
             position: relative;
@@ -518,7 +519,7 @@
             width: 5px;
             height: 100%;
             background: var(--nav-gradient);
-            border-radius: 8px 0 0 8px;
+            border-radius: 30px 0 0 30px;
         }
         
         /* Ward content styling */
@@ -531,6 +532,7 @@
             margin-bottom: 60px;
         }
 
+        /* FADE-IN animation for image container */
         .image-container {
             flex: 1;
             min-width: 300px;
@@ -540,13 +542,19 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            animation: fadeInImage 1.2s ease-out;
+        }
+
+        @keyframes fadeInImage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .image-frame {
             width: 100%;
             max-width: 350px;
             height: 350px;
-            border-radius: 50%;
+            border-radius: 50%; /* ROUND FRAME */
             overflow: hidden;
             position: relative;
             transition: all 0.4s ease;
@@ -577,13 +585,14 @@
             transform: scale(1.03);
         }
 
+        /* WARD INFO CARD - rounded, but animation removed from container */
         .ward-info {
             flex: 1;
             min-width: 300px;
             max-width: 600px;
             background: white;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 30px; /* ROUNDED CARD */
             box-shadow: var(--shadow);
             background: linear-gradient(to bottom, 
                           rgba(255,255,255,0.9) 0%,
@@ -598,6 +607,7 @@
             margin-bottom: 0;
         }
 
+        /* Individual elements fly in from right */
         .info-title {
             display: flex;
             align-items: center;
@@ -605,6 +615,9 @@
             font-size: 1.4rem;
             margin-bottom: 15px;
             font-weight: 600;
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
         .info-title i {
@@ -620,10 +633,16 @@
             margin-bottom: 15px;
             padding: 15px;
             background: rgba(26,75,122,0.05);
-            border-radius: 10px;
+            border-radius: 25px; /* ROUNDED LEADER CARD */
             transition: all 0.3s ease;
             backdrop-filter: blur(2px);
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
+
+        .leader:nth-of-type(1) { animation-delay: 0.1s; }
+        .leader:nth-of-type(2) { animation-delay: 0.2s; }
 
         .leader:hover {
             background: rgba(26,75,122,0.1);
@@ -651,9 +670,13 @@
         .meeting-schedule {
             background: rgba(179,138,88,0.1);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 25px; /* ROUNDED */
             border-left: 4px solid var(--secondary);
             backdrop-filter: blur(2px);
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.3s;
         }
 
         .meeting-schedule p {
@@ -664,9 +687,13 @@
             margin-top: 20px;
             font-weight: 500;
             color: var(--primary);
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.4s;
         }
         
-        /* WhatsApp Button */
+        /* WhatsApp Button - rounded and fly-in */
         .whatsapp-button {
             display: inline-flex;
             align-items: center;
@@ -676,14 +703,18 @@
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 40px; /* ROUNDED BUTTON */
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            opacity: 0;
+            transform: translateX(30px);
+            animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.5s;
         }
         
         .whatsapp-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) translateX(0);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             background: linear-gradient(135deg, #20bd5c, #0e7a63);
         }
@@ -693,7 +724,7 @@
             font-size: 1.2rem;
         }
         
-        /* Back Button */
+        /* Back Button - rounded */
         .back-button-container {
             display: flex;
             justify-content: center;
@@ -709,7 +740,7 @@
             background: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 40px; /* ROUNDED */
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(26, 75, 122, 0.3);
@@ -725,6 +756,18 @@
         .back-button i {
             margin-right: 10px;
             font-size: 1.1rem;
+        }
+
+        /* Fly-in keyframes */
+        @keyframes flyInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
         /* Footer Styles */
@@ -832,7 +875,7 @@
             width: 40px;
             height: 40px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            border-radius: 50%; /* ROUND */
             color: white;
             font-size: 18px;
             transition: all 0.3s ease;
@@ -874,7 +917,7 @@
             height: 50px;
             background: var(--nav-gradient);
             color: white;
-            border-radius: 50%;
+            border-radius: 50%; /* ROUND */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1302,7 +1345,10 @@
                 document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
                     if (menu !== dropdownMenu) {
                         menu.classList.remove('show');
-                        menu.previousElementSibling.querySelector('.mobile-dropdown-toggle').classList.remove('active');
+                        if (menu.previousElementSibling) {
+                            const toggle = menu.previousElementSibling.querySelector('.mobile-dropdown-toggle');
+                            if (toggle) toggle.classList.remove('active');
+                        }
                     }
                 });
                 
@@ -1315,7 +1361,9 @@
         // Close menu when clicking on links
         document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
             link.addEventListener('click', () => {
-                toggleMobileMenu();
+                if (mobileMenuContainer.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
             });
         });
         
