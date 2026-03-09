@@ -53,6 +53,7 @@
             z-index: 2000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             animation: pulseNotice 2s infinite;
+            border-radius: 0; /* edge-to-edge bar, no rounding needed */
         }
 
         @keyframes pulseNotice {
@@ -78,6 +79,7 @@
             z-index: 1000;
             background: linear-gradient(135deg, #0a4d68, #088395);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0; /* full width no rounding */
         }
         
         .nav-header {
@@ -127,14 +129,14 @@
         
         .nav-link.donate {
             background-color: #ff6b6b;
-            border-radius: 4px;
+            border-radius: 30px; /* rounded button */
             margin: 0.5rem 1rem;
             font-weight: 600;
         }
         
         .nav-link.newsletter {
             background-color: #05bfdb;
-            border-radius: 4px;
+            border-radius: 30px; /* rounded button */
             margin: 0.5rem 1rem;
             font-weight: 600;
             color: white;
@@ -204,12 +206,13 @@
             background: white;
             width: 220px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
+            border-radius: 20px; /* rounded dropdown */
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: all 0.3s ease;
             z-index: 1000;
+            overflow: hidden;
         }
         
         .nav-item:hover .dropdown-menu {
@@ -264,6 +267,7 @@
             overflow-y: auto;
             transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+            border-radius: 0; /* full height panel, no rounding needed */
         }
         
         .mobile-menu-container.active {
@@ -294,7 +298,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
+            border-radius: 50%; /* round close button */
             transition: background 0.3s ease;
         }
         
@@ -332,11 +336,15 @@
         .mobile-nav-link.donate {
             background-color: #ff6b6b;
             font-weight: 600;
+            border-radius: 30px; /* rounded */
+            margin: 5px 15px;
         }
         
         .mobile-nav-link.newsletter {
             background-color: #05bfdb;
             font-weight: 600;
+            border-radius: 30px; /* rounded */
+            margin: 5px 15px;
         }
 
         .mobile-nav-link.newsletter:hover {
@@ -414,7 +422,7 @@
             height: 50px;
             background: linear-gradient(135deg, #0a4d68, #088395);
             color: white;
-            border-radius: 50%;
+            border-radius: 50%; /* round */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -536,7 +544,7 @@
             width: 40px;
             height: 40px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            border-radius: 50%; /* round */
             color: white;
             font-size: 18px;
             transition: all 0.3s ease;
@@ -569,7 +577,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== PAGE SPECIFIC STYLES (from original stalphonsa.html) ===== */
+        /* ===== PAGE SPECIFIC STYLES ===== */
         
         /* Hero section - edge to edge */
         .hero-section {
@@ -599,6 +607,7 @@
             100% { opacity: 0.2; }
         }
         
+        /* FADE-IN ANIMATION for title */
         .title {
             font-family: 'Cinzel Decorative', cursive;
             color: white;
@@ -608,6 +617,12 @@
             display: inline-block;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             max-width: 90%;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
         }
         
         .title::after {
@@ -634,7 +649,7 @@
             padding: 0 20px 4rem;
         }
         
-        /* Back Button */
+        /* Back Button - rounded */
         .back-button-container {
             display: flex;
             justify-content: center;
@@ -653,6 +668,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(26, 75, 122, 0.3);
+            border-radius: 40px; /* ROUNDED BUTTON */
         }
 
         .back-button:hover {
@@ -676,6 +692,7 @@
             margin-bottom: 60px;
         }
 
+        /* IMAGE CONTAINER with fade-in animation */
         .image-container {
             flex: 1;
             min-width: 300px;
@@ -685,13 +702,19 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            animation: fadeInImage 1.2s ease-out;
+        }
+
+        @keyframes fadeInImage {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         .image-frame {
             width: 100%;
             max-width: 350px;
             height: 350px;
-            border-radius: 50%;
+            border-radius: 50%; /* round frame */
             overflow: hidden;
             position: relative;
             transition: all 0.4s ease;
@@ -722,6 +745,7 @@
             transform: scale(1.03);
         }
 
+        /* WARD INFO CARD with fly-in from right animation */
         .ward-info {
             flex: 1;
             min-width: 300px;
@@ -732,6 +756,19 @@
             background: linear-gradient(to bottom, 
                           rgba(255,255,255,0.9) 0%,
                           rgba(255,255,255,0.95) 100%);
+            border-radius: 30px; /* ROUNDED CARD */
+            animation: flyInRight 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes flyInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .info-item {
@@ -765,6 +802,7 @@
             padding: 15px;
             background: rgba(10, 77, 104, 0.05);
             transition: all 0.3s ease;
+            border-radius: 25px; /* rounded leader cards */
         }
 
         .leader:hover {
@@ -794,6 +832,7 @@
             background: rgba(179, 138, 88, 0.1);
             padding: 20px;
             border-left: 4px solid #b38a58;
+            border-radius: 25px; /* rounded schedule box */
         }
 
         .meeting-schedule p {
@@ -806,7 +845,7 @@
             color: #0a4d68;
         }
         
-        /* WhatsApp Button */
+        /* WhatsApp Button - rounded */
         .whatsapp-button {
             display: inline-flex;
             align-items: center;
@@ -819,6 +858,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border-radius: 40px; /* ROUNDED BUTTON */
         }
         
         .whatsapp-button:hover {
