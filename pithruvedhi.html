@@ -143,39 +143,68 @@
             .nav-item .dropdown-menu { top: 90% !important; }
         }
 
-        /* ---------- FIXED HEADER OVERLAP ON MOBILE (adjust top values) ---------- */
+        /* ---------- FIXED HEADER OVERLAP ON MOBILE (UPDATED) ---------- */
         @media (max-width: 768px) {
             .notice-bar {
                 padding: 6px 0;
                 font-size: 14px;
                 z-index: 2001;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
             }
+            
             .nav-container {
-                top: 30px !important;  /* ensure it sits below notice bar */
+                top: 30px !important;
                 z-index: 1001;
+                position: fixed;
             }
-            .nav-toggle {
-                display: block;
+            
+            body {
+                padding-top: 110px; /* 30px (notice) + 80px (nav) */
             }
-            .nav-menu {
-                display: none;
-            }
-            /* adjust page header margin to clear fixed nav+notice */
+            
             header.page-header {
-                margin-top: 110px;  /* 30(notice) + 80(nav approx) = 110 */
+                margin-top: 0 !important;
             }
         }
 
         @media (max-width: 480px) {
+            body {
+                padding-top: 95px; /* 25px (notice) + 70px (nav) */
+            }
+            
             .notice-bar {
                 padding: 5px 0;
                 font-size: 12px;
+                top: 0;
             }
+            
             .nav-container {
                 top: 25px !important;
             }
+            
             header.page-header {
-                margin-top: 100px;
+                margin-top: 0 !important;
+            }
+        }
+
+        /* For desktop, adjust the body padding too */
+        @media (min-width: 769px) {
+            body {
+                padding-top: 100px; /* Adjust based on desktop nav height */
+            }
+            
+            .notice-bar {
+                position: fixed;
+                top: 0;
+                z-index: 2000;
+            }
+            
+            .nav-container {
+                top: 32px;
+                position: fixed;
             }
         }
 
@@ -379,6 +408,13 @@
                     <h4>Joel Joy</h4>
                     <p>Holy Family Unit</p>
                 </div>
+                <!-- NEW: Shebin Joseph card -->
+                <div class="rep-card" style="transition-delay:0.4s">
+                    <img src="images/shebin.jpg" alt="Shebin Joseph" onerror="this.src='https://via.placeholder.com/110?text=SJ'">
+                    <h4>Shebin Joseph</h4>
+                    <p>St. Alphonsa Ward</p>
+                </div>
+                <!-- END NEW -->
             </div>
         </div>
     </section>
