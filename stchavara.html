@@ -72,7 +72,17 @@
             width: 100%;
             height: 100%;
         }
-        
+        @media (max-width: 768px) {
+            .notice-bar {
+                font-size: 0.72rem;
+                padding: 5px 8px;
+                line-height: 1.3;
+            }
+            /* Notice bar at mobile is ~25px tall; snap nav right below it with no gap */
+            .nav-container {
+                top: 25px !important;
+            }
+        }
         /* Navigation Menu */
         .nav-container {
             position: fixed;
