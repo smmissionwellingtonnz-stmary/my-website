@@ -76,7 +76,13 @@
             100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
         }
         .notice-bar a { color: white; text-decoration: none; display: block; width: 100%; height: 100%; }
-        
+
+        @media (max-width: 768px) {
+    .notice-bar {
+        font-size: 11px; /* Reduces font size on screens smaller than 768px */
+        padding: 6px 4px; /* Slightly tightens padding to maximize space */
+    }
+}
         /* Navigation Menu Styles from index.html */
         .nav-container {
             position: fixed;
