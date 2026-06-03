@@ -57,7 +57,17 @@
             margin: 0 auto;
             padding: 0 15px;
         }
-        
+        @media (max-width: 768px) {
+            .notice-bar {
+                font-size: 0.72rem;
+                padding: 5px 8px;
+                line-height: 1.3;
+            }
+            /* Notice bar at mobile is ~25px tall; snap nav right below it with no gap */
+            .nav-container {
+                top: 25px !important;
+            }
+        }
         /* Notice Bar */
         .notice-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
