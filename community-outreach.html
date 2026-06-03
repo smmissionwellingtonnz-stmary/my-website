@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Community Outreach – St. Mary's Syro-Malabar Mission Wellington</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght=0,400;0,600;1,400&family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ══ CSS Variables ══ */
@@ -112,7 +112,7 @@
         .dropdown-item { display: block; padding: 0.8rem 1rem; color: #333; text-decoration: none; border-bottom: 1px solid #f1f1f1; transition: all 0.3s ease; }
         .dropdown-item:hover { background-color: #f8f9fa; color: #0a4d68; padding-left: 1.3rem; }
 
-        /* ══ Strict Footer Overrides from index.html ══ */
+        /* ══ Strict Global Layout Footer Anchors ══ */
         .footer {
             background: linear-gradient(135deg, #0a4d68, #088395) !important;
             color: white !important;
@@ -772,32 +772,7 @@
 
 <section class="cta-section"><div class="container"><div class="cta-inner"><div class="cta-text reveal left"><span class="eyebrow">Join the Mission</span><h2>Your Hands Can Change Someone's World</h2><p>Whether you volunteer your time, contribute financially, or simply spread the word — every act of support goes directly towards helping those in need across the Wellington region.</p><div class="cta-btns"><button class="btn-primary" onclick="showVolunteerToast()"><i class="fas fa-hands-helping"></i> Become a Volunteer</button></div></div><div class="cta-quote reveal right"><span class="quote-mark">"</span><blockquote>The patient herself expressed heartfelt thanks to the volunteers and to the St. Mary's Syro-Malabar community for the effort that transformed her home.</blockquote><cite>— Programme Report, October 2025</cite></div></div></div></section>
 
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-column">
-            <h3>St. Mary's Mission</h3>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.7;">A vibrant Syro-Malabar Catholic community serving faithful across the greater Wellington region, tracing our lineage back to St. Thomas the Apostle.</p>
-        </div>
-        <div class="footer-column">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-                <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-                <li><a href="services.html"><i class="fas fa-chevron-right"></i> Mass Times</a></li>
-                <li><a href="community-outreach.html"><i class="fas fa-chevron-right"></i> Outreach Program</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3>Connect With Us</h3>
-            <div class="footer-social">
-                <a href="https://www.facebook.com/groups/stmaryssyromalabarwellington" target="_blank" aria-label="Facebook Group"><i class="fab fa-facebook-f"></i></a>
-                <a href="mailto:chaplain.wellington@syromalabar.org.au" aria-label="Email Chaplain"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 St. Mary's Syro-Malabar Mission Wellington. All Rights Reserved.</p>
-    </div>
-</footer>
+<div id="footer-placeholder"></div>
 
 <div class="scroll-top" id="scrollTop" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 <div class="volunteer-toast" id="volunteerToast"><i class="fas fa-church"></i> Please get in touch with church office or committee members</div>
@@ -807,11 +782,13 @@
 <div class="modal-overlay" id="modal2" onclick="handleOverlayClick(event,'modal2')"><canvas class="modal-bg-canvas" id="canvas2"></canvas><div class="modal-box" id="modal2box"><div class="modal-close"><button class="modal-close-btn" onclick="closeModal('modal2')" aria-label="Close"><i class="fas fa-times"></i></button></div><div class="modal-header"><div class="modal-tag">Activity 2 · Garden & Christmas</div><h2>Outdoor Tidy-Up & Christmas Decoration, Taita</h2><div class="modal-chips"><span class="modal-chip"><i class="fas fa-calendar"></i> 07 December 2025</span><span class="modal-chip"><i class="fas fa-clock"></i> 2:00 PM – 5:00 PM</span><span class="modal-chip"><i class="fas fa-users"></i> 10 Volunteers</span><span class="modal-chip"><i class="fas fa-file-signature"></i> Signed consent obtained</span></div></div><div class="modal-body"><p class="modal-desc">A single mother and their children, recovering from recent surgery with limited social support, requested help with their outdoor garden and Christmas preparations. Ten volunteers organised a working bee to ensure they could celebrate Christmas with joy and dignity.</p><ul class="modal-tasks"><li><span class="task-dot"><i class="fas fa-check"></i></span> Full lawn mowing across the property</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Removal of overgrown trees and general outdoor clearing</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Garden tidy-up: cutting branches, removing weeds</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Christmas decoration installation and setup</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Safety gloves & appropriate equipment used throughout</li></ul><div class="modal-outcome"><strong><i class="fas fa-star" style="margin-right:.4rem"></i> Outcome & Impact</strong> The family were able to enjoy a safe, beautifully tidy outdoor space and celebrate Christmas with dignity and joy. The activity deepened the parish's sense of community care and reinforced the ongoing value of this outreach ministry.</div><div class="modal-gallery"><div class="gallery-label"><i class="fas fa-images"></i> Photos</div><div class="no-photos-notice"><i class="fas fa-shield-alt"></i><p>Media consent was declined for this activity.<br>Photos are not available in line with the family's privacy wishes.</p></div></div><div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap"><button class="modal-download-btn" onclick="downloadFile('pdfs/Report_Community Outreach Programme 2.pdf','Report_Community Outreach Programme 2.pdf')"><i class="fas fa-file-pdf"></i> Download Report</button><div class="modal-expense-chips"><span class="exp-chip">Expenses covered by homeowner</span><span class="exp-chip">Media consent declined</span></div></div></div></div></div>
 
 <script>
-// Load header, notice bar, footer
+// Load header, notice bar, and external footer template
 document.addEventListener("DOMContentLoaded", function() {
     fetch('includes/header.html').then(r => r.text()).then(data => { document.getElementById('header-placeholder').innerHTML = data; initializeMobileNavigation(); }).catch(err => console.log("Header error:", err));
     fetch('notice.html').then(r => r.text()).then(data => { document.getElementById('notice-container').innerHTML = data; }).catch(err => console.log("Notice error:", err));
+    fetch('footer.html').then(r => r.text()).then(data => { document.getElementById('footer-placeholder').innerHTML = data; }).catch(err => console.log("Footer error:", err));
 });
+
 function initializeMobileNavigation() { const toggle = document.getElementById('nav-toggle'); const menu = document.getElementById('mobile-menu-container'); const overlay = document.getElementById('mobile-nav-overlay'); const close = document.getElementById('mobile-menu-close'); if(toggle && menu){ toggle.addEventListener('click',()=>{ menu.classList.toggle('active'); if(overlay) overlay.classList.toggle('active'); }); } if(close) close.addEventListener('click',()=>closeMobile()); if(overlay) overlay.addEventListener('click',()=>closeMobile()); function closeMobile(){ if(menu) menu.classList.remove('active'); if(overlay) overlay.classList.remove('active'); } }
 window.addEventListener('scroll', () => { document.getElementById('scrollTop').classList.toggle('active', window.scrollY > 300); }, {passive:true});
 const revealEls = document.querySelectorAll('.reveal'); const revealObs = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObs.unobserve(entry.target); } }); }, { threshold: 0.1 }); revealEls.forEach(el => revealObs.observe(el));
