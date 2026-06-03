@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Community Outreach – St. Mary's Syro-Malabar Mission Wellington</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght=0,400;0,600;1,400&family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ══ CSS Variables ══ */
@@ -54,234 +54,11 @@
         .scroll-top.active { opacity:1; visibility:visible; }
         .scroll-top:hover { transform:translateY(-4px); background:var(--terra-dark); }
 
-        /* Notice Bar Styles from index.html */
-        .notice-bar {
-            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-            color: white;
-            text-align: center;
-            padding: 8px 0;
-            font-weight: 600;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 2000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: pulseNotice 2s infinite;
-            font-family: 'Poppins', sans-serif;
-        }
-        @keyframes pulseNotice {
-            0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
-            50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
-            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
-        }
-        .notice-bar a { color: white; text-decoration: none; display: block; width: 100%; height: 100%; }
-        
-        /* Navigation Menu Styles from index.html */
-        .nav-container {
-            position: fixed;
-            top: 32px;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: linear-gradient(135deg, #0a4d68, #088395);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            font-family: 'Poppins', sans-serif;
-        }
-        .nav-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; }
-        .nav-logo { height: 50px; }
-        .nav-toggle { font-size: 1.5rem; color: white; background: transparent; border: none; cursor: pointer; display: none; z-index: 1002; position: relative; }
-        .nav-menu { display: flex; justify-content: center; list-style: none; }
-        .nav-item { position: relative; }
-        .nav-link { display: block; padding: 1rem 1.2rem; color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease; }
-        .nav-link:hover { background-color: rgba(255, 255, 255, 0.1); }
-        .nav-link.donate { background-color: #ff6b6b; border-radius: 4px; margin: 0.5rem 1rem; font-weight: 600; }
-        .nav-link.newsletter { background-color: #05bfdb; border-radius: 4px; margin: 0.5rem 1rem; font-weight: 600; color: white; }
-        .nav-link.newsletter:hover { background-color: #0497ac; transform: translateY(-2px); }
-        @media (min-width: 769px) {
-            .nav-link.newsletter { position: relative; display: inline-block; width: 160px; text-align: center; padding: 8px 12px; overflow: hidden; transition: all 0.3s ease; font-family: Arial, sans-serif; }
-            .nav-link.newsletter .default-text { display: inline-block; transition: opacity 0.3s ease; font-size: 14px; }
-            .nav-link.newsletter .hover-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; font-size: 9px; white-space: nowrap; display: flex; align-items: center; gap: 4px; pointer-events: none; transition: opacity 0.3s ease; }
-            .nav-link.newsletter:hover .default-text { opacity: 0; }
-            .nav-link.newsletter:hover .hover-text { opacity: 1; }
-            .nav-link.newsletter .hover-text i { font-size: 12px; }
-        }      
-        .nav-link.donate:hover { background-color: #ff5252; transform: translateY(-2px); }
-        .dropdown-menu { position: absolute; left: 0; top: 100%; background: white; width: 220px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); border-radius: 4px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; }
-        .nav-item:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown-item { display: block; padding: 0.8rem 1rem; color: #333; text-decoration: none; border-bottom: 1px solid #f1f1f1; transition: all 0.3s ease; }
-        .dropdown-item:hover { background-color: #f8f9fa; color: #0a4d68; padding-left: 1.3rem; }
-
-        /* ══ Strict Global Layout Footer Anchors ══ */
-        .footer {
-            background: linear-gradient(135deg, #0a4d68, #088395) !important;
-            color: white !important;
-            padding: 60px 0 20px !important;
-            position: relative !important;
-            overflow: hidden !important;
-            font-family: 'Poppins', sans-serif !important;
-            text-align: left !important;
-            display: block !important;
-            width: 100% !important;
-        }
-        .footer::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            animation: pulseFooter 15s infinite linear; z-index: 0;
-        }
-        @keyframes pulseFooter { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        .footer-content { 
-            position: relative !important; 
-            z-index: 1 !important; 
-            display: flex !important; 
-            flex-wrap: wrap !important; 
-            justify-content: space-between !important; 
-            max-width: 1200px !important; 
-            margin: 0 auto !important; 
-            padding: 0 20px !important; 
-            text-align: left !important;
-        }
-        .footer-column { 
-            flex: 1 !important; 
-            min-width: 250px !important; 
-            margin-bottom: 40px !important; 
-            padding: 0 15px !important; 
-            text-align: left !important;
-        }
-        .footer-column h3 { 
-            font-family: 'Poppins', sans-serif !important;
-            font-size: 1.5rem !important; 
-            margin-bottom: 20px !important; 
-            position: relative !important; 
-            padding-bottom: 10px !important; 
-            color: #F8DE7E !important; 
-            text-transform: none !important;
-            letter-spacing: normal !important;
-            text-align: left !important;
-        }
-        .footer-column h3::after { 
-            content: '' !important; 
-            position: absolute !important; 
-            bottom: 0 !important; 
-            left: 0 !important; 
-            width: 40px !important; 
-            height: 3px !important; 
-            background: #ffd700 !important; 
-            border-radius: 2px !important; 
-        }
-        .footer-links { 
-            list-style: none !important; 
-            padding: 0 !important; 
-            margin: 0 !important; 
-            text-align: left !important;
-        }
-        .footer-links li { 
-            margin-bottom: 12px !important; 
-            padding: 0 !important;
-            list-style: none !important;
-            text-align: left !important;
-        }
-        .footer-links a { 
-            color: rgba(255, 255, 255, 0.8) !important; 
-            text-decoration: none !important; 
-            transition: all 0.3s ease !important; 
-            display: inline-flex !important; 
-            align-items: center !important; 
-            font-family: 'Poppins', sans-serif !important;
-            font-size: 0.95rem !important;
-        }
-        .footer-links a i { 
-            margin-right: 10px !important; 
-            font-size: 14px !important; 
-            color: #ffd700 !important; 
-        }
-        .footer-links a:hover { 
-            color: #ffd700 !important; 
-            transform: translateX(5px) !important; 
-        }
-        .footer-social { 
-            display: flex !important; 
-            gap: 15px !important; 
-            margin-top: 20px !important; 
-            justify-content: flex-start !important;
-        }
-        .footer-social a { 
-            display: flex !important; 
-            align-items: center !important; 
-            justify-content: center !important; 
-            width: 40px !important; 
-            height: 40px !important; 
-            background: rgba(255, 255, 255, 0.1) !important; 
-            border-radius: 50% !important; 
-            color: white !important; 
-            font-size: 18px !important; 
-            transition: all 0.3s ease !important; 
-            border: 1px solid rgba(255, 255, 255, 0.2) !important; 
-        }
-        .footer-social a:hover { 
-            background: #ffd700 !important; 
-            color: #0a4d68 !important; 
-            transform: translateY(-3px) !important; 
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important; 
-        }
-        .footer-bottom { 
-            position: relative !important; 
-            z-index: 1 !important; 
-            text-align: center !important; 
-            padding-top: 30px !important; 
-            margin-top: 40px !important; 
-            border-top: 1px solid rgba(255, 255, 255, 0.1) !important; 
-            max-width: 1200px !important; 
-            margin-left: auto !important; 
-            margin-right: auto !important; 
-            padding-left: 20px !important; 
-            padding-right: 20px !important; 
-        }
-        .footer-bottom p { 
-            opacity: 0.8 !important; 
-            font-size: 0.9rem !important; 
-            color: white !important;
-        }
-
-        /* Mobile Nav Redesign from index.html */
-        .mobile-nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 999; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
-        .mobile-nav-overlay.active { opacity: 1; visibility: visible; }
-        .mobile-menu-container { position: fixed; top: 0; right: -100%; width: 85%; max-width: 400px; height: 100%; background: linear-gradient(135deg, #0a4d68, #088395); z-index: 1000; overflow-y: auto; transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1); box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2); font-family: 'Poppins', sans-serif; }
-        .mobile-menu-container.active { right: 0; }
-        .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background: rgba(0, 0, 0, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .mobile-menu-logo { height: 40px; }
-        .mobile-menu-close { font-size: 1.5rem; color: white; background: transparent; border: none; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.3s ease; }
-        .mobile-menu-close:hover { background: rgba(255, 255, 255, 0.1); }
-        .mobile-menu-content { padding: 20px 0; }
-        .mobile-nav-menu { list-style: none; }
-        .mobile-nav-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .mobile-nav-link { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease; }
-        .mobile-nav-link:hover { background-color: rgba(255, 255, 255, 0.1); }
-        .mobile-nav-link.donate { background-color: #ff6b6b; font-weight: 600; }
-        .mobile-nav-link.newsletter { background-color: #05bfdb; font-weight: 600; }
-        .mobile-nav-link.newsletter:hover { background-color: #0497ac; }
-        .mobile-nav-link.donate:hover { background-color: #ff5252; }
-        .mobile-dropdown-toggle { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
-        .mobile-dropdown-toggle.active { transform: rotate(180deg); }
-        .mobile-dropdown-menu { max-height: 0; overflow: hidden; background: rgba(0, 0, 0, 0.2); transition: max-height 0.4s cubic-bezier(0.645, 0.045, 0.355, 1); }
-        .mobile-dropdown-menu.show { max-height: 500px; }
-        .mobile-dropdown-item { display: block; padding: 14px 20px 14px 40px; color: rgba(255, 255, 255, 0.9); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
-        .mobile-dropdown-item:hover { background-color: rgba(255, 255, 255, 0.1); padding-left: 45px; }   
-
-        @media (min-width: 1025px) {
-            .nav-header { padding: 6px 20px !important; }
-            .nav-logo { height: 38px !important; }
-            .nav-link { padding: 0.55rem 1rem !important; font-size: 15px; }
-            .dropdown-item { padding: 0.6rem 1rem !important; }
-            .nav-item .dropdown-menu { top: 90% !important; }
-        }
-
-        /* ════════════════════════════════════
+        /* ══════════════════════════════════════
            HERO
         ══════════════════════════════════════ */
         .hero {
-            margin-top:140px;
+            margin-top:100px;
             min-height:88vh;
             display:grid;
             grid-template-columns:1fr 1fr;
@@ -365,7 +142,7 @@
         .hero-stat-chip span { font-size:.72rem; opacity:.8; letter-spacing:.06em; }
 
         @media(max-width:860px){
-            .hero { grid-template-columns:1fr; min-height:auto; margin-top:90px; }
+            .hero { grid-template-columns:1fr; min-height:auto; }
             .hero-left { padding:3.5rem 2rem; }
             .hero-left::after { display:none; }
             .hero-right { min-height:300px; }
@@ -410,6 +187,7 @@
         }
         .mission-text p { color:#5a4535; font-size:.97rem; line-height:1.8; margin-bottom:1rem; }
         .ruled-line { width:50px; height:3px; background:var(--terracotta); border-radius:2px; margin-bottom:1.5rem; }
+        .pillars-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
         .pillars-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
         .pillar-card {
             background:#fff; border-radius:16px; padding:1.4rem 1.2rem;
@@ -488,7 +266,7 @@
         .activity-btn .act-btn-label small { font-size:.72rem; font-weight:400; opacity:.6; margin-bottom:.1rem; letter-spacing:.04em; }
         .activity-btn .act-btn-label strong { font-size:1rem; font-weight:700; }
 
-        /* ══ MODAL / POPUP ══ */
+        /* ══ MODAL / POPUP with Bubble Pop-in & Fade-out ══ */
         .modal-overlay {
             position:fixed; inset:0; z-index:9000;
             background:rgba(10,8,4,.85);
@@ -500,10 +278,12 @@
         }
         .modal-overlay.active { opacity:1; visibility:visible; }
 
+        /* Animated background particles */
         .modal-bg-canvas {
             position:absolute; inset:0; pointer-events:none; z-index:0;
         }
 
+        /* BUBBLE POP-IN animation for modal */
         .modal-box {
             background:var(--cream);
             border-radius:24px;
@@ -520,6 +300,7 @@
             transform: scale(1) translateY(0);
             opacity: 1;
         }
+        /* Remove scroll bar but keep scrolling with fade-in effect on content */
         .modal-box::-webkit-scrollbar {
             width: 0;
             background: transparent;
@@ -528,6 +309,7 @@
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
+        /* Fade-in animation for content as you scroll */
         .modal-body, .modal-header, .modal-tag, .modal-chips, .modal-desc, .modal-tasks, .modal-outcome, .modal-gallery, .modal-download-btn {
             animation: contentFadeInUp 0.6s ease forwards;
             opacity: 0;
@@ -543,10 +325,17 @@
         .modal-download-btn { animation-delay: 0.45s; }
 
         @keyframes contentFadeInUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
+        /* opposite animation for closing (scale down) */
         .modal-overlay:not(.active) .modal-box {
             transform: scale(0.75) translateY(30px);
             opacity: 0;
@@ -568,7 +357,9 @@
         }
         .modal-close-btn:hover { background:var(--terracotta); transform:rotate(90deg); }
 
-        .modal-header { padding:0 2.5rem 1.5rem; }
+        .modal-header {
+            padding:0 2.5rem 1.5rem;
+        }
         .modal-tag {
             font-size:.7rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
             color:var(--forest-mid); display:flex; align-items:center; gap:.5rem; margin-bottom:.8rem;
@@ -590,7 +381,9 @@
         .modal-chip i { color:var(--terracotta); }
 
         .modal-body { padding:0 2.5rem 2.5rem; }
+
         .modal-desc { font-size:.93rem; color:#6b5444; line-height:1.8; margin-bottom:1.5rem; }
+
         .modal-tasks { list-style:none; margin-bottom:1.5rem; }
         .modal-tasks li {
             display:flex; align-items:flex-start; gap:.75rem;
@@ -620,12 +413,28 @@
             color:var(--terracotta); margin-bottom:1rem; display:flex; align-items:center; gap:.5rem;
         }
         .gallery-label::after { content:''; flex:1; height:1px; background:rgba(193,96,58,.2); }
-        .photo-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:auto; gap:.6rem; }
-        .photo-grid .pg-item { border-radius:10px; overflow:hidden; aspect-ratio:1/1; position:relative; background:var(--bark); }
+        .photo-grid {
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            grid-template-rows:auto;
+            gap:.6rem;
+        }
+        .photo-grid .pg-item {
+            border-radius:10px; overflow:hidden;
+            aspect-ratio:1/1; position:relative;
+            background:var(--bark);
+        }
         .photo-grid .pg-item:nth-child(1) { grid-column:span 2; grid-row:span 2; aspect-ratio:unset; }
-        .photo-grid .pg-item img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+        .photo-grid .pg-item img {
+            width:100%; height:100%; object-fit:cover;
+            transition:transform .4s ease;
+        }
         .photo-grid .pg-item:hover img { transform:scale(1.05); }
-        .no-photos-notice { background:var(--parchment); border-radius:14px; padding:2rem; text-align:center; border:1px dashed rgba(180,155,115,.4); }
+        .no-photos-notice {
+            background:var(--parchment); border-radius:14px;
+            padding:2rem; text-align:center;
+            border:1px dashed rgba(180,155,115,.4);
+        }
         .no-photos-notice i { font-size:2rem; color:var(--sand); margin-bottom:.75rem; }
         .no-photos-notice p { font-size:.88rem; color:#8a7060; }
         .modal-download-btn {
@@ -639,7 +448,11 @@
         }
         .modal-download-btn:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(45,80,22,.4); }
         .modal-expense-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
-        .exp-chip { background:#fff; border:1px solid rgba(193,96,58,.2); border-radius:8px; padding:.3rem .75rem; font-size:.75rem; color:var(--terra-dark); font-weight:600; }
+        .exp-chip {
+            background:#fff; border:1px solid rgba(193,96,58,.2);
+            border-radius:8px; padding:.3rem .75rem;
+            font-size:.75rem; color:var(--terra-dark); font-weight:600;
+        }
         @media(max-width:640px){
             .modal-header, .modal-body { padding-left:1.2rem; padding-right:1.2rem; }
             .photo-grid { grid-template-columns:repeat(2,1fr); }
@@ -729,6 +542,32 @@
         }
         .volunteer-toast i { color:var(--gold-light); margin-right:.5rem; }
 
+        /* ══ MOBILE NAVIGATION SIDEBAR CSS FROM INDEX ══ */
+        .mobile-nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 99998; opacity: 0; visibility: hidden; transition: all 0.4s ease; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .mobile-nav-overlay.active { opacity: 1; visibility: visible; }
+        .mobile-menu-container { position: fixed; top: 0; left: -320px; width: 320px; height: 100%; background-color: #0a4d68; z-index: 99999; box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3); transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1); overflow-y: auto; display: flex; flex-direction: column; }
+        .mobile-menu-container.active { left: 0; }
+        .mobile-menu-header { padding: 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background-color: #083d54; }
+        .mobile-menu-logo { height: 45px; width: auto; }
+        .mobile-menu-close { background: transparent; border: none; color: white; font-size: 1.5rem; cursor: pointer; transition: transform 0.3s ease; }
+        .mobile-menu-close:hover { transform: rotate(90deg); }
+        .mobile-nav-menu { list-style: none; padding: 15px 0; display: flex; flex-direction: column; }
+        .mobile-nav-menu li { width: 100%; position: relative; }
+        .mobile-nav-link { display: block; padding: 14px 20px; color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .mobile-nav-link:hover { background-color: rgba(255, 255, 255, 0.1); }
+        .mobile-dropdown-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .mobile-dropdown-header .mobile-nav-link { border-bottom: none; flex-grow: 1; }
+        .mobile-dropdown-toggle { background: transparent; border: none; color: rgba(255, 255, 255, 0.7); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.9rem; transition: transform 0.3s ease; border-left: 1px solid rgba(255, 255, 255, 0.05); }
+        .mobile-dropdown-toggle.active { transform: rotate(180deg); color: white; }
+        .mobile-dropdown-menu { max-height: 0; overflow: hidden; background: rgba(0, 0, 0, 0.15); transition: max-height 0.4s cubic-bezier(0.645, 0.045, 0.355, 1); }
+        .mobile-dropdown-menu.show { max-height: 600px; }
+        .mobile-dropdown-item { display: block; padding: 12px 20px 12px 40px; color: rgba(255, 255, 255, 0.85); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; font-size: 0.95rem; }
+        .mobile-dropdown-item:hover { background-color: rgba(255, 255, 255, 0.1); padding-left: 45px; color: white; }
+        .mobile-nav-link.donate { background-color: #ff6b6b; font-weight: 600; border-bottom: none; text-align: center; margin: 10px 20px; border-radius: 6px; padding: 12px; }
+        .mobile-nav-link.newsletter { background-color: #05bfdb; font-weight: 600; border-bottom: none; text-align: center; margin: 10px 20px 0; border-radius: 6px; padding: 12px; }
+        .mobile-nav-link.newsletter:hover { background-color: #0497ac; }
+        .mobile-nav-link.donate:hover { background-color: #ff5252; }
+
         @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
         @keyframes slideUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
     </style>
@@ -736,8 +575,56 @@
 <body>
 
 <div id="notice-container"></div>
-
 <div id="header-placeholder"></div>
+
+<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+<div class="mobile-menu-container" id="mobile-menu-container">
+    <div class="mobile-menu-header">
+        <img src="./images/logo.png" alt="St. Mary's Logo" class="mobile-menu-logo">
+        <button class="mobile-menu-close" id="mobile-menu-close"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="mobile-nav-menu">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li>
+            <div class="mobile-dropdown-header">
+                <a href="#" class="mobile-nav-link mobile-dropdown-parent">About Us</a>
+                <button class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="mobile-dropdown-menu">
+                <a href="history.html" class="mobile-dropdown-item">Our History</a>
+                <a href="trustees.html" class="mobile-dropdown-item">Trustees & Kaikkars</a>
+            </div>
+        </li>
+        <li>
+            <div class="mobile-dropdown-header">
+                <a href="#" class="mobile-nav-link mobile-dropdown-parent">Spiritual Organizations</a>
+                <button class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="mobile-dropdown-menu">
+                <a href="catechism.html" class="mobile-dropdown-item">Catechism</a>
+                <a href="smym.html" class="mobile-dropdown-item">SMYM</a>
+                <a href="mathruvedi.html" class="mobile-dropdown-item">Mathruvedi</a>
+                <a href="st-vincent-de-paul.html" class="mobile-dropdown-item">St. Vincent De Paul</a>
+            </div>
+        </li>
+        <li>
+            <div class="mobile-dropdown-header">
+                <a href="#" class="mobile-nav-link mobile-dropdown-parent">Services</a>
+                <button class="mobile-dropdown-toggle"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="mobile-dropdown-menu">
+                <a href="services.html" class="mobile-dropdown-item">Holy Qurbana Schedule</a>
+                <a href="sacraments.html" class="mobile-dropdown-item">Sacraments</a>
+            </div>
+        </li>
+        <li><a href="ward-meetings.html" class="mobile-nav-link">Ward Meetings</a></li>
+        <li><a href="community-outreach.html" class="mobile-nav-link">Community Outreach</a></li>
+        <li><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
+        <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
+        <li><a href="newsletter.html" class="mobile-nav-link newsletter">Newsletter</a></li>
+        <li><a href="donate.html" class="mobile-nav-link donate">Donate</a></li>
+    </ul>
+</div>
 
 <section class="hero">
     <div class="hero-left">
@@ -762,47 +649,436 @@
     </div>
 </section>
 
-<section class="mission-band"><div class="container"><div class="mission-inner"><div class="mission-text reveal up"><span class="eyebrow">Our Purpose</span><div class="ruled-line"></div><h2>Why We Reach Out</h2><p>The Community Outreach Programme was born from a simple conviction: <em>faith must be lived in action</em>. We mobilise volunteers to assist individuals facing hardship — from illness and isolation to unsanitary living conditions — providing practical, compassionate support with dignity and care.</p><p>Each activity is initiated in response to genuine need, carried out with full written consent, documented for transparency, and funded through the parish community.</p></div><div class="pillars-grid reveal up delay-2"><div class="pillar-card"><i class="fas fa-heart"></i><h4>Compassion</h4><p>Meeting people where they are, without judgement</p></div><div class="pillar-card"><i class="fas fa-hands-helping"></i><h4>Practical Help</h4><p>Real, tangible support for real problems</p></div><div class="pillar-card"><i class="fas fa-shield-alt"></i><h4>Dignity & Safety</h4><p>Respectful service with proper safeguards</p></div><div class="pillar-card"><i class="fas fa-seedling"></i><h4>Growing Community</h4><p>Strengthening bonds within Wellington</p></div></div></div></div></section>
+<section class="mission-band">
+    <div class="container">
+        <div class="mission-inner">
+            <div class="mission-text reveal up">
+                <span class="eyebrow">Our Purpose</span>
+                <div class="ruled-line"></div>
+                <h2>Why We Reach Out</h2>
+                <p>The Community Outreach Programme was born from a simple conviction: <em>faith must be lived in action</em>. We mobilise volunteers to assist individuals facing hardship — from illness and isolation to unsanitary living conditions — providing practical, compassionate support with dignity and care.</p>
+                <p>Each activity is initiated in response to genuine need, carried out with full written consent, documented for transparency, and funded through the parish community.</p>
+            </div>
+            <div class="pillars-grid reveal up delay-2">
+                <div class="pillar-card"><i class="fas fa-heart"></i><h4>Compassion</h4><p>Meeting people where they are, without judgement</p></div>
+                <div class="pillar-card"><i class="fas fa-hands-helping"></i><h4>Practical Help</h4><p>Real, tangible support for real problems</p></div>
+                <div class="pillar-card"><i class="fas fa-shield-alt"></i><h4>Dignity & Safety</h4><p>Respectful service with proper safeguards</p></div>
+                <div class="pillar-card"><i class="fas fa-seedling"></i><h4>Growing Community</h4><p>Strengthening bonds within Wellington</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="stats-strip"><div class="container"><div class="stats-row reveal up"><div class="stat-block"><span class="stat-num" data-target="2">0</span><div class="stat-desc">Activities Completed</div></div><div class="stat-block"><span class="stat-num" data-target="16" data-suffix="+">0</span><div class="stat-desc">Volunteers</div></div><div class="stat-block"><span class="stat-num" data-target="3" data-suffix=".5hrs">0</span><div class="stat-desc">Avg. Activity Duration</div></div></div></div></section>
+<section class="stats-strip">
+    <div class="container">
+        <div class="stats-row reveal up">
+            <div class="stat-block"><span class="stat-num" data-target="2">0</span><div class="stat-desc">Activities Completed</div></div>
+            <div class="stat-block"><span class="stat-num" data-target="16" data-suffix="+">0</span><div class="stat-desc">Volunteers</div></div>
+            <div class="stat-block"><span class="stat-num" data-target="3" data-suffix=".5hrs">0</span><div class="stat-desc">Avg. Activity Duration</div></div>
+        </div>
+    </div>
+</section>
 
-<section class="activities-section"><div class="container"><div class="section-header reveal up"><span class="eyebrow">What We've Done</span><h2>Outreach Activities</h2><p>Each engagement is a story of human kindness. Below are the two activities completed so far by the volunteers of St. Mary's Syro-Malabar Mission Wellington.</p></div><div class="activity-buttons reveal up"><button class="activity-btn" onclick="openModal('modal1')"><div class="act-icon"><i class="fas fa-home"></i></div><div class="act-btn-label"><small>October 2025</small><strong>Activity 1</strong></div><i class="fas fa-arrow-right" style="margin-left:.5rem;font-size:.8rem;opacity:.6"></i></button><button class="activity-btn" onclick="openModal('modal2')"><div class="act-icon"><i class="fas fa-seedling"></i></div><div class="act-btn-label"><small>December 2025</small><strong>Activity 2</strong></div><i class="fas fa-arrow-right" style="margin-left:.5rem;font-size:.8rem;opacity:.6"></i></button></div></div></section>
+<section class="activities-section">
+    <div class="container">
+        <div class="section-header reveal up">
+            <span class="eyebrow">What We've Done</span>
+            <h2>Outreach Activities</h2>
+            <p>Each engagement is a story of human kindness. Below are the two activities completed so far by the volunteers of St. Mary's Syro-Malabar Mission Wellington.</p>
+        </div>
+        <div class="activity-buttons reveal up">
+            <button class="activity-btn" onclick="openModal('modal1')">
+                <div class="act-icon"><i class="fas fa-home"></i></div>
+                <div class="act-btn-label"><small>October 2025</small><strong>Activity 1</strong></div>
+                <i class="fas fa-arrow-right" style="margin-left:.5rem;font-size:.8rem;opacity:.6"></i>
+            </button>
+            <button class="activity-btn" onclick="openModal('modal2')">
+                <div class="act-icon"><i class="fas fa-seedling"></i></div>
+                <div class="act-btn-label"><small>December 2025</small><strong>Activity 2</strong></div>
+                <i class="fas fa-arrow-right" style="margin-left:.5rem;font-size:.8rem;opacity:.6"></i>
+            </button>
+        </div>
+    </div>
+</section>
 
-<section class="timeline-section"><div class="container"><div class="section-header reveal up" style="margin-bottom:3.5rem"><span class="eyebrow" style="color:var(--terracotta)">Programme Journey</span><h2 style="color:var(--bark)">Our Story So Far</h2></div><div class="timeline-wrap reveal up"><div class="timeline-spine"></div><div class="t-item"><div class="t-left"><div class="t-card"><div class="t-date">October 2025</div><h4>First Activity</h4><p>House cleaning & rubbish removal at Newlands. The programme concept is formally born.</p></div></div><div class="t-dot"></div><div class="t-right"></div></div><div class="t-item"><div class="t-left"></div><div class="t-dot" style="background:var(--forest)"></div><div class="t-right"><div class="t-card"><div class="t-date" style="color:var(--forest)">November 2025</div><h4>Fundraising & Recognition</h4><p>"Spin the Wheel" raised $420 on feast day. Parish video presentation on 23 Nov.</p></div></div></div><div class="t-item"><div class="t-left"><div class="t-card"><div class="t-date">December 2025</div><h4>Second Activity</h4><p>Outdoor tidy-up & Christmas decoration support for a single mother, Lower Hutt. 10 volunteers, 3 hours.</p></div></div><div class="t-dot"></div><div class="t-right"></div></div><div class="t-item"><div class="t-left"></div><div class="t-dot" style="background:var(--gold)"></div><div class="t-right"><div class="t-card"><div class="t-date" style="color:var(--gold)">2026 & Beyond</div><h4>Expanding the Mission</h4><p>Parish council to provide further ideas and guidance. Programme continues to grow and strengthen across Wellington.</p></div></div></div></div></div></section>
+<section class="timeline-section">
+    <div class="container">
+        <div class="section-header reveal up" style="margin-bottom:3.5rem">
+            <span class="eyebrow" style="color:var(--terracotta)">Programme Journey</span>
+            <h2 style="color:var(--bark)">Our Story So Far</h2>
+        </div>
+        <div class="timeline-wrap reveal up">
+            <div class="timeline-spine"></div>
+            <div class="t-item">
+                <div class="t-left">
+                    <div class="t-card">
+                        <div class="t-date">October 2025</div>
+                        <h4>First Activity</h4>
+                        <p>House cleaning & rubbish removal at Newlands. The programme concept is formally born.</p>
+                    </div>
+                </div>
+                <div class="t-dot"></div>
+                <div class="t-right"></div>
+            </div>
+            <div class="t-item">
+                <div class="t-left"></div>
+                <div class="t-dot" style="background:var(--forest)"></div>
+                <div class="t-right">
+                    <div class="t-card">
+                        <div class="t-date" style="color:var(--forest)">November 2025</div>
+                        <h4>Fundraising & Recognition</h4>
+                        <p>"Spin the Wheel" raised $420 on feast day. Parish video presentation on 23 Nov.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="t-item">
+                <div class="t-left">
+                    <div class="t-card">
+                        <div class="t-date">December 2025</div>
+                        <h4>Second Activity</h4>
+                        <p>Outdoor tidy-up & Christmas decoration support for a single mother, Lower Hutt. 10 volunteers, 3 hours.</p>
+                    </div>
+                </div>
+                <div class="t-dot"></div>
+                <div class="t-right"></div>
+            </div>
+            <div class="t-item">
+                <div class="t-left"></div>
+                <div class="t-dot" style="background:var(--gold)"></div>
+                <div class="t-right">
+                    <div class="t-card">
+                        <div class="t-date" style="color:var(--gold)">2026 & Beyond</div>
+                        <h4>Expanding the Mission</h4>
+                        <p>Parish council to provide further ideas and guidance. Programme continues to grow and strengthen across Wellington.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="cta-section"><div class="container"><div class="cta-inner"><div class="cta-text reveal left"><span class="eyebrow">Join the Mission</span><h2>Your Hands Can Change Someone's World</h2><p>Whether you volunteer your time, contribute financially, or simply spread the word — every act of support goes directly towards helping those in need across the Wellington region.</p><div class="cta-btns"><button class="btn-primary" onclick="showVolunteerToast()"><i class="fas fa-hands-helping"></i> Become a Volunteer</button></div></div><div class="cta-quote reveal right"><span class="quote-mark">"</span><blockquote>The patient herself expressed heartfelt thanks to the volunteers and to the St. Mary's Syro-Malabar community for the effort that transformed her home.</blockquote><cite>— Programme Report, October 2025</cite></div></div></div></section>
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-inner">
+            <div class="cta-text reveal left">
+                <span class="eyebrow">Join the Mission</span>
+                <h2>Your Hands Can Change Someone's World</h2>
+                <p>Whether you volunteer your time, contribute financially, or simply spread the word — every act of support goes directly towards helping those in need across the Wellington region.</p>
+                <div class="cta-btns">
+                    <button class="btn-primary" onclick="showVolunteerToast()"><i class="fas fa-hands-helping"></i> Become a Volunteer</button>
+                </div>
+            </div>
+            <div class="cta-quote reveal right">
+                <span class="quote-mark">"</span>
+                blockquote>The patient herself expressed heartfelt thanks to the volunteers and to the St. Mary's Syro-Malabar community for the effort that transformed her home.</blockquote>
+                <cite>— Programme Report, October 2025</cite>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div id="footer-placeholder"></div>
-
 <div class="scroll-top" id="scrollTop" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 <div class="volunteer-toast" id="volunteerToast"><i class="fas fa-church"></i> Please get in touch with church office or committee members</div>
 
-<div class="modal-overlay" id="modal1" onclick="handleOverlayClick(event,'modal1')"><canvas class="modal-bg-canvas" id="canvas1"></canvas><div class="modal-box" id="modal1box"><div class="modal-close"><button class="modal-close-btn" onclick="closeModal('modal1')" aria-label="Close"><i class="fas fa-times"></i></button></div><div class="modal-header"><div class="modal-tag">Activity 1 · House Cleaning</div><h2>House Cleaning & Rubbish Removal, Newlands</h2><div class="modal-chips"><span class="modal-chip"><i class="fas fa-calendar"></i> 19 October 2025</span><span class="modal-chip"><i class="fas fa-clock"></i> 1:00 PM – 6:00 PM</span><span class="modal-chip"><i class="fas fa-users"></i> 6 Volunteers</span><span class="modal-chip"><i class="fas fa-hard-hat"></i> Full PPE used indoors</span></div></div><div class="modal-body"><p class="modal-desc">A patient in her late 60s, admitted to Wellington Regional Hospital, was living in severely unsanitary conditions. Professional cleaning was unaffordable, so our volunteers stepped in before her discharge.</p><ul class="modal-tasks"><li><span class="task-dot"><i class="fas fa-check"></i></span> Removed ~15 large bags of rubbish from the property</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Deep-cleaned interior rooms including bathroom and kitchen</li><li><span class="task-dot"><i class="fas fa-check"></i></span> PPE kits, safety boots, masks & gloves worn by all indoor volunteers</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Green waste disposed via Hutt City Council transfer station</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Photographs documented before and after the clean</li></ul><div class="modal-outcome"><strong><i class="fas fa-star" style="margin-right:.4rem"></i> Outcome & Impact</strong> Formally acknowledged by the surgical ward manager at Wellington Regional Hospital. The activity sparked the creation of the ongoing Outreach Programme, with a "Spin the Wheel" fundraiser raising $420 on feast day. A video presentation was shown to the parish on 23 November.</div><div class="modal-gallery"><div class="gallery-label"><i class="fas fa-images"></i> Before & After Photos</div><div class="photo-grid"><div class="pg-item"><img src="images/Community Outreach/activity1_1.jpg" alt="Activity 1 photo 1" loading="lazy"></div><div class="pg-item"><img src="images/Community Outreach/activity1_2.jpg" alt="Activity 1 photo 2" loading="lazy"></div><div class="pg-item"><img src="images/Community Outreach/activity1_3.jpg" alt="Activity 1 photo 3" loading="lazy"></div><div class="pg-item"><img src="images/Community Outreach/activity1_4.jpg" alt="Activity 1 photo 4" loading="lazy"></div><div class="pg-item"><img src="images/Community Outreach/activity1_5.jpg" alt="Activity 1 photo 5" loading="lazy"></div><div class="pg-item"><img src="images/Community Outreach/activity1_6.jpg" alt="Activity 1 photo 6" loading="lazy"></div><div class="pg-item"><img src="images/Community Outreach/activity1_7.jpg" alt="Activity 1 photo 7" loading="lazy"></div><div class="pg-item"><img src="images/Community Outreach/activity1_8.jpg" alt="Activity 1 photo 8" loading="lazy"></div></div></div><div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap"><button class="modal-download-btn" onclick="downloadFile('pdfs/Community Outreach Programme_Activity 1.pdf','Community Outreach Programme_Activity 1.pdf')"><i class="fas fa-file-pdf"></i> Download Report</button><div class="modal-expense-chips"><span class="exp-chip">Expenses covered by organisation</span></div></div></div></div></div>
+<div class="modal-overlay" id="modal1" onclick="handleOverlayClick(event,'modal1')">
+    <canvas class="modal-bg-canvas" id="canvas1"></canvas>
+    <div class="modal-box" id="modal1box">
+        <div class="modal-close"><button class="modal-close-btn" onclick="closeModal('modal1')" aria-label="Close"><i class="fas fa-times"></i></button></div>
+        <div class="modal-header">
+            <div class="modal-tag">Activity 1 · House Cleaning</div>
+            <h2>House Cleaning & Rubbish Removal, Newlands</h2>
+            <div class="modal-chips">
+                <span class="modal-chip"><i class="fas fa-calendar"></i> 19 October 2025</span>
+                <span class="modal-chip"><i class="fas fa-clock"></i> 1:00 PM – 6:00 PM</span>
+                <span class="modal-chip"><i class="fas fa-users"></i> 6 Volunteers</span>
+                <span class="modal-chip"><i class="fas fa-hard-hat"></i> Full PPE used indoors</span>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-desc">A patient in her late 60s, admitted to Wellington Regional Hospital, was living in severely unsanitary conditions. Professional cleaning was unaffordable, so our volunteers stepped in before her discharge.</p>
+            <ul class="modal-tasks">
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Removed ~15 large bags of rubbish from the property</li>
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Deep-cleaned interior rooms including bathroom and kitchen</li>
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> PPE kits, safety boots, masks & gloves worn by all indoor volunteers</li>
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Green waste disposed via Hutt City Council transfer station</li>
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Photographs documented before and after the clean</li>
+            </ul>
+            <div class="modal-outcome"><strong><i class="fas fa-star" style="margin-right:.4rem"></i> Outcome & Impact</strong> Formally acknowledged by the surgical ward manager at Wellington Regional Hospital. The activity sparked the creation of the ongoing Outreach Programme, with a "Spin the Wheel" fundraiser raising $420 on feast day. A video presentation was shown to the parish on 23 November.</div>
+            <div class="modal-gallery">
+                <div class="gallery-label"><i class="fas fa-images"></i> Before & After Photos</div>
+                <div class="photo-grid">
+                    <div class="pg-item"><img src="images/Community Outreach/activity1_1.jpg" alt="Activity 1 photo 1" loading="lazy"></div>
+                    <div class="pg-item"><img src="images/Community Outreach/activity1_2.jpg" alt="Activity 1 photo 2" loading="lazy"></div>
+                    <div class="pg-item"><img src="images/Community Outreach/activity1_3.jpg" alt="Activity 1 photo 3" loading="lazy"></div>
+                    <div class="pg-item"><img src="images/Community Outreach/activity1_4.jpg" alt="Activity 1 photo 4" loading="lazy"></div>
+                    <div class="pg-item"><img src="images/Community Outreach/activity1_5.jpg" alt="Activity 1 photo 5" loading="lazy"></div>
+                    <div class="pg-item"><img src="images/Community Outreach/activity1_6.jpg" alt="Activity 1 photo 6" loading="lazy"></div>
+                    <div class="pg-item"><img src="images/Community Outreach/activity1_7.jpg" alt="Activity 1 photo 7" loading="lazy"></div>
+                    <div class="pg-item"><img src="images/Community Outreach/activity1_8.jpg" alt="Activity 1 photo 8" loading="lazy"></div>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+                <button class="modal-download-btn" onclick="downloadFile('pdfs/Community Outreach Programme_Activity 1.pdf','Community Outreach Programme_Activity 1.pdf')"><i class="fas fa-file-pdf"></i> Download Report</button>
+                <div class="modal-expense-chips"><span class="exp-chip">Expenses covered by organisation</span></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="modal-overlay" id="modal2" onclick="handleOverlayClick(event,'modal2')"><canvas class="modal-bg-canvas" id="canvas2"></canvas><div class="modal-box" id="modal2box"><div class="modal-close"><button class="modal-close-btn" onclick="closeModal('modal2')" aria-label="Close"><i class="fas fa-times"></i></button></div><div class="modal-header"><div class="modal-tag">Activity 2 · Garden & Christmas</div><h2>Outdoor Tidy-Up & Christmas Decoration, Taita</h2><div class="modal-chips"><span class="modal-chip"><i class="fas fa-calendar"></i> 07 December 2025</span><span class="modal-chip"><i class="fas fa-clock"></i> 2:00 PM – 5:00 PM</span><span class="modal-chip"><i class="fas fa-users"></i> 10 Volunteers</span><span class="modal-chip"><i class="fas fa-file-signature"></i> Signed consent obtained</span></div></div><div class="modal-body"><p class="modal-desc">A single mother and their children, recovering from recent surgery with limited social support, requested help with their outdoor garden and Christmas preparations. Ten volunteers organised a working bee to ensure they could celebrate Christmas with joy and dignity.</p><ul class="modal-tasks"><li><span class="task-dot"><i class="fas fa-check"></i></span> Full lawn mowing across the property</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Removal of overgrown trees and general outdoor clearing</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Garden tidy-up: cutting branches, removing weeds</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Christmas decoration installation and setup</li><li><span class="task-dot"><i class="fas fa-check"></i></span> Safety gloves & appropriate equipment used throughout</li></ul><div class="modal-outcome"><strong><i class="fas fa-star" style="margin-right:.4rem"></i> Outcome & Impact</strong> The family were able to enjoy a safe, beautifully tidy outdoor space and celebrate Christmas with dignity and joy. The activity deepened the parish's sense of community care and reinforced the ongoing value of this outreach ministry.</div><div class="modal-gallery"><div class="gallery-label"><i class="fas fa-images"></i> Photos</div><div class="no-photos-notice"><i class="fas fa-shield-alt"></i><p>Media consent was declined for this activity.<br>Photos are not available in line with the family's privacy wishes.</p></div></div><div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap"><button class="modal-download-btn" onclick="downloadFile('pdfs/Report_Community Outreach Programme 2.pdf','Report_Community Outreach Programme 2.pdf')"><i class="fas fa-file-pdf"></i> Download Report</button><div class="modal-expense-chips"><span class="exp-chip">Expenses covered by homeowner</span><span class="exp-chip">Media consent declined</span></div></div></div></div></div>
+<div class="modal-overlay" id="modal2" onclick="handleOverlayClick(event,'modal2')">
+    <canvas class="modal-bg-canvas" id="canvas2"></canvas>
+    <div class="modal-box" id="modal2box">
+        <div class="modal-close"><button class="modal-close-btn" onclick="closeModal('modal2')" aria-label="Close"><i class="fas fa-times"></i></button></div>
+        <div class="modal-header">
+            <div class="modal-tag">Activity 2 · Garden & Christmas</div>
+            <h2>Outdoor Tidy-Up & Christmas Decoration, Taita</h2>
+            <div class="modal-chips">
+                <span class="modal-chip"><i class="fas fa-calendar"></i> 07 December 2025</span>
+                <span class="modal-chip"><i class="fas fa-clock"></i> 2:00 PM – 5:00 PM</span>
+                <span class="modal-chip"><i class="fas fa-users"></i> 10 Volunteers</span>
+                <span class="modal-chip"><i class="fas fa-file-signature"></i> Signed consent obtained</span>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-desc">A single mother and their children, recovering from recent surgery with limited social support, requested help with their outdoor garden and Christmas preparations. Ten volunteers organised a working bee to ensure they could celebrate Christmas with joy and dignity.</p>
+            <ul class="modal-tasks">
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Full lawn mowing across the property</li>
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Removal of overgrown trees and general outdoor clearing</li>
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Garden tidy-up: cutting branches, removing weeds</li>
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Christmas decoration installation and setup</li>
+                <li><span class="task-dot"><i class="fas fa-check"></i></span> Safety gloves & appropriate equipment used throughout</li>
+            </ul>
+            <div class="modal-outcome"><strong><i class="fas fa-star" style="margin-right:.4rem"></i> Outcome & Impact</strong> The family were able to enjoy a safe, beautifully tidy outdoor space and celebrate Christmas with dignity and joy. The activity deepened the parish's sense of community care and reinforced the ongoing value of this outreach ministry.</div>
+            <div class="modal-gallery">
+                <div class="gallery-label"><i class="fas fa-images"></i> Photos</div>
+                <div class="no-photos-notice">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Media consent was declined for this activity.<br>Photos are not available in line with the family's privacy wishes.</p>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+                <button class="modal-download-btn" onclick="downloadFile('pdfs/Report_Community Outreach Programme 2.pdf','Report_Community Outreach Programme 2.pdf')"><i class="fas fa-file-pdf"></i> Download Report</button>
+                <div class="modal-expense-chips">
+                    <span class="exp-chip">Expenses covered by homeowner</span>
+                    <span class="exp-chip">Media consent declined</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
-// Load header, notice bar, and external footer template
+// Load header, notice bar, footer (identical method as index.html)
 document.addEventListener("DOMContentLoaded", function() {
     fetch('includes/header.html').then(r => r.text()).then(data => { document.getElementById('header-placeholder').innerHTML = data; initializeMobileNavigation(); }).catch(err => console.log("Header error:", err));
     fetch('notice.html').then(r => r.text()).then(data => { document.getElementById('notice-container').innerHTML = data; }).catch(err => console.log("Notice error:", err));
     fetch('includes/footer.html').then(r => r.text()).then(data => { document.getElementById('footer-placeholder').innerHTML = data; }).catch(err => console.log("Footer error:", err));
 });
 
-function initializeMobileNavigation() { const toggle = document.getElementById('nav-toggle'); const menu = document.getElementById('mobile-menu-container'); const overlay = document.getElementById('mobile-nav-overlay'); const close = document.getElementById('mobile-menu-close'); if(toggle && menu){ toggle.addEventListener('click',()=>{ menu.classList.toggle('active'); if(overlay) overlay.classList.toggle('active'); }); } if(close) close.addEventListener('click',()=>closeMobile()); if(overlay) overlay.addEventListener('click',()=>closeMobile()); function closeMobile(){ if(menu) menu.classList.remove('active'); if(overlay) overlay.classList.remove('active'); } }
+// Mobile Navigation Drawer sync configuration matching industrial rules inside index.html
+function initializeMobileNavigation() {
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenuContainer = document.getElementById('mobile-menu-container');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+    function toggleMobileMenu() {
+        if (mobileMenuContainer) mobileMenuContainer.classList.toggle('active');
+        if (mobileNavOverlay) mobileNavOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenuContainer?.classList.contains('active') ? 'hidden' : '';
+    }
+
+    if (navToggle) {
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+    }
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMobileMenu();
+        });
+    }
+
+    if (mobileNavOverlay) {
+        mobileNavOverlay.addEventListener('click', () => {
+            toggleMobileMenu();
+        });
+    }
+
+    // Accordion multi-tier nested links controller setup
+    document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
+        parent.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const headerDiv = this.closest('.mobile-dropdown-header');
+            const dropdownMenu = headerDiv ? headerDiv.nextElementSibling : null;
+            const dropdownToggle = headerDiv ? headerDiv.querySelector('.mobile-dropdown-toggle') : null;
+
+            document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
+                if (menu !== dropdownMenu) {
+                    menu.classList.remove('show');
+                    const sisterHeader = menu.previousElementSibling;
+                    if (sisterHeader) {
+                        const toggle = sisterHeader.querySelector('.mobile-dropdown-toggle');
+                        if (toggle) toggle.classList.remove('active');
+                    }
+                }
+            });
+
+            if (dropdownMenu) dropdownMenu.classList.toggle('show');
+            if (dropdownToggle) dropdownToggle.classList.toggle('active');
+        });
+    });
+
+    document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const parentLink = this.previousElementSibling;
+            if (parentLink) parentLink.click();
+        });
+    });
+
+    document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
+        link.addEventListener('click', () => {
+            toggleMobileMenu();
+        });
+    });
+}
+
 window.addEventListener('scroll', () => { document.getElementById('scrollTop').classList.toggle('active', window.scrollY > 300); }, {passive:true});
-const revealEls = document.querySelectorAll('.reveal'); const revealObs = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('visible'); revealObs.unobserve(entry.target); } }); }, { threshold: 0.1 }); revealEls.forEach(el => revealObs.observe(el));
-function runCounter(el) { const target = parseInt(el.dataset.target) || 0; const prefix = el.dataset.prefix || ''; const suffix = el.dataset.suffix || ''; let current = 0; const step = Math.max(1, target / 60); const timer = setInterval(() => { current = Math.min(current + step, target); el.textContent = prefix + Math.floor(current) + suffix; if(current >= target) clearInterval(timer); }, 22); }
-const statsObs = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting){ entry.target.querySelectorAll('.stat-num[data-target]').forEach(runCounter); statsObs.unobserve(entry.target); } }); }, { threshold: 0.3 }); const statsSection = document.querySelector('.stats-strip'); if(statsSection) statsObs.observe(statsSection);
+
+const revealEls = document.querySelectorAll('.reveal'); 
+const revealObs = new IntersectionObserver((entries) => { 
+    entries.forEach(entry => { 
+        if(entry.isIntersecting){ 
+            entry.target.classList.add('visible'); 
+            revealObs.unobserve(entry.target); 
+        } 
+    }); 
+}, { threshold: 0.1 }); 
+revealEls.forEach(el => revealObs.observe(el));
+
+function runCounter(el) { 
+    const target = parseInt(el.dataset.target) || 0; 
+    const prefix = el.dataset.prefix || ''; 
+    const suffix = el.dataset.suffix || ''; 
+    let current = 0; 
+    const step = Math.max(1, target / 60); 
+    const timer = setInterval(() => { 
+        current = Math.min(current + step, target); 
+        el.textContent = prefix + Math.floor(current) + suffix; 
+        if(current >= target) clearInterval(timer); 
+    }, 22); 
+}
+
+const statsObs = new IntersectionObserver((entries) => { 
+    entries.forEach(entry => { 
+        if(entry.isIntersecting){ 
+            entry.target.querySelectorAll('.stat-num[data-target]').forEach(runCounter); 
+            statsObs.unobserve(entry.target); 
+        } 
+    }); 
+}, { threshold: 0.3 }); 
+const statsSection = document.querySelector('.stats-strip'); 
+if(statsSection) statsObs.observe(statsSection);
+
 const particleCanvases = {};
-function initParticles(canvasId) { const canvas = document.getElementById(canvasId); if (!canvas || particleCanvases[canvasId]) return; const ctx = canvas.getContext('2d'); canvas.width = window.innerWidth; canvas.height = window.innerHeight; const particles = []; const colors = ['rgba(200,155,60,', 'rgba(106,155,58,', 'rgba(193,96,58,', 'rgba(247,242,234,']; for (let i = 0; i < 60; i++) { particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 3 + 1, dx: (Math.random() - 0.5) * 0.6, dy: (Math.random() - 0.5) * 0.6, opacity: Math.random() * 0.5 + 0.1, color: colors[Math.floor(Math.random() * colors.length)] }); } let animId; function draw() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = p.color + p.opacity + ')'; ctx.fill(); p.x += p.dx; p.y += p.dy; if (p.x < 0 || p.x > canvas.width) p.dx *= -1; if (p.y < 0 || p.y > canvas.height) p.dy *= -1; }); animId = requestAnimationFrame(draw); } draw(); particleCanvases[canvasId] = animId; }
-function stopParticles(canvasId) { if (particleCanvases[canvasId]) { cancelAnimationFrame(particleCanvases[canvasId]); delete particleCanvases[canvasId]; const canvas = document.getElementById(canvasId); if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height); } }
-function openModal(id) { const overlay = document.getElementById(id); if (!overlay) return; overlay.classList.add('active'); document.body.style.overflow = 'hidden'; const canvasId = id === 'modal1' ? 'canvas1' : 'canvas2'; setTimeout(() => initParticles(canvasId), 50); }
-function closeModal(id) { const overlay = document.getElementById(id); if (!overlay) return; overlay.classList.remove('active'); document.body.style.overflow = ''; const canvasId = id === 'modal1' ? 'canvas1' : 'canvas2'; setTimeout(() => stopParticles(canvasId), 400); }
-function handleOverlayClick(e, id) { const box = document.getElementById(id + 'box'); if (box && !box.contains(e.target)) closeModal(id); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('modal1'); closeModal('modal2'); } });
-let toastTimer; function showVolunteerToast() { const toast = document.getElementById('volunteerToast'); toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 4000); }
-function downloadFile(path, filename) { const a = document.createElement('a'); a.href = path; a.download = filename; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
+function initParticles(canvasId) { 
+    const canvas = document.getElementById(canvasId); 
+    if (!canvas || particleCanvases[canvasId]) return; 
+    const ctx = canvas.getContext('2d'); 
+    canvas.width = window.innerWidth; 
+    canvas.height = window.innerHeight; 
+    const particles = []; 
+    const colors = ['rgba(200,155,60,', 'rgba(106,155,58,', 'rgba(193,96,58,', 'rgba(247,242,234,']; 
+    for (let i = 0; i < 60; i++) { 
+        particles.push({ 
+            x: Math.random() * canvas.width, 
+            y: Math.random() * canvas.height, 
+            r: Math.random() * 3 + 1, 
+            dx: (Math.random() - 0.5) * 0.6, 
+            dy: (Math.random() - 0.5) * 0.6, 
+            opacity: Math.random() * 0.5 + 0.1, 
+            color: colors[Math.floor(Math.random() * colors.length)] 
+        }); 
+    } 
+    let animId; 
+    function draw() { 
+        ctx.clearRect(0, 0, canvas.width, canvas.height); 
+        particles.forEach(p => { 
+            ctx.beginPath(); 
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); 
+            ctx.fillStyle = p.color + p.opacity + ')'; 
+            ctx.fill(); 
+            p.x += p.dx; 
+            p.y += p.dy; 
+            if (p.x < 0 || p.x > canvas.width) p.dx *= -1; 
+            if (p.y < 0 || p.y > canvas.height) p.dy *= -1; 
+        }); 
+        animId = requestAnimationFrame(draw); 
+    } 
+    draw(); 
+    particleCanvases[canvasId] = animId; 
+}
+
+function stopParticles(canvasId) { 
+    if (particleCanvases[canvasId]) { 
+        cancelAnimationFrame(particleCanvases[canvasId]); 
+        delete particleCanvases[canvasId]; 
+        const canvas = document.getElementById(canvasId); 
+        if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height); 
+    } 
+}
+
+function openModal(id) { 
+    const overlay = document.getElementById(id); 
+    if (!overlay) return; 
+    overlay.classList.add('active'); 
+    document.body.style.overflow = 'hidden'; 
+    const canvasId = id === 'modal1' ? 'canvas1' : 'canvas2'; 
+    setTimeout(() => initParticles(canvasId), 50); 
+}
+
+function closeModal(id) { 
+    const overlay = document.getElementById(id); 
+    if (!overlay) return; 
+    overlay.classList.remove('active'); 
+    document.body.style.overflow = ''; 
+    const canvasId = id === 'modal1' ? 'canvas1' : 'canvas2'; 
+    setTimeout(() => stopParticles(canvasId), 400); 
+}
+
+function handleOverlayClick(e, id) { 
+    const box = document.getElementById(id + 'box'); 
+    if (box && !box.contains(e.target)) closeModal(id); 
+}
+
+document.addEventListener('keydown', e => { 
+    if (e.key === 'Escape') { closeModal('modal1'); closeModal('modal2'); } 
+});
+
+let toastTimer; 
+function showVolunteerToast() { 
+    const toast = document.getElementById('volunteerToast'); 
+    toast.classList.add('show'); 
+    clearTimeout(toastTimer); 
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 4000); 
+}
+
+function downloadFile(path, filename) { 
+    const a = document.createElement('a'); 
+    a.href = path; 
+    a.download = filename; 
+    document.body.appendChild(a); 
+    a.click(); 
+    document.body.removeChild(a); 
+}
 </script>
 </body>
 </html>
