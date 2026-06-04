@@ -46,7 +46,7 @@
     box-sizing: border-box;
 }
 
-/* ===== NOTICE BAR WITH HAMBURGER + HOME BUTTON ===== */
+/* ===== NOTICE BAR WITH HAMBURGER INSIDE - REDUCED HEIGHT ===== */
 .notice-bar {
     background: linear-gradient(135deg, #ff6b6b, #ff8e53);
     color: white;
@@ -86,40 +86,7 @@
     100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
 }
 
-/* ===== HOME BUTTON (Next to Hamburger) ===== */
-.home-btn {
-    background: rgba(255, 255, 255, 0.25);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 1002;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-normal);
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    color: white;
-}
-
-.home-btn:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.05);
-    border-color: rgba(255, 255, 255, 0.8);
-}
-
-.home-btn:active {
-    transform: scale(0.98);
-}
-
-.home-btn i {
-    font-size: 1.2rem;
-}
-
-/* ===== HAMBURGER BUTTON (Inside Notice Bar - Left Side) ===== */
+/* ===== HAMBURGER BUTTON (Inside Notice Bar - Left Side) - REDUCED HEIGHT ===== */
 .hamburger-btn {
     background: rgba(255, 255, 255, 0.25);
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -148,7 +115,7 @@
     transform: scale(0.98);
 }
 
-/* Hamburger Icon Lines */
+/* Hamburger Icon Lines - REDUCED SIZE */
 .hamburger-line {
     width: 20px;
     height: 2.5px;
@@ -561,15 +528,6 @@
         font-size: 0.88rem;
     }
     
-    .home-btn {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .home-btn i {
-        font-size: 1.3rem;
-    }
-    
     .hamburger-btn {
         width: 40px;
         height: 40px;
@@ -599,15 +557,6 @@
         padding: 5px 10px;
         gap: 8px;
         font-size: 0.68rem;
-    }
-    
-    .home-btn {
-        width: 34px;
-        height: 34px;
-    }
-    
-    .home-btn i {
-        font-size: 1rem;
     }
     
     .hamburger-btn {
@@ -668,15 +617,6 @@
         padding: 4px 8px;
         gap: 6px;
         font-size: 0.6rem;
-    }
-    
-    .home-btn {
-        width: 30px;
-        height: 30px;
-    }
-    
-    .home-btn i {
-        font-size: 0.85rem;
     }
     
     .hamburger-btn {
