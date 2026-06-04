@@ -27,7 +27,6 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
-            padding-top: 0;
         }
         
         html {
@@ -211,20 +210,21 @@
 
         /* ===== PAGE SPECIFIC STYLES ===== */
         
-        /* Sacred Header with Cross Motif - No gap from notice bar */
+        /* Sacred Header with Cross Motif */
         .page-header {
             position: relative;
-            height: 280px;
+            min-height: 280px;
+            height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
             overflow: hidden;
             background: linear-gradient(rgba(74, 107, 138, 0.9), rgba(93, 77, 106, 0.9));
             margin-bottom: 4rem;
-            margin-top: 0;
+            margin-top: 70px;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             width: 100%;
         }
@@ -250,18 +250,21 @@
             letter-spacing: 1px;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            word-break: keep-all;
         }
 
         .page-header .tagline {
             font-family: 'Cinzel Decorative', cursive;
             font-style: italic;
-            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            font-size: clamp(0.9rem, 2.5vw, 1.4rem);
             color: #e8c07d;
             position: relative;
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
             font-weight: 500;
+            line-height: 1.4;
+            padding: 0 15px;
         }
 
         /* Main Content Container */
@@ -359,21 +362,28 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .page-header { height: 240px; }
+            .page-header { min-height: 240px; margin-top: 65px; }
             .content-section { padding: 2.5rem; }
         }
 
         @media (max-width: 768px) {
             .page-header {
-                height: 220px;
+                min-height: 200px;
+                margin-top: 60px;
+                padding: 2rem 1.5rem;
                 clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             }
             
-            .page-header h1 { font-size: 2rem; }
-            .page-header .tagline { font-size: 1.1rem; }
+            .page-header h1 { 
+                font-size: 1.8rem !important; 
+                word-break: keep-all;
+            }
+            .page-header .tagline { 
+                font-size: 0.9rem !important; 
+            }
             
             .main-content { padding: 0 15px 3rem; }
-            .content-section { padding: 2rem; }
+            .content-section { padding: 1.8rem; }
             
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -383,14 +393,19 @@
 
         @media (max-width: 480px) {
             .page-header {
-                height: 200px;
-                padding: 1.5rem;
+                min-height: 180px;
+                margin-top: 55px;
+                padding: 1.5rem 1rem;
             }
             
-            .page-header h1 { font-size: 1.8rem; }
-            .page-header .tagline { font-size: 1rem; }
+            .page-header h1 { 
+                font-size: 1.5rem !important; 
+            }
+            .page-header .tagline { 
+                font-size: 0.8rem !important; 
+            }
             
-            .content-section { padding: 1.5rem; }
+            .content-section { padding: 1.2rem; }
             .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -472,18 +487,6 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("notice-container").innerHTML = data;
-                    // Initialize menu after notice bar is loaded (hamburger button is now in notice bar)
-                    if (typeof initializeMenu === 'function') {
-                        // Menu will initialize on its own, but we need to ensure event listeners are set
-                        setTimeout(() => {
-                            if (document.getElementById('hamburgerBtn')) {
-                                // Re-trigger menu setup if needed
-                                if (window.setupMenuEventListeners) {
-                                    window.setupMenuEventListeners();
-                                }
-                            }
-                        }, 100);
-                    }
                 })
                 .catch(error => {
                     console.log("Notice loading error:", error);
