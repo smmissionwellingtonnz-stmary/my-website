@@ -27,6 +27,7 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
+            padding-top: 0;
         }
         
         html {
@@ -210,7 +211,7 @@
 
         /* ===== PAGE SPECIFIC STYLES ===== */
         
-        /* Sacred Header with Cross Motif */
+        /* Sacred Header with Cross Motif - No gap from notice bar */
         .page-header {
             position: relative;
             height: 280px;
@@ -223,7 +224,7 @@
             overflow: hidden;
             background: linear-gradient(rgba(74, 107, 138, 0.9), rgba(93, 77, 106, 0.9));
             margin-bottom: 4rem;
-            margin-top: 60px;
+            margin-top: 0;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             width: 100%;
         }
@@ -358,14 +359,13 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .page-header { height: 240px; margin-top: 55px; }
+            .page-header { height: 240px; }
             .content-section { padding: 2.5rem; }
         }
 
         @media (max-width: 768px) {
             .page-header {
                 height: 220px;
-                margin-top: 50px;
                 clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             }
             
@@ -384,7 +384,6 @@
         @media (max-width: 480px) {
             .page-header {
                 height: 200px;
-                margin-top: 48px;
                 padding: 1.5rem;
             }
             
@@ -397,7 +396,7 @@
     </style>
 </head>
 <body>
-    <!-- Notice bar placeholder -->
+    <!-- Notice bar placeholder (contains hamburger button) -->
     <div id="notice-container"></div>
 
     <!-- Scroll to top button -->
@@ -468,11 +467,23 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Load notice bar from includes folder
+            // Load notice bar from includes folder (contains hamburger button)
             fetch("includes/notice.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("notice-container").innerHTML = data;
+                    // Initialize menu after notice bar is loaded (hamburger button is now in notice bar)
+                    if (typeof initializeMenu === 'function') {
+                        // Menu will initialize on its own, but we need to ensure event listeners are set
+                        setTimeout(() => {
+                            if (document.getElementById('hamburgerBtn')) {
+                                // Re-trigger menu setup if needed
+                                if (window.setupMenuEventListeners) {
+                                    window.setupMenuEventListeners();
+                                }
+                            }
+                        }, 100);
+                    }
                 })
                 .catch(error => {
                     console.log("Notice loading error:", error);
