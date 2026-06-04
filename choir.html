@@ -6,8 +6,11 @@
     <title>Choir Teams · St. Mary's Syro-Malabar Mission</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Menu Navigation CSS -->
+    <link rel="stylesheet" href="includes/header.css">
+    
     <style>
-        
         /* Global Styles */
         * {
             margin: 0;
@@ -24,7 +27,6 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
-            padding-top: 110px; /* space for fixed header */
         }
         
         html {
@@ -38,382 +40,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
-        }
-        
-        /* Notice Bar */
-        .notice-bar {
-            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-            color: white;
-            text-align: center;
-            padding: 8px 0;
-            font-weight: 600;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 2000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: pulseNotice 2s infinite;
-        }
-
-        @keyframes pulseNotice {
-            0% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
-            50% { background: linear-gradient(135deg, #ff5252, #ff7a33); }
-            100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
-        }
-
-        .notice-bar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        @media (max-width: 768px) {
-            .notice-bar {
-                font-size: 0.72rem;
-                padding: 5px 8px;
-                line-height: 1.3;
-            }
-            /* Notice bar at mobile is ~25px tall; snap nav right below it with no gap */
-            .nav-container {
-                top: 25px !important;
-            }
-        }
-        /* Navigation Menu */
-        .nav-container {
-            position: fixed;
-            top: 32px;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: linear-gradient(135deg, #0a4d68, #088395);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
-        }
-        
-        .nav-logo {
-            height: 50px;
-        }
-        
-        .nav-toggle {
-            font-size: 1.5rem;
-            color: white;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            display: none;
-            z-index: 1002;
-            position: relative;
-        }
-        
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        .nav-item {
-            position: relative;
-        }
-        
-        .nav-link {
-            display: block;
-            padding: 1rem 1.2rem;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .nav-link.donate {
-            background-color: #ff6b6b;
-            border-radius: 4px;
-            margin: 0.5rem 1rem;
-            font-weight: 600;
-        }
-        
-        .nav-link.newsletter {
-            background-color: #05bfdb;
-            border-radius: 4px;
-            margin: 0.5rem 1rem;
-            font-weight: 600;
-            color: white;
-        }
-
-        .nav-link.newsletter:hover {
-            background-color: #0497ac;
-            transform: translateY(-2px);
-        }
-
-        /* Desktop only newsletter hover effect */
-        @media (min-width: 769px) {
-            .nav-link.newsletter {
-                position: relative;
-                display: inline-block;
-                width: 160px;
-                text-align: center;
-                padding: 8px 12px;
-                overflow: hidden;
-                transition: all 0.3s ease;
-                font-family: Arial, sans-serif;
-            }
-
-            .nav-link.newsletter .default-text {
-                display: inline-block;
-                transition: opacity 0.3s ease;
-                font-size: 14px;
-            }
-
-            .nav-link.newsletter .hover-text {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                opacity: 0;
-                font-size: 9px;
-                white-space: nowrap;
-                display: flex;
-                align-items: center;
-                gap: 4px;
-                pointer-events: none;
-                transition: opacity 0.3s ease;
-            }
-
-            .nav-link.newsletter:hover .default-text {
-                opacity: 0;
-            }
-
-            .nav-link.newsletter:hover .hover-text {
-                opacity: 1;
-            }
-
-            .nav-link.newsletter .hover-text i {
-                font-size: 12px;
-            }
-        }
-        
-        .nav-link.donate:hover {
-            background-color: #ff5252;
-            transform: translateY(-2px);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            left: 0;
-            top: 100%;
-            background: white;
-            width: 220px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .nav-item:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .dropdown-item {
-            display: block;
-            padding: 0.8rem 1rem;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #f1f1f1;
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
-            color: #0a4d68;
-            padding-left: 1.3rem;
-        }
-        
-        /* MOBILE NAVIGATION (exact from index) */
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .mobile-menu-container {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 400px;
-            height: 100%;
-            background: linear-gradient(135deg, #0a4d68, #088395);
-            z-index: 1000;
-            overflow-y: auto;
-            transition: right 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .mobile-menu-container.active {
-            right: 0;
-        }
-        
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-menu-logo {
-            height: 40px;
-        }
-        
-        .mobile-menu-close {
-            font-size: 1.5rem;
-            color: white;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-        
-        .mobile-menu-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-menu-content {
-            padding: 20px 0;
-        }
-        
-        .mobile-nav-menu {
-            list-style: none;
-        }
-        
-        .mobile-nav-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-nav-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-nav-link.donate {
-            background-color: #ff6b6b;
-            font-weight: 600;
-        }
-        
-        .mobile-nav-link.newsletter {
-            background-color: #05bfdb;
-            font-weight: 600;
-        }
-
-        .mobile-nav-link.newsletter:hover {
-            background-color: #0497ac;
-        }
-        
-        .mobile-nav-link.donate:hover {
-            background-color: #ff5252;
-        }
-        
-        .mobile-dropdown-toggle {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .mobile-dropdown-toggle.active {
-            transform: rotate(180deg);
-        }
-        
-        .mobile-dropdown-menu {
-            max-height: 0;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.2);
-            transition: max-height 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-        
-        .mobile-dropdown-menu.show {
-            max-height: 500px;
-        }
-        
-        .mobile-dropdown-item {
-            display: block;
-            padding: 14px 20px 14px 40px;
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-dropdown-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding-left: 45px;
-        }
-
-        /* Reduce navbar height only on desktop */
-        @media (min-width: 1025px) {
-            .nav-header {
-                padding: 6px 20px !important;
-            }
-            .nav-logo {
-                height: 38px !important; 
-            }
-            .nav-link {
-                padding: 0.55rem 1rem !important;
-                font-size: 15px;
-            }
-            .dropdown-item {
-                padding: 0.6rem 1rem !important;
-            }
-            .nav-item .dropdown-menu {
-                top: 90% !important;
-            }
         }
         
         /* Scroll to top button */
@@ -435,7 +61,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 999;
+            z-index: 996;
         }
         
         .scroll-top.active {
@@ -448,139 +74,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        /* Footer Styles (exact from index) */
-        .footer {
-            background: linear-gradient(135deg, #0a4d68, #088395);
-            color: white;
-            padding: 60px 0 20px;
-            position: relative;
-            overflow: hidden;
-            margin-top: 4rem;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            animation: pulse 15s infinite linear;
-            z-index: 0;
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 40px;
-            padding: 0 15px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            color: #F8DE7E;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: #ffd700;
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-links a i {
-            margin-right: 10px;
-            font-size: 14px;
-            color: #ffd700;
-        }
-
-        .footer-links a:hover {
-            color: #ffd700;
-            transform: translateX(5px);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-social a:hover {
-            background: #ffd700;
-            color: #0a4d68;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .footer-bottom {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .footer-bottom p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* ===== PAGE SPECIFIC STYLES (from original choir.html) ===== */
+        /* ===== PAGE SPECIFIC STYLES ===== */
         
         /* Choir Header - edge to edge */
         .choir-header {
@@ -598,6 +92,7 @@
             animation: gradientBG 15s ease infinite;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             margin-bottom: 2rem;
+            margin-top: 0;
             width: 100%;
         }
 
@@ -723,7 +218,7 @@
         .image-container {
             width: 100%;
             height: 0;
-            padding-bottom: 66.67%; /* 15:10 aspect ratio */
+            padding-bottom: 66.67%;
             position: relative;
             overflow: hidden;
         }
@@ -895,6 +390,138 @@
             margin-bottom: 15px;
         }
 
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: white;
+            padding: 60px 0 20px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite linear;
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #F8DE7E;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-social a:hover {
+            background: #ffd700;
+            color: #0a4d68;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
         /* Animations */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -925,16 +552,12 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .nav-menu { flex-wrap: wrap; justify-content: center; }
+            .choir-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
-            body { padding-top: 100px; }
-            
-            .nav-toggle { display: block; }
-            .nav-menu { display: none; }
-            .nav-container { top: 30px; }
-            
             .choir-header {
                 height: 150px;
                 clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
@@ -951,14 +574,17 @@
             }
             
             .form-container { padding: 20px; }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-bottom: 30px;
+            }
         }
 
         @media (max-width: 480px) {
-            body { padding-top: 90px; }
-            
-            .nav-container { top: 25px; }
-            .notice-bar { padding: 5px 0; font-size: 12px; }
-            
             .choir-header { height: 130px; }
             .choir-header h1 { font-size: 1.5rem; }
             
@@ -974,17 +600,22 @@
             }
             
             .music-icon { font-size: 1.2rem; }
+            
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Notice container (loaded dynamically) -->
+    <!-- Notice bar placeholder (contains hamburger button) -->
     <div id="notice-container"></div>
 
-    <!-- Header placeholder (will be replaced with header.html content) -->
-    <div id="header-placeholder"></div>
-
-    <!-- Scroll to top button (exactly like index) -->
+    <!-- Scroll to top button -->
     <div class="scroll-top" id="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </div>
@@ -1097,34 +728,26 @@
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
 
+    <!-- Menu JavaScript -->
+    <script src="includes/menu.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Load notice bar
-            fetch("notice.html")
+            // Load notice bar from includes folder
+            fetch("includes/notice.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("notice-container").innerHTML = data;
-                })
-                .catch(error => console.log("Notice loading error:", error));
-
-            // Load header (navigation)
-            fetch('includes/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                    // Initialize mobile navigation after header is loaded
-                    initializeMobileNavigation();
+                    console.log("Notice bar loaded");
                 })
                 .catch(error => {
-                    console.log("Header loading error:", error);
-                    // Fallback: try to load from root
-                    fetch('header.html')
+                    console.log("Notice loading error:", error);
+                    fetch("notice.html")
                         .then(response => response.text())
                         .then(data => {
-                            document.getElementById('header-placeholder').innerHTML = data;
-                            initializeMobileNavigation();
+                            document.getElementById("notice-container").innerHTML = data;
                         })
-                        .catch(err => console.log("Header fallback error:", err));
+                        .catch(err => console.log("Notice fallback error:", err));
                 });
 
             // Load footer
@@ -1163,14 +786,10 @@
             // Tab functionality
             document.querySelectorAll('.tab-button').forEach(button => {
                 button.addEventListener('click', () => {
-                    // Remove active class from all buttons and content
                     document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
                     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
                     
-                    // Add active class to clicked button
                     button.classList.add('active');
-                    
-                    // Show corresponding content
                     const tabId = button.getAttribute('data-tab');
                     document.getElementById(`${tabId}-tab`).classList.add('active');
                 });
@@ -1182,21 +801,16 @@
                 choirForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Get form data
                     const formData = new FormData(this);
                     
-                    // Send form data to FormSubmit.co
                     fetch('https://formsubmit.co/ajax/smmissionwellingtonnz@gmail.com', {
                         method: 'POST',
                         body: formData
                     })
                     .then(response => response.json())
                     .then(data => {
-                        // Hide form and show thank you message
                         document.getElementById('formContainer').style.display = 'none';
                         document.getElementById('thankYouMessage').style.display = 'block';
-                        
-                        // Reset form
                         this.reset();
                     })
                     .catch(error => {
@@ -1221,88 +835,6 @@
                 observer.observe(el);
             });
         });
-
-        // Mobile navigation functionality (same as index)
-        function initializeMobileNavigation() {
-            const navToggle = document.getElementById('nav-toggle');
-            const mobileMenuContainer = document.getElementById('mobile-menu-container');
-            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-            const mobileMenuClose = document.getElementById('mobile-menu-close');
-
-            if (!navToggle || !mobileMenuContainer || !mobileNavOverlay || !mobileMenuClose) {
-                return; // Elements not found yet
-            }
-
-            function toggleMobileMenu() {
-                mobileMenuContainer.classList.toggle('active');
-                mobileNavOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenuContainer.classList.contains('active') ? 'hidden' : '';
-                
-                // Toggle between hamburger and close icon
-                const icon = navToggle.querySelector('i');
-                if (mobileMenuContainer.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
-
-            navToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleMobileMenu();
-            });
-
-            mobileMenuClose.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleMobileMenu();
-            });
-
-            mobileNavOverlay.addEventListener('click', () => {
-                toggleMobileMenu();
-            });
-
-            // Mobile dropdown functionality
-            document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
-                parent.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const dropdownMenu = this.nextElementSibling;
-                    const dropdownToggle = this.querySelector('.mobile-dropdown-toggle');
-                    
-                    // Close other dropdowns
-                    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
-                        if (menu !== dropdownMenu) {
-                            menu.classList.remove('show');
-                            if (menu.previousElementSibling) {
-                                const toggle = menu.previousElementSibling.querySelector('.mobile-dropdown-toggle');
-                                if (toggle) toggle.classList.remove('active');
-                            }
-                        }
-                    });
-                    
-                    // Toggle current dropdown
-                    if (dropdownMenu) {
-                        dropdownMenu.classList.toggle('show');
-                    }
-                    if (dropdownToggle) {
-                        dropdownToggle.classList.toggle('active');
-                    }
-                });
-            });
-
-            // Close menu when clicking on links
-            document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenuContainer.classList.contains('active')) {
-                        toggleMobileMenu();
-                    }
-                });
-            });
-        }
     </script>
 </body>
 </html>
