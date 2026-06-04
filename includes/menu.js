@@ -36,6 +36,9 @@ function createMenuStructure() {
     const menuHTML = `
         <div class="side-menu" id="sideMenu">
             <div class="menu-header">
+                <button class="menu-close-btn" id="menuCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
                 <div class="menu-logo">
                     <img src="images/logo.png" alt="Logo" class="menu-logo-img" onerror="this.src='https://via.placeholder.com/50'">
                     <div class="menu-logo-text">
@@ -184,9 +187,18 @@ function createMenuStructure() {
             
             <div class="menu-footer">
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61559070310419" target="_blank" class="social-link" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/smmissionwellington/?next=%2F" target="_blank" class="social-link" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCcM4Eniz3bBUuKlt3olO1Ow" target="_blank" class="social-link" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.facebook.com/messages/t/331100746743772" target="_blank" class="social-link" rel="noopener noreferrer">
+                        <i class="fab fa-facebook-messenger"></i>
+                    </a>
                 </div>
                 <div class="menu-copyright">
                     © 2024 St. Mary's Syro-Malabar Mission<br>
@@ -203,6 +215,7 @@ function setupMenuEventListeners() {
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const sideMenu = document.getElementById('sideMenu');
     const menuOverlay = document.getElementById('menuOverlay');
+    const menuCloseBtn = document.getElementById('menuCloseBtn');
     
     if (!hamburgerBtn || !sideMenu || !menuOverlay) return;
     
@@ -231,6 +244,17 @@ function setupMenuEventListeners() {
         e.stopPropagation();
         toggleMenu();
     });
+    
+    // Menu close button click (X button on right side)
+    if (menuCloseBtn) {
+        menuCloseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (sideMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    }
     
     // Overlay click to close
     menuOverlay.addEventListener('click', () => {
@@ -285,7 +309,6 @@ function setupMenuEventListeners() {
     allLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (sideMenu.classList.contains('active')) {
-                // Small delay to allow link to navigate
                 setTimeout(() => {
                     toggleMenu();
                 }, 150);
