@@ -1,8 +1,3 @@
-/* ============================================
-   LEFT HAMBURGER MENU NAVIGATION
-   Integrated with Notice Bar
-   ============================================ */
-
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -345,6 +340,7 @@
     box-shadow: 0 6px 20px rgba(238, 90, 36, 0.5);
 }
 
+/* Newsletter Button with Hover Download Effect */
 .nav-link.newsletter {
     background: linear-gradient(135deg, #05bfdb, #0a8c9e);
     margin: 12px 16px;
@@ -353,11 +349,45 @@
     justify-content: center;
     gap: 12px;
     box-shadow: 0 4px 15px rgba(5, 191, 219, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link.newsletter .default-text,
+.nav-link.newsletter .hover-text {
+    transition: all 0.3s ease;
+}
+
+.nav-link.newsletter .default-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link.newsletter .hover-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+}
+
+.nav-link.newsletter:hover .default-text {
+    opacity: 0;
+    transform: translateY(5px);
+}
+
+.nav-link.newsletter:hover .hover-text {
+    opacity: 1;
 }
 
 .nav-link.newsletter:hover {
     transform: translateY(-2px);
-    padding-left: 20px;
     box-shadow: 0 6px 20px rgba(5, 191, 219, 0.5);
 }
 
@@ -513,10 +543,6 @@
     .side-menu {
         max-width: 380px;
     }
-    
-    .page-header {
-        margin-top: 70px;
-    }
 }
 
 /* Mobile */
@@ -569,12 +595,12 @@
         height: 35px;
     }
     
-    .page-header {
-        margin-top: 60px;
-    }
-    
-    .page-header h1 {
-        font-size: 1.8rem !important;
+    /* Newsletter hover text adjustments for mobile */
+    .nav-link.newsletter .hover-text {
+        font-size: 0.7rem;
+        white-space: normal;
+        text-align: center;
+        width: 90%;
     }
 }
 
@@ -613,12 +639,14 @@
         height: 32px;
     }
     
-    .page-header {
-        margin-top: 55px;
+    /* Newsletter button adjustments for small mobile */
+    .nav-link.newsletter {
+        padding: 10px 16px;
     }
     
-    .page-header h1 {
-        font-size: 1.5rem !important;
+    .nav-link.newsletter .hover-text {
+        font-size: 0.65rem;
+        width: 95%;
     }
 }
 
