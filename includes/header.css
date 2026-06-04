@@ -1,15 +1,14 @@
 /* ============================================
    LEFT HAMBURGER MENU NAVIGATION
-   Inspired by Original Color Scheme
-   Desktop, Laptop & Mobile - Unified Design
+   Integrated with Notice Bar
    ============================================ */
 
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* CSS Variables - Inspired by original altar.html colors */
+/* CSS Variables */
 :root {
-    /* Primary Color Scheme (from original: #0a4d68, #088395) */
+    /* Primary Color Scheme */
     --primary-dark: #0a4d68;
     --primary-medium: #088395;
     --primary-light: #0f6b8c;
@@ -47,13 +46,12 @@
     box-sizing: border-box;
 }
 
-/* ===== NOTICE BAR - Integrated Design ===== */
+/* ===== NOTICE BAR WITH HAMBURGER INSIDE ===== */
 .notice-bar {
     background: linear-gradient(135deg, #ff6b6b, #ff8e53);
     color: white;
     text-align: center;
-    padding: 12px 0;
-    padding-left: 80px;
+    padding: 10px 0;
     font-weight: 600;
     position: fixed;
     top: 0;
@@ -63,6 +61,11 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     animation: pulseNotice 2s infinite;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .notice-bar a {
@@ -77,11 +80,7 @@
 }
 
 .notice-bar .close-notice {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border: none;
     color: white;
     width: 28px;
@@ -90,11 +89,14 @@
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .notice-bar .close-notice:hover {
-    background: rgba(255,255,255,0.4);
-    transform: translateY(-50%) scale(1.1);
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
 }
 
 @keyframes pulseNotice {
@@ -103,31 +105,27 @@
     100% { background: linear-gradient(135deg, #ff6b6b, #ff8e53); }
 }
 
-/* ===== HAMBURGER BUTTON (Fixed Left Top) ===== */
+/* ===== HAMBURGER BUTTON (Inside Notice Bar) ===== */
 .hamburger-btn {
-    position: fixed;
-    top: 12px;
-    left: 15px;
-    width: 48px;
-    height: 48px;
-    background: var(--primary-gradient);
+    background: rgba(255, 255, 255, 0.2);
     border: none;
-    border-radius: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
     cursor: pointer;
     z-index: 1002;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    box-shadow: var(--shadow-md);
+    gap: 5px;
     transition: all var(--transition-normal);
-    overflow: hidden;
+    vertical-align: middle;
 }
 
 .hamburger-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
     transform: scale(1.05);
-    box-shadow: var(--shadow-lg), var(--glow-blue);
 }
 
 .hamburger-btn:active {
@@ -136,7 +134,7 @@
 
 /* Hamburger Icon Lines */
 .hamburger-line {
-    width: 24px;
+    width: 20px;
     height: 2.5px;
     background-color: white;
     border-radius: 4px;
@@ -145,7 +143,7 @@
 
 /* Animation for open state */
 .hamburger-btn.open .hamburger-line:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg);
+    transform: translateY(7.5px) rotate(45deg);
 }
 
 .hamburger-btn.open .hamburger-line:nth-child(2) {
@@ -154,7 +152,7 @@
 }
 
 .hamburger-btn.open .hamburger-line:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg);
+    transform: translateY(-7.5px) rotate(-45deg);
 }
 
 /* ===== OVERLAY (Dark background when menu open) ===== */
@@ -222,7 +220,7 @@
     position: relative;
 }
 
-/* Close button inside menu - RIGHT SIDE */
+/* Close button inside menu - RIGHT SIDE ONLY */
 .menu-close-btn {
     position: absolute;
     top: 20px;
@@ -506,56 +504,60 @@
 
 /* Desktop & Laptop */
 @media (min-width: 769px) {
+    .notice-bar {
+        padding: 12px 0;
+        gap: 20px;
+    }
+    
     .hamburger-btn {
-        top: 15px;
-        left: 20px;
-        width: 52px;
-        height: 52px;
+        width: 40px;
+        height: 40px;
     }
     
     .hamburger-line {
-        width: 26px;
+        width: 22px;
         height: 3px;
     }
     
     .hamburger-btn.open .hamburger-line:nth-child(1) {
-        transform: translateY(9.5px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
     }
     
     .hamburger-btn.open .hamburger-line:nth-child(3) {
-        transform: translateY(-9.5px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
     }
     
     .side-menu {
         max-width: 380px;
     }
-    
-    .notice-bar {
-        padding-left: 90px;
-    }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
+    .notice-bar {
+        padding: 8px 12px;
+        gap: 10px;
+        font-size: 0.75rem;
+        flex-wrap: wrap;
+    }
+    
     .hamburger-btn {
-        top: 10px;
-        left: 12px;
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
+        width: 32px;
+        height: 32px;
+        gap: 4px;
     }
     
     .hamburger-line {
-        width: 22px;
+        width: 18px;
         height: 2px;
     }
     
     .hamburger-btn.open .hamburger-line:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
+        transform: translateY(6px) rotate(45deg);
     }
     
     .hamburger-btn.open .hamburger-line:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
+        transform: translateY(-6px) rotate(-45deg);
     }
     
     .side-menu {
@@ -574,13 +576,6 @@
         padding-left: 52px;
     }
     
-    .notice-bar {
-        padding-left: 70px;
-        font-size: 0.75rem;
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-    
     .menu-close-btn {
         top: 15px;
         right: 15px;
@@ -591,31 +586,27 @@
 
 /* Small Mobile */
 @media (max-width: 480px) {
+    .notice-bar {
+        padding: 6px 8px;
+        gap: 8px;
+        font-size: 0.65rem;
+    }
+    
     .hamburger-btn {
-        top: 8px;
-        left: 10px;
-        width: 40px;
-        height: 40px;
+        width: 28px;
+        height: 28px;
+        gap: 3px;
     }
     
     .hamburger-line {
-        width: 20px;
+        width: 16px;
         height: 2px;
-        gap: 5px;
-    }
-    
-    .notice-bar {
-        padding-left: 60px;
-        font-size: 0.7rem;
-        padding: 8px 0;
-        padding-left: 60px;
     }
     
     .notice-bar .close-notice {
-        right: 10px;
         width: 24px;
         height: 24px;
-        font-size: 12px;
+        font-size: 11px;
     }
     
     .menu-header {
