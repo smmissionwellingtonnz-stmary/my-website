@@ -156,11 +156,15 @@ function createMenuStructure() {
                     </a>
                 </li>
                 
+                <!-- UPDATED: Newsletter button with hover download text -->
                 <li class="nav-item">
                     <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
-                        <div class="nav-link-left">
-                            <i class="fas fa-download"></i>
+                        <div class="default-text">
+                            <i class="fas fa-newspaper"></i>
                             <span>Newsletter</span>
+                        </div>
+                        <div class="hover-text">
+                            <i class="fas fa-download"></i> Download latest newsletter
                         </div>
                     </a>
                 </li>
