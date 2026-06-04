@@ -21,19 +21,9 @@ function createMenuStructure() {
     // Check if menu already exists
     if (document.querySelector('.side-menu')) return;
     
-    // Create hamburger button
-    const hamburgerHTML = `
-        <button class="hamburger-btn" id="hamburgerBtn">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
-        <div class="menu-overlay" id="menuOverlay"></div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', hamburgerHTML);
-    
-    // Get menu items from header.html or use default structure
+    // Create overlay and side menu (hamburger button is now in notice.html)
     const menuHTML = `
+        <div class="menu-overlay" id="menuOverlay"></div>
         <div class="side-menu" id="sideMenu">
             <div class="menu-header">
                 <button class="menu-close-btn" id="menuCloseBtn">
@@ -212,6 +202,7 @@ function createMenuStructure() {
 }
 
 function setupMenuEventListeners() {
+    // Get hamburger button from notice bar (NOT creating a new one)
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const sideMenu = document.getElementById('sideMenu');
     const menuOverlay = document.getElementById('menuOverlay');
@@ -238,14 +229,14 @@ function setupMenuEventListeners() {
         }
     }
     
-    // Hamburger button click
+    // Hamburger button click (now from notice bar)
     hamburgerBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
         toggleMenu();
     });
     
-    // Menu close button click (X button on right side)
+    // Menu close button click (X button on right side inside menu)
     if (menuCloseBtn) {
         menuCloseBtn.addEventListener('click', (e) => {
             e.preventDefault();
