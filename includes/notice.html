@@ -1,37 +1,25 @@
-<!-- Notice Bar with Hamburger Button Inside -->
+<!-- Notice Bar with Hamburger Button Inside (Left Side) -->
 <div class="notice-bar" id="noticeBar">
     <button class="hamburger-btn" id="hamburgerBtn">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
     </button>
-    <i class="fas fa-bell"></i>
-    <a href="event.html" target="_blank">
-        📢 Upcoming: Holy Week Celebrations - Join us for Palm Sunday on April 13th at 10:00 AM
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWgF44cPSljYYKSEC7GqS5-RbR801-KWqmKN6VtLqOHC5Ujg/viewform?usp=pp_url&entry.643631175=FRN-" 
+       target="_blank">
+        <span>
+            📢 Catechism Registration 2026 – 
+            <span style="color: #ffd700; text-decoration: underline; font-weight: bold;">
+                Click here to register
+            </span>
+        </span>
     </a>
-    <button class="close-notice" id="closeNoticeBtn">
-        <i class="fas fa-times"></i>
-    </button>
 </div>
 
 <script>
-    // Notice bar close functionality
+    // Notice bar functionality (no close button needed)
     document.addEventListener('DOMContentLoaded', function() {
-        const closeBtn = document.getElementById('closeNoticeBtn');
-        const noticeBar = document.getElementById('noticeBar');
-        
-        // Check if notice was closed before (using localStorage)
-        const isNoticeClosed = localStorage.getItem('noticeClosed');
-        
-        if (isNoticeClosed === 'true') {
-            if (noticeBar) noticeBar.style.display = 'none';
-        }
-        
-        if (closeBtn && noticeBar) {
-            closeBtn.addEventListener('click', function() {
-                noticeBar.style.display = 'none';
-                localStorage.setItem('noticeClosed', 'true');
-            });
-        }
+        // Any notice bar specific functionality can go here
+        console.log("Notice bar loaded with hamburger menu");
     });
 </script>
