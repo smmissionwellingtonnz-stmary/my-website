@@ -208,7 +208,7 @@
             text-decoration: underline;
         }
 
-        /* ===== PAGE SPECIFIC STYLES ===== */
+        /* ===== PAGE SPECIFIC STYLES - NO GAP BETWEEN NOTICE BAR AND HEADER ===== */
         
         /* Sacred Header with Cross Motif */
         .page-header {
@@ -221,10 +221,11 @@
             align-items: center;
             text-align: center;
             padding: 3rem 2rem;
+            padding-top: 80px;
             overflow: hidden;
             background: linear-gradient(rgba(74, 107, 138, 0.9), rgba(93, 77, 106, 0.9));
             margin-bottom: 4rem;
-            margin-top: 70px;
+            margin-top: 0 !important;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             width: 100%;
         }
@@ -360,17 +361,21 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive */
+        /* Responsive - NO GAP ON MOBILE */
         @media (max-width: 1024px) {
-            .page-header { min-height: 240px; margin-top: 65px; }
+            .page-header { 
+                min-height: 240px; 
+                padding-top: 75px;
+            }
             .content-section { padding: 2.5rem; }
         }
 
         @media (max-width: 768px) {
             .page-header {
                 min-height: 200px;
-                margin-top: 60px;
-                padding: 2rem 1.5rem;
+                padding-top: 65px !important;
+                padding: 1.8rem 1.5rem;
+                padding-top: 65px !important;
                 clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
             }
             
@@ -394,8 +399,9 @@
         @media (max-width: 480px) {
             .page-header {
                 min-height: 180px;
-                margin-top: 55px;
+                padding-top: 58px !important;
                 padding: 1.5rem 1rem;
+                padding-top: 58px !important;
             }
             
             .page-header h1 { 
@@ -419,7 +425,7 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Page Header -->
+    <!-- Page Header - No gap from notice bar -->
     <div class="page-header">
         <h1>Altar Servers</h1>
         <p class="tagline">"If anyone serves Me, let him follow Me; and where I am, there My servant will be also."</p>
@@ -477,27 +483,24 @@
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- Menu JavaScript (loads after notice bar is populated) -->
+    <!-- Menu JavaScript -->
     <script src="includes/menu.js"></script>
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Load notice bar from includes folder FIRST
+            // Load notice bar from includes folder
             fetch("includes/notice.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("notice-container").innerHTML = data;
-                    console.log("Notice bar loaded successfully");
-                    // menu.js will automatically initialize and find the hamburger button
+                    console.log("Notice bar loaded");
                 })
                 .catch(error => {
                     console.log("Notice loading error:", error);
-                    // Fallback: try to load from root
                     fetch("notice.html")
                         .then(response => response.text())
                         .then(data => {
                             document.getElementById("notice-container").innerHTML = data;
-                            console.log("Notice bar loaded from fallback");
                         })
                         .catch(err => console.log("Notice fallback error:", err));
                 });
