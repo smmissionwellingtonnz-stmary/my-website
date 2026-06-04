@@ -3,25 +3,28 @@
 
 // Wait for DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
-    initializeMenu();
+    // Wait a bit for notice bar to load
+    setTimeout(function() {
+        initializeMenu();
+    }, 100);
 });
 
 function initializeMenu() {
-    // Create menu HTML structure
+    // Create menu HTML structure (side menu and overlay)
     createMenuStructure();
     
     // Set up event listeners after menu is injected
     setTimeout(() => {
         setupMenuEventListeners();
         highlightCurrentPage();
-    }, 100);
+    }, 50);
 }
 
 function createMenuStructure() {
     // Check if menu already exists
     if (document.querySelector('.side-menu')) return;
     
-    // Create overlay and side menu (hamburger button is now in notice.html)
+    // Create overlay and side menu (hamburger button is in notice.html)
     const menuHTML = `
         <div class="menu-overlay" id="menuOverlay"></div>
         <div class="side-menu" id="sideMenu">
@@ -156,7 +159,6 @@ function createMenuStructure() {
                     </a>
                 </li>
                 
-                <!-- UPDATED: Newsletter button with hover download text -->
                 <li class="nav-item">
                     <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
                         <div class="default-text">
@@ -206,45 +208,64 @@ function createMenuStructure() {
 }
 
 function setupMenuEventListeners() {
-    // Get hamburger button from notice bar (NOT creating a new one)
+    // Get hamburger button from notice bar
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const sideMenu = document.getElementById('sideMenu');
     const menuOverlay = document.getElementById('menuOverlay');
     const menuCloseBtn = document.getElementById('menuCloseBtn');
     
-    if (!hamburgerBtn || !sideMenu || !menuOverlay) return;
+    // Debug logging
+    console.log("Setting up menu listeners...");
+    console.log("Hamburger button found:", !!hamburgerBtn);
+    console.log("Side menu found:", !!sideMenu);
+    
+    if (!hamburgerBtn || !sideMenu || !menuOverlay) {
+        console.log("Menu elements not found, retrying in 500ms...");
+        // Retry after a short delay
+        setTimeout(setupMenuEventListeners, 500);
+        return;
+    }
+    
+    // Remove any existing listeners by cloning and replacing
+    const newHamburgerBtn = hamburgerBtn.cloneNode(true);
+    hamburgerBtn.parentNode.replaceChild(newHamburgerBtn, hamburgerBtn);
+    const finalHamburgerBtn = document.getElementById('hamburgerBtn');
     
     // Toggle menu function
     function toggleMenu() {
         const isOpen = sideMenu.classList.contains('active');
+        console.log("Toggling menu, currently open:", isOpen);
         
         if (isOpen) {
             // Close menu
             sideMenu.classList.remove('active');
             menuOverlay.classList.remove('active');
-            hamburgerBtn.classList.remove('open');
+            finalHamburgerBtn.classList.remove('open');
             document.body.classList.remove('menu-open');
         } else {
             // Open menu
             sideMenu.classList.add('active');
             menuOverlay.classList.add('active');
-            hamburgerBtn.classList.add('open');
+            finalHamburgerBtn.classList.add('open');
             document.body.classList.add('menu-open');
         }
     }
     
-    // Hamburger button click (now from notice bar)
-    hamburgerBtn.addEventListener('click', (e) => {
+    // Hamburger button click
+    finalHamburgerBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+        console.log("Hamburger clicked!");
         toggleMenu();
     });
     
     // Menu close button click (X button on right side inside menu)
-    if (menuCloseBtn) {
-        menuCloseBtn.addEventListener('click', (e) => {
+    const finalMenuCloseBtn = document.getElementById('menuCloseBtn');
+    if (finalMenuCloseBtn) {
+        finalMenuCloseBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            console.log("Close button clicked!");
             if (sideMenu.classList.contains('active')) {
                 toggleMenu();
             }
@@ -252,15 +273,20 @@ function setupMenuEventListeners() {
     }
     
     // Overlay click to close
-    menuOverlay.addEventListener('click', () => {
-        if (sideMenu.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
+    const finalMenuOverlay = document.getElementById('menuOverlay');
+    if (finalMenuOverlay) {
+        finalMenuOverlay.addEventListener('click', () => {
+            console.log("Overlay clicked!");
+            if (sideMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    }
     
     // Close menu when escape key is pressed
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+            console.log("Escape key pressed!");
             toggleMenu();
         }
     });
@@ -269,12 +295,16 @@ function setupMenuEventListeners() {
     const dropdownParents = document.querySelectorAll('.nav-link.has-dropdown');
     
     dropdownParents.forEach(parent => {
-        parent.addEventListener('click', (e) => {
+        // Remove existing listener to avoid duplicates
+        const newParent = parent.cloneNode(true);
+        parent.parentNode.replaceChild(newParent, parent);
+        
+        newParent.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             
-            const dropdownMenu = parent.nextElementSibling;
-            const chevron = parent.querySelector('.chevron');
+            const dropdownMenu = newParent.nextElementSibling;
+            const chevron = newParent.querySelector('.chevron');
             
             // Close other dropdowns
             document.querySelectorAll('.dropdown-menu').forEach(menu => {
@@ -321,6 +351,8 @@ function setupMenuEventListeners() {
             }
         }, 250);
     });
+    
+    console.log("Menu listeners setup complete!");
 }
 
 function highlightCurrentPage() {
