@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- NEW: Header CSS for modern menu navigation -->
+    <!-- Menu Navigation CSS -->
     <link rel="stylesheet" href="includes/header.css">
     
     <style>
@@ -27,7 +27,6 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
-            padding-top: 80px; /* Adjusted for new header height */
         }
         
         html {
@@ -36,25 +35,19 @@
             scroll-behavior: smooth;
         }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Notice Bar */
+        /* Notice Bar - Adjusted for hamburger button */
         .notice-bar {
             background: linear-gradient(135deg, #ff6b6b, #ff8e53);
             color: white;
             text-align: center;
-            padding: 8px 0;
+            padding: 10px 0;
+            padding-left: 80px;
             font-weight: 600;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 2000;
+            z-index: 997;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             animation: pulseNotice 2s infinite;
         }
@@ -75,12 +68,17 @@
         
         @media (max-width: 768px) {
             .notice-bar {
+                padding-left: 65px;
                 font-size: 0.72rem;
-                padding: 5px 8px;
-                line-height: 1.3;
+                padding: 8px 0;
+                padding-left: 60px;
             }
-            body {
-                padding-top: 65px;
+        }
+        
+        @media (max-width: 480px) {
+            .notice-bar {
+                padding-left: 55px;
+                font-size: 0.65rem;
             }
         }
         
@@ -91,7 +89,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #0a4d68, #088395);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -103,7 +101,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 999;
+            z-index: 996;
         }
         
         .scroll-top.active {
@@ -250,7 +248,7 @@
 
         /* ===== PAGE SPECIFIC STYLES ===== */
         
-        /* Sacred Header with Cross Motif - edge to edge */
+        /* Sacred Header with Cross Motif */
         .page-header {
             position: relative;
             height: 280px;
@@ -263,6 +261,7 @@
             overflow: hidden;
             background: linear-gradient(rgba(74, 107, 138, 0.9), rgba(93, 77, 106, 0.9));
             margin-bottom: 4rem;
+            margin-top: 0;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
             width: 100%;
         }
@@ -420,8 +419,6 @@
         }
 
         @media (max-width: 480px) {
-            .notice-bar { padding: 5px 0; font-size: 12px; }
-            
             .page-header {
                 height: 200px;
                 padding: 1.5rem;
@@ -436,11 +433,8 @@
     </style>
 </head>
 <body>
-    <!-- Notice container (loaded dynamically) -->
+    <!-- Notice bar -->
     <div id="notice-container"></div>
-
-    <!-- Header placeholder (will be replaced with header.html content) -->
-    <div id="header-placeholder"></div>
 
     <!-- Scroll to top button -->
     <div class="scroll-top" id="scroll-top">
@@ -505,6 +499,7 @@
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
 
+    <!-- Menu JavaScript -->
     <script src="includes/menu.js"></script>
     
     <script>
@@ -516,26 +511,6 @@
                     document.getElementById("notice-container").innerHTML = data;
                 })
                 .catch(error => console.log("Notice loading error:", error));
-
-            // Load header (navigation)
-            fetch('includes/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                    // Initialize mobile navigation after header is loaded
-                    initializeMobileNavigation();
-                })
-                .catch(error => {
-                    console.log("Header loading error:", error);
-                    // Fallback: try to load from root
-                    fetch('header.html')
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById('header-placeholder').innerHTML = data;
-                            initializeMobileNavigation();
-                        })
-                        .catch(err => console.log("Header fallback error:", err));
-                });
 
             // Load footer
             fetch('includes/footer.html')
@@ -570,97 +545,12 @@
                 });
             });
 
-            // Add animation delay to gallery cards for staggered effect
+            // Add animation delay to gallery cards
             const galleryCards = document.querySelectorAll('.gallery-card');
             galleryCards.forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
             });
         });
-
-        // Mobile navigation functionality (for the new left drawer menu)
-        function initializeMobileNavigation() {
-            const navToggle = document.getElementById('nav-toggle');
-            const mobileMenuContainer = document.getElementById('mobile-menu-container');
-            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-            const mobileMenuClose = document.getElementById('mobile-menu-close');
-
-            if (!navToggle || !mobileMenuContainer || !mobileNavOverlay || !mobileMenuClose) {
-                console.log("Mobile menu elements not found yet");
-                return;
-            }
-
-            function toggleMobileMenu() {
-                mobileMenuContainer.classList.toggle('active');
-                mobileNavOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenuContainer.classList.contains('active') ? 'hidden' : '';
-                
-                // Toggle between hamburger and close icon
-                const icon = navToggle.querySelector('i');
-                if (icon) {
-                    if (mobileMenuContainer.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                }
-            }
-
-            navToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleMobileMenu();
-            });
-
-            mobileMenuClose.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleMobileMenu();
-            });
-
-            mobileNavOverlay.addEventListener('click', () => {
-                toggleMobileMenu();
-            });
-
-            // Mobile dropdown functionality
-            document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
-                parent.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const dropdownMenu = this.nextElementSibling;
-                    const dropdownToggle = this.querySelector('.mobile-dropdown-toggle');
-                    
-                    // Close other dropdowns
-                    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
-                        if (menu !== dropdownMenu) {
-                            menu.classList.remove('show');
-                            if (menu.previousElementSibling) {
-                                const toggle = menu.previousElementSibling.querySelector('.mobile-dropdown-toggle');
-                                if (toggle) toggle.classList.remove('active');
-                            }
-                        }
-                    });
-                    
-                    // Toggle current dropdown
-                    if (dropdownMenu) {
-                        dropdownMenu.classList.toggle('show');
-                    }
-                    if (dropdownToggle) {
-                        dropdownToggle.classList.toggle('active');
-                    }
-                });
-            });
-
-            // Close menu when clicking on links
-            document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenuContainer.classList.contains('active')) {
-                        toggleMobileMenu();
-                    }
-                });
-            });
-        }
     </script>
 </body>
 </html>
