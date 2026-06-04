@@ -1,0 +1,32 @@
+<!-- Notice Bar -->
+<div class="notice-bar" id="noticeBar">
+    <i class="fas fa-bell"></i>
+    <a href="event.html" target="_blank">
+        📢 Upcoming: Holy Week Celebrations - Join us for Palm Sunday on April 13th at 10:00 AM
+    </a>
+    <button class="close-notice" id="closeNoticeBtn">
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+
+<script>
+    // Notice bar close functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const closeBtn = document.getElementById('closeNoticeBtn');
+        const noticeBar = document.getElementById('noticeBar');
+        
+        // Check if notice was closed before (using localStorage)
+        const isNoticeClosed = localStorage.getItem('noticeClosed');
+        
+        if (isNoticeClosed === 'true') {
+            if (noticeBar) noticeBar.style.display = 'none';
+        }
+        
+        if (closeBtn && noticeBar) {
+            closeBtn.addEventListener('click', function() {
+                noticeBar.style.display = 'none';
+                localStorage.setItem('noticeClosed', 'true');
+            });
+        }
+    });
+</script>
