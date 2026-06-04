@@ -477,16 +477,18 @@
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- Menu JavaScript -->
+    <!-- Menu JavaScript (loads after notice bar is populated) -->
     <script src="includes/menu.js"></script>
     
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Load notice bar from includes folder (contains hamburger button)
+            // Load notice bar from includes folder FIRST
             fetch("includes/notice.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("notice-container").innerHTML = data;
+                    console.log("Notice bar loaded successfully");
+                    // menu.js will automatically initialize and find the hamburger button
                 })
                 .catch(error => {
                     console.log("Notice loading error:", error);
@@ -495,6 +497,7 @@
                         .then(response => response.text())
                         .then(data => {
                             document.getElementById("notice-container").innerHTML = data;
+                            console.log("Notice bar loaded from fallback");
                         })
                         .catch(err => console.log("Notice fallback error:", err));
                 });
