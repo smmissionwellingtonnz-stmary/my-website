@@ -6,8 +6,11 @@
     <title>SMYM Wellington · St. Mary's Syro-Malabar Mission</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Menu Navigation CSS -->
+    <link rel="stylesheet" href="includes/header.css">
+    
     <style>
-        
         /* Global Styles */
         * {
             margin: 0;
@@ -24,7 +27,6 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
-            padding-top: 110px; /* space for fixed header */
         }
         
         html {
@@ -39,7 +41,7 @@
             margin: 0 auto;
             padding: 0 15px;
         }
-
+        
         /* Scroll to top button */
         .scroll-top {
             position: fixed;
@@ -59,7 +61,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            z-index: 999;
+            z-index: 996;
         }
         
         .scroll-top.active {
@@ -71,10 +73,8 @@
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
-        /* ===== PAGE SPECIFIC STYLES ===== */
         
-        /* Header - edge to edge */
+        /* Page Header */
         .page-header {
             text-align: center;
             padding: 80px 20px;
@@ -85,6 +85,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             width: 100%;
             margin-bottom: 3rem;
+            margin-top: 0;
         }
 
         .page-header::before {
@@ -162,6 +163,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             position: relative;
+            border-radius: 16px;
         }
 
         .gallery-item:hover {
@@ -221,6 +223,7 @@
             transition: all 0.3s ease;
             margin: 30px auto 0;
             border: none;
+            border-radius: 40px;
         }
 
         .instagram-btn i {
@@ -258,6 +261,7 @@
             height: 4px;
             background: #b38a58;
             margin: 15px auto 0;
+            border-radius: 2px;
         }
 
         .mission-statement {
@@ -267,6 +271,7 @@
             margin-bottom: 60px;
             line-height: 1.8;
             text-align: center;
+            border-radius: 24px;
         }
 
         .mission-statement p {
@@ -297,6 +302,7 @@
             position: relative;
             opacity: 0;
             animation: fadeIn 0.8s ease forwards;
+            border-radius: 20px;
         }
 
         .card:hover {
@@ -319,11 +325,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Individual image positioning classes */
-        .img-position-top { object-position: top center; }
-        .img-position-bottom { object-position: bottom center; }
-        .img-position-left { object-position: left center; }
-        .img-position-right { object-position: right center; }
         .img-position-face { object-position: 50% 20%; }
 
         .card:hover .card-img {
@@ -359,6 +360,7 @@
             width: 40px;
             height: 2px;
             background: #b38a58;
+            border-radius: 1px;
         }
 
         .card:hover .card-role {
@@ -384,7 +386,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Add delay to each card */
         .card:nth-child(1) { animation-delay: 0.1s; }
         .card:nth-child(2) { animation-delay: 0.2s; }
         .card:nth-child(3) { animation-delay: 0.3s; }
@@ -401,10 +402,152 @@
         .card:nth-child(14) { animation-delay: 1.4s; }
         .card:nth-child(15) { animation-delay: 1.5s; }
 
-        /* Responsive Configuration */
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: white;
+            padding: 60px 0 20px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 15px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: #F8DE7E;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-social a:hover {
+            background: #ffd700;
+            color: #0a4d68;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .team-container {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
-            body { padding-top: 100px; }
-            
             .page-header { padding: 60px 20px; }
             .page-header h1 { font-size: 2.2rem; }
             
@@ -422,11 +565,17 @@
                 width: 250px;
                 height: 250px;
             }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin-bottom: 30px;
+            }
         }
 
         @media (max-width: 480px) {
-            body { padding-top: 90px; }
-            
             .page-header { padding: 50px 15px; }
             .page-header h1 { font-size: 1.8rem; }
             
@@ -446,22 +595,27 @@
                 padding: 10px 20px;
                 font-size: 1rem;
             }
+            
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Notice container (loaded dynamically) -->
+    <!-- Notice bar placeholder (contains hamburger button) -->
     <div id="notice-container"></div>
 
-    <!-- Header placeholder (will be replaced with header.html content) -->
-    <div id="header-placeholder"></div>
-
-    <!-- Scroll to top button (exactly like index) -->
+    <!-- Scroll to top button -->
     <div class="scroll-top" id="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Header - edge to edge -->
+    <!-- Page Header -->
     <div class="page-header">
         <h1>SMYM WELLINGTON</h1>
     </div>
@@ -698,34 +852,26 @@
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
 
+    <!-- Menu JavaScript -->
+    <script src="includes/menu.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Load notice bar
-            fetch("notice.html")
+            // Load notice bar from includes folder
+            fetch("includes/notice.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("notice-container").innerHTML = data;
-                })
-                .catch(error => console.log("Notice loading error:", error));
-
-            // Load header (navigation)
-            fetch('includes/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                    // Initialize mobile navigation after header is loaded
-                    initializeMobileNavigation();
+                    console.log("Notice bar loaded");
                 })
                 .catch(error => {
-                    console.log("Header loading error:", error);
-                    // Fallback: try to load from root
-                    fetch('header.html')
+                    console.log("Notice loading error:", error);
+                    fetch("notice.html")
                         .then(response => response.text())
                         .then(data => {
-                            document.getElementById('header-placeholder').innerHTML = data;
-                            initializeMobileNavigation();
+                            document.getElementById("notice-container").innerHTML = data;
                         })
-                        .catch(err => console.log("Header fallback error:", err));
+                        .catch(err => console.log("Notice fallback error:", err));
                 });
 
             // Load footer
@@ -765,19 +911,16 @@
             const gallery = document.querySelector('.scroll-gallery');
             const navButtons = document.querySelectorAll('.gallery-nav-btn');
             
-            // Set first button as active initially
             if (navButtons.length > 0) {
                 navButtons[0].classList.add('active');
             }
             
-            // Update active nav button based on scroll position
             if (gallery) {
                 gallery.addEventListener('scroll', function() {
                     const scrollPos = gallery.scrollLeft;
-                    const itemWidth = gallery.querySelector('.gallery-item').offsetWidth + 20; // width + gap
+                    const itemWidth = gallery.querySelector('.gallery-item').offsetWidth + 20;
                     const currentIndex = Math.round(scrollPos / itemWidth);
                     
-                    // Update active button
                     navButtons.forEach((btn, index) => {
                         if (index === currentIndex) {
                             btn.classList.add('active');
@@ -788,7 +931,6 @@
                 });
             }
             
-            // Click navigation to scroll to specific image
             navButtons.forEach((btn, index) => {
                 btn.addEventListener('click', function() {
                     if (gallery) {
@@ -801,7 +943,6 @@
                 });
             });
             
-            // Auto-scroll functionality
             let autoScrollInterval;
             const startAutoScroll = () => {
                 if (gallery) {
@@ -810,124 +951,36 @@
                         const maxScroll = gallery.scrollWidth - gallery.clientWidth;
                         
                         if (scrollAmount >= maxScroll - 10) {
-                            // If at the end, scroll back to start
                             gallery.scrollTo({
                                 left: 0,
                                 behavior: 'smooth'
                             });
                         } else {
-                            // Otherwise scroll right
                             gallery.scrollBy({
-                                left: 320, // Width of item + gap
+                                left: 320,
                                 behavior: 'smooth'
                             });
                         }
-                    }, 3000); // Scroll every 3 seconds
+                    }, 3000);
                 }
             };
             
-            // Start auto-scroll when page loads
             startAutoScroll();
             
-            // Pause auto-scroll when user interacts with gallery
             if (gallery) {
                 gallery.addEventListener('mouseenter', () => {
                     clearInterval(autoScrollInterval);
                 });
                 
-                // Resume auto-scroll when user leaves gallery
                 gallery.addEventListener('mouseleave', () => {
                     startAutoScroll();
                 });
                 
-                // Also pause on touch events for mobile
                 gallery.addEventListener('touchstart', () => {
                     clearInterval(autoScrollInterval);
                 });
             }
         });
-
-        // Mobile navigation functionality (same as index)
-        function initializeMobileNavigation() {
-            const navToggle = document.getElementById('nav-toggle');
-            const mobileMenuContainer = document.getElementById('mobile-menu-container');
-            const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-            const mobileMenuClose = document.getElementById('mobile-menu-close');
-
-            if (!navToggle || !mobileMenuContainer || !mobileNavOverlay || !mobileMenuClose) {
-                return; // Elements not found yet
-            }
-
-            function toggleMobileMenu() {
-                mobileMenuContainer.classList.toggle('active');
-                mobileNavOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenuContainer.classList.contains('active') ? 'hidden' : '';
-                
-                // Toggle between hamburger and close icon
-                const icon = navToggle.querySelector('i');
-                if (mobileMenuContainer.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            }
-
-            navToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                toggleMobileMenu();
-            });
-
-            mobileMenuClose.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleMobileMenu();
-            });
-
-            mobileNavOverlay.addEventListener('click', () => {
-                toggleMobileMenu();
-            });
-
-            // Mobile dropdown functionality
-            document.querySelectorAll('.mobile-dropdown-parent').forEach(parent => {
-                parent.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const dropdownMenu = this.nextElementSibling;
-                    const dropdownToggle = this.querySelector('.mobile-dropdown-toggle');
-                    
-                    // Close other dropdowns
-                    document.querySelectorAll('.mobile-dropdown-menu').forEach(menu => {
-                        if (menu !== dropdownMenu) {
-                            menu.classList.remove('show');
-                            if (menu.previousElementSibling) {
-                                const toggle = menu.previousElementSibling.querySelector('.mobile-dropdown-toggle');
-                                if (toggle) toggle.classList.remove('active');
-                            }
-                        }
-                    });
-                    
-                    // Toggle current dropdown
-                    if (dropdownMenu) {
-                        dropdownMenu.classList.toggle('show');
-                    }
-                    if (dropdownToggle) {
-                        dropdownToggle.classList.toggle('active');
-                    }
-                });
-            });
-
-            // Close menu when clicking on links
-            document.querySelectorAll('.mobile-nav-link:not(.mobile-dropdown-parent), .mobile-dropdown-item').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenuContainer.classList.contains('active')) {
-                        toggleMobileMenu();
-                    }
-                });
-            });
-        }
     </script>
 </body>
 </html>
