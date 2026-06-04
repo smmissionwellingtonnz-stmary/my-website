@@ -1,70 +1,342 @@
 // includes/menu.js
-// Enhanced menu functionality with scroll effects and active page detection
+// Left Hamburger Menu Navigation - Complete Functionality
 
+// Wait for DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
-    // Add scroll effect to navbar
-    const navContainer = document.querySelector('.nav-container');
+    initializeMenu();
+});
+
+function initializeMenu() {
+    // Create menu HTML structure
+    createMenuStructure();
     
-    if (navContainer) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navContainer.classList.add('scrolled');
-            } else {
-                navContainer.classList.remove('scrolled');
-            }
-        });
+    // Set up event listeners after menu is injected
+    setTimeout(() => {
+        setupMenuEventListeners();
+        highlightCurrentPage();
+    }, 100);
+}
+
+function createMenuStructure() {
+    // Check if menu already exists
+    if (document.querySelector('.side-menu')) return;
+    
+    // Create hamburger button
+    const hamburgerHTML = `
+        <button class="hamburger-btn" id="hamburgerBtn">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <div class="menu-overlay" id="menuOverlay"></div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', hamburgerHTML);
+    
+    // Get menu items from header.html or use default structure
+    const menuHTML = `
+        <div class="side-menu" id="sideMenu">
+            <div class="menu-header">
+                <div class="menu-logo">
+                    <img src="images/logo.png" alt="Logo" class="menu-logo-img" onerror="this.src='https://via.placeholder.com/50'">
+                    <div class="menu-logo-text">
+                        St. Mary's<br>
+                        <small>Syro-Malabar Mission</small>
+                    </div>
+                </div>
+                <div class="menu-header-desc">
+                    <i class="fas fa-church"></i> Wellington, New Zealand
+                </div>
+            </div>
+            
+            <ul class="nav-menu-list" id="navMenuList">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <div class="nav-link-left">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link has-dropdown">
+                        <div class="nav-link-left">
+                            <i class="fas fa-church"></i>
+                            <span>About</span>
+                        </div>
+                        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="aboutsyromalabarchurch.html" class="dropdown-item">
+                            <i class="fas fa-cross"></i> Syro-Malabar Church
+                        </a>
+                        <a href="abouteparchy.html" class="dropdown-item">
+                            <i class="fas fa-map-marker-alt"></i> Syro-Malabar Melbourne
+                        </a>
+                        <a href="aboutsmmission.html" class="dropdown-item">
+                            <i class="fas fa-flag"></i> Syro-Malabar Wellington
+                        </a>
+                        <a href="priestandcouncil.html" class="dropdown-item">
+                            <i class="fas fa-user-priest"></i> Priest & Council
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link has-dropdown">
+                        <div class="nav-link-left">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Services</span>
+                        </div>
+                        <span class="chevron"><i class="fas fa-chevron-down"></i></span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="services.html" class="dropdown-item">
+                            <i class="fas fa-clock"></i> Holy Qurbana Schedule
+                        </a>
+                        <a href="event.html" class="dropdown-item">
+                            <i class="fas fa-calendar-week"></i> Upcoming Programs
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="ministries.html" class="nav-link">
+                        <div class="nav-link-left">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Ministries</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="forms.html" class="nav-link">
+                        <div class="nav-link-left">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Forms</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="resources.html" class="nav-link">
+                        <div class="nav-link-left">
+                            <i class="fas fa-book"></i>
+                            <span>Resources</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="safeguard.html" class="nav-link">
+                        <div class="nav-link-left">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Safeguarding</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="community-outreach.html.html" class="nav-link">
+                        <div class="nav-link-left">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Community Outreach</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">
+                        <div class="nav-link-left">
+                            <i class="fas fa-images"></i>
+                            <span>Gallery</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">
+                        <div class="nav-link-left">
+                            <i class="fas fa-envelope"></i>
+                            <span>Connect Us</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
+                        <div class="nav-link-left">
+                            <i class="fas fa-download"></i>
+                            <span>Newsletter</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="donate.html" class="nav-link donate">
+                        <div class="nav-link-left">
+                            <i class="fas fa-heart"></i>
+                            <span>DONATE</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="menu-footer">
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="menu-copyright">
+                    © 2024 St. Mary's Syro-Malabar Mission<br>
+                    Wellington, New Zealand
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', menuHTML);
+}
+
+function setupMenuEventListeners() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    if (!hamburgerBtn || !sideMenu || !menuOverlay) return;
+    
+    // Toggle menu function
+    function toggleMenu() {
+        const isOpen = sideMenu.classList.contains('active');
+        
+        if (isOpen) {
+            // Close menu
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            hamburgerBtn.classList.remove('open');
+            document.body.classList.remove('menu-open');
+        } else {
+            // Open menu
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            hamburgerBtn.classList.add('open');
+            document.body.classList.add('menu-open');
+        }
     }
     
-    // Highlight current page in navigation
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-link, .mobile-dropdown-item');
+    // Hamburger button click
+    hamburgerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+    });
     
-    allNavLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-            link.classList.add('active');
+    // Overlay click to close
+    menuOverlay.addEventListener('click', () => {
+        if (sideMenu.classList.contains('active')) {
+            toggleMenu();
         }
     });
     
-    // Close mobile menu when window is resized to desktop size
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            const mobileMenu = document.getElementById('mobile-menu-container');
-            const overlay = document.getElementById('mobile-nav-overlay');
-            if (mobileMenu && mobileMenu.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
-                if (overlay) overlay.classList.remove('active');
-                document.body.style.overflow = '';
-                
-                // Reset hamburger icon
-                const navToggle = document.getElementById('nav-toggle');
-                if (navToggle) {
-                    const icon = navToggle.querySelector('i');
-                    if (icon) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
+    // Close menu when escape key is pressed
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+    
+    // Dropdown functionality
+    const dropdownParents = document.querySelectorAll('.nav-link.has-dropdown');
+    
+    dropdownParents.forEach(parent => {
+        parent.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const dropdownMenu = parent.nextElementSibling;
+            const chevron = parent.querySelector('.chevron');
+            
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu !== dropdownMenu && menu.classList.contains('show')) {
+                    menu.classList.remove('show');
+                    const prevParent = menu.previousElementSibling;
+                    if (prevParent) {
+                        const prevChevron = prevParent.querySelector('.chevron');
+                        if (prevChevron) prevChevron.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+            
+            // Toggle current dropdown
+            if (dropdownMenu) {
+                dropdownMenu.classList.toggle('show');
+                if (chevron) {
+                    const isOpen = dropdownMenu.classList.contains('show');
+                    chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            }
+        });
+    });
+    
+    // Close menu when clicking on a link (except dropdown toggles)
+    const allLinks = document.querySelectorAll('.nav-link:not(.has-dropdown), .dropdown-item');
+    allLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (sideMenu.classList.contains('active')) {
+                // Small delay to allow link to navigate
+                setTimeout(() => {
+                    toggleMenu();
+                }, 150);
+            }
+        });
+    });
+    
+    // Handle window resize - close menu if open and window becomes larger
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth > 768 && sideMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        }, 250);
+    });
+}
+
+function highlightCurrentPage() {
+    // Get current page filename
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
+    
+    // Find and highlight matching links
+    const allLinks = document.querySelectorAll('.nav-link, .dropdown-item');
+    
+    allLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage || 
+            (currentPage === '' && href === 'index.html') ||
+            (currentPage === '/' && href === 'index.html')) {
+            link.classList.add('active');
+            
+            // If it's a dropdown item, open the parent dropdown
+            if (link.classList.contains('dropdown-item')) {
+                const parentDropdown = link.closest('.dropdown-menu');
+                if (parentDropdown) {
+                    parentDropdown.classList.add('show');
+                    const parentLink = parentDropdown.previousElementSibling;
+                    if (parentLink && parentLink.classList.contains('has-dropdown')) {
+                        const chevron = parentLink.querySelector('.chevron');
+                        if (chevron) chevron.style.transform = 'rotate(180deg)';
                     }
                 }
             }
         }
     });
-    
-    // Prevent body scroll when mobile menu is open
-    const observeMobileMenu = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.attributeName === 'class') {
-                const mobileMenu = document.getElementById('mobile-menu-container');
-                if (mobileMenu && mobileMenu.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = '';
-                }
-            }
-        });
-    });
-    
-    const mobileMenuElement = document.getElementById('mobile-menu-container');
-    if (mobileMenuElement) {
-        observeMobileMenu.observe(mobileMenuElement, { attributes: true });
-    }
-});
+}
+
+// Export for debugging (optional)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { initializeMenu };
+}
