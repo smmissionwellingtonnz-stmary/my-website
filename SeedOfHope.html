@@ -489,12 +489,13 @@
             color: #1a5a2a;
         }
 
-        /* ==================== JOURNEY SECTION (GROWING PLANT TIMELINE) ==================== */
+        /* ==================== JOURNEY SECTION (FIXED MOBILE SCROLL) ==================== */
         .journey-wrapper {
             background: linear-gradient(180deg, #eef3e8 0%, #e0e8d8 100%);
             padding: 5rem 0;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .journey-container {
@@ -533,7 +534,8 @@
         /* Plant Timeline Container */
         .plant-timeline {
             position: relative;
-            padding: 2rem 0;
+            padding: 2rem 0 4rem 0;
+            min-height: 800px;
         }
 
         /* The growing stem line */
@@ -545,15 +547,16 @@
             background: linear-gradient(180deg, #c9a84c, #4c9a2a, #c9a84c);
             border-radius: 4px;
             top: 0;
-            bottom: 0;
+            height: 0%;
             z-index: 1;
+            transition: height 0.3s ease;
         }
 
         /* Timeline Story Card */
         .story-card {
             position: relative;
             width: 100%;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
             opacity: 0;
             transform: translateY(50px);
             transition: all 0.8s ease;
@@ -577,7 +580,7 @@
         }
 
         .story-content-wrapper {
-            width: calc(50% - 30px);
+            width: calc(50% - 40px);
             position: relative;
         }
 
@@ -586,8 +589,8 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             background: #e8c86a;
             border: 3px solid #1a5a2a;
             border-radius: 50%;
@@ -607,23 +610,70 @@
             100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(232, 200, 106, 0); }
         }
 
-        /* Story Card Styling */
+        /* Story Card Styling with Background Image */
         .story-card-inner {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 1.5rem;
+            padding: 1.8rem;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            backdrop-filter: blur(2px);
         }
 
+        /* Background image for each story */
+        .story-card[data-story="1"] .story-card-inner {
+            background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=400&h=300&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .story-card[data-story="2"] .story-card-inner {
+            background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&h=300&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .story-card[data-story="3"] .story-card-inner {
+            background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=400&h=300&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .story-card[data-story="4"] .story-card-inner {
+            background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1481833761820-0509d3217039?w=400&h=300&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .story-card[data-story="5"] .story-card-inner {
+            background-image: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Animated background zoom on hover */
         .story-card-inner:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
         }
 
+        .story-card-inner:hover::before {
+            transform: scale(1.05);
+        }
+
         .story-card-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .story-card-inner::after {
             content: '';
             position: absolute;
             top: 0;
@@ -655,7 +705,7 @@
         }
 
         .story-preview {
-            color: #4a5a4a;
+            color: #3a4a3a;
             line-height: 1.7;
             margin-bottom: 1rem;
             font-size: 0.95rem;
@@ -668,11 +718,12 @@
         }
 
         .story-full-content.expanded {
-            max-height: 800px;
+            max-height: 600px;
+            overflow-y: auto;
         }
 
         .story-full-content p {
-            color: #4a5a4a;
+            color: #3a4a3a;
             line-height: 1.8;
             margin-top: 1rem;
             font-size: 0.95rem;
@@ -697,85 +748,99 @@
             color: #1a5a2a;
         }
 
-        /* Growing plant decoration */
-        .plant-decoration {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 100px;
-            height: 150px;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.3;
-        }
-
-        .plant-decoration svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Leaf decorations for each story */
-        .story-leaf {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234c9a2a"><path d="M12,2C9,7,4,9,4,14c0,4,4,6,8,6s8-2,8-6C20,9,15,7,12,2z"/></svg>');
-            background-size: contain;
-            opacity: 0.15;
-            pointer-events: none;
-        }
-
-        /* Responsive Journey Section */
+        /* Responsive Journey Section - FIXED for mobile */
         @media (max-width: 768px) {
             .stem-line {
-                left: 20px;
+                left: 25px;
                 transform: none;
             }
             
             .story-content-wrapper {
-                width: calc(100% - 50px);
-                margin-left: 50px !important;
+                width: calc(100% - 60px);
+                margin-left: 55px !important;
                 margin-right: 0 !important;
             }
             
             .story-dot {
-                left: 20px;
+                left: 25px;
                 transform: none;
+                top: 25px;
+                width: 18px;
+                height: 18px;
             }
             
             .story-card:nth-child(odd) .story-content-wrapper,
             .story-card:nth-child(even) .story-content-wrapper {
-                margin-left: 50px;
+                margin-left: 55px;
             }
             
             .story-year {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
             
             .story-title {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+            
+            .story-card {
+                margin-bottom: 3rem;
+            }
+            
+            .story-card-inner {
+                padding: 1.2rem;
+            }
+            
+            .journey-wrapper {
+                padding: 3rem 0;
             }
         }
 
         @media (max-width: 480px) {
             .story-content-wrapper {
-                width: calc(100% - 40px);
-                margin-left: 40px !important;
+                width: calc(100% - 50px);
+                margin-left: 45px !important;
             }
             
             .story-dot {
-                left: 15px;
-                width: 16px;
-                height: 16px;
+                left: 18px;
+                width: 14px;
+                height: 14px;
+                top: 20px;
             }
             
             .stem-line {
-                left: 15px;
+                left: 18px;
                 width: 3px;
+            }
+            
+            .story-card:nth-child(odd) .story-content-wrapper,
+            .story-card:nth-child(even) .story-content-wrapper {
+                margin-left: 45px;
             }
             
             .story-card-inner {
                 padding: 1rem;
+            }
+            
+            .story-year {
+                font-size: 1.1rem;
+            }
+            
+            .story-title {
+                font-size: 0.9rem;
+            }
+            
+            .story-preview, .story-full-content p {
+                font-size: 0.85rem;
+            }
+            
+            .expand-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.7rem;
+            }
+            
+            .journey-header h2 {
+                font-size: 1.8rem;
             }
         }
 
@@ -1032,7 +1097,7 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION - GROWING PLANT TIMELINE -->
+    <!-- JOURNEY SECTION - GROWING PLANT TIMELINE (FIXED MOBILE) -->
     <section id="journey-section" class="journey-wrapper">
         <div class="journey-container">
             <div class="journey-header">
@@ -1041,7 +1106,6 @@
             </div>
             
             <div class="plant-timeline" id="plantTimeline">
-                <!-- Stem line (created by JavaScript) -->
                 <div class="stem-line" id="stemLine"></div>
                 
                 <!-- Story 1 - The Seed (2006) -->
@@ -1119,12 +1183,12 @@
                     </div>
                 </div>
                 
-                <!-- Story 5 - Blossoming & Future (2023-Present) -->
+                <!-- Story 5 - Blossoming & Future (2024-Present) - UPDATED YEAR -->
                 <div class="story-card" data-story="5">
                     <div class="story-dot"></div>
                     <div class="story-content-wrapper">
                         <div class="story-card-inner">
-                            <div class="story-year">2023 - Present</div>
+                            <div class="story-year">2024 - Present</div>
                             <div class="story-title">🌸 Blossoming & Building Our Future</div>
                             <div class="story-preview">
                                 In 2023, the community was once again blessed to return to St Andrew's Church, Newlands...
@@ -1298,21 +1362,29 @@
                         entry.target.classList.add('visible-story');
                     }
                 });
-            }, { threshold: 0.3 });
+            }, { threshold: 0.2 });
             
             storyCards.forEach(card => storyObserver.observe(card));
 
             // Grow stem line as user scrolls
             const stemLine = document.getElementById('stemLine');
-            if (stemLine) {
-                const journeySection = document.getElementById('journey-section');
+            const journeySection = document.getElementById('journey-section');
+            
+            if (stemLine && journeySection) {
                 const updateStemHeight = () => {
                     const rect = journeySection.getBoundingClientRect();
-                    const scrollPercent = Math.min(1, Math.max(0, (window.scrollY + window.innerHeight - rect.top) / (rect.height)));
+                    const scrollTop = window.scrollY;
+                    const sectionTop = journeySection.offsetTop;
+                    const sectionHeight = journeySection.offsetHeight;
+                    const windowHeight = window.innerHeight;
+                    
+                    let scrollPercent = (scrollTop + windowHeight - sectionTop) / (sectionHeight + windowHeight);
+                    scrollPercent = Math.min(1, Math.max(0, scrollPercent));
                     stemLine.style.height = (scrollPercent * 100) + '%';
                 };
                 
                 window.addEventListener('scroll', updateStemHeight);
+                window.addEventListener('resize', updateStemHeight);
                 updateStemHeight();
             }
 
