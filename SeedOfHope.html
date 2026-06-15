@@ -88,7 +88,7 @@
         .hero-seed {
             position: relative;
             width: 100%;
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -103,7 +103,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.6;
+            opacity: 0.5;
             z-index: 1;
         }
 
@@ -113,7 +113,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(10, 46, 28, 0.7) 0%, rgba(26, 74, 42, 0.5) 100%);
+            background: linear-gradient(135deg, rgba(10, 46, 28, 0.75) 0%, rgba(26, 74, 42, 0.6) 100%);
             z-index: 2;
         }
 
@@ -133,7 +133,7 @@
             position: absolute;
             background: linear-gradient(90deg, 
                 rgba(76, 154, 42, 0) 0%, 
-                rgba(124, 181, 24, 0.6) 50%, 
+                rgba(124, 181, 24, 0.5) 50%, 
                 rgba(76, 154, 42, 0) 100%);
             height: 100%;
             width: 3px;
@@ -183,10 +183,10 @@
             height: 30px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%237cb518"><path d="M12,2C9,7,4,9,4,14c0,4,4,6,8,6s8-2,8-6C20,9,15,7,12,2z"/></svg>');
             background-size: contain;
-            opacity: 0.3;
+            opacity: 0.25;
             pointer-events: none;
             z-index: 2;
-            animation: leafFloat 8s linear infinite;
+            animation: leafFloat 10s linear infinite;
         }
 
         @keyframes leafFloat {
@@ -195,10 +195,10 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.4;
+                opacity: 0.3;
             }
             90% {
-                opacity: 0.4;
+                opacity: 0.3;
             }
             100% {
                 transform: translateY(100vh) rotate(360deg);
@@ -211,34 +211,51 @@
             z-index: 10;
             text-align: center;
             padding: 2rem;
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
+            width: 100%;
         }
 
-        /* Animated Heading - Letter by Letter */
+        /* Animated Heading - Letter by Letter - FIXED for single line on mobile */
         .seed-heading {
             font-family: 'Cinzel Decorative', cursive;
-            font-size: clamp(3rem, 12vw, 7rem);
+            font-size: clamp(2.2rem, 8vw, 5rem);
             font-weight: 700;
             color: #F8DE7E;
             text-shadow: 0 0 30px rgba(248, 222, 126, 0.5),
                          0 5px 15px rgba(0, 0, 0, 0.3);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile fix - allow wrapping but keep as single visual line */
+        @media (max-width: 480px) {
+            .seed-heading {
+                white-space: normal;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .seed-letter {
+                display: inline-block;
+            }
         }
 
         .seed-letter {
             display: inline-block;
             opacity: 0;
-            transform: translateX(-50px);
-            animation: letterReveal 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            transform: translateX(-30px);
+            animation: letterReveal 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
         }
 
         @keyframes letterReveal {
             0% {
                 opacity: 0;
-                transform: translateX(-50px) rotate(-10deg);
-                filter: blur(10px);
+                transform: translateX(-30px) rotate(-5deg);
+                filter: blur(5px);
             }
             100% {
                 opacity: 1;
@@ -247,15 +264,17 @@
             }
         }
 
-        .seed-subtitle {
-            font-size: clamp(1rem, 4vw, 1.5rem);
+        /* Tagline Styles */
+        .seed-tagline {
+            font-size: clamp(1rem, 3.5vw, 1.3rem);
             color: rgba(255, 255, 255, 0.95);
             font-weight: 400;
-            letter-spacing: 3px;
-            margin-top: 1rem;
+            line-height: 1.6;
+            margin: 1.5rem auto;
+            max-width: 700px;
             opacity: 0;
-            animation: fadeInUp 1s ease 1.5s forwards;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease 1.8s forwards;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes fadeInUp {
@@ -269,6 +288,104 @@
             }
         }
 
+        /* Navigation Buttons */
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 2.2s forwards;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-btn-primary {
+            background: linear-gradient(135deg, #7cb518, #4c9a2a);
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 154, 42, 0.3);
+        }
+
+        .hero-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 154, 42, 0.4);
+            background: linear-gradient(135deg, #8ed62e, #5cb030);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-3px);
+        }
+
+        /* Goal Highlight */
+        .goal-highlight {
+            background: linear-gradient(135deg, rgba(124, 181, 24, 0.2), rgba(76, 154, 42, 0.3));
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            padding: 0.8rem 1.8rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(124, 181, 24, 0.4);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 2.6s forwards;
+        }
+
+        .goal-highlight span {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-weight: 600;
+            color: #F8DE7E;
+            letter-spacing: 1px;
+        }
+
+        .goal-highlight i {
+            margin-right: 8px;
+            color: #7cb518;
+        }
+
+        .goal-amount {
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            font-weight: 800;
+            color: #F8DE7E;
+            margin-left: 8px;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(124, 181, 24, 0.3);
+                border-color: rgba(124, 181, 24, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(124, 181, 24, 0.6);
+                border-color: rgba(124, 181, 24, 0.8);
+            }
+        }
+
+        .goal-highlight {
+            animation: fadeInUp 0.8s ease 2.6s forwards, pulseGlow 2s ease-in-out infinite;
+            animation-delay: 0s, 3s;
+        }
+
+        /* Scroll indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -279,7 +396,7 @@
             text-align: center;
             cursor: pointer;
             opacity: 0;
-            animation: fadeInUp 1s ease 2.5s forwards;
+            animation: fadeInUp 1s ease 3s forwards;
         }
 
         .scroll-indicator i {
@@ -531,7 +648,7 @@
             box-shadow: 0 10px 25px rgba(76, 154, 42, 0.4);
         }
 
-        /* ==================== FOOTER STYLES (from index.html) ==================== */
+        /* ==================== FOOTER STYLES ==================== */
         .footer {
             background: linear-gradient(135deg, #0a4d68, #088395);
             color: white;
@@ -688,7 +805,20 @@
             }
             
             .hero-seed {
-                min-height: 70vh;
+                min-height: 100vh;
+            }
+
+            .hero-buttons {
+                gap: 0.8rem;
+            }
+
+            .hero-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .goal-highlight {
+                padding: 0.6rem 1.2rem;
             }
 
             .footer-column {
@@ -715,8 +845,21 @@
                 grid-template-columns: 1fr;
             }
             
-            .seed-heading {
-                font-size: 2.5rem;
+            .hero-buttons {
+                gap: 0.6rem;
+            }
+
+            .hero-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .goal-highlight span {
+                font-size: 0.8rem;
+            }
+
+            .goal-amount {
+                font-size: 1rem;
             }
             
             .quote-section {
@@ -754,7 +897,35 @@
             <h1 class="seed-heading" id="animatedHeading">
                 <!-- Letters will be inserted by JavaScript -->
             </h1>
-            <p class="seed-subtitle">Growing Faith, Nurturing Community, Blooming Hope</p>
+            
+            <!-- New Tagline -->
+            <p class="seed-tagline">
+                We are building a church our community can call home. A place to worship, to belong, and to pass our faith on to the children who come after us.
+            </p>
+            
+            <!-- Navigation Buttons -->
+            <div class="hero-buttons">
+                <button class="hero-btn hero-btn-primary" onclick="scrollToSection('give')">
+                    <i class="fas fa-heart"></i> Give Now
+                </button>
+                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('vision')">
+                    <i class="fas fa-eye"></i> Our Vision
+                </button>
+                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('journey')">
+                    <i class="fas fa-road"></i> Our Journey
+                </button>
+                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('goal')">
+                    <i class="fas fa-bullseye"></i> Our Goal
+                </button>
+            </div>
+            
+            <!-- Goal Highlight -->
+            <div class="goal-highlight">
+                <i class="fas fa-church"></i>
+                <span>Our Goal:</span>
+                <span class="goal-amount">$1,000,000</span>
+                <span> toward our own church home</span>
+            </div>
         </div>
         
         <div class="scroll-indicator" onclick="scrollToContent()">
@@ -767,8 +938,8 @@
     <div class="content-wrapper">
         <div class="container-seed">
             
-            <!-- Introduction Section -->
-            <section class="seed-section" id="content-start" data-aos="fade-up">
+            <!-- Vision Section (Our Vision) -->
+            <section class="seed-section" id="vision-section" data-aos="fade-up">
                 <h2 class="section-title-seed">Our Vision</h2>
                 <p style="font-size: 1.1rem; line-height: 1.8; color: #2a3a2a;">
                     The "Seeds of Hope" initiative represents our commitment to nurturing faith, fostering community growth, 
@@ -778,10 +949,19 @@
                 </p>
             </section>
             
-            <!-- Hope in Action Cards -->
-            <section class="seed-section" data-aos="fade-up" data-aos-delay="100">
-                <h2 class="section-title-seed">Hope in Action</h2>
+            <!-- Hope in Action Cards (Our Goal section) -->
+            <section class="seed-section" id="goal-section" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="section-title-seed">Our Goal</h2>
                 <div class="cards-grid">
+                    <div class="hope-card">
+                        <div class="card-icon">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Building Our Home</h3>
+                            <p>Our vision is to establish a dedicated church home where our community can gather, worship, and grow together in faith for generations to come.</p>
+                        </div>
+                    </div>
                     <div class="hope-card">
                         <div class="card-icon">
                             <i class="fas fa-hands-helping"></i>
@@ -812,9 +992,9 @@
                 </div>
             </section>
             
-            <!-- Timeline / Milestones -->
-            <section class="seed-section" data-aos="fade-up" data-aos-delay="200">
-                <h2 class="section-title-seed">Our Journey of Hope</h2>
+            <!-- Timeline / Milestones (Our Journey) -->
+            <section class="seed-section" id="journey-section" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="section-title-seed">Our Journey</h2>
                 <div class="timeline-container">
                     <div class="timeline-item">
                         <div class="timeline-year">2006</div>
@@ -878,16 +1058,15 @@
                 </div>
             </section>
             
-            <!-- Call to Action -->
-            <section class="seed-section" style="text-align: center;" data-aos="fade-up">
-                <h2 class="section-title-seed center">Be Part of the Hope</h2>
+            <!-- Call to Action / Give Now -->
+            <section class="seed-section" id="give-section" style="text-align: center;" data-aos="fade-up">
+                <h2 class="section-title-seed center">Support Our Mission</h2>
                 <p style="max-width: 700px; margin: 0 auto 2rem auto; color: #4a5a4a;">
-                    Every seed of hope planted today blooms into tomorrow's blessing. Join us in our mission to grow faith, 
-                    serve our community, and spread God's love throughout Wellington.
+                    Every contribution brings us closer to our dream of having a church home. Your generosity helps us build a place where faith can flourish for generations to come.
                 </p>
-                <a href="contact.html" class="cta-button">
-                    <i class="fas fa-heart"></i> Get Involved Today
-                </a>
+                <button class="cta-button" onclick="scrollToSection('give')">
+                    <i class="fas fa-hand-holding-heart"></i> Give Now
+                </button>
             </section>
             
         </div>
@@ -909,6 +1088,30 @@
             once: true,
             offset: 100
         });
+
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            let element = null;
+            switch(sectionId) {
+                case 'give':
+                    element = document.getElementById('give-section');
+                    break;
+                case 'vision':
+                    element = document.getElementById('vision-section');
+                    break;
+                case 'journey':
+                    element = document.getElementById('journey-section');
+                    break;
+                case 'goal':
+                    element = document.getElementById('goal-section');
+                    break;
+                default:
+                    element = document.getElementById('vision-section');
+            }
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
 
         document.addEventListener("DOMContentLoaded", function() {
             
@@ -974,7 +1177,7 @@
                     const span = document.createElement('span');
                     span.className = 'seed-letter';
                     span.textContent = letter === ' ' ? '\u00A0' : letter;
-                    span.style.animationDelay = `${0.1 + i * 0.08}s`;
+                    span.style.animationDelay = `${0.1 + i * 0.06}s`;
                     headingContainer.appendChild(span);
                 }
             }
@@ -992,7 +1195,7 @@
                 const leaf = document.createElement('div');
                 leaf.className = 'leaf';
                 leaf.style.left = Math.random() * 100 + '%';
-                leaf.style.animationDuration = 5 + Math.random() * 8 + 's';
+                leaf.style.animationDuration = 6 + Math.random() * 8 + 's';
                 leaf.style.animationDelay = Math.random() * 5 + 's';
                 leaf.style.width = 15 + Math.random() * 25 + 'px';
                 leaf.style.height = leaf.style.width;
@@ -1000,11 +1203,11 @@
                 
                 setTimeout(() => {
                     leaf.remove();
-                }, 13000);
+                }, 14000);
             }
             
             setTimeout(() => {
-                setInterval(createLeaf, 1500);
+                setInterval(createLeaf, 1800);
             }, 2000);
 
             // ==================== GSAP SCROLLTRIGGER ANIMATIONS ====================
@@ -1021,7 +1224,7 @@
                     y: 50,
                     opacity: 0,
                     duration: 0.8,
-                    delay: i * 0.2,
+                    delay: i * 0.15,
                     ease: 'power2.out'
                 });
             });
@@ -1117,11 +1320,14 @@
         
         // ==================== SCROLL FUNCTION ====================
         function scrollToContent() {
-            const contentStart = document.getElementById('content-start');
+            const contentStart = document.getElementById('vision-section');
             if (contentStart) {
                 contentStart.scrollIntoView({ behavior: 'smooth' });
             }
         }
+        
+        // Make scrollToSection available globally
+        window.scrollToSection = scrollToSection;
         
         // Ensure hero background loads with fallback
         const heroBg = document.getElementById('heroBg');
