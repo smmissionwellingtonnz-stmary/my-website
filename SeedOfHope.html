@@ -48,10 +48,6 @@
             border-radius: 10px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #dbb85a, #f0d87a);
-        }
-
         /* Scroll to top button */
         .scroll-top {
             position: fixed;
@@ -77,11 +73,6 @@
         .scroll-top.active {
             opacity: 1;
             visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         /* ==================== HERO SECTION ==================== */
@@ -117,7 +108,7 @@
             z-index: 2;
         }
 
-        /* Animated Gold Strips (more elegant) */
+        /* Animated Gold Strips */
         .strips-container {
             position: absolute;
             top: 0;
@@ -141,42 +132,25 @@
             transform: translateX(-50%);
         }
 
-        .gold-strip:nth-child(1) { left: 10%; animation-delay: 0.5s; }
-        .gold-strip:nth-child(2) { left: 25%; animation-delay: 1s; }
-        .gold-strip:nth-child(3) { left: 40%; animation-delay: 1.5s; }
-        .gold-strip:nth-child(4) { left: 55%; animation-delay: 2s; }
-        .gold-strip:nth-child(5) { left: 70%; animation-delay: 2.5s; }
-        .gold-strip:nth-child(6) { left: 85%; animation-delay: 3s; }
+        .gold-strip:nth-child(1) { left: 10%; }
+        .gold-strip:nth-child(2) { left: 25%; }
+        .gold-strip:nth-child(3) { left: 40%; }
+        .gold-strip:nth-child(4) { left: 55%; }
+        .gold-strip:nth-child(5) { left: 70%; }
+        .gold-strip:nth-child(6) { left: 85%; }
 
         .gold-strip.animate {
             animation: goldStripGlow 2s ease-out forwards;
         }
 
         @keyframes goldStripGlow {
-            0% {
-                width: 2px;
-                opacity: 0;
-                transform: translateX(-50%);
-            }
-            20% {
-                opacity: 0.6;
-            }
-            50% {
-                width: 60px;
-                opacity: 0.4;
-                background: linear-gradient(90deg, 
-                    rgba(200, 168, 76, 0) 0%, 
-                    rgba(232, 200, 106, 0.6) 50%, 
-                    rgba(200, 168, 76, 0) 100%);
-            }
-            100% {
-                width: 150%;
-                opacity: 0;
-                transform: translateX(-50%);
-            }
+            0% { width: 2px; opacity: 0; transform: translateX(-50%); }
+            20% { opacity: 0.6; }
+            50% { width: 60px; opacity: 0.4; }
+            100% { width: 150%; opacity: 0; transform: translateX(-50%); }
         }
 
-        /* Animated gold leaves falling (more elegant) */
+        /* Animated gold leaves */
         .gold-leaf {
             position: absolute;
             width: 20px;
@@ -190,20 +164,10 @@
         }
 
         @keyframes goldLeafFloat {
-            0% {
-                transform: translateY(-10%) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.25;
-            }
-            90% {
-                opacity: 0.25;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-10%) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.25; }
+            90% { opacity: 0.25; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
         .hero-content {
@@ -216,7 +180,6 @@
             width: 100%;
         }
 
-        /* Elegant Heading - St. Mary's style */
         .church-name {
             font-family: 'Cinzel Decorative', cursive;
             font-size: clamp(0.9rem, 3vw, 1.2rem);
@@ -225,12 +188,10 @@
             text-transform: uppercase;
             margin-bottom: 1.5rem;
             font-weight: 500;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
             opacity: 0;
             animation: fadeInUp 0.8s ease 0.3s forwards;
         }
 
-        /* Main Heading - Seeds of Hope with elegant style */
         .seed-heading {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 9vw, 5.5rem);
@@ -240,40 +201,10 @@
             margin-bottom: 1.5rem;
             letter-spacing: 0.02em;
             line-height: 1.2;
-            position: relative;
-            display: inline-block;
             opacity: 0;
             animation: fadeInUp 0.8s ease 0.6s forwards;
         }
 
-        .seed-heading::before,
-        .seed-heading::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #F8DE7E, transparent);
-            top: 50%;
-            opacity: 0;
-            animation: fadeIn 1s ease 1s forwards;
-        }
-
-        .seed-heading::before {
-            left: -80px;
-        }
-
-        .seed-heading::after {
-            right: -80px;
-        }
-
-        @media (max-width: 768px) {
-            .seed-heading::before,
-            .seed-heading::after {
-                display: none;
-            }
-        }
-
-        /* Elegant Tagline - New beautiful font */
         .seed-tagline {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.1rem, 3.5vw, 1.4rem);
@@ -285,11 +216,8 @@
             max-width: 700px;
             opacity: 0;
             animation: fadeInUp 0.8s ease 0.9s forwards;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-            letter-spacing: 0.3px;
         }
 
-        /* Navigation Buttons - Elegant style */
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -323,7 +251,6 @@
 
         .hero-btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             background: linear-gradient(135deg, #f0d87a, #dbb85a);
         }
 
@@ -331,7 +258,6 @@
             background: rgba(255, 255, 255, 0.08);
             color: white;
             border: 1px solid rgba(232, 200, 106, 0.5);
-            backdrop-filter: blur(8px);
         }
 
         .hero-btn-secondary:hover {
@@ -340,7 +266,6 @@
             transform: translateY(-2px);
         }
 
-        /* Goal Highlight - Elegant gold badge */
         .goal-highlight {
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(12px);
@@ -357,44 +282,10 @@
             animation: fadeInUp 0.8s ease 1.5s forwards;
         }
 
-        .goal-highlight i {
-            color: #e8c86a;
-            font-size: 1.1rem;
-        }
+        .goal-highlight i { color: #e8c86a; font-size: 1.1rem; }
+        .goal-highlight span { font-family: 'Montserrat', sans-serif; font-size: clamp(0.85rem, 3vw, 1rem); font-weight: 500; color: rgba(255, 255, 255, 0.95); }
+        .goal-amount { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 800; color: #e8c86a; margin: 0 4px; }
 
-        .goal-highlight span {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(0.85rem, 3vw, 1rem);
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.95);
-            letter-spacing: 0.5px;
-        }
-
-        .goal-amount {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.1rem, 4vw, 1.4rem);
-            font-weight: 800;
-            color: #e8c86a;
-            margin: 0 4px;
-        }
-
-        .goal-highlight {
-            animation: fadeInUp 0.8s ease 1.5s forwards, gentlePulse 3s ease-in-out infinite;
-            animation-delay: 0s, 2s;
-        }
-
-        @keyframes gentlePulse {
-            0%, 100% {
-                border-color: rgba(232, 200, 106, 0.3);
-                box-shadow: 0 0 5px rgba(232, 200, 106, 0.1);
-            }
-            50% {
-                border-color: rgba(232, 200, 106, 0.6);
-                box-shadow: 0 0 15px rgba(232, 200, 106, 0.2);
-            }
-        }
-
-        /* Scroll indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -411,37 +302,222 @@
             letter-spacing: 2px;
         }
 
-        .scroll-indicator i {
-            display: block;
-            font-size: 20px;
-            margin-top: 8px;
-            animation: gentleBounce 2s infinite;
+        .scroll-indicator i { display: block; font-size: 20px; margin-top: 8px; animation: gentleBounce 2s infinite; color: #e8c86a; }
+
+        @keyframes gentleBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ==================== VISION SECTION (NEW DESIGN) ==================== */
+        .vision-wrapper {
+            background: linear-gradient(135deg, #f5f7e9 0%, #eef3e8 100%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path fill="%23c9a84c" d="M50,0 L61,35 L98,35 L68,57 L79,92 L50,70 L21,92 L32,57 L2,35 L39,35 Z"/></svg>');
+            background-repeat: repeat;
+            background-size: 40px;
+            pointer-events: none;
+        }
+
+        .vision-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vision-badge {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .vision-badge span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #c9a84c;
+            background: rgba(201, 168, 76, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .vision-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .vision-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #c9a84c;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .vision-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            color: #1a5a2a;
+            line-height: 1.2;
+        }
+
+        .vision-content-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .vision-text {
+            flex: 1.2;
+            min-width: 280px;
+        }
+
+        .vision-description {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #3a4a3a;
+            margin-bottom: 2rem;
+        }
+
+        .vision-highlight {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border-left: 4px solid #e8c86a;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+        }
+
+        .vision-highlight p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #1a5a2a;
+            margin-bottom: 0.5rem;
+        }
+
+        .vision-highlight small {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #c9a84c;
+            letter-spacing: 1px;
+        }
+
+        .vision-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .vision-stat-item {
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+            padding: 1rem;
+            background: rgba(201, 168, 76, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .vision-stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(201, 168, 76, 0.15);
+        }
+
+        .vision-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #c9a84c;
+        }
+
+        .vision-stat-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #5a6a5a;
+        }
+
+        .vision-image {
+            flex: 0.8;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .vision-image-card {
+            background: linear-gradient(135deg, #fff, #f8f9f0);
+            border-radius: 24px;
+            padding: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-image-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(232, 200, 106, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .vision-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .vision-icon-item {
+            text-align: center;
+            padding: 1.5rem 0.5rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .vision-icon-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .vision-icon-item i {
+            font-size: 2rem;
             color: #e8c86a;
+            margin-bottom: 0.8rem;
+            display: block;
         }
 
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        .vision-icon-item span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1a5a2a;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 0.6;
-            }
-        }
-
-        /* ==================== MAIN CONTENT ==================== */
+        /* ==================== REMAINING SECTIONS ==================== */
         .content-wrapper {
             background: linear-gradient(180deg, #f5f7e9 0%, #e8f0e0 100%);
             padding: 4rem 0;
@@ -453,7 +529,6 @@
             padding: 0 20px;
         }
 
-        /* Section Styles */
         .seed-section {
             margin-bottom: 5rem;
             opacity: 0;
@@ -487,19 +562,12 @@
             border-radius: 2px;
         }
 
-        .section-title-seed.center {
-            text-align: center;
-        }
+        .section-title-seed.center { text-align: center; }
+        .section-title-seed.center::after { left: 50%; transform: translateX(-50%); }
 
-        .section-title-seed.center::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* Cards Grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -510,90 +578,28 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.4s ease;
-            cursor: pointer;
         }
 
-        .hope-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
+        .hope-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
 
         .card-icon {
             background: linear-gradient(135deg, #1a5a2a, #2a7a3a);
             padding: 2rem;
             text-align: center;
         }
+        .card-icon i { font-size: 2.8rem; color: #e8c86a; }
 
-        .card-icon i {
-            font-size: 2.8rem;
-            color: #e8c86a;
-        }
+        .card-content { padding: 2rem; }
+        .card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #1a5a2a; margin-bottom: 1rem; font-weight: 600; }
+        .card-content p { color: #4a5a4a; line-height: 1.7; font-size: 0.95rem; }
 
-        .card-content {
-            padding: 2rem;
-        }
+        .timeline-container { position: relative; padding: 2rem 0; }
+        .timeline-item { display: flex; gap: 2rem; margin-bottom: 3rem; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease; }
+        .timeline-item.visible-timeline { opacity: 1; transform: translateX(0); }
+        .timeline-year { flex: 0 0 120px; font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #c9a84c; }
+        .timeline-content { flex: 1; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06); border-left: 4px solid #e8c86a; }
+        .timeline-content h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #1a5a2a; margin-bottom: 0.5rem; }
 
-        .card-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: #1a5a2a;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .card-content p {
-            color: #4a5a4a;
-            line-height: 1.7;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
-        }
-
-        /* Timeline / Milestone Section */
-        .timeline-container {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.6s ease;
-        }
-
-        .timeline-item.visible-timeline {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .timeline-year {
-            flex: 0 0 120px;
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #c9a84c;
-        }
-
-        .timeline-content {
-            flex: 1;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
-            border-left: 4px solid #e8c86a;
-        }
-
-        .timeline-content h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: #1a5a2a;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        /* Quote Section */
         .quote-section {
             background: linear-gradient(135deg, #1a5a2a, #2a7a3a);
             border-radius: 20px;
@@ -604,37 +610,10 @@
             position: relative;
             overflow: hidden;
         }
+        .quote-section::before { content: '"'; position: absolute; top: -40px; left: 20px; font-size: 180px; opacity: 0.08; font-family: 'Playfair Display', serif; }
+        .quote-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 4vw, 1.8rem); font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.6; position: relative; z-index: 1; }
+        .quote-author { margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; }
 
-        .quote-section::before {
-            content: '"';
-            position: absolute;
-            top: -40px;
-            left: 20px;
-            font-size: 180px;
-            opacity: 0.08;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .quote-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            font-style: italic;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
-
-        .quote-author {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        /* Statistics / Impact Numbers */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -642,35 +621,11 @@
             text-align: center;
             margin: 3rem 0;
         }
+        .stat-item { background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease; }
+        .stat-item:hover { transform: scale(1.03); }
+        .stat-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 800; color: #c9a84c; }
+        .stat-label { font-family: 'Montserrat', sans-serif; color: #4a5a4a; margin-top: 0.5rem; font-size: 0.85rem; letter-spacing: 0.5px; }
 
-        .stat-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: scale(1.03);
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: #c9a84c;
-        }
-
-        .stat-label {
-            font-family: 'Montserrat', sans-serif;
-            color: #4a5a4a;
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* CTA Button */
         .cta-button {
             display: inline-block;
             background: linear-gradient(135deg, #c9a84c, #e8c86a);
@@ -685,16 +640,10 @@
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+        .cta-button:hover { transform: translateY(-2px); background: linear-gradient(135deg, #dbb85a, #f0d87a); }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(135deg, #dbb85a, #f0d87a);
-        }
-
-        /* ==================== FOOTER STYLES ==================== */
+        /* Footer Styles */
         .footer {
             background: linear-gradient(135deg, #0a4d68, #088395);
             color: white;
@@ -702,228 +651,44 @@
             position: relative;
             overflow: hidden;
         }
+        .footer::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%); animation: pulse 15s infinite linear; z-index: 0; }
+        @keyframes pulse { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .footer-content { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .footer-column { flex: 1; min-width: 250px; margin-bottom: 40px; padding: 0 15px; }
+        .footer-column h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 20px; position: relative; padding-bottom: 10px; color: #F8DE7E; }
+        .footer-column h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: #e8c86a; border-radius: 2px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: all 0.3s ease; display: flex; align-items: center; font-size: 0.9rem; }
+        .footer-links a i { margin-right: 10px; font-size: 13px; color: #e8c86a; }
+        .footer-links a:hover { color: #e8c86a; transform: translateX(5px); }
+        .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+        .footer-social a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.08); border-radius: 50%; color: white; font-size: 16px; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.15); }
+        .footer-social a:hover { background: #e8c86a; color: #0a4d68; transform: translateY(-3px); }
+        .footer-bottom { position: relative; z-index: 1; text-align: center; padding-top: 30px; margin-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
+        .footer-bottom p { opacity: 0.7; font-size: 0.85rem; font-family: 'Montserrat', sans-serif; }
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-            animation: pulse 15s infinite linear;
-            z-index: 0;
-        }
-
-        @keyframes pulse {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 40px;
-            padding: 0 15px;
-        }
-
-        .footer-column h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            color: #F8DE7E;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: #e8c86a;
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a i {
-            margin-right: 10px;
-            font-size: 13px;
-            color: #e8c86a;
-        }
-
-        .footer-links a:hover {
-            color: #e8c86a;
-            transform: translateX(5px);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            color: white;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .footer-social a:hover {
-            background: #e8c86a;
-            color: #0a4d68;
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .footer-bottom p {
-            opacity: 0.7;
-            font-size: 0.85rem;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .timeline-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .timeline-year {
-                flex: 0 0 auto;
-                font-size: 1.5rem;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .hero-seed {
-                min-height: 100vh;
-            }
-
-            .hero-buttons {
-                gap: 0.7rem;
-                margin: 1.5rem 0 1.5rem 0;
-            }
-
-            .hero-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.8rem;
-            }
-
-            .seed-tagline {
-                margin: 1rem auto 2rem auto;
-            }
-
-            .goal-highlight {
-                padding: 0.7rem 1.2rem;
-                gap: 8px;
-                margin-top: 1.5rem;
-            }
-
-            .footer-column {
-                flex: 0 0 100%;
-                text-align: center;
-            }
-            
-            .footer-column h3::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .footer-links a {
-                justify-content: center;
-            }
-            
-            .footer-social {
-                justify-content: center;
-            }
+            .timeline-item { flex-direction: column; gap: 0.5rem; }
+            .timeline-year { flex: 0 0 auto; font-size: 1.5rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-buttons { gap: 0.7rem; margin: 1.5rem 0; }
+            .hero-btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+            .vision-content-grid { flex-direction: column; }
+            .vision-stats { justify-content: center; }
+            .footer-column { flex: 0 0 100%; text-align: center; }
+            .footer-column h3::after { left: 50%; transform: translateX(-50%); }
+            .footer-links a { justify-content: center; }
+            .footer-social { justify-content: center; }
         }
 
         @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-buttons {
-                gap: 0.6rem;
-            }
-
-            .hero-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.7rem;
-            }
-
-            .seed-tagline {
-                font-size: 1rem;
-            }
-
-            .goal-highlight span {
-                font-size: 0.75rem;
-            }
-
-            .goal-amount {
-                font-size: 0.9rem;
-            }
-            
-            .quote-section {
-                padding: 2rem 1rem;
-            }
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero-buttons { gap: 0.6rem; }
+            .hero-btn { padding: 0.5rem 1rem; font-size: 0.7rem; }
+            .vision-icon-grid { grid-template-columns: repeat(2, 1fr); }
+            .vision-stat-item { min-width: 80px; }
         }
     </style>
 </head>
@@ -942,7 +707,6 @@
         <img src="images/seedpage.jpg" alt="Seeds of Hope" class="hero-bg" id="heroBg">
         <div class="hero-overlay"></div>
         
-        <!-- Animated Gold Strips -->
         <div class="strips-container">
             <div class="gold-strip"></div>
             <div class="gold-strip"></div>
@@ -953,36 +717,19 @@
         </div>
         
         <div class="hero-content">
-            <!-- Church Name (subtle, elegant) -->
             <div class="church-name">St. Mary's Syro-Malabar Mission, Wellington</div>
-            
-            <!-- Main Heading with elegant style -->
-            <h1 class="seed-heading" id="animatedHeading">
-                <!-- Letters will be inserted by JavaScript -->
-            </h1>
-            
-            <!-- Elegant Tagline with beautiful serif font -->
+            <h1 class="seed-heading" id="animatedHeading">Seeds of Hope</h1>
             <p class="seed-tagline">
                 "We are building a church our community can call home. A place to worship, to belong, and to pass our faith on to the children who come after us."
             </p>
             
-            <!-- Navigation Buttons -->
             <div class="hero-buttons">
-                <button class="hero-btn hero-btn-primary" onclick="scrollToSection('give')">
-                    <i class="fas fa-heart"></i> Give Now
-                </button>
-                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('vision')">
-                    <i class="fas fa-eye"></i> Our Vision
-                </button>
-                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('journey')">
-                    <i class="fas fa-road"></i> Our Journey
-                </button>
-                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('goal')">
-                    <i class="fas fa-bullseye"></i> Our Goal
-                </button>
+                <button class="hero-btn hero-btn-primary" onclick="scrollToSection('give')"><i class="fas fa-heart"></i> Give Now</button>
+                <button class="hero-btn hero-btn-secondary" onclick="scrollToVision()"><i class="fas fa-eye"></i> Our Vision</button>
+                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('journey')"><i class="fas fa-road"></i> Our Journey</button>
+                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('goal')"><i class="fas fa-bullseye"></i> Our Goal</button>
             </div>
             
-            <!-- Goal Highlight - Elegant gold badge -->
             <div class="goal-highlight">
                 <i class="fas fa-church"></i>
                 <span>Our Goal:</span>
@@ -991,72 +738,130 @@
             </div>
         </div>
         
-        <div class="scroll-indicator" onclick="scrollToContent()">
+        <div class="scroll-indicator" onclick="scrollToVision()">
             <span>DISCOVER MORE</span>
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- MAIN CONTENT -->
+    <!-- ==================== VISION SECTION (NEW DESIGN) ==================== -->
+    <section id="vision-section" class="vision-wrapper">
+        <div class="vision-container">
+            <div class="vision-badge" data-aos="fade-up">
+                <span>What We're Building</span>
+            </div>
+            
+            <div class="vision-heading" data-aos="fade-up" data-aos-delay="100">
+                <div class="vision-subtitle">More Than a Building</div>
+                <h2 class="vision-title">A Place to Belong</h2>
+            </div>
+            
+            <div class="vision-content-grid">
+                <div class="vision-text" data-aos="fade-right" data-aos-duration="800">
+                    <p class="vision-description">
+                        The Seeds of Hope campaign is about more than purchasing a building. It is about creating a permanent home where faith can flourish, communities can gather, children can learn, and service to others can continue to grow.
+                    </p>
+                    
+                    <div class="vision-highlight" data-aos="fade-up" data-aos-delay="200">
+                        <p>"We dream of a place where our children and grandchildren can grow in faith, celebrate our rich Syro-Malabar traditions, and remain connected to Christ and one another."</p>
+                        <small>— Seeds of Hope Initiative</small>
+                    </div>
+                    
+                    <p class="vision-description" data-aos="fade-up" data-aos-delay="300">
+                        We also envision a center from which we can continue serving the wider Wellington community through acts of charity, compassion, and outreach.
+                    </p>
+                    
+                    <div class="vision-stats" data-aos="fade-up" data-aos-delay="400">
+                        <div class="vision-stat-item">
+                            <div class="vision-stat-number">350+</div>
+                            <div class="vision-stat-label">Families</div>
+                        </div>
+                        <div class="vision-stat-item">
+                            <div class="vision-stat-number">250+</div>
+                            <div class="vision-stat-label">Children</div>
+                        </div>
+                        <div class="vision-stat-item">
+                            <div class="vision-stat-number">2006</div>
+                            <div class="vision-stat-label">Founded</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="vision-image" data-aos="fade-left" data-aos-duration="800">
+                    <div class="vision-image-card">
+                        <div class="vision-icon-grid">
+                            <div class="vision-icon-item">
+                                <i class="fas fa-church"></i>
+                                <span>Sacred Space</span>
+                            </div>
+                            <div class="vision-icon-item">
+                                <i class="fas fa-users"></i>
+                                <span>Community</span>
+                            </div>
+                            <div class="vision-icon-item">
+                                <i class="fas fa-child"></i>
+                                <span>Faith Formation</span>
+                            </div>
+                            <div class="vision-icon-item">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <span>Outreach</span>
+                            </div>
+                            <div class="vision-icon-item">
+                                <i class="fas fa-pray"></i>
+                                <span>Worship</span>
+                            </div>
+                            <div class="vision-icon-item">
+                                <i class="fas fa-tree"></i>
+                                <span>Growing Together</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GOAL SECTION (CARDS) ==================== -->
     <div class="content-wrapper">
         <div class="container-seed">
             
-            <!-- Vision Section (Our Vision) -->
-            <section class="seed-section" id="vision-section" data-aos="fade-up">
-                <h2 class="section-title-seed">Our Vision</h2>
-                <p style="font-size: 1.05rem; line-height: 1.8; color: #2a3a2a; font-family: 'Poppins', sans-serif;">
-                    The "Seeds of Hope" initiative represents our commitment to nurturing faith, fostering community growth, 
-                    and spreading the message of love and compassion throughout Wellington. Like seeds planted in fertile soil, 
-                    we believe that every small act of kindness, every prayer, and every moment of fellowship grows into something 
-                    beautiful that transforms lives and communities.
-                </p>
-            </section>
-            
-            <!-- Hope in Action Cards (Our Goal section) -->
-            <section class="seed-section" id="goal-section" data-aos="fade-up" data-aos-delay="100">
+            <!-- Goal Section -->
+            <section class="seed-section" id="goal-section" data-aos="fade-up">
                 <h2 class="section-title-seed">Our Goal</h2>
                 <div class="cards-grid">
                     <div class="hope-card">
-                        <div class="card-icon">
-                            <i class="fas fa-church"></i>
-                        </div>
+                        <div class="card-icon"><i class="fas fa-church"></i></div>
                         <div class="card-content">
                             <h3>Building Our Home</h3>
-                            <p>Our vision is to establish a dedicated church home where our community can gather, worship, and grow together in faith for generations to come.</p>
+                            <p>Establish a dedicated church home where our community can gather, worship, and grow together in faith for generations to come.</p>
                         </div>
                     </div>
                     <div class="hope-card">
-                        <div class="card-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
+                        <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
                         <div class="card-content">
                             <h3>Community Outreach</h3>
-                            <p>Supporting families in need through food drives, prayer groups, and pastoral care. Our mission extends beyond the church walls to embrace the wider Wellington community.</p>
+                            <p>Support families through food drives, prayer groups, and pastoral care, extending beyond church walls to embrace the wider Wellington community.</p>
                         </div>
                     </div>
                     <div class="hope-card">
-                        <div class="card-icon">
-                            <i class="fas fa-child"></i>
-                        </div>
+                        <div class="card-icon"><i class="fas fa-child"></i></div>
                         <div class="card-content">
                             <h3>Youth Empowerment</h3>
-                            <p>Nurturing the next generation of faithful leaders through catechism, youth groups (SMYM), and leadership programs that build character and faith.</p>
+                            <p>Nurture the next generation through catechism, youth groups (SMYM), and leadership programs that build character and faith.</p>
                         </div>
                     </div>
                     <div class="hope-card">
-                        <div class="card-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
+                        <div class="card-icon"><i class="fas fa-seedling"></i></div>
                         <div class="card-content">
                             <h3>Faith Formation</h3>
-                            <p>Deepening spiritual roots through Bible study groups, prayer meetings, and sacramental preparation programs for all age groups.</p>
+                            <p>Deepen spiritual roots through Bible study groups, prayer meetings, and sacramental preparation programs for all ages.</p>
                         </div>
                     </div>
                 </div>
             </section>
             
-            <!-- Timeline / Milestones (Our Journey) -->
-            <section class="seed-section" id="journey-section" data-aos="fade-up" data-aos-delay="200">
+            <!-- Journey Section -->
+            <section class="seed-section" id="journey-section" data-aos="fade-up">
                 <h2 class="section-title-seed">Our Journey</h2>
                 <div class="timeline-container">
                     <div class="timeline-item">
@@ -1090,46 +895,28 @@
                 </div>
             </section>
             
-            <!-- Inspirational Quote -->
+            <!-- Quote Section -->
             <section class="quote-section" data-aos="zoom-in">
-                <div class="quote-text">
-                    "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up."
-                </div>
+                <div class="quote-text">"Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up."</div>
                 <div class="quote-author">— GALATIANS 6:9</div>
             </section>
             
-            <!-- Impact Statistics -->
+            <!-- Statistics -->
             <section class="seed-section" data-aos="fade-up">
                 <h2 class="section-title-seed center">Our Growing Impact</h2>
                 <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">350+</div>
-                        <div class="stat-label">FAMILIES IN COMMUNITY</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">250+</div>
-                        <div class="stat-label">CATECHISM STUDENTS</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">25+</div>
-                        <div class="stat-label">VOLUNTEER TEACHERS</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">7</div>
-                        <div class="stat-label">ACTIVE FAMILY WARDS</div>
-                    </div>
+                    <div class="stat-item"><div class="stat-number">350+</div><div class="stat-label">FAMILIES</div></div>
+                    <div class="stat-item"><div class="stat-number">250+</div><div class="stat-label">CATECHISM STUDENTS</div></div>
+                    <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">VOLUNTEER TEACHERS</div></div>
+                    <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">FAMILY WARDS</div></div>
                 </div>
             </section>
             
-            <!-- Call to Action / Give Now -->
+            <!-- Give Section -->
             <section class="seed-section" id="give-section" style="text-align: center;" data-aos="fade-up">
                 <h2 class="section-title-seed center">Support Our Mission</h2>
-                <p style="max-width: 700px; margin: 0 auto 2rem auto; color: #4a5a4a; font-family: 'Poppins', sans-serif;">
-                    Every contribution brings us closer to our dream of having a church home. Your generosity helps us build a place where faith can flourish for generations to come.
-                </p>
-                <button class="cta-button" onclick="scrollToSection('give')">
-                    <i class="fas fa-hand-holding-heart"></i> Give Now
-                </button>
+                <p style="max-width: 700px; margin: 0 auto 2rem auto; color: #4a5a4a;">Every contribution brings us closer to our dream of having a church home. Your generosity helps us build a place where faith can flourish for generations to come.</p>
+                <button class="cta-button" onclick="scrollToSection('give')"><i class="fas fa-hand-holding-heart"></i> Give Now</button>
             </section>
             
         </div>
@@ -1145,283 +932,111 @@
     <script src="includes/menu.js"></script>
 
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+        AOS.init({ duration: 1000, once: true, offset: 100 });
 
-        // Scroll to section function
         function scrollToSection(sectionId) {
-            let element = null;
-            switch(sectionId) {
-                case 'give':
-                    element = document.getElementById('give-section');
-                    break;
-                case 'vision':
-                    element = document.getElementById('vision-section');
-                    break;
-                case 'journey':
-                    element = document.getElementById('journey-section');
-                    break;
-                case 'goal':
-                    element = document.getElementById('goal-section');
-                    break;
-                default:
-                    element = document.getElementById('vision-section');
-            }
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            let element = document.getElementById(sectionId + '-section');
+            if (!element) element = document.getElementById(sectionId);
+            if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function scrollToVision() {
+            document.getElementById('vision-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            
-            // ==================== LOAD NOTICE BAR ====================
+            // Load notice bar
             fetch("includes/notice.html")
                 .then(response => response.text())
-                .then(data => {
-                    document.getElementById("notice-container").innerHTML = data;
-                    console.log("Notice bar loaded");
-                })
-                .catch(error => {
-                    console.log("Notice loading error:", error);
-                    fetch("notice.html")
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById("notice-container").innerHTML = data;
-                        })
-                        .catch(err => console.log("Notice fallback error:", err));
-                });
+                .then(data => document.getElementById("notice-container").innerHTML = data)
+                .catch(() => fetch("notice.html").then(r => r.text()).then(d => document.getElementById("notice-container").innerHTML = d));
 
-            // ==================== LOAD FOOTER ====================
+            // Load footer
             fetch('includes/footer.html')
                 .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                    console.log("Footer loaded");
-                })
-                .catch(error => {
-                    console.log("Footer loading error:", error);
-                    fetch('footer.html')
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById('footer-placeholder').innerHTML = data;
-                        })
-                        .catch(err => console.log("Footer fallback error:", err));
-                });
+                .then(data => document.getElementById("footer-placeholder").innerHTML = data)
+                .catch(() => fetch('footer.html').then(r => r.text()).then(d => document.getElementById("footer-placeholder").innerHTML = d));
 
-            // ==================== SCROLL TO TOP ====================
+            // Scroll to top
             const scrollTop = document.getElementById('scroll-top');
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    scrollTop.classList.add('active');
-                } else {
-                    scrollTop.classList.remove('active');
-                }
-            });
+            window.addEventListener('scroll', () => scrollTop.classList.toggle('active', window.pageYOffset > 300));
+            scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-            scrollTop.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // ==================== ANIMATED HEADING ====================
-            // Using elegant staggered fade-in without letter movement for a more professional look
+            // Animated heading
             const headingText = "Seeds of Hope";
             const headingContainer = document.getElementById('animatedHeading');
-            
             if (headingContainer) {
                 headingContainer.innerHTML = '';
                 for (let i = 0; i < headingText.length; i++) {
-                    const letter = headingText[i];
                     const span = document.createElement('span');
                     span.className = 'seed-letter';
-                    span.textContent = letter === ' ' ? '\u00A0' : letter;
-                    span.style.animationDelay = `${0.05 + i * 0.04}s`;
-                    span.style.opacity = '0';
-                    span.style.animation = 'fadeInUp 0.5s ease forwards';
+                    span.textContent = headingText[i] === ' ' ? '\u00A0' : headingText[i];
                     span.style.animationDelay = `${0.05 + i * 0.04}s`;
                     headingContainer.appendChild(span);
                 }
             }
 
-            // Add seed-letter styles dynamically
-            const style = document.createElement('style');
-            style.textContent = `
-                .seed-letter {
-                    display: inline-block;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    animation: fadeInUpLetter 0.5s ease forwards;
-                }
-                @keyframes fadeInUpLetter {
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-
-            // ==================== GOLD STRIPS ANIMATION ====================
-            const strips = document.querySelectorAll('.gold-strip');
-            strips.forEach((strip, index) => {
-                setTimeout(() => {
-                    strip.classList.add('animate');
-                }, 500 + index * 400);
+            // Gold strips animation
+            document.querySelectorAll('.gold-strip').forEach((strip, i) => {
+                setTimeout(() => strip.classList.add('animate'), 500 + i * 400);
             });
 
-            // ==================== FALLING GOLD LEAVES ANIMATION ====================
+            // Gold leaves
             function createGoldLeaf() {
                 const leaf = document.createElement('div');
                 leaf.className = 'gold-leaf';
                 leaf.style.left = Math.random() * 100 + '%';
                 leaf.style.animationDuration = 8 + Math.random() * 10 + 's';
-                leaf.style.animationDelay = Math.random() * 8 + 's';
                 leaf.style.width = 12 + Math.random() * 20 + 'px';
                 leaf.style.height = leaf.style.width;
                 document.querySelector('.hero-seed').appendChild(leaf);
-                
-                setTimeout(() => {
-                    leaf.remove();
-                }, 18000);
+                setTimeout(() => leaf.remove(), 18000);
             }
-            
-            setTimeout(() => {
-                setInterval(createGoldLeaf, 2000);
-            }, 2000);
+            setTimeout(() => setInterval(createGoldLeaf, 2000), 2000);
 
-            // ==================== GSAP SCROLLTRIGGER ANIMATIONS ====================
+            // GSAP ScrollTrigger animations
             gsap.registerPlugin(ScrollTrigger);
             
-            // Animate cards on scroll
             gsap.utils.toArray('.hope-card').forEach((card, i) => {
-                gsap.from(card, {
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
-                    },
-                    y: 40,
-                    opacity: 0,
-                    duration: 0.7,
-                    delay: i * 0.12,
-                    ease: 'power2.out'
-                });
+                gsap.from(card, { scrollTrigger: { trigger: card, start: 'top 85%' }, y: 40, opacity: 0, duration: 0.7, delay: i * 0.12 });
             });
             
-            // Animate timeline items
             gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-                gsap.from(item, {
-                    scrollTrigger: {
-                        trigger: item,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
-                    },
-                    x: -30,
-                    opacity: 0,
-                    duration: 0.6,
-                    delay: i * 0.12,
-                    ease: 'power2.out'
-                });
+                gsap.from(item, { scrollTrigger: { trigger: item, start: 'top 85%' }, x: -30, opacity: 0, duration: 0.6, delay: i * 0.12 });
             });
             
-            // Animate stat items
             gsap.utils.toArray('.stat-item').forEach((stat, i) => {
-                gsap.from(stat, {
-                    scrollTrigger: {
-                        trigger: stat,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse'
-                    },
-                    scale: 0.9,
-                    opacity: 0,
-                    duration: 0.5,
-                    delay: i * 0.08,
-                    ease: 'back.out(1)'
-                });
+                gsap.from(stat, { scrollTrigger: { trigger: stat, start: 'top 85%' }, scale: 0.9, opacity: 0, duration: 0.5, delay: i * 0.08 });
             });
             
-            // Parallax effect on hero background
-            gsap.to('.hero-bg', {
-                scrollTrigger: {
-                    trigger: '.hero-seed',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 1,
-                    invalidateOnRefresh: true
-                },
-                y: 80,
-                scale: 1.08,
-                ease: 'none'
-            });
-            
-            // Counter animation for statistics
+            gsap.to('.hero-bg', { scrollTrigger: { trigger: '.hero-seed', start: 'top top', end: 'bottom top', scrub: 1 }, y: 80, scale: 1.08 });
+
+            // Counter animation
             const counters = document.querySelectorAll('.stat-number');
             const counterObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const el = entry.target;
-                        const targetText = el.innerText;
-                        const target = parseInt(targetText);
+                        const target = parseInt(el.innerText);
                         if (!isNaN(target)) {
                             let current = 0;
                             const increment = target / 50;
-                            const updateCounter = () => {
+                            const update = () => {
                                 current += increment;
-                                if (current < target) {
-                                    el.innerText = Math.ceil(current) + (targetText.includes('+') ? '+' : '');
-                                    requestAnimationFrame(updateCounter);
-                                } else {
-                                    el.innerText = target + (targetText.includes('+') ? '+' : '');
-                                }
+                                if (current < target) { el.innerText = Math.ceil(current) + '+'; requestAnimationFrame(update); }
+                                else { el.innerText = target + '+'; }
                             };
-                            updateCounter();
+                            update();
                         }
                         counterObserver.unobserve(el);
                     }
                 });
             }, { threshold: 0.5 });
-            
-            counters.forEach(counter => counterObserver.observe(counter));
-            
-            // Section reveal animations
-            const sections = document.querySelectorAll('.seed-section');
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        sectionObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2 });
-            
-            sections.forEach(section => sectionObserver.observe(section));
+            counters.forEach(c => counterObserver.observe(c));
         });
         
-        // ==================== SCROLL FUNCTION ====================
-        function scrollToContent() {
-            const contentStart = document.getElementById('vision-section');
-            if (contentStart) {
-                contentStart.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        
-        // Make scrollToSection available globally
         window.scrollToSection = scrollToSection;
-        
-        // Ensure hero background loads with fallback
-        const heroBg = document.getElementById('heroBg');
-        if (heroBg) {
-            heroBg.onerror = function() {
-                this.style.background = 'linear-gradient(135deg, #0a2e1c 0%, #1a4a2a 50%, #0d331f 100%)';
-                this.style.opacity = '1';
-            };
-        }
+        window.scrollToVision = scrollToVision;
     </script>
 </body>
 </html>
