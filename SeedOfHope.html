@@ -307,7 +307,7 @@
         @keyframes gentleBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ==================== VISION SECTION (NEW DESIGN) ==================== */
+        /* ==================== VISION SECTION (UPDATED) ==================== */
         .vision-wrapper {
             background: linear-gradient(135deg, #f5f7e9 0%, #eef3e8 100%);
             padding: 5rem 0;
@@ -336,21 +336,36 @@
             z-index: 1;
         }
 
-        .vision-badge {
+        /* Section Label - Our Vision */
+        .vision-section-label {
             text-align: center;
             margin-bottom: 1.5rem;
         }
 
-        .vision-badge span {
+        .vision-section-label span {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: #c9a84c;
-            background: rgba(201, 168, 76, 0.1);
-            padding: 0.5rem 1.5rem;
+            background: rgba(201, 168, 76, 0.12);
+            padding: 0.5rem 1.8rem;
             border-radius: 50px;
             display: inline-block;
+            font-weight: 500;
+        }
+
+        .vision-badge {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .vision-badge span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: #8a9a6a;
+            font-style: italic;
         }
 
         .vision-heading {
@@ -379,7 +394,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 3rem;
-            align-items: center;
+            align-items: flex-start;
             margin-top: 2rem;
         }
 
@@ -395,65 +410,40 @@
             margin-bottom: 2rem;
         }
 
-        .vision-highlight {
-            background: white;
+        /* Updated Scripture Quote Box */
+        .vision-scripture {
+            background: linear-gradient(135deg, #fff, #fef9e6);
             border-radius: 20px;
-            padding: 1.5rem;
+            padding: 2rem;
             border-left: 4px solid #e8c86a;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             margin: 2rem 0;
+            text-align: center;
         }
 
-        .vision-highlight p {
+        .vision-scripture p {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
             color: #1a5a2a;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .vision-scripture .scripture-ref {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #c9a84c;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .vision-scripture i {
+            color: #e8c86a;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-        }
-
-        .vision-highlight small {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            color: #c9a84c;
-            letter-spacing: 1px;
-        }
-
-        .vision-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .vision-stat-item {
-            flex: 1;
-            min-width: 100px;
-            text-align: center;
-            padding: 1rem;
-            background: rgba(201, 168, 76, 0.08);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .vision-stat-item:hover {
-            transform: translateY(-5px);
-            background: rgba(201, 168, 76, 0.15);
-        }
-
-        .vision-stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 800;
-            color: #c9a84c;
-        }
-
-        .vision-stat-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #5a6a5a;
+            display: inline-block;
+            opacity: 0.6;
         }
 
         .vision-image {
@@ -676,11 +666,11 @@
             .hero-buttons { gap: 0.7rem; margin: 1.5rem 0; }
             .hero-btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
             .vision-content-grid { flex-direction: column; }
-            .vision-stats { justify-content: center; }
             .footer-column { flex: 0 0 100%; text-align: center; }
             .footer-column h3::after { left: 50%; transform: translateX(-50%); }
             .footer-links a { justify-content: center; }
             .footer-social { justify-content: center; }
+            .vision-scripture p { font-size: 1.1rem; }
         }
 
         @media (max-width: 480px) {
@@ -688,7 +678,8 @@
             .hero-buttons { gap: 0.6rem; }
             .hero-btn { padding: 0.5rem 1rem; font-size: 0.7rem; }
             .vision-icon-grid { grid-template-columns: repeat(2, 1fr); }
-            .vision-stat-item { min-width: 80px; }
+            .vision-scripture { padding: 1.5rem; }
+            .vision-scripture p { font-size: 1rem; }
         }
     </style>
 </head>
@@ -744,10 +735,15 @@
         </div>
     </section>
 
-    <!-- ==================== VISION SECTION (NEW DESIGN) ==================== -->
+    <!-- ==================== VISION SECTION (UPDATED) ==================== -->
     <section id="vision-section" class="vision-wrapper">
         <div class="vision-container">
-            <div class="vision-badge" data-aos="fade-up">
+            <!-- Our Vision Label -->
+            <div class="vision-section-label" data-aos="fade-up">
+                <span>— OUR VISION —</span>
+            </div>
+            
+            <div class="vision-badge" data-aos="fade-up" data-aos-delay="50">
                 <span>What We're Building</span>
             </div>
             
@@ -762,29 +758,16 @@
                         The Seeds of Hope campaign is about more than purchasing a building. It is about creating a permanent home where faith can flourish, communities can gather, children can learn, and service to others can continue to grow.
                     </p>
                     
-                    <div class="vision-highlight" data-aos="fade-up" data-aos-delay="200">
-                        <p>"We dream of a place where our children and grandchildren can grow in faith, celebrate our rich Syro-Malabar traditions, and remain connected to Christ and one another."</p>
-                        <small>— Seeds of Hope Initiative</small>
+                    <!-- Updated Scripture Quote Box -->
+                    <div class="vision-scripture" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+                        <div class="scripture-ref">— 2 CORINTHIANS 9:7</div>
                     </div>
                     
                     <p class="vision-description" data-aos="fade-up" data-aos-delay="300">
                         We also envision a center from which we can continue serving the wider Wellington community through acts of charity, compassion, and outreach.
                     </p>
-                    
-                    <div class="vision-stats" data-aos="fade-up" data-aos-delay="400">
-                        <div class="vision-stat-item">
-                            <div class="vision-stat-number">350+</div>
-                            <div class="vision-stat-label">Families</div>
-                        </div>
-                        <div class="vision-stat-item">
-                            <div class="vision-stat-number">250+</div>
-                            <div class="vision-stat-label">Children</div>
-                        </div>
-                        <div class="vision-stat-item">
-                            <div class="vision-stat-number">2006</div>
-                            <div class="vision-stat-label">Founded</div>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="vision-image" data-aos="fade-left" data-aos-duration="800">
