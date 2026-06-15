@@ -2,285 +2,634 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Seeds of Hope - St. Mary's Syro-Malabar Mission</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Seeds of Hope | St. Mary's Syro-Malabar Mission Wellington</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- GSAP and ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <!-- Menu Navigation CSS (shared) -->
     <link rel="stylesheet" href="includes/header.css">
-    <link rel="stylesheet" href="seedofhope.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fefcf5;
+            color: #1a2c2e;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Cinematic Styles */
+        .seed-hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0b3b2f 0%, #1a5c4a 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/church.jpg') center center/cover no-repeat;
+            opacity: 0.3;
+            mix-blend-mode: overlay;
+        }
+        
+        .hero-overlay-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(105deg, rgba(11,59,47,0.92) 0%, rgba(26,92,74,0.7) 70%, rgba(220,240,210,0.5) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+        
+        .animated-heading {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 5rem;
+            color: #FFE4A3;
+            text-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            color: white;
+            max-width: 780px;
+            margin: 1.5rem auto 2rem;
+            line-height: 1.5;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2rem 0 1.8rem;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255,255,240,0.15);
+            backdrop-filter: blur(8px);
+            color: white;
+            border: 1px solid rgba(255,228,163,0.6);
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: #F4A261;
+            color: #1e3a2f;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            background: #e76f51;
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline-light:hover {
+            background: rgba(244,162,97,0.7);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .goal-highlight {
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(4px);
+            color: #FFE4A3;
+            letter-spacing: 1px;
+        }
+        
+        /* Sections */
+        .section-padding {
+            padding: 100px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Marcellus', serif;
+            color: #1e4a3b;
+        }
+        
+        .section-sub {
+            font-size: 1.2rem;
+            color: #e76f51;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+        
+        .vision-grid {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .vision-text {
+            flex: 1.5;
+        }
+        
+        .vision-icon {
+            flex: 1;
+            text-align: center;
+            font-size: 8rem;
+            color: #2a9d8f;
+        }
+        
+        /* Timeline cinematic */
+        .timeline-section {
+            background: #f1f7f2;
+            border-radius: 48px;
+            margin: 40px 20px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.05);
+        }
+        
+        .timeline-node {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+        }
+        
+        .timeline-graphic {
+            flex: 0.8;
+            min-width: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .timeline-graphic svg {
+            width: 120px;
+            height: 120px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+        
+        .timeline-content {
+            flex: 3;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.8rem;
+            color: #2c6e49;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content p {
+            line-height: 1.7;
+            color: #2d3e40;
+        }
+        
+        .expand-btn {
+            background: none;
+            border: none;
+            color: #e76f51;
+            font-weight: 600;
+            margin-top: 0.8rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .extra-text {
+            display: none;
+            margin-top: 1rem;
+            border-left: 3px solid #F4A261;
+            padding-left: 1rem;
+        }
+        
+        .progress-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .progress-bar-bg {
+            background: #e0e7e3;
+            border-radius: 40px;
+            height: 28px;
+            width: 100%;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            width: 0%;
+            background: linear-gradient(90deg, #f4a261, #e76f51);
+            height: 100%;
+            border-radius: 40px;
+            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .donation-tiles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .tile {
+            flex: 1;
+            background: white;
+            border-radius: 32px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .copy-btn {
+            background: #e9ecef;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 40px;
+            margin-left: 10px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+        
+        .bank-detail {
+            background: #f8f3e6;
+            padding: 0.8rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+            word-break: break-all;
+        }
+        
+        .qr-placeholder {
+            text-align: center;
+            background: #f1f1e8;
+            padding: 1rem;
+            border-radius: 28px;
+        }
+        
+        .final-message {
+            background: #2c6e49;
+            color: white;
+            text-align: center;
+            border-radius: 48px;
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .animated-heading { font-size: 2.6rem; }
+            .tagline { font-size: 1.1rem; }
+            .section-title { font-size: 2rem; }
+            .hero-buttons .btn { padding: 10px 20px; font-size: 0.85rem; }
+            .timeline-node { flex-direction: column; }
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        #notice-container, #footer-placeholder {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="soh-hero">
-        <div class="soh-hero-bg"></div>
-        <div class="soh-hero-overlay"></div>
+<!-- Notice bar placeholder -->
+<div id="notice-container"></div>
+
+<!-- Hero Section with Cinematic Letters -->
+<section class="seed-hero" id="home">
+    <div class="hero-bg-image"></div>
+    <div class="hero-overlay-gradient"></div>
+    <div class="hero-content">
+        <div class="animated-heading" id="animatedHeading">Seeds of Hope</div>
+        <p class="tagline">We are building a church our community can call home. A place to worship, to belong, and to pass our faith on to the children who come after us.</p>
         
-        <div class="soh-hero-content">
-            <div class="soh-header-graphic">
-                <svg id="header-seed-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-dasharray="5,5"/>
-                    <path id="hero-seed-shell" d="M85,110 C85,90 115,90 115,110 C115,130 85,130 85,110 Z" fill="#cfb53b" opacity="0"/>
-                    <path id="hero-stem" d="M100,105 Q95,70 110,45" fill="none" stroke="#4ade80" stroke-width="4" stroke-linecap="round"/>
-                    <path id="hero-leaf-1" d="M110,45 C120,40 130,50 115,60 Z" fill="#22c55e" opacity="0"/>
-                    <path id="hero-leaf-2" d="M98,70 C85,65 75,75 92,82 Z" fill="#16a34a" opacity="0"/>
-                </svg>
-            </div>
-
-            <h1 class="soh-title" id="soh-main-title">Seeds of Hope</h1>
-            <p class="soh-tagline">We are building a church our community can call home. A place to worship, to belong, and to pass our faith on to the children who come after us.</p>
-            
-            <div class="soh-hero-buttons">
-                <a href="#plant-seed" class="soh-btn soh-btn-primary">Give Now</a>
-                <a href="#our-vision" class="soh-btn soh-btn-secondary">Our Vision</a>
-                <a href="#our-journey" class="soh-btn soh-btn-secondary">Our Journey</a>
-                <a href="#our-goal" class="soh-btn soh-btn-secondary">Our Goal</a>
-            </div>
-
-            <div class="soh-goal-highlight">
-                <i class="fa-solid fa-church"></i>
-                <span>Our goal <strong>$1,000,000</strong> toward our own church home</span>
-            </div>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" id="giveNowBtn">Give Now</button>
+            <button class="btn btn-outline-light" id="visionNavBtn">Our Vision</button>
+            <button class="btn btn-outline-light" id="journeyNavBtn">Our Journey</button>
+            <button class="btn btn-outline-light" id="goalNavBtn">Our Goal</button>
         </div>
-    </header>
-
-    <section id="our-vision" class="soh-vision-section">
-        <div class="soh-container">
-            <span class="soh-preheading">What we are building</span>
-            <h2 class="soh-section-heading">More than a building. A place to belong.</h2>
-            <div class="soh-grid-2col">
-                <div class="soh-vision-text">
-                    <p class="soh-lead-paragraph">The Seeds of Hope campaign is about more than purchasing a building. It is about creating a permanent home where faith can flourish, communities can gather, children can learn, and service to others can continue to grow.</p>
-                    <p>We dream of a place where our children and grandchildren can grow in faith, celebrate our rich Syro-Malabar traditions, and remain connected to Christ and one another. We also envision a centre from which we can continue serving the wider Wellington community through acts of charity, compassion, and outreach.</p>
-                </div>
-                <div class="soh-vision-cards">
-                    <div class="soh-vcard">
-                        <i class="fa-solid fa-cross-hairs vcard-icon"></i>
-                        <h3>Spiritual Roots</h3>
-                        <p>Preserving our sacred Syro-Malabar Liturgy and traditions.</p>
-                    </div>
-                    <div class="soh-vcard">
-                        <i class="fa-solid fa-people-roof vcard-icon"></i>
-                        <h3>Community Home</h3>
-                        <p>A multi-functional space for faith formation, catechism, and fellowship.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="goal-highlight">
+            <i class="fas fa-seedling"></i> Our goal $1,000,000 toward our own church home
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="our-journey" class="soh-journey-section">
-        <div class="soh-container">
-            <h2 class="soh-section-heading text-center">Together, we are putting down roots</h2>
+<!-- Vision Section -->
+<section id="vision" class="section-padding">
+    <div class="vision-grid fade-up">
+        <div class="vision-text">
+            <p class="section-sub">What we are building</p>
+            <h2 class="section-title">More than a building. A place to belong.</h2>
+            <p style="font-size: 1.2rem; line-height: 1.7; margin-top: 1.2rem;">The Seeds of Hope campaign is about more than purchasing a building. It is about creating a permanent home where faith can flourish, communities can gather, children can learn, and service to others can continue to grow.<br><br>We dream of a place where our children and grandchildren can grow in faith, celebrate our rich Syro-Malabar traditions, and remain connected to Christ and one another. We also envision a centre from which we can continue serving the wider Wellington community through acts of charity, compassion, and outreach.</p>
+        </div>
+        <div class="vision-icon">
+            <i class="fas fa-church"></i>
+        </div>
+    </div>
+</section>
+
+<!-- Journey: Animated timeline -->
+<section id="journey" class="timeline-section section-padding" style="margin-top:0;">
+    <h2 class="section-title text-center" style="text-align:center;">Together, we are putting down roots</h2>
+    <div id="timelineContainer"></div>
+</section>
+
+<!-- Goal & Progress -->
+<section id="goal" class="section-padding">
+    <div class="progress-card fade-up">
+        <h2 class="section-title" style="font-size:2rem;">Our Capital Campaign Goal</h2>
+        <p style="font-size:1.4rem; font-weight:600;">$50,000 raised of $1,000,000</p>
+        <div class="progress-bar-bg">
+            <div class="progress-fill" id="progressFill" style="width: 5%;"></div>
+        </div>
+        <p><i class="fas fa-hand-holding-heart"></i> Every contribution brings us closer to our permanent church home. We have currently raised <strong>$50,000 NZD</strong> thanks to your generosity.</p>
+    </div>
+</section>
+
+<!-- Plant your seed of hope (Donation) -->
+<section id="donate" class="section-padding" style="background:#fef7ed; border-radius: 60px; margin: 0 20px 40px;">
+    <div class="fade-up">
+        <p class="section-sub">Plant your seed of hope</p>
+        <h2 class="section-title">How Your Donation Will Help</h2>
+        
+        <div class="donation-tiles">
+            <!-- Bank Transfer -->
+            <div class="tile">
+                <i class="fas fa-university" style="font-size: 2.5rem; color:#2a9d8f;"></i>
+                <h3 style="margin: 1rem 0;">Give by Bank Transfer</h3>
+                <div class="bank-detail">
+                    <strong>Account name:</strong> St. Mary's Syro-Malabar Mission Wellington
+                    <button class="copy-btn" data-copy="St. Mary's Syro-Malabar Mission Wellington">Copy</button>
+                </div>
+                <div class="bank-detail">
+                    <strong>Account number:</strong> 02-0506-0320095-011
+                    <button class="copy-btn" data-copy="02-0506-0320095-011">Copy</button>
+                </div>
+                <p style="margin-top: 10px;"><strong>Reference:</strong> Seeds of Hope + your name</p>
+            </div>
             
-            <div class="soh-interactive-timeline-container">
-                <div class="soh-timeline-graphic-pane">
-                    <div class="sticky-graphic-box">
-                        <svg id="timeline-growth-svg" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
-                            <g id="scene-unbroken-seed">
-                                <path id="seed-base" d="M100,160 C85,160 75,145 75,130 C75,110 100,80 100,80 C100,80 125,110 125,130 C125,145 115,160 100,160 Z" fill="#c29b38"/>
-                            </g>
-                            <g id="scene-roots">
-                                <path id="root-main" d="M100,160 Q100,210 90,250" fill="none" stroke="#d4a373" stroke-width="3" stroke-dasharray="200" stroke-dashoffset="200"/>
-                                <path id="root-branch-1" d="M98,190 Q75,210 60,230" fill="none" stroke="#d4a373" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="100"/>
-                                <path id="root-branch-2" d="M101,210 Q120,230 135,250" fill="none" stroke="#d4a373" stroke-width="2" stroke-dasharray="100" stroke-dashoffset="100"/>
-                            </g>
-                            <g id="scene-stem">
-                                <path id="stem-growth" d="M100,100 Q105,70 95,30" fill="none" stroke="#4ade80" stroke-width="4" stroke-dasharray="200" stroke-dashoffset="200"/>
-                            </g>
-                            <g id="scene-leaves">
-                                <path id="leaf-left" d="M97,60 C75,55 65,35 96,35 Z" fill="#22c55e" stroke="none" transform="scale(0)" style="transform-origin: 97px 60px;"/>
-                                <path id="leaf-right" d="M99,45 C120,40 130,20 100,22 Z" fill="#16a34a" stroke="none" transform="scale(0)" style="transform-origin: 99px 45px;"/>
-                            </g>
+            <!-- Online Give -->
+            <div class="tile">
+                <i class="fas fa-mobile-alt" style="font-size: 2.5rem; color:#e76f51;"></i>
+                <h3 style="margin: 1rem 0;">Give Online</h3>
+                <div class="qr-placeholder">
+                    <div style="background: white; display: inline-block; padding: 10px; border-radius: 20px;">
+                        <!-- SVG QR simulation (custom style) -->
+                        <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="120" height="120" fill="#fff" />
+                            <path d="M30,30 h20 v20 h-20 z M60,30 h20 v20 h-20 z M30,60 h20 v20 h-20 z M80,30 h20 v20 h-20 z M30,90 h20 v20 h-20 z M80,80 h10 v10 h-10 z M95,80 h10 v10 h-10 z M80,95 h10 v10 h-10 z M95,95 h10 v10 h-10 z" fill="#1e3a2f"/>
+                            <rect x="60" y="60" width="15" height="15" fill="#1e3a2f"/>
                         </svg>
                     </div>
-                </div>
-
-                <div class="soh-timeline-text-pane">
-                    
-                    <div class="soh-timeline-chapter" id="chap-1">
-                        <div class="chapter-badge">2006</div>
-                        <h3>The Humble Beginning</h3>
-                        <div class="chapter-excerpt">
-                            <p>St. Mary’s Syro-Malabar Mission, Wellington began its journey in 2006 with just 15 families and 7 children attending catechism under the leadership of Fr. Joseph Akkara CMI...</p>
-                        </div>
-                        <div class="chapter-full-content">
-                            <p>At that time, the community gathered for a single monthly Holy Qurbana, celebrated at St. Francis de Sales Catholic Church, Island Bay. What began as a small gathering of faith has since grown into a vibrant and united mission community.</p>
-                        </div>
-                        <button class="soh-toggle-expand-btn">Read Full Chapter <i class="fa-solid fa-chevron-down"></i></button>
-                    </div>
-
-                    <div class="soh-timeline-chapter" id="chap-2">
-                        <div class="chapter-badge">2009</div>
-                        <h3>Strengthening The Foundation</h3>
-                        <div class="chapter-excerpt">
-                            <p>In 2009, under the leadership of Fr. Varghese Thuruthichira, a new chapter began for the community. The parish grew to 40 families with 20 catechism students...</p>
-                        </div>
-                        <div class="chapter-full-content">
-                            <p>This critical transitional phase significantly strengthened its foundation for future development. During this period, the community moved its worship to St Andrew's Church, Newlands, where it continues to gather, with Holy Qurbana celebrated twice a month.</p>
-                        </div>
-                        <button class="soh-toggle-expand-btn">Read Full Chapter <i class="fa-solid fa-chevron-down"></i></button>
-                    </div>
-
-                    <div class="soh-timeline-chapter" id="chap-3">
-                        <div class="chapter-badge">2011</div>
-                        <h3>Structuring the Mission Wards</h3>
-                        <div class="chapter-excerpt">
-                            <p>In 2011, under the leadership of Fr. Sebastian Vandanamthadathi, the parish continued to grow steadily. As the faithful expanded across the Wellington region, the community was organised into family wards...</p>
-                        </div>
-                        <div class="chapter-full-content">
-                            <p>Beginning with St. Chavara, St. Alphonsa, and St. Thomas Wards, the parish rapidly scaled to 100 families with 50 catechism students. Worship operations continued systematically at St Andrew's Church, Newlands. This period also marked the beginning of regular family ward gatherings, centred on prayer and the Rosary, strengthening fellowship within the community.</p>
-                        </div>
-                        <button class="soh-toggle-expand-btn">Read Full Chapter <i class="fa-solid fa-chevron-down"></i></button>
-                    </div>
-
-                    <div class="soh-timeline-chapter" id="chap-4">
-                        <div class="chapter-badge">2017 - 2022</div>
-                        <h3>Growth, Consolidation & Testing Times</h3>
-                        <div class="chapter-excerpt">
-                            <p>In 2017, under the leadership of Fr. Biju Xavier, the parish entered a strong phase of growth. The community expanded to over 250 families, leading to seven family wards...</p>
-                        </div>
-                        <div class="chapter-full-content">
-                            <p>The catechism programme grew to around 180–200 students, alongside active ministries such as altar service, choir, and the SMYM youth group. A formal parish council was established with regular reporting, financial accountability, and IRD charity registration.</p>
-                            <p>Following the closure of St Andrew's Church, Newlands, the parish relocated to St Thomas More Church in 2018. In 2019, the community joyfully returned to St Andrew’s Church. However, when it closed again in 2022, the parish faced a challenging period without a permanent place of worship. Despite extensive efforts and appeals, no suitable space was available, and parish materials were temporarily stored in members’ homes.</p>
-                        </div>
-                        <button class="soh-toggle-expand-btn">Read Full Chapter <i class="fa-solid fa-chevron-down"></i></button>
-                    </div>
-
-                    <div class="soh-timeline-chapter" id="chap-5">
-                        <div class="chapter-badge">2023 - 2026</div>
-                        <h3>The Courageous Path Forward</h3>
-                        <div class="chapter-excerpt">
-                            <p>In 2023, the community was once again blessed to return to St Andrew's Church. In 2024, the parish took a significant step forward with the appointment of Fr. Joseph Kunnackkattu...</p>
-                        </div>
-                        <div class="chapter-full-content">
-                            <p>Under his leadership, the community entered a period of deep structural renewal, introducing ministries such as Mathruvedi, Pithruvedi, Young Couples Ministry, and multiple choir groups. Registered records climbed past 330 families and 250+ active catechism students.</p>
-                            <p>In 2025, the community faced an existential crisis when the Johnsonville Parish announced the sale of St Andrew’s Church. This deeply affected the faithful, as the parish regularly gathers over 800 participants for major celebrations. In response, the parish made a courageous decision to work towards purchasing the church to secure a permanent spiritual home. In May 2026, the fundraising initiative officially launched to preserve this place of worship for generations to come.</p>
-                        </div>
-                        <button class="soh-toggle-expand-btn">Read Full Chapter <i class="fa-solid fa-chevron-down"></i></button>
-                    </div>
-
+                    <p style="margin: 12px 0;">Scan to donate via Givealittle</p>
+                    <button class="btn btn-primary" id="giveOnlineBtn">Give Now</button>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <p style="text-align:center; max-width:800px; margin:1rem auto;">Every dollar donated will go directly toward the purchase of a permanent church property for St. Mary’s Syro-Malabar Mission Wellington. Whether you can give $10, $100, $1,000, or more, your contribution will bring us one step closer to securing a home for worship, formation, and community life.</p>
+    </div>
+</section>
 
-    <section id="our-goal" class="soh-goal-section">
-        <div class="soh-container max-w-md">
-            <h2 class="soh-section-heading text-center">Our Campaign Financial Goal</h2>
-            <p class="text-center">Tracking our collective progress toward securing a permanent spiritual home.</p>
-            
-            <div class="soh-progress-card">
-                <div class="progress-stats">
-                    <div class="stat-box">
-                        <span class="stat-label">Current Progress</span>
-                        <span class="stat-val" id="current-raised">$50,000 <small>NZD</small></span>
-                    </div>
-                    <div class="stat-box text-right">
-                        <span class="stat-label">Target Goal</span>
-                        <span class="stat-val">$1,000,000 <small>NZD</small></span>
-                    </div>
-                </div>
-                
-                <div class="soh-progress-track">
-                    <div class="soh-progress-bar" id="goal-progress" data-target-percent="5">
-                        <span class="progress-indicator-tag">5%</span>
-                    </div>
-                </div>
-                
-                <p class="progress-footer-note text-center">Inaugurated in May 2026. Every donation directly funds our land and property acquisition framework.</p>
-            </div>
-        </div>
-    </section>
+<!-- Final inspiring message -->
+<section class="section-padding">
+    <div class="final-message fade-up">
+        <i class="fas fa-tree" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+        <h2 style="font-size: 2rem;">Together, let's plant hope and build our Church.</h2>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 1rem auto 0;">Your generosity helps us build a spiritual home for our community, today and for the generations to follow.</p>
+    </div>
+</section>
 
-    <section id="plant-seed" class="soh-donation-section">
-        <div class="soh-container">
-            <span class="soh-preheading text-center block">Make an Impact</span>
-            <h2 class="soh-section-heading text-center">Plant your seed of hope</h2>
-            <h4 class="soh-section-subheading text-center">How Your Donation Will Help</h4>
-            
-            <div class="soh-grid-2col gap-lg margin-top-md">
-                <div class="donation-method-card">
-                    <div class="method-header">
-                        <i class="fa-solid fa-building-columns method-icon"></i>
-                        <h3>6a. Give By Bank Transfer</h3>
-                    </div>
-                    <div class="bank-details-wrapper">
-                        <div class="detail-row">
-                            <span class="detail-label">Account Name</span>
-                            <div class="copy-field-group">
-                                <span class="copy-text-value" id="acc-name">St. Mary's Syro-Malabar Mission Wellington</span>
-                                <button class="soh-copy-btn" onclick="copyToClipboard('acc-name', this)">
-                                    <i class="fa-regular fa-copy"></i> Copy
-                                </button>
-                            </div>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-label">Account Number</span>
-                            <div class="copy-field-group">
-                                <span class="copy-text-value" id="acc-num">02-0506-0320095-011</span>
-                                <button class="soh-copy-btn" onclick="copyToClipboard('acc-num', this)">
-                                    <i class="fa-regular fa-copy"></i> Copy
-                                </button>
-                            </div>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-label">Reference Required</span>
-                            <div class="static-field-value">Seeds of Hope + Your Name</div>
-                        </div>
-                    </div>
-                </div>
+<!-- Footer placeholder -->
+<div id="footer-placeholder"></div>
 
-                <div class="donation-method-card text-center flex-center-col">
-                    <div class="method-header">
-                        <i class="fa-solid fa-globe method-icon"></i>
-                        <h3>6b. Give Online</h3>
-                    </div>
-                    <p class="margin-bottom-sm">Scan the QR code below using your mobile device or click the button to give via Givealittle securely.</p>
-                    
-                    <div class="qr-code-box">
-                        <svg class="qr-placeholder-svg" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="0" y="0" width="100" height="100" fill="#ffffff" />
-                            <path d="M10,10 h30 v30 h-30 z M15,15 h20 v20 h-20 z M22,22 h6 v6 h-6 z" fill="#1b4332"/>
-                            <path d="M60,10 h30 v30 h-30 z M65,15 h20 v20 h-20 z M72,22 h6 v6 h-6 z" fill="#1b4332"/>
-                            <path d="M10,60 h30 v30 h-30 z M15,65 h20 v20 h-20 z M22,72 h6 v6 h-6 z" fill="#1b4332"/>
-                            <path d="M45,15 h5 v5 h-5 z M52,10 h5 v10 h-5 z M45,28 h10 v5 h-10 z M55,35 h5 v5 h-5 z M45,45 h5 v10 h-5 z M10,48 h10 v5 h-10 z M25,52 h5 v5 h-5 z M52,52 h12 v5 h-12 z M68,48 h8 v5 h-8 z M82,45 h8 v12 h-8 z" fill="#2d6a4f"/>
-                            <path d="M48,62 h8 v5 h-8 z M62,62 h5 v12 h-5 z M75,62 h15 v5 h-15 z M48,72 h10 v5 h-10 z M52,82 h12 v8 h-12 z M70,78 h8 v10 h-8 z M85,75 h5 v15 h-5 z" fill="#2d6a4f"/>
-                        </svg>
-                    </div>
-
-                    <a href="https://givealittle.co.nz" target="_blank" rel="noopener noreferrer" class="soh-btn soh-btn-primary margin-top-sm width-full-mobile">
-                        <i class="fa-solid fa-heart"></i> Give Now
-                    </a>
-                </div>
-            </div>
-
-            <div class="soh-donation-footer-callout">
-                <p><strong>Every dollar donated will go directly toward the purchase of a permanent church property for St. Mary’s Syro-Malabar Mission Wellington.</strong></p>
-                <p>Whether you can give $10, $100, $1,000, or more, your contribution will bring us one step closer to securing a home for worship, formation, and community life.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="soh-closing-emotional-callout">
-        <div class="soh-closing-bg-overlay"></div>
-        <div class="soh-container text-center position-relative">
-            <h2 class="closing-title">Together, let's plant hope and build our Church.</h2>
-            <div class="closing-divider"></div>
-            <p class="closing-desc">Your generosity helps us build a spiritual home for our community, today and for the generations to follow.</p>
-        </div>
-    </section>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="seedofhope.js"></script>
+<script>
+    // ---------- LOAD NOTICE & FOOTER (like index.html) ----------
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch("includes/notice.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("notice-container").innerHTML = data)
+            .catch(() => fetch("notice.html").then(res => res.text()).then(data => document.getElementById("notice-container").innerHTML = data).catch(e => console.log("notice missing")));
+        
+        fetch("includes/footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer-placeholder").innerHTML = data)
+            .catch(() => fetch("footer.html").then(res => res.text()).then(data => document.getElementById("footer-placeholder").innerHTML = data)));
     
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Notice bar and header navigation scripts execution can map down here
-            // to automatically sync layout consistency.
+        // ---------- ANIMATED HEADER LETTERS (fade-in left to right per letter) ----------
+        const headingElem = document.getElementById("animatedHeading");
+        const originalText = headingElem.innerText;
+        headingElem.innerHTML = "";
+        [...originalText].forEach((letter, idx) => {
+            let span = document.createElement("span");
+            span.innerText = letter === " " ? "\u00A0" : letter;
+            span.style.opacity = "0";
+            span.style.display = "inline-block";
+            span.style.transform = "translateX(-12px)";
+            span.style.transition = `all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) ${idx * 0.06}s`;
+            headingElem.appendChild(span);
         });
-    </script>
+        setTimeout(() => {
+            document.querySelectorAll("#animatedHeading span").forEach(span => {
+                span.style.opacity = "1";
+                span.style.transform = "translateX(0)";
+            });
+        }, 100);
+        
+        // GSAP ScrollTrigger for fade-up
+        gsap.registerPlugin(ScrollTrigger);
+        const faders = document.querySelectorAll('.fade-up');
+        faders.forEach(el => {
+            ScrollTrigger.create({
+                trigger: el,
+                start: "top 85%",
+                onEnter: () => el.classList.add('visible'),
+                once: true
+            });
+        });
+        
+        // Timeline data with expandable full stories
+        const timelineData = [
+            { title: "2006: The Unbroken Seed", short: "St. Mary’s Syro-Malabar Mission, Wellington began its journey in 2006 with just 15 families and 7 children attending catechism under the leadership of Fr. Joseph Akkara CMI.", full: "St. Mary’s Syro-Malabar Mission, Wellington began its journey in 2006 with just 15 families and 7 children attending catechism under the leadership of Fr. Joseph Akkara CMI. At that time, the community gathered for a single monthly Holy Qurbana, celebrated at St. Francis de Sales Catholic Church, Island Bay. What began as a small gathering of faith has since grown into a vibrant and united mission community.", svg: "seed" },
+            { title: "2009: Roots Emerging", short: "In 2009, under Fr. Varghese Thuruthichira, the parish grew to 40 families with 20 catechism students, moving worship to St Andrew's Church, Newlands.", full: "In 2009, under the leadership of Fr. Varghese Thuruthichira, a new chapter began for the community. The parish grew to 40 families with 20 catechism students, strengthening its foundation for future development. During this period, the community moved its worship to St Andrew's Church, Newlands, where it continues to gather, with Holy Qurbana celebrated twice a month.", svg: "roots" },
+            { title: "2011: Green Stem Arising", short: "Under Fr. Sebastian Vandanamthadathi, the parish organized into family wards, growing to 100 families with 50 catechism students.", full: "In 2011, under the leadership of Fr. Sebastian Vandanamthadathi, the parish continued to grow steadily. As the faithful expanded across the Wellington region, the community was organised into family wards, beginning with St. Chavara, St. Alphonsa, and St. Thomas Wards. The parish grew to 100 families with 50 catechism students, continuing its worship at St Andrew's Church, Newlands with Holy Qurbana celebrated twice a month. This period also marked the beginning of regular family ward gatherings, centred on prayer and the Rosary, strengthening fellowship within the community.", svg: "stem" },
+            { title: "2017-2022: First Leaf – Growth & Trials", short: "Under Fr. Biju Xavier, community expanded to 250+ families with structured parish life, faced church closure and challenging period.", full: "In 2017, under the leadership of Fr. Biju Xavier, the parish entered a strong phase of growth and consolidation. The community expanded to over 250 families, leading to the formation of seven family wards and a more structured parish life. The catechism programme grew to around 180–200 students, alongside active ministries such as altar service, choir, and the SMYM youth group.\n\nA formal parish council was established with regular reporting, financial accountability, and IRD charity registration. Catechism classes were held on all four Sundays of the month, and Holy Qurbana was celebrated twice monthly, with additional services during Holy Week, Christmas, and other special occasions. To support growing parish needs, families contributed a monthly donation—initially $20, later increased to $50 as expenses grew.\n\nFollowing the closure of St Andrew's Church, Newlands, the parish relocated to St Thomas More Church in 2018. In 2019, the community joyfully returned to St Andrew’s Church, Newlands after its reopening, continuing its worship there until 2022.\n\nWhen St Andrew’s Church closed again in 2022, the parish faced a challenging period without a permanent place of worship. Despite extensive efforts and appeals to multiple churches and the Diocese of Wellington, no suitable worship space was available. During this difficult time, the community struggled to gather regularly, and parish materials were temporarily stored in members’ homes to keep them safe.", svg: "leaf1" },
+            { title: "2023–2026: Second Leaf – Renewal & The Great Commitment", short: "Renewed under Fr. Joseph Kunnackkattu, facing sale of church, the community decides to purchase its own home.", full: "In 2023, the community was once again blessed to return to St Andrew's Church, Newlands, continuing its worship with renewed joy and stability.\n\nIn 2024, the parish took a significant step forward with the appointment of Fr. Joseph Kunnackkattu, sent by the Syro-Malabar Eparchy of Melbourne. Under his leadership, the community entered a period of renewal and re-formation, introducing ministries such as Mathruvedi, Pithruvedi, Young Couples Ministry, and multiple choir groups. Family registration was also made mandatory, strengthening parish structure, with over 330 families and 250+ catechism students now actively registered.\n\nIn 2025, the community faced a serious challenge when the Johnsonville Parish announced the sale of St Andrew’s Church. This deeply affected the faithful, as the parish regularly gathers over 800 participants for major Holy Qurbana celebrations and maintains six days of weekly services. With limited alternatives available, the community prayerfully and urgently explored options, seeking support from other churches and the Diocese of Wellington.\n\nIn response, the parish made a courageous decision to work towards purchasing the church to secure a permanent spiritual home for future generations. As most families are working households, this has been a significant financial challenge, yet the community continues to contribute with faith and determination. In May 2026, the parish officially inaugurated its fundraising initiative, appealing for wider support to preserve this place of worship and strengthen its mission for generations to come.", svg: "leaf2" }
+        ];
+        
+        const container = document.getElementById("timelineContainer");
+        function renderTimeline() {
+            container.innerHTML = "";
+            timelineData.forEach((item, idx) => {
+                const node = document.createElement("div");
+                node.className = "timeline-node fade-up";
+                node.setAttribute("data-idx", idx);
+                // SVG graphic
+                let svgHtml = "";
+                if (item.svg === "seed") {
+                    svgHtml = `<svg viewBox="0 0 100 100"><circle cx="50" cy="65" r="12" fill="#8B5A2B"/><path d="M50,20 L50,53" stroke="#5a3e1b" stroke-width="3"/><ellipse cx="50" cy="20" rx="8" ry="12" fill="#6F4E2E"/></svg>`;
+                } else if (item.svg === "roots") {
+                    svgHtml = `<svg viewBox="0 0 100 100"><path d="M50,45 L50,70 M50,70 L35,85 M50,70 L65,85 M50,70 L50,90" stroke="#5a3e1b" stroke-width="3" fill="none"/><circle cx="50" cy="40" r="10" fill="#A77B3E"/></svg>`;
+                } else if (item.svg === "stem") {
+                    svgHtml = `<svg viewBox="0 0 100 100"><path d="M50,70 L50,30" stroke="#2f6b47" stroke-width="4"/><ellipse cx="50" cy="30" rx="6" ry="10" fill="#4c9f70"/></svg>`;
+                } else if (item.svg === "leaf1") {
+                    svgHtml = `<svg viewBox="0 0 100 100"><path d="M50,70 L50,40" stroke="#2f6b47" stroke-width="3"/><path d="M50,45 Q30,35 35,50 Q42,58 50,55" fill="#70b77e"/></svg>`;
+                } else {
+                    svgHtml = `<svg viewBox="0 0 100 100"><path d="M50,70 L50,30" stroke="#2f6b47" stroke-width="3"/><path d="M50,38 Q70,25 75,45 Q65,58 50,50" fill="#84c98e"/><path d="M50,50 Q25,38 30,58 Q42,68 50,60" fill="#9dd4a3"/></svg>`;
+                }
+                
+                node.innerHTML = `
+                    <div class="timeline-graphic">${svgHtml}</div>
+                    <div class="timeline-content">
+                        <h3>${item.title}</h3>
+                        <p>${item.short}</p>
+                        <button class="expand-btn" data-idx="${idx}"><i class="fas fa-angle-down"></i> Read more</button>
+                        <div class="extra-text" id="extra-${idx}"><p>${item.full}</p></div>
+                    </div>
+                `;
+                container.appendChild(node);
+            });
+            
+            document.querySelectorAll(".expand-btn").forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    const idx = btn.getAttribute("data-idx");
+                    const extraDiv = document.getElementById(`extra-${idx}`);
+                    if (extraDiv.style.display === "none" || !extraDiv.style.display) {
+                        extraDiv.style.display = "block";
+                        btn.innerHTML = '<i class="fas fa-angle-up"></i> Read less';
+                    } else {
+                        extraDiv.style.display = "none";
+                        btn.innerHTML = '<i class="fas fa-angle-down"></i> Read more';
+                    }
+                });
+            });
+            // re-trigger GSAP for new fade-ups
+            document.querySelectorAll('.timeline-node').forEach(el => {
+                ScrollTrigger.create({
+                    trigger: el,
+                    start: "top 85%",
+                    onEnter: () => el.classList.add('visible'),
+                    once: true
+                });
+            });
+        }
+        renderTimeline();
+        
+        // progress bar animation on goal view
+        const progressFill = document.getElementById("progressFill");
+        const goalSection = document.getElementById("goal");
+        ScrollTrigger.create({
+            trigger: goalSection,
+            start: "top 70%",
+            onEnter: () => {
+                if (progressFill && progressFill.style.width !== "5%") return;
+                progressFill.style.width = "5%";
+                setTimeout(() => { progressFill.style.width = "5%"; }, 100);
+                // we set at 5% of 1M = 50k
+                progressFill.style.width = "5%";
+            },
+            once: true
+        });
+        // manually set after load to 5% if visible
+        if (goalSection.getBoundingClientRect().top < window.innerHeight*0.7) progressFill.style.width = "5%";
+        
+        // Navigation buttons
+        document.getElementById("visionNavBtn")?.addEventListener("click", () => {
+            document.getElementById("vision").scrollIntoView({ behavior: "smooth" });
+        });
+        document.getElementById("journeyNavBtn")?.addEventListener("click", () => {
+            document.getElementById("journey").scrollIntoView({ behavior: "smooth" });
+        });
+        document.getElementById("goalNavBtn")?.addEventListener("click", () => {
+            document.getElementById("goal").scrollIntoView({ behavior: "smooth" });
+        });
+        document.getElementById("giveNowBtn")?.addEventListener("click", () => {
+            document.getElementById("donate").scrollIntoView({ behavior: "smooth" });
+        });
+        // online give now button within tile
+        document.getElementById("giveOnlineBtn")?.addEventListener("click", () => {
+            window.open("#", "_blank"); // placeholder, later givealittle link
+            alert("Givealittle link will be added soon. Thank you for your support!");
+        });
+        
+        // Copy to clipboard functionality
+        const copyBtns = document.querySelectorAll(".copy-btn");
+        copyBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const textToCopy = btn.getAttribute("data-copy");
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const originalText = btn.innerText;
+                    btn.innerText = "Copied!";
+                    setTimeout(() => { btn.innerText = originalText; }, 2000);
+                });
+            });
+        });
+        
+        // fallback if includes/ missing: add dummy notice style 
+        if (!document.querySelector("#notice-container .notice-bar")) {
+            console.log("notice bar not found, but page fine.");
+        }
+    });
+</script>
 </body>
 </html>
