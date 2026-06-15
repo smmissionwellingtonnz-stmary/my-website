@@ -108,7 +108,6 @@
             z-index: 2;
         }
 
-        /* Animated Gold Strips */
         .strips-container {
             position: absolute;
             top: 0;
@@ -122,10 +121,7 @@
 
         .gold-strip {
             position: absolute;
-            background: linear-gradient(90deg, 
-                rgba(200, 168, 76, 0) 0%, 
-                rgba(232, 200, 106, 0.4) 50%, 
-                rgba(200, 168, 76, 0) 100%);
+            background: linear-gradient(90deg, rgba(200, 168, 76, 0) 0%, rgba(232, 200, 106, 0.4) 50%, rgba(200, 168, 76, 0) 100%);
             height: 100%;
             width: 2px;
             opacity: 0;
@@ -150,7 +146,6 @@
             100% { width: 150%; opacity: 0; transform: translateX(-50%); }
         }
 
-        /* Animated gold leaves */
         .gold-leaf {
             position: absolute;
             width: 20px;
@@ -307,7 +302,7 @@
         @keyframes gentleBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ==================== VISION SECTION (UPDATED) ==================== */
+        /* ==================== VISION SECTION ==================== */
         .vision-wrapper {
             background: linear-gradient(135deg, #f5f7e9 0%, #eef3e8 100%);
             padding: 5rem 0;
@@ -336,7 +331,6 @@
             z-index: 1;
         }
 
-        /* Section Label - Our Vision */
         .vision-section-label {
             text-align: center;
             margin-bottom: 1.5rem;
@@ -410,7 +404,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Updated Scripture Quote Box */
         .vision-scripture {
             background: linear-gradient(135deg, #fff, #fef9e6);
             border-radius: 20px;
@@ -507,6 +500,217 @@
             color: #1a5a2a;
         }
 
+        /* ==================== JOURNEY SECTION (CINEMATIC TIMELINE) ==================== */
+        .journey-wrapper {
+            background: linear-gradient(180deg, #e8f0e0 0%, #dce8d0 100%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 40%, rgba(201, 168, 76, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .journey-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .journey-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .journey-section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #c9a84c;
+            margin-bottom: 1rem;
+        }
+
+        .journey-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            color: #1a5a2a;
+            line-height: 1.2;
+        }
+
+        /* Timeline Growth Path */
+        .growth-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-connector {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #c9a84c, #e8c86a, #c9a84c);
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-connector {
+                left: 30px;
+            }
+        }
+
+        /* Seed Growth Stages */
+        .growth-stage {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .growth-stage.visible-stage {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stage-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #fff, #fef9e6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border: 2px solid #e8c86a;
+        }
+
+        .stage-icon i {
+            font-size: 2rem;
+            color: #c9a84c;
+        }
+
+        @media (max-width: 768px) {
+            .stage-icon {
+                left: 30px;
+                transform: translateX(0);
+                width: 55px;
+                height: 55px;
+            }
+            .stage-icon i {
+                font-size: 1.5rem;
+            }
+        }
+
+        .stage-content {
+            width: 45%;
+            margin-left: auto;
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(232, 200, 106, 0.2);
+        }
+
+        .growth-stage:nth-child(even) .stage-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .stage-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+            }
+        }
+
+        .stage-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #c9a84c;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stage-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a5a2a;
+            margin-bottom: 1rem;
+        }
+
+        .stage-description {
+            color: #4a5a4a;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .stage-description.expanded {
+            display: block;
+        }
+
+        .stage-description.collapsed {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: #c9a84c;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            color: #e8c86a;
+            gap: 8px;
+        }
+
+        .read-more-btn i {
+            font-size: 0.75rem;
+        }
+
+        /* Animated Seed SVG */
+        .seed-animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            display: none;
+        }
+
         /* ==================== REMAINING SECTIONS ==================== */
         .content-wrapper {
             background: linear-gradient(180deg, #f5f7e9 0%, #e8f0e0 100%);
@@ -583,13 +787,6 @@
         .card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #1a5a2a; margin-bottom: 1rem; font-weight: 600; }
         .card-content p { color: #4a5a4a; line-height: 1.7; font-size: 0.95rem; }
 
-        .timeline-container { position: relative; padding: 2rem 0; }
-        .timeline-item { display: flex; gap: 2rem; margin-bottom: 3rem; opacity: 0; transform: translateX(-30px); transition: all 0.6s ease; }
-        .timeline-item.visible-timeline { opacity: 1; transform: translateX(0); }
-        .timeline-year { flex: 0 0 120px; font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #c9a84c; }
-        .timeline-content { flex: 1; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06); border-left: 4px solid #e8c86a; }
-        .timeline-content h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #1a5a2a; margin-bottom: 0.5rem; }
-
         .quote-section {
             background: linear-gradient(135deg, #1a5a2a, #2a7a3a);
             border-radius: 20px;
@@ -659,8 +856,6 @@
         .footer-bottom p { opacity: 0.7; font-size: 0.85rem; font-family: 'Montserrat', sans-serif; }
 
         @media (max-width: 768px) {
-            .timeline-item { flex-direction: column; gap: 0.5rem; }
-            .timeline-year { flex: 0 0 auto; font-size: 1.5rem; }
             .cards-grid { grid-template-columns: 1fr; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .hero-buttons { gap: 0.7rem; margin: 1.5rem 0; }
@@ -717,7 +912,7 @@
             <div class="hero-buttons">
                 <button class="hero-btn hero-btn-primary" onclick="scrollToSection('give')"><i class="fas fa-heart"></i> Give Now</button>
                 <button class="hero-btn hero-btn-secondary" onclick="scrollToVision()"><i class="fas fa-eye"></i> Our Vision</button>
-                <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('journey')"><i class="fas fa-road"></i> Our Journey</button>
+                <button class="hero-btn hero-btn-secondary" onclick="scrollToJourney()"><i class="fas fa-road"></i> Our Journey</button>
                 <button class="hero-btn hero-btn-secondary" onclick="scrollToSection('goal')"><i class="fas fa-bullseye"></i> Our Goal</button>
             </div>
             
@@ -735,10 +930,9 @@
         </div>
     </section>
 
-    <!-- ==================== VISION SECTION (UPDATED) ==================== -->
+    <!-- VISION SECTION -->
     <section id="vision-section" class="vision-wrapper">
         <div class="vision-container">
-            <!-- Our Vision Label -->
             <div class="vision-section-label" data-aos="fade-up">
                 <span>— OUR VISION —</span>
             </div>
@@ -758,7 +952,6 @@
                         The Seeds of Hope campaign is about more than purchasing a building. It is about creating a permanent home where faith can flourish, communities can gather, children can learn, and service to others can continue to grow.
                     </p>
                     
-                    <!-- Updated Scripture Quote Box -->
                     <div class="vision-scripture" data-aos="fade-up" data-aos-delay="200">
                         <i class="fas fa-quote-left"></i>
                         <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
@@ -773,30 +966,12 @@
                 <div class="vision-image" data-aos="fade-left" data-aos-duration="800">
                     <div class="vision-image-card">
                         <div class="vision-icon-grid">
-                            <div class="vision-icon-item">
-                                <i class="fas fa-church"></i>
-                                <span>Sacred Space</span>
-                            </div>
-                            <div class="vision-icon-item">
-                                <i class="fas fa-users"></i>
-                                <span>Community</span>
-                            </div>
-                            <div class="vision-icon-item">
-                                <i class="fas fa-child"></i>
-                                <span>Faith Formation</span>
-                            </div>
-                            <div class="vision-icon-item">
-                                <i class="fas fa-hand-holding-heart"></i>
-                                <span>Outreach</span>
-                            </div>
-                            <div class="vision-icon-item">
-                                <i class="fas fa-pray"></i>
-                                <span>Worship</span>
-                            </div>
-                            <div class="vision-icon-item">
-                                <i class="fas fa-tree"></i>
-                                <span>Growing Together</span>
-                            </div>
+                            <div class="vision-icon-item"><i class="fas fa-church"></i><span>Sacred Space</span></div>
+                            <div class="vision-icon-item"><i class="fas fa-users"></i><span>Community</span></div>
+                            <div class="vision-icon-item"><i class="fas fa-child"></i><span>Faith Formation</span></div>
+                            <div class="vision-icon-item"><i class="fas fa-hand-holding-heart"></i><span>Outreach</span></div>
+                            <div class="vision-icon-item"><i class="fas fa-pray"></i><span>Worship</span></div>
+                            <div class="vision-icon-item"><i class="fas fa-tree"></i><span>Growing Together</span></div>
                         </div>
                     </div>
                 </div>
@@ -804,11 +979,120 @@
         </div>
     </section>
 
-    <!-- ==================== GOAL SECTION (CARDS) ==================== -->
+    <!-- ==================== JOURNEY SECTION (CINEMATIC TIMELINE) ==================== -->
+    <section id="journey-section" class="journey-wrapper">
+        <div class="journey-container">
+            <div class="journey-header" data-aos="fade-up">
+                <div class="journey-section-label">— OUR JOURNEY —</div>
+                <h2 class="journey-title">Together, we are putting down roots</h2>
+            </div>
+            
+            <div class="growth-timeline">
+                <div class="timeline-connector"></div>
+                
+                <!-- Stage 1: Seed -->
+                <div class="growth-stage" data-stage="1">
+                    <div class="stage-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-year">2006</div>
+                        <h3 class="stage-title">The Seed is Planted</h3>
+                        <div class="stage-description collapsed" id="desc-1">
+                            St. Mary's Syro-Malabar Mission, Wellington began its journey in 2006 with just 15 families and 7 children attending catechism under the leadership of Fr. Joseph Akkara CMI. At that time, the community gathered for a single monthly Holy Qurbana, celebrated at St. Francis de Sales Catholic Church, Island Bay. What began as a small gathering of faith has since grown into a vibrant and united mission community.
+                        </div>
+                        <button class="read-more-btn" onclick="toggleReadMore(1)">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stage 2: Roots Breaking -->
+                <div class="growth-stage" data-stage="2">
+                    <div class="stage-icon">
+                        <i class="fas fa-root"></i>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-year">2009</div>
+                        <h3 class="stage-title">Roots Take Hold</h3>
+                        <div class="stage-description collapsed" id="desc-2">
+                            In 2009, under the leadership of Fr. Varghese Thuruthichira, a new chapter began for the community. The parish grew to 40 families with 20 catechism students, strengthening its foundation for future development. During this period, the community moved its worship to St Andrew's Church, Newlands, where it continues to gather, with Holy Qurbana celebrated twice a month.
+                        </div>
+                        <button class="read-more-btn" onclick="toggleReadMore(2)">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stage 3: Stem Emerging -->
+                <div class="growth-stage" data-stage="3">
+                    <div class="stage-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-year">2011</div>
+                        <h3 class="stage-title">The Stem Emerges</h3>
+                        <div class="stage-description collapsed" id="desc-3">
+                            In 2011, under the leadership of Fr. Sebastian Vandanamthadathi, the parish continued to grow steadily. As the faithful expanded across the Wellington region, the community was organised into family wards, beginning with St. Chavara, St. Alphonsa, and St. Thomas Wards. The parish grew to 100 families with 50 catechism students, continuing its worship at St Andrew's Church, Newlands with Holy Qurbana celebrated twice a month. This period also marked the beginning of regular family ward gatherings, centred on prayer and the Rosary, strengthening fellowship within the community.
+                        </div>
+                        <button class="read-more-btn" onclick="toggleReadMore(3)">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stage 4: First Leaf -->
+                <div class="growth-stage" data-stage="4">
+                    <div class="stage-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-year">2017</div>
+                        <h3 class="stage-title">First Leaf Unfolds</h3>
+                        <div class="stage-description collapsed" id="desc-4">
+                            In 2017, under the leadership of Fr. Biju Xavier, the parish entered a strong phase of growth and consolidation. The community expanded to over 250 families, leading to the formation of seven family wards and a more structured parish life. The catechism programme grew to around 180–200 students, alongside active ministries such as altar service, choir, and the SMYM youth group.<br><br>
+                            A formal parish council was established with regular reporting, financial accountability, and IRD charity registration. Catechism classes were held on all four Sundays of the month, and Holy Qurbana was celebrated twice monthly, with additional services during Holy Week, Christmas, and other special occasions. To support growing parish needs, families contributed a monthly donation—initially $20, later increased to $50 as expenses grew.<br><br>
+                            Following the closure of St Andrew's Church, Newlands, the parish relocated to St Thomas More Church in 2018. In 2019, the community joyfully returned to St Andrew's Church, Newlands after its reopening, continuing its worship there until 2022.<br><br>
+                            When St Andrew's Church closed again in 2022, the parish faced a challenging period without a permanent place of worship. Despite extensive efforts and appeals to multiple churches and the Diocese of Wellington, no suitable worship space was available. During this difficult time, the community struggled to gather regularly, and parish materials were temporarily stored in members' homes to keep them safe.
+                        </div>
+                        <button class="read-more-btn" onclick="toggleReadMore(4)">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stage 5: Second Leaf / Full Growth -->
+                <div class="growth-stage" data-stage="5">
+                    <div class="stage-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <div class="stage-content">
+                        <div class="stage-year">2023 - Present</div>
+                        <h3 class="stage-title">Blossoming Hope</h3>
+                        <div class="stage-description collapsed" id="desc-5">
+                            In 2023, the community was once again blessed to return to St Andrew's Church, Newlands, continuing its worship with renewed joy and stability.<br><br>
+                            In 2024, the parish took a significant step forward with the appointment of Fr. Joseph Kunnackkattu, sent by the Syro-Malabar Eparchy of Melbourne. Under his leadership, the community entered a period of renewal and re-formation, introducing ministries such as Mathruvedi, Pithruvedi, Young Couples Ministry, and multiple choir groups. Family registration was also made mandatory, strengthening parish structure, with over 330 families and 250+ catechism students now actively registered.<br><br>
+                            In 2025, the community faced a serious challenge when the Johnsonville Parish announced the sale of St Andrew's Church. This deeply affected the faithful, as the parish regularly gathers over 800 participants for major Holy Qurbana celebrations and maintains six days of weekly services. With limited alternatives available, the community prayerfully and urgently explored options, seeking support from other churches and the Diocese of Wellington.<br><br>
+                            In response, the parish made a courageous decision to work towards purchasing the church to secure a permanent spiritual home for future generations. As most families are working households, this has been a significant financial challenge, yet the community continues to contribute with faith and determination. In May 2026, the parish officially inaugurated its fundraising initiative, appealing for wider support to preserve this place of worship and strengthen its mission for generations to come.
+                        </div>
+                        <button class="read-more-btn" onclick="toggleReadMore(5)">
+                            <span>Read More</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GOAL SECTION -->
     <div class="content-wrapper">
         <div class="container-seed">
             
-            <!-- Goal Section -->
             <section class="seed-section" id="goal-section" data-aos="fade-up">
                 <h2 class="section-title-seed">Our Goal</h2>
                 <div class="cards-grid">
@@ -843,48 +1127,11 @@
                 </div>
             </section>
             
-            <!-- Journey Section -->
-            <section class="seed-section" id="journey-section" data-aos="fade-up">
-                <h2 class="section-title-seed">Our Journey</h2>
-                <div class="timeline-container">
-                    <div class="timeline-item">
-                        <div class="timeline-year">2006</div>
-                        <div class="timeline-content">
-                            <h4>The Seed is Planted</h4>
-                            <p>St. Mary's Syro-Malabar Mission begins its journey in Wellington with just a few families, gathering in faith and prayer.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2015</div>
-                        <div class="timeline-content">
-                            <h4>First Roots Take Hold</h4>
-                            <p>The community grows to over 150 families, establishing regular Holy Qurbana and catechism classes.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2020</div>
-                        <div class="timeline-content">
-                            <h4>Blossoming Growth</h4>
-                            <p>SMYM youth group established, 250+ students in catechism, and dedicated chaplain appointed for the mission.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2024</div>
-                        <div class="timeline-content">
-                            <h4>Seeds of Hope Initiative</h4>
-                            <p>Launching expanded community outreach programs and spiritual renewal initiatives for the Wellington region.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Quote Section -->
             <section class="quote-section" data-aos="zoom-in">
                 <div class="quote-text">"Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up."</div>
                 <div class="quote-author">— GALATIANS 6:9</div>
             </section>
             
-            <!-- Statistics -->
             <section class="seed-section" data-aos="fade-up">
                 <h2 class="section-title-seed center">Our Growing Impact</h2>
                 <div class="stats-grid">
@@ -895,7 +1142,6 @@
                 </div>
             </section>
             
-            <!-- Give Section -->
             <section class="seed-section" id="give-section" style="text-align: center;" data-aos="fade-up">
                 <h2 class="section-title-seed center">Support Our Mission</h2>
                 <p style="max-width: 700px; margin: 0 auto 2rem auto; color: #4a5a4a;">Every contribution brings us closer to our dream of having a church home. Your generosity helps us build a place where faith can flourish for generations to come.</p>
@@ -917,6 +1163,27 @@
     <script>
         AOS.init({ duration: 1000, once: true, offset: 100 });
 
+        // Read More functionality
+        window.toggleReadMore = function(stageId) {
+            const desc = document.getElementById(`desc-${stageId}`);
+            const btn = desc.nextElementSibling;
+            const isCollapsed = desc.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                desc.classList.remove('collapsed');
+                desc.classList.add('expanded');
+                btn.querySelector('span').textContent = 'Read Less';
+                btn.querySelector('i').classList.remove('fa-chevron-down');
+                btn.querySelector('i').classList.add('fa-chevron-up');
+            } else {
+                desc.classList.add('collapsed');
+                desc.classList.remove('expanded');
+                btn.querySelector('span').textContent = 'Read More';
+                btn.querySelector('i').classList.remove('fa-chevron-up');
+                btn.querySelector('i').classList.add('fa-chevron-down');
+            }
+        };
+
         function scrollToSection(sectionId) {
             let element = document.getElementById(sectionId + '-section');
             if (!element) element = document.getElementById(sectionId);
@@ -925,6 +1192,10 @@
 
         function scrollToVision() {
             document.getElementById('vision-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function scrollToJourney() {
+            document.getElementById('journey-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -980,12 +1251,36 @@
             // GSAP ScrollTrigger animations
             gsap.registerPlugin(ScrollTrigger);
             
-            gsap.utils.toArray('.hope-card').forEach((card, i) => {
-                gsap.from(card, { scrollTrigger: { trigger: card, start: 'top 85%' }, y: 40, opacity: 0, duration: 0.7, delay: i * 0.12 });
+            // Animate growth stages on scroll
+            const stages = document.querySelectorAll('.growth-stage');
+            stages.forEach((stage, index) => {
+                gsap.from(stage, {
+                    scrollTrigger: {
+                        trigger: stage,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: index * 0.2,
+                    ease: 'power2.out'
+                });
+                
+                // Add visible class for CSS transitions
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            stage.classList.add('visible-stage');
+                            observer.unobserve(stage);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                observer.observe(stage);
             });
             
-            gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-                gsap.from(item, { scrollTrigger: { trigger: item, start: 'top 85%' }, x: -30, opacity: 0, duration: 0.6, delay: i * 0.12 });
+            gsap.utils.toArray('.hope-card').forEach((card, i) => {
+                gsap.from(card, { scrollTrigger: { trigger: card, start: 'top 85%' }, y: 40, opacity: 0, duration: 0.7, delay: i * 0.12 });
             });
             
             gsap.utils.toArray('.stat-item').forEach((stat, i) => {
@@ -1020,6 +1315,7 @@
         
         window.scrollToSection = scrollToSection;
         window.scrollToVision = scrollToVision;
+        window.scrollToJourney = scrollToJourney;
     </script>
 </body>
 </html>
