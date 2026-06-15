@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Seeds of Hope - St. Mary's Syro-Malabar Mission Wellington</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
@@ -36,7 +36,7 @@
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
 
         ::-webkit-scrollbar-track {
@@ -44,12 +44,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #4c9a2a, #7cb518);
+            background: linear-gradient(135deg, #c9a84c, #e8c86a);
             border-radius: 10px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #5cb030, #8ed62e);
+            background: linear-gradient(135deg, #dbb85a, #f0d87a);
         }
 
         /* Scroll to top button */
@@ -57,15 +57,15 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: linear-gradient(135deg, #0a4d68, #088395);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             opacity: 0;
@@ -80,7 +80,7 @@
         }
 
         .scroll-top:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
@@ -103,7 +103,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.5;
+            opacity: 0.4;
             z-index: 1;
         }
 
@@ -113,11 +113,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(10, 46, 28, 0.75) 0%, rgba(26, 74, 42, 0.6) 100%);
+            background: linear-gradient(135deg, rgba(10, 46, 28, 0.8) 0%, rgba(26, 74, 42, 0.65) 100%);
             z-index: 2;
         }
 
-        /* Animated Green Strips */
+        /* Animated Gold Strips (more elegant) */
         .strips-container {
             position: absolute;
             top: 0;
@@ -129,45 +129,45 @@
             overflow: hidden;
         }
 
-        .green-strip {
+        .gold-strip {
             position: absolute;
             background: linear-gradient(90deg, 
-                rgba(76, 154, 42, 0) 0%, 
-                rgba(124, 181, 24, 0.5) 50%, 
-                rgba(76, 154, 42, 0) 100%);
+                rgba(200, 168, 76, 0) 0%, 
+                rgba(232, 200, 106, 0.4) 50%, 
+                rgba(200, 168, 76, 0) 100%);
             height: 100%;
-            width: 3px;
+            width: 2px;
             opacity: 0;
             transform: translateX(-50%);
         }
 
-        .green-strip:nth-child(1) { left: 10%; animation-delay: 0.5s; }
-        .green-strip:nth-child(2) { left: 25%; animation-delay: 1s; }
-        .green-strip:nth-child(3) { left: 40%; animation-delay: 1.5s; }
-        .green-strip:nth-child(4) { left: 55%; animation-delay: 2s; }
-        .green-strip:nth-child(5) { left: 70%; animation-delay: 2.5s; }
-        .green-strip:nth-child(6) { left: 85%; animation-delay: 3s; }
+        .gold-strip:nth-child(1) { left: 10%; animation-delay: 0.5s; }
+        .gold-strip:nth-child(2) { left: 25%; animation-delay: 1s; }
+        .gold-strip:nth-child(3) { left: 40%; animation-delay: 1.5s; }
+        .gold-strip:nth-child(4) { left: 55%; animation-delay: 2s; }
+        .gold-strip:nth-child(5) { left: 70%; animation-delay: 2.5s; }
+        .gold-strip:nth-child(6) { left: 85%; animation-delay: 3s; }
 
-        .green-strip.animate {
-            animation: stripGlow 2s ease-out forwards;
+        .gold-strip.animate {
+            animation: goldStripGlow 2s ease-out forwards;
         }
 
-        @keyframes stripGlow {
+        @keyframes goldStripGlow {
             0% {
-                width: 3px;
+                width: 2px;
                 opacity: 0;
                 transform: translateX(-50%);
             }
             20% {
-                opacity: 0.8;
+                opacity: 0.6;
             }
             50% {
-                width: 80px;
-                opacity: 0.6;
+                width: 60px;
+                opacity: 0.4;
                 background: linear-gradient(90deg, 
-                    rgba(76, 154, 42, 0) 0%, 
-                    rgba(124, 181, 24, 0.8) 50%, 
-                    rgba(76, 154, 42, 0) 100%);
+                    rgba(200, 168, 76, 0) 0%, 
+                    rgba(232, 200, 106, 0.6) 50%, 
+                    rgba(200, 168, 76, 0) 100%);
             }
             100% {
                 width: 150%;
@@ -176,29 +176,29 @@
             }
         }
 
-        /* Animated leaves falling */
-        .leaf {
+        /* Animated gold leaves falling (more elegant) */
+        .gold-leaf {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%237cb518"><path d="M12,2C9,7,4,9,4,14c0,4,4,6,8,6s8-2,8-6C20,9,15,7,12,2z"/></svg>');
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23e8c86a"><path d="M12,2C9,7,4,9,4,14c0,4,4,6,8,6s8-2,8-6C20,9,15,7,12,2z"/></svg>');
             background-size: contain;
-            opacity: 0.25;
+            opacity: 0.2;
             pointer-events: none;
             z-index: 2;
-            animation: leafFloat 10s linear infinite;
+            animation: goldLeafFloat 12s linear infinite;
         }
 
-        @keyframes leafFloat {
+        @keyframes goldLeafFloat {
             0% {
                 transform: translateY(-10%) rotate(0deg);
                 opacity: 0;
             }
             10% {
-                opacity: 0.3;
+                opacity: 0.25;
             }
             90% {
-                opacity: 0.3;
+                opacity: 0.25;
             }
             100% {
                 transform: translateY(100vh) rotate(360deg);
@@ -216,175 +216,182 @@
             width: 100%;
         }
 
-        /* Animated Heading - Letter by Letter */
-        .seed-heading {
+        /* Elegant Heading - St. Mary's style */
+        .church-name {
             font-family: 'Cinzel Decorative', cursive;
-            font-size: clamp(2.2rem, 8vw, 5rem);
-            font-weight: 700;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            color: rgba(232, 200, 106, 0.9);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+
+        /* Main Heading - Seeds of Hope with elegant style */
+        .seed-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 9vw, 5.5rem);
+            font-weight: 800;
             color: #F8DE7E;
-            text-shadow: 0 0 30px rgba(248, 222, 126, 0.5),
-                         0 5px 15px rgba(0, 0, 0, 0.3);
-            margin-bottom: 2rem;
-            letter-spacing: 0.03em;
-            white-space: nowrap;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Mobile fix - allow wrapping but keep as single visual line */
-        @media (max-width: 480px) {
-            .seed-heading {
-                white-space: normal;
-                flex-wrap: wrap;
-                justify-content: center;
-                margin-bottom: 1.5rem;
-            }
-            .seed-letter {
-                display: inline-block;
-            }
-        }
-
-        .seed-letter {
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+            position: relative;
             display: inline-block;
             opacity: 0;
-            transform: translateX(-30px);
-            animation: letterReveal 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
         }
 
-        @keyframes letterReveal {
-            0% {
-                opacity: 0;
-                transform: translateX(-30px) rotate(-5deg);
-                filter: blur(5px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0) rotate(0deg);
-                filter: blur(0);
+        .seed-heading::before,
+        .seed-heading::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #F8DE7E, transparent);
+            top: 50%;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        .seed-heading::before {
+            left: -80px;
+        }
+
+        .seed-heading::after {
+            right: -80px;
+        }
+
+        @media (max-width: 768px) {
+            .seed-heading::before,
+            .seed-heading::after {
+                display: none;
             }
         }
 
-        /* Tagline Styles - More spacing */
+        /* Elegant Tagline - New beautiful font */
         .seed-tagline {
-            font-size: clamp(1rem, 3.5vw, 1.3rem);
-            color: rgba(255, 255, 255, 0.95);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.92);
             font-weight: 400;
+            font-style: italic;
             line-height: 1.6;
-            margin: 2rem auto 2.5rem auto;
+            margin: 1.5rem auto 2.5rem auto;
             max-width: 700px;
             opacity: 0;
-            animation: fadeInUp 0.8s ease 1.8s forwards;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease 0.9s forwards;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.3px;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Navigation Buttons - Better spacing */
+        /* Navigation Buttons - Elegant style */
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.2rem;
-            margin: 2.5rem 0 2rem 0;
+            gap: 1rem;
+            margin: 2rem 0 2rem 0;
             opacity: 0;
-            animation: fadeInUp 0.8s ease 2.2s forwards;
+            animation: fadeInUp 0.8s ease 1.2s forwards;
         }
 
         .hero-btn {
             display: inline-block;
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            font-weight: 600;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 500;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
-            border: 2px solid transparent;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(8px);
         }
 
         .hero-btn-primary {
-            background: linear-gradient(135deg, #7cb518, #4c9a2a);
-            color: white;
-            box-shadow: 0 4px 15px rgba(76, 154, 42, 0.3);
+            background: linear-gradient(135deg, #e8c86a, #c9a84c);
+            color: #1a3a2a;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .hero-btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(76, 154, 42, 0.4);
-            background: linear-gradient(135deg, #8ed62e, #5cb030);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #f0d87a, #dbb85a);
         }
 
         .hero-btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.08);
             color: white;
-            border-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(5px);
+            border: 1px solid rgba(232, 200, 106, 0.5);
+            backdrop-filter: blur(8px);
         }
 
         .hero-btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.8);
-            transform: translateY(-3px);
+            background: rgba(232, 200, 106, 0.15);
+            border-color: rgba(232, 200, 106, 0.8);
+            transform: translateY(-2px);
         }
 
-        /* Goal Highlight - More breathing room */
+        /* Goal Highlight - Elegant gold badge */
         .goal-highlight {
-            background: linear-gradient(135deg, rgba(124, 181, 24, 0.2), rgba(76, 154, 42, 0.3));
-            backdrop-filter: blur(10px);
-            border-radius: 60px;
-            padding: 1rem 2rem;
-            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 0.9rem 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-top: 2rem;
-            border: 1px solid rgba(124, 181, 24, 0.4);
+            border: 1px solid rgba(232, 200, 106, 0.4);
             opacity: 0;
-            animation: fadeInUp 0.8s ease 2.6s forwards;
-        }
-
-        .goal-highlight span {
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-            font-weight: 600;
-            color: #F8DE7E;
-            letter-spacing: 1px;
+            animation: fadeInUp 0.8s ease 1.5s forwards;
         }
 
         .goal-highlight i {
-            margin-right: 10px;
-            color: #7cb518;
+            color: #e8c86a;
             font-size: 1.1rem;
         }
 
-        .goal-amount {
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            font-weight: 800;
-            color: #F8DE7E;
-            margin: 0 5px;
+        .goal-highlight span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.85rem, 3vw, 1rem);
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.5px;
         }
 
-        @keyframes pulseGlow {
-            0%, 100% {
-                box-shadow: 0 0 5px rgba(124, 181, 24, 0.3);
-                border-color: rgba(124, 181, 24, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(124, 181, 24, 0.6);
-                border-color: rgba(124, 181, 24, 0.8);
-            }
+        .goal-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            font-weight: 800;
+            color: #e8c86a;
+            margin: 0 4px;
         }
 
         .goal-highlight {
-            animation: fadeInUp 0.8s ease 2.6s forwards, pulseGlow 2s ease-in-out infinite;
-            animation-delay: 0s, 3s;
+            animation: fadeInUp 0.8s ease 1.5s forwards, gentlePulse 3s ease-in-out infinite;
+            animation-delay: 0s, 2s;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% {
+                border-color: rgba(232, 200, 106, 0.3);
+                box-shadow: 0 0 5px rgba(232, 200, 106, 0.1);
+            }
+            50% {
+                border-color: rgba(232, 200, 106, 0.6);
+                box-shadow: 0 0 15px rgba(232, 200, 106, 0.2);
+            }
         }
 
         /* Scroll indicator */
@@ -394,23 +401,44 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
-            color: white;
+            color: rgba(255, 255, 255, 0.8);
             text-align: center;
             cursor: pointer;
             opacity: 0;
-            animation: fadeInUp 1s ease 3.2s forwards;
+            animation: fadeInUp 1s ease 2s forwards;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
         }
 
         .scroll-indicator i {
             display: block;
-            font-size: 24px;
-            margin-top: 10px;
-            animation: bounce 2s infinite;
+            font-size: 20px;
+            margin-top: 8px;
+            animation: gentleBounce 2s infinite;
+            color: #e8c86a;
         }
 
-        @keyframes bounce {
+        @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 0.6;
+            }
         }
 
         /* ==================== MAIN CONTENT ==================== */
@@ -439,12 +467,13 @@
         }
 
         .section-title-seed {
-            font-family: 'Marcellus', serif;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(1.8rem, 5vw, 2.8rem);
             color: #1a5a2a;
             margin-bottom: 2rem;
             position: relative;
             padding-bottom: 15px;
+            font-weight: 600;
         }
 
         .section-title-seed::after {
@@ -452,9 +481,9 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #7cb518, #4c9a2a);
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(90deg, #c9a84c, #e8c86a);
             border-radius: 2px;
         }
 
@@ -477,16 +506,16 @@
 
         .hope-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
             cursor: pointer;
         }
 
         .hope-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .card-icon {
@@ -496,8 +525,8 @@
         }
 
         .card-icon i {
-            font-size: 3rem;
-            color: #F8DE7E;
+            font-size: 2.8rem;
+            color: #e8c86a;
         }
 
         .card-content {
@@ -505,14 +534,18 @@
         }
 
         .card-content h3 {
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
             color: #1a5a2a;
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .card-content p {
             color: #4a5a4a;
             line-height: 1.7;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
         }
 
         /* Timeline / Milestone Section */
@@ -537,31 +570,33 @@
 
         .timeline-year {
             flex: 0 0 120px;
+            font-family: 'Playfair Display', serif;
             font-size: 2rem;
             font-weight: 700;
-            color: #7cb518;
-            font-family: 'Cinzel Decorative', cursive;
+            color: #c9a84c;
         }
 
         .timeline-content {
             flex: 1;
             background: white;
             padding: 1.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border-left: 4px solid #7cb518;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid #e8c86a;
         }
 
         .timeline-content h4 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
             color: #1a5a2a;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         /* Quote Section */
         .quote-section {
             background: linear-gradient(135deg, #1a5a2a, #2a7a3a);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 4rem 2rem;
             text-align: center;
             margin: 4rem 0;
@@ -573,14 +608,15 @@
         .quote-section::before {
             content: '"';
             position: absolute;
-            top: -50px;
+            top: -40px;
             left: 20px;
-            font-size: 200px;
-            opacity: 0.1;
-            font-family: serif;
+            font-size: 180px;
+            opacity: 0.08;
+            font-family: 'Playfair Display', serif;
         }
 
         .quote-text {
+            font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.2rem, 4vw, 1.8rem);
             font-style: italic;
             max-width: 800px;
@@ -592,8 +628,10 @@
 
         .quote-author {
             margin-top: 1.5rem;
-            font-size: 1rem;
-            opacity: 0.9;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
         }
 
         /* Statistics / Impact Numbers */
@@ -608,33 +646,36 @@
         .stat-item {
             background: white;
             padding: 2rem;
-            border-radius: 20px;
+            border-radius: 16px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
         }
 
         .stat-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .stat-number {
+            font-family: 'Playfair Display', serif;
             font-size: 3rem;
-            font-weight: 700;
-            color: #7cb518;
-            font-family: 'Cinzel Decorative', cursive;
+            font-weight: 800;
+            color: #c9a84c;
         }
 
         .stat-label {
+            font-family: 'Montserrat', sans-serif;
             color: #4a5a4a;
             margin-top: 0.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
         }
 
         /* CTA Button */
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #7cb518, #4c9a2a);
-            color: white;
-            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #c9a84c, #e8c86a);
+            color: #1a3a2a;
+            padding: 0.9rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -642,12 +683,15 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(76, 154, 42, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(76, 154, 42, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #dbb85a, #f0d87a);
         }
 
         /* ==================== FOOTER STYLES ==================== */
@@ -666,7 +710,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
             animation: pulse 15s infinite linear;
             z-index: 0;
         }
@@ -695,7 +739,8 @@
         }
 
         .footer-column h3 {
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
@@ -708,8 +753,8 @@
             bottom: 0;
             left: 0;
             width: 40px;
-            height: 3px;
-            background: #ffd700;
+            height: 2px;
+            background: #e8c86a;
             border-radius: 2px;
         }
 
@@ -727,22 +772,23 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
+            font-size: 0.9rem;
         }
 
         .footer-links a i {
             margin-right: 10px;
-            font-size: 14px;
-            color: #ffd700;
+            font-size: 13px;
+            color: #e8c86a;
         }
 
         .footer-links a:hover {
-            color: #ffd700;
+            color: #e8c86a;
             transform: translateX(5px);
         }
 
         .footer-social {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-top: 20px;
         }
 
@@ -750,21 +796,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 50%;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .footer-social a:hover {
-            background: #ffd700;
+            background: #e8c86a;
             color: #0a4d68;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .footer-bottom {
@@ -773,7 +818,7 @@
             text-align: center;
             padding-top: 30px;
             margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
@@ -782,11 +827,12 @@
         }
 
         .footer-bottom p {
-            opacity: 0.8;
-            font-size: 0.9rem;
+            opacity: 0.7;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* Responsive Adjustments - Improved spacing on mobile */
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .timeline-item {
                 flex-direction: column;
@@ -811,31 +857,23 @@
             }
 
             .hero-buttons {
-                gap: 0.8rem;
-                margin: 2rem 0 1.5rem 0;
+                gap: 0.7rem;
+                margin: 1.5rem 0 1.5rem 0;
             }
 
             .hero-btn {
-                padding: 0.7rem 1.3rem;
-                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
             }
 
             .seed-tagline {
-                margin: 1.5rem auto 2rem auto;
-                font-size: 0.95rem;
+                margin: 1rem auto 2rem auto;
             }
 
             .goal-highlight {
                 padding: 0.7rem 1.2rem;
+                gap: 8px;
                 margin-top: 1.5rem;
-            }
-
-            .goal-highlight span, .goal-highlight i {
-                font-size: 0.85rem;
-            }
-
-            .goal-amount {
-                font-size: 1rem;
             }
 
             .footer-column {
@@ -864,26 +902,18 @@
             
             .hero-buttons {
                 gap: 0.6rem;
-                margin: 1.5rem 0 1.2rem 0;
             }
 
             .hero-btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.7rem;
             }
 
             .seed-tagline {
-                margin: 1rem auto 1.5rem auto;
-                font-size: 0.9rem;
-                line-height: 1.5;
+                font-size: 1rem;
             }
 
-            .goal-highlight {
-                padding: 0.6rem 1rem;
-                margin-top: 1rem;
-            }
-
-            .goal-highlight span, .goal-highlight i {
+            .goal-highlight span {
                 font-size: 0.75rem;
             }
 
@@ -912,27 +942,31 @@
         <img src="images/seedpage.jpg" alt="Seeds of Hope" class="hero-bg" id="heroBg">
         <div class="hero-overlay"></div>
         
-        <!-- Animated Green Strips -->
+        <!-- Animated Gold Strips -->
         <div class="strips-container">
-            <div class="green-strip"></div>
-            <div class="green-strip"></div>
-            <div class="green-strip"></div>
-            <div class="green-strip"></div>
-            <div class="green-strip"></div>
-            <div class="green-strip"></div>
+            <div class="gold-strip"></div>
+            <div class="gold-strip"></div>
+            <div class="gold-strip"></div>
+            <div class="gold-strip"></div>
+            <div class="gold-strip"></div>
+            <div class="gold-strip"></div>
         </div>
         
         <div class="hero-content">
+            <!-- Church Name (subtle, elegant) -->
+            <div class="church-name">St. Mary's Syro-Malabar Mission, Wellington</div>
+            
+            <!-- Main Heading with elegant style -->
             <h1 class="seed-heading" id="animatedHeading">
                 <!-- Letters will be inserted by JavaScript -->
             </h1>
             
-            <!-- Tagline with improved spacing -->
+            <!-- Elegant Tagline with beautiful serif font -->
             <p class="seed-tagline">
-                We are building a church our community can call home. A place to worship, to belong, and to pass our faith on to the children who come after us.
+                "We are building a church our community can call home. A place to worship, to belong, and to pass our faith on to the children who come after us."
             </p>
             
-            <!-- Navigation Buttons with better spacing -->
+            <!-- Navigation Buttons -->
             <div class="hero-buttons">
                 <button class="hero-btn hero-btn-primary" onclick="scrollToSection('give')">
                     <i class="fas fa-heart"></i> Give Now
@@ -948,17 +982,17 @@
                 </button>
             </div>
             
-            <!-- Goal Highlight with improved spacing -->
+            <!-- Goal Highlight - Elegant gold badge -->
             <div class="goal-highlight">
                 <i class="fas fa-church"></i>
                 <span>Our Goal:</span>
                 <span class="goal-amount">$1,000,000</span>
-                <span> toward our own church home</span>
+                <span>toward our own church home</span>
             </div>
         </div>
         
         <div class="scroll-indicator" onclick="scrollToContent()">
-            <span>Discover More</span>
+            <span>DISCOVER MORE</span>
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
@@ -970,7 +1004,7 @@
             <!-- Vision Section (Our Vision) -->
             <section class="seed-section" id="vision-section" data-aos="fade-up">
                 <h2 class="section-title-seed">Our Vision</h2>
-                <p style="font-size: 1.1rem; line-height: 1.8; color: #2a3a2a;">
+                <p style="font-size: 1.05rem; line-height: 1.8; color: #2a3a2a; font-family: 'Poppins', sans-serif;">
                     The "Seeds of Hope" initiative represents our commitment to nurturing faith, fostering community growth, 
                     and spreading the message of love and compassion throughout Wellington. Like seeds planted in fertile soil, 
                     we believe that every small act of kindness, every prayer, and every moment of fellowship grows into something 
@@ -1061,7 +1095,7 @@
                 <div class="quote-text">
                     "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up."
                 </div>
-                <div class="quote-author">— Galatians 6:9</div>
+                <div class="quote-author">— GALATIANS 6:9</div>
             </section>
             
             <!-- Impact Statistics -->
@@ -1070,19 +1104,19 @@
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number">350+</div>
-                        <div class="stat-label">Families in Community</div>
+                        <div class="stat-label">FAMILIES IN COMMUNITY</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">250+</div>
-                        <div class="stat-label">Catechism Students</div>
+                        <div class="stat-label">CATECHISM STUDENTS</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">25+</div>
-                        <div class="stat-label">Volunteer Teachers</div>
+                        <div class="stat-label">VOLUNTEER TEACHERS</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">7</div>
-                        <div class="stat-label">Active Family Wards</div>
+                        <div class="stat-label">ACTIVE FAMILY WARDS</div>
                     </div>
                 </div>
             </section>
@@ -1090,7 +1124,7 @@
             <!-- Call to Action / Give Now -->
             <section class="seed-section" id="give-section" style="text-align: center;" data-aos="fade-up">
                 <h2 class="section-title-seed center">Support Our Mission</h2>
-                <p style="max-width: 700px; margin: 0 auto 2rem auto; color: #4a5a4a;">
+                <p style="max-width: 700px; margin: 0 auto 2rem auto; color: #4a5a4a; font-family: 'Poppins', sans-serif;">
                     Every contribution brings us closer to our dream of having a church home. Your generosity helps us build a place where faith can flourish for generations to come.
                 </p>
                 <button class="cta-button" onclick="scrollToSection('give')">
@@ -1195,7 +1229,8 @@
                 });
             });
 
-            // ==================== ANIMATED HEADING (Letter by Letter) ====================
+            // ==================== ANIMATED HEADING ====================
+            // Using elegant staggered fade-in without letter movement for a more professional look
             const headingText = "Seeds of Hope";
             const headingContainer = document.getElementById('animatedHeading');
             
@@ -1206,37 +1241,58 @@
                     const span = document.createElement('span');
                     span.className = 'seed-letter';
                     span.textContent = letter === ' ' ? '\u00A0' : letter;
-                    span.style.animationDelay = `${0.1 + i * 0.06}s`;
+                    span.style.animationDelay = `${0.05 + i * 0.04}s`;
+                    span.style.opacity = '0';
+                    span.style.animation = 'fadeInUp 0.5s ease forwards';
+                    span.style.animationDelay = `${0.05 + i * 0.04}s`;
                     headingContainer.appendChild(span);
                 }
             }
 
-            // ==================== GREEN STRIPS ANIMATION ====================
-            const strips = document.querySelectorAll('.green-strip');
+            // Add seed-letter styles dynamically
+            const style = document.createElement('style');
+            style.textContent = `
+                .seed-letter {
+                    display: inline-block;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    animation: fadeInUpLetter 0.5s ease forwards;
+                }
+                @keyframes fadeInUpLetter {
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // ==================== GOLD STRIPS ANIMATION ====================
+            const strips = document.querySelectorAll('.gold-strip');
             strips.forEach((strip, index) => {
                 setTimeout(() => {
                     strip.classList.add('animate');
                 }, 500 + index * 400);
             });
 
-            // ==================== FALLING LEAVES ANIMATION ====================
-            function createLeaf() {
+            // ==================== FALLING GOLD LEAVES ANIMATION ====================
+            function createGoldLeaf() {
                 const leaf = document.createElement('div');
-                leaf.className = 'leaf';
+                leaf.className = 'gold-leaf';
                 leaf.style.left = Math.random() * 100 + '%';
-                leaf.style.animationDuration = 6 + Math.random() * 8 + 's';
-                leaf.style.animationDelay = Math.random() * 5 + 's';
-                leaf.style.width = 15 + Math.random() * 25 + 'px';
+                leaf.style.animationDuration = 8 + Math.random() * 10 + 's';
+                leaf.style.animationDelay = Math.random() * 8 + 's';
+                leaf.style.width = 12 + Math.random() * 20 + 'px';
                 leaf.style.height = leaf.style.width;
                 document.querySelector('.hero-seed').appendChild(leaf);
                 
                 setTimeout(() => {
                     leaf.remove();
-                }, 14000);
+                }, 18000);
             }
             
             setTimeout(() => {
-                setInterval(createLeaf, 1800);
+                setInterval(createGoldLeaf, 2000);
             }, 2000);
 
             // ==================== GSAP SCROLLTRIGGER ANIMATIONS ====================
@@ -1250,10 +1306,10 @@
                         start: 'top 85%',
                         toggleActions: 'play none none reverse'
                     },
-                    y: 50,
+                    y: 40,
                     opacity: 0,
-                    duration: 0.8,
-                    delay: i * 0.15,
+                    duration: 0.7,
+                    delay: i * 0.12,
                     ease: 'power2.out'
                 });
             });
@@ -1266,10 +1322,10 @@
                         start: 'top 85%',
                         toggleActions: 'play none none reverse'
                     },
-                    x: -40,
+                    x: -30,
                     opacity: 0,
-                    duration: 0.7,
-                    delay: i * 0.15,
+                    duration: 0.6,
+                    delay: i * 0.12,
                     ease: 'power2.out'
                 });
             });
@@ -1282,11 +1338,11 @@
                         start: 'top 85%',
                         toggleActions: 'play none none reverse'
                     },
-                    scale: 0.8,
+                    scale: 0.9,
                     opacity: 0,
-                    duration: 0.6,
-                    delay: i * 0.1,
-                    ease: 'back.out(1.2)'
+                    duration: 0.5,
+                    delay: i * 0.08,
+                    ease: 'back.out(1)'
                 });
             });
             
@@ -1299,8 +1355,8 @@
                     scrub: 1,
                     invalidateOnRefresh: true
                 },
-                y: 100,
-                scale: 1.1,
+                y: 80,
+                scale: 1.08,
                 ease: 'none'
             });
             
