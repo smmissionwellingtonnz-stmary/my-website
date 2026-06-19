@@ -99,7 +99,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.55; /* increased from 0.35 to make image more visible */
+            opacity: 0.55;
             z-index: 1;
         }
 
@@ -113,7 +113,6 @@
             z-index: 2;
         }
 
-        /* Glass-morphism effect for hero buttons */
         .hero-btn {
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -220,15 +219,16 @@
         }
 
         .church-name {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: clamp(0.9rem, 3vw, 1.2rem);
-            color: rgba(93, 183, 90, 0.9);
-            letter-spacing: 4px;
+            font-family: 'Marcellus', 'Cinzel Decorative', serif;
+            font-size: clamp(1rem, 3.2vw, 1.4rem);
+            color: #F8DE7E;
+            letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 1.5rem;
-            font-weight: 500;
+            font-weight: 400;
             opacity: 0;
             animation: fadeInUp 0.8s ease 0.3s forwards;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
         }
 
         .seed-heading {
@@ -305,7 +305,7 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 20;
             color: rgba(255, 255, 255, 0.8);
             text-align: center;
             cursor: pointer;
@@ -714,6 +714,96 @@
             color: white;
         }
 
+        /* ==================== JOIN US SECTION ==================== */
+        .join-wrapper {
+            background: linear-gradient(135deg, #1a3a2a, #0d2a1a);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.04"><path fill="%23d39a3a" d="M50,0 L61,35 L98,35 L68,57 L79,92 L50,70 L21,92 L32,57 L2,35 L39,35 Z"/></svg>');
+            background-repeat: repeat;
+            background-size: 60px;
+            pointer-events: none;
+        }
+
+        .join-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .join-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .join-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #d39a3a;
+            background: rgba(211, 154, 58, 0.15);
+            padding: 0.5rem 1.8rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .join-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #F8DE7E;
+            font-weight: 700;
+        }
+
+        .join-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .join-content p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .join-highlight {
+            background: rgba(211, 154, 58, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 4px solid #d39a3a;
+        }
+
+        .join-highlight p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #F8DE7E;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .join-highlight .sub-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: normal;
+        }
+
         /* ==================== GOAL SECTION - VIOLET/AUBERGINE THEME ==================== */
         .goal-section-wrapper {
             background: linear-gradient(135deg, #3a2a6b 0%, #291d50 100%);
@@ -1035,23 +1125,25 @@
         }
 
         .charity-note {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(211, 154, 58, 0.2);
             border-radius: 16px;
-            padding: 1.5rem;
+            padding: 1.8rem;
             margin: 1.5rem 0;
-            border: 1px solid rgba(211, 154, 58, 0.2);
+            border: 1px solid #d39a3a;
             text-align: center;
+            box-shadow: 0 0 20px rgba(211, 154, 58, 0.1);
         }
 
         .charity-note p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.95rem;
+            color: #F8DE7E;
+            font-size: 1rem;
             line-height: 1.7;
+            font-weight: 500;
         }
 
         .charity-note i {
             color: #d39a3a;
-            margin-right: 6px;
+            margin-right: 8px;
         }
 
         .heart-message {
@@ -1080,96 +1172,6 @@
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto;
-        }
-
-        /* ==================== JOIN US SECTION ==================== */
-        .join-wrapper {
-            background: linear-gradient(135deg, #1a3a2a, #0d2a1a);
-            padding: 5rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .join-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.04"><path fill="%23d39a3a" d="M50,0 L61,35 L98,35 L68,57 L79,92 L50,70 L21,92 L32,57 L2,35 L39,35 Z"/></svg>');
-            background-repeat: repeat;
-            background-size: 60px;
-            pointer-events: none;
-        }
-
-        .join-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .join-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .join-label {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: #d39a3a;
-            background: rgba(211, 154, 58, 0.15);
-            padding: 0.5rem 1.8rem;
-            border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        .join-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: #F8DE7E;
-            font-weight: 700;
-        }
-
-        .join-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .join-content p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-        }
-
-        .join-highlight {
-            background: rgba(211, 154, 58, 0.15);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-left: 4px solid #d39a3a;
-        }
-
-        .join-highlight p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: #F8DE7E;
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .join-highlight .sub-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-style: normal;
         }
 
         /* ==================== FOOTER STYLES ==================== */
@@ -1458,7 +1460,7 @@
                 <button class="hero-btn hero-btn-secondary" onclick="scrollToJourney()"><i class="fas fa-road"></i> Our Story</button>
                 <button class="hero-btn hero-btn-secondary" onclick="scrollToGoal()"><i class="fas fa-bullseye"></i> Our Goal</button>
                 <button class="hero-btn hero-btn-secondary" onclick="scrollToJoin()"><i class="fas fa-hand-holding-heart"></i> Join Us</button>
-                <button class="hero-btn hero-btn-primary" onclick="scrollToSection('give')"><i class="fas fa-heart"></i> Give Now</button>
+                <button class="hero-btn hero-btn-primary" onclick="window.open('https://buy.stripe.com/eVq7sM5Ao1W41ckatb5Vu00', '_blank')"><i class="fas fa-heart"></i> Give Now</button>
             </div>
             
             <div class="goal-highlight">
@@ -1524,7 +1526,7 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION (4 stories) -->
+    <!-- JOURNEY SECTION -->
     <section id="journey-section" class="journey-wrapper">
         <div class="journey-container">
             <div class="journey-header">
@@ -1535,7 +1537,7 @@
             <div class="plant-timeline" id="plantTimeline">
                 <div class="stem-line" id="stemLine"></div>
                 
-                <!-- Story 1: Nov 2025 -->
+                <!-- Story 1 -->
                 <div class="story-card" data-story="1">
                     <div class="story-dot"></div>
                     <div class="story-content-wrapper">
@@ -1552,7 +1554,7 @@
                     </div>
                 </div>
                 
-                <!-- Story 2: Dec 2025 -->
+                <!-- Story 2 -->
                 <div class="story-card" data-story="2">
                     <div class="story-dot"></div>
                     <div class="story-content-wrapper">
@@ -1569,7 +1571,7 @@
                     </div>
                 </div>
                 
-                <!-- Story 3: Mar 2026 -->
+                <!-- Story 3 -->
                 <div class="story-card" data-story="3">
                     <div class="story-dot"></div>
                     <div class="story-content-wrapper">
@@ -1586,7 +1588,7 @@
                     </div>
                 </div>
                 
-                <!-- Story 4: Jun 2026 -->
+                <!-- Story 4 -->
                 <div class="story-card" data-story="4">
                     <div class="story-dot"></div>
                     <div class="story-content-wrapper">
@@ -1690,8 +1692,10 @@
                     
                     <div class="qr-code-section">
                         <div class="qr-code-container">
-                            <img src="images/qr-stripe.png" alt="QR Code for Donation" class="qr-code-img" id="qrCodeImg" onerror="this.src='https://placehold.co/150x150/d39a3a/ffffff?text=QR+Scan'">
-                            <div class="qr-code-label">Scan to Pay Online</div>
+                            <div style="background: #f5f7e9; border-radius: 12px; padding: 1rem; margin-bottom: 0.5rem;">
+                                <i class="fas fa-info-circle" style="color: #d39a3a; font-size: 1.2rem;"></i>
+                                <p style="font-size: 0.9rem; color: #291d50; margin-top: 0.3rem;">Please include your contact number in the reference section if you require a tax receipt</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -1709,6 +1713,12 @@
                     <p style="color: #4a5a4a; margin-bottom: 1rem;">
                         Support our campaign through Givealittle.
                     </p>
+                    <div class="qr-code-section">
+                        <div class="qr-code-container">
+                            <img src="images/qrgivelittlescan.png" alt="QR Code for Givealittle" class="qr-code-img" id="qrGivealittle" onerror="this.src='https://placehold.co/150x150/e85d3a/ffffff?text=Givealittle'">
+                            <div class="qr-code-label">Scan me to donate via Givealittle</div>
+                        </div>
+                    </div>
                     <a href="https://givealittle.co.nz/cause/seeds-of-hope-help-st-marys-syro-malabar-mission" 
                        target="_blank" 
                        class="online-btn" 
@@ -1726,6 +1736,12 @@
                     <p style="color: #4a5a4a; margin-bottom: 1rem;">
                         Secure online donations via credit card.
                     </p>
+                    <div class="qr-code-section">
+                        <div class="qr-code-container">
+                            <img src="images/qrstripe.png" alt="QR Code for Stripe" class="qr-code-img" id="qrStripe" onerror="this.src='https://placehold.co/150x150/d39a3a/ffffff?text=Stripe'">
+                            <div class="qr-code-label">Scan to pay online</div>
+                        </div>
+                    </div>
                     <a href="https://buy.stripe.com/eVq7sM5Ao1W41ckatb5Vu00" 
                        target="_blank" 
                        class="online-btn" 
@@ -1735,10 +1751,10 @@
                 </div>
             </div>
             
-            <!-- Charity & Privacy Notes -->
+            <!-- Charity & Privacy Notes - More Highlighted -->
             <div class="charity-note" data-aos="fade-up" data-aos-delay="250">
                 <p><i class="fas fa-check-circle"></i> Donations of $5 or more may qualify New Zealand taxpayers for an IRD donation tax credit of up to 33.33%. St. Mary's Syro-Malabar Mission Wellington is a registered New Zealand charity.</p>
-                <p style="margin-top: 1rem;"><i class="fas fa-shield-alt"></i> All online payments, transactions and invoices are dealt with by Stripe. St. Mary's Syro-Malabar Mission does not save or put hands on any personal information which you enter.</p>
+                <p style="margin-top: 1rem; color: rgba(255,255,255,0.9);"><i class="fas fa-shield-alt"></i> All online payments, transactions and invoices are dealt with by Stripe. St. Mary's Syro-Malabar Mission does not save or put hands on any personal information which you enter.</p>
             </div>
             
             <div class="donation-message" data-aos="fade-up" data-aos-delay="250">
@@ -1996,12 +2012,28 @@
                 updateStemHeight();
             }
 
+            // Parallax animation for story cards on scroll
+            gsap.registerPlugin(ScrollTrigger);
+            
+            gsap.utils.toArray('.story-card').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    },
+                    y: 60,
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: i * 0.15,
+                    ease: 'power2.out'
+                });
+            });
+
             window.addEventListener('scroll', checkProgressBar);
             window.addEventListener('touchmove', checkProgressBar);
             setTimeout(checkProgressBar, 500);
 
-            gsap.registerPlugin(ScrollTrigger);
-            
             gsap.utils.toArray('.donation-card').forEach((card, i) => {
                 gsap.from(card, { scrollTrigger: { trigger: card, start: 'top 85%' }, y: 40, opacity: 0, duration: 0.7, delay: i * 0.15 });
             });
