@@ -1980,16 +1980,24 @@
             }
             setTimeout(() => setInterval(createGoldLeaf, 2000), 2000);
 
-            const storyCards = document.querySelectorAll('.story-card');
-            const storyObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible-story');
-                    }
-                });
-            }, { threshold: 0.2 });
+            // GSAP ScrollTrigger for story cards - this is the primary animation
+            gsap.registerPlugin(ScrollTrigger);
             
-            storyCards.forEach(card => storyObserver.observe(card));
+            // Animate story cards on scroll
+            gsap.utils.toArray('.story-card').forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    },
+                    y: 60,
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: i * 0.15,
+                    ease: 'power2.out'
+                });
+            });
 
             const stemLine = document.getElementById('stemLine');
             const journeySection = document.getElementById('journey-section');
@@ -2011,24 +2019,6 @@
                 window.addEventListener('resize', updateStemHeight);
                 updateStemHeight();
             }
-
-            // Parallax animation for story cards on scroll
-            gsap.registerPlugin(ScrollTrigger);
-            
-            gsap.utils.toArray('.story-card').forEach((card, i) => {
-                gsap.from(card, {
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top 85%',
-                        toggleActions: 'play none none none'
-                    },
-                    y: 60,
-                    opacity: 0,
-                    duration: 0.8,
-                    delay: i * 0.15,
-                    ease: 'power2.out'
-                });
-            });
 
             window.addEventListener('scroll', checkProgressBar);
             window.addEventListener('touchmove', checkProgressBar);
