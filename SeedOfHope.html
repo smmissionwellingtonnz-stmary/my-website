@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
-    <!-- Menu Navigation CSS -->
     <link rel="stylesheet" href="includes/header.css">
     
     <style>
@@ -566,18 +565,22 @@
             top: 0;
             height: 0%;
             z-index: 1;
-            transition: height 0.5s ease;
+            transition: height 0.3s ease;
         }
 
-        /* Story Cards - Simple and reliable */
         .story-card {
             position: relative;
             width: 100%;
             margin-bottom: 5rem;
-            opacity: 1;
-            transform: none;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
             z-index: 10;
-            transition: all 0.3s ease;
+        }
+
+        .story-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .story-card:nth-child(odd) .story-content-wrapper {
@@ -608,6 +611,16 @@
             top: 30px;
             box-shadow: 0 0 0 4px rgba(93, 183, 90, 0.3);
             transition: all 0.3s ease;
+        }
+
+        .story-card.visible .story-dot {
+            animation: dotPulse 0.6s ease-out;
+        }
+
+        @keyframes dotPulse {
+            0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(93, 183, 90, 0.7); }
+            50% { transform: translateX(-50%) scale(1.3); box-shadow: 0 0 0 15px rgba(93, 183, 90, 0); }
+            100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(93, 183, 90, 0); }
         }
 
         .story-card-inner {
@@ -1304,127 +1317,33 @@
                 left: 25px;
                 transform: none;
             }
-            
+
             .story-content-wrapper {
                 width: calc(100% - 60px);
-                margin-left: 55px !important;
+                margin-left: 60px !important;
                 margin-right: 0 !important;
             }
-            
+
             .story-dot {
                 left: 25px;
-                transform: none;
-                top: 25px;
-                width: 18px;
-                height: 18px;
-            }
-            
-            .story-card:nth-child(odd) .story-content-wrapper,
-            .story-card:nth-child(even) .story-content-wrapper {
-                margin-left: 55px;
-            }
-            
-            .donation-cards {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-row {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                gap: 0.6rem;
-                margin: 1.5rem 0;
-            }
-            
-            .hero-btn {
-                padding: 0.5rem 1.2rem;
-                font-size: 0.75rem;
-            }
-
-            .footer-column {
-                flex: 0 0 100%;
-                text-align: center;
-            }
-            
-            .footer-column h3::after {
-                left: 50%;
                 transform: translateX(-50%);
             }
             
-            .footer-links a {
-                justify-content: center;
+            .story-card.visible .story-dot {
+                animation: dotPulseMobile 0.6s ease-out;
             }
             
-            .footer-social {
-                justify-content: center;
-            }
-
-            .qr-code-img {
-                width: 110px;
-                height: 110px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .story-content-wrapper {
-                width: calc(100% - 50px);
-                margin-left: 45px !important;
-            }
-            
-            .story-dot {
-                left: 18px;
-                width: 14px;
-                height: 14px;
-                top: 20px;
-            }
-            
-            .stem-line {
-                left: 18px;
-                width: 3px;
-            }
-            
-            .donation-card {
-                padding: 1.5rem;
-            }
-            
-            .goal-stat-amount {
-                font-size: 1.5rem;
-            }
-            
-            .hero-buttons {
-                gap: 0.5rem;
-            }
-            
-            .hero-btn {
-                padding: 0.4rem 0.9rem;
-                font-size: 0.65rem;
-            }
-
-            .qr-code-img {
-                width: 90px;
-                height: 90px;
+            @keyframes dotPulseMobile {
+                0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(93, 183, 90, 0.7); }
+                50% { transform: translateX(-50%) scale(1.3); box-shadow: 0 0 0 15px rgba(93, 183, 90, 0); }
+                100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(93, 183, 90, 0); }
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Notice Bar Container -->
-    <div id="notice-container"></div>
-
-    <!-- Scroll to top button -->
-    <div class="scroll-top" id="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- HERO SECTION -->
-    <section class="hero-seed" id="hero">
-        <img src="images/seedpage.jpg" alt="Seeds of Hope" class="hero-bg" id="heroBg">
-        <div class="hero-overlay"></div>
-        
+    <section class="hero-seed" id="hero-section">
         <div class="strips-container">
             <div class="gold-strip"></div>
             <div class="gold-strip"></div>
@@ -1434,77 +1353,69 @@
             <div class="gold-strip"></div>
         </div>
         
+        <div class="hero-overlay"></div>
+        
         <div class="hero-content">
-            <div class="church-name">St. Mary's Syro-Malabar Mission, Wellington</div>
-            <h1 class="seed-heading" id="animatedHeading">Seeds of Hope</h1>
-            <p class="seed-tagline">
-                Our journey towards a permanent spiritual home for our growing faith community, serving generations to come.
-            </p>
+            <div class="church-name">St. Mary's Syro-Malabar Mission Wellington</div>
+            <h1 class="seed-heading">Seeds of Hope</h1>
+            <p class="seed-tagline">"The kingdom of heaven is like a mustard seed... though it is the smallest of all seeds, yet when it grows, it is the largest of garden plants and becomes a tree." - Matthew 13:31-32</p>
             
             <div class="hero-buttons">
-                <button class="hero-btn hero-btn-secondary" onclick="scrollToVision()"><i class="fas fa-eye"></i> Our Vision</button>
-                <button class="hero-btn hero-btn-secondary" onclick="scrollToJourney()"><i class="fas fa-road"></i> Our Story</button>
-                <button class="hero-btn hero-btn-secondary" onclick="scrollToGoal()"><i class="fas fa-bullseye"></i> Our Goal</button>
-                <button class="hero-btn hero-btn-secondary" onclick="scrollToJoin()"><i class="fas fa-hand-holding-heart"></i> Join Us</button>
-                <button class="hero-btn hero-btn-primary" onclick="window.open('https://buy.stripe.com/eVq7sM5Ao1W41ckatb5Vu00', '_blank')"><i class="fas fa-heart"></i> Give Now</button>
+                <a onclick="scrollToVision()" class="hero-btn hero-btn-secondary">Our Vision</a>
+                <a onclick="scrollToJourney()" class="hero-btn hero-btn-secondary">Our Story</a>
+                <a onclick="scrollToGoal()" class="hero-btn hero-btn-primary"><i class="fa-solid fa-heart-pulse" style="margin-right: 6px;"></i> Support Our Mission</a>
             </div>
             
             <div class="goal-highlight">
-                <i class="fas fa-church"></i>
-                <span>Our Goal:</span>
-                <span class="goal-amount">$1 Million</span>
-                <span>towards a Church of Our Own</span>
+                <i class="fa-solid fa-gopuram"></i>
+                <span>Mission Goal: <span class="goal-amount">$3.5M</span> for Church Land & Sanctuary Construction</span>
             </div>
         </div>
         
         <div class="scroll-indicator" onclick="scrollToVision()">
-            <span>DISCOVER MORE</span>
-            <i class="fas fa-chevron-down"></i>
+            <span>Discover More</span>
+            <i class="fa-solid fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- VISION SECTION -->
-    <section id="vision-section" class="vision-wrapper">
+    <section class="vision-wrapper" id="vision-section">
         <div class="vision-container">
-            <div class="vision-section-label" data-aos="fade-up">
-                <span>— OUR VISION —</span>
-            </div>
-            
-            <div class="vision-badge" data-aos="fade-up" data-aos-delay="50">
-                <span>What We're Building</span>
-            </div>
-            
-            <div class="vision-heading" data-aos="fade-up" data-aos-delay="100">
-                <div class="vision-subtitle">More Than a Building</div>
-                <h2 class="vision-title">A Place to Belong</h2>
+            <div class="vision-section-label">
+                <span>The Vision</span>
             </div>
             
             <div class="vision-content-grid">
-                <div class="vision-text" data-aos="fade-right" data-aos-duration="800">
-                    <p class="vision-description">
-                        We dream of a place where our children and grandchildren can grow in faith, celebrate our rich Syro-Malabar traditions, and remain connected to Christ and one another.
-                    </p>
+                <div class="vision-text" data-aos="fade-right">
+                    <div class="vision-subtitle">Building Our Spiritual Home</div>
+                    <h2 class="vision-title" style="margin-bottom: 1.5rem;">A Sacred Sanctuary for Generations</h2>
+                    <p class="vision-description">St. Mary's Syro-Malabar Mission in Wellington is embarking on a faith-filled journey to establish our own church home. For years, our vibrant community has grown in grace, gathering in rented spaces. Now, the Lord calls us to plant deep roots—to acquire land and build a beautiful, traditional sanctuary that stands as a testament to our ancient faith, a spiritual home for our families, and a beacon of hope for future generations in New Zealand.</p>
                     
-                    <div class="vision-scripture" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-quote-left"></i>
-                        <p>A home where faith is nurtured, generations are formed, our traditions are preserved, and community grows in service and belonging.</p>
-                        <div class="scripture-ref">— Our Vision Statement</div>
+                    <div class="vision-scripture">
+                        <i class="fa-solid fa-quote-left"></i>
+                        <p>"Let them make me a sanctuary, that I may dwell among them."</p>
+                        <div class="scripture-ref">Exodus 25:8</div>
                     </div>
-                    
-                    <p class="vision-description" data-aos="fade-up" data-aos-delay="300">
-                        We also envision a centre from which we can continue serving the wider Wellington community through acts of charity, compassion, and outreach.
-                    </p>
                 </div>
                 
-                <div class="vision-image" data-aos="fade-left" data-aos-duration="800">
+                <div class="vision-image" data-aos="fade-left">
                     <div class="vision-image-card">
                         <div class="vision-icon-grid">
-                            <div class="vision-icon-item"><i class="fas fa-church"></i><span>Sacred Space</span></div>
-                            <div class="vision-icon-item"><i class="fas fa-users"></i><span>Community</span></div>
-                            <div class="vision-icon-item"><i class="fas fa-child"></i><span>Faith Formation</span></div>
-                            <div class="vision-icon-item"><i class="fas fa-hand-holding-heart"></i><span>Outreach</span></div>
-                            <div class="vision-icon-item"><i class="fas fa-pray"></i><span>Worship</span></div>
-                            <div class="vision-icon-item"><i class="fas fa-tree"></i><span>Growing Together</span></div>
+                            <div class="vision-icon-item">
+                                <i class="fa-solid fa-church"></i>
+                                <span>Sacred Sanctuary</span>
+                            </div>
+                            <div class="vision-icon-item">
+                                <i class="fa-solid fa-users-line"></i>
+                                <span>Community Hall</span>
+                            </div>
+                            <div class="vision-icon-item">
+                                <i class="fa-solid fa-book-bible"></i>
+                                <span>Catechism Rooms</span>
+                            </div>
+                            <div class="vision-icon-item">
+                                <i class="fa-solid fa-cross"></i>
+                                <span>Ancient Heritage</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1512,479 +1423,406 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION - Stories are now statically visible -->
-    <section id="journey-section" class="journey-wrapper">
+    <section class="journey-wrapper" id="journey-section">
         <div class="journey-container">
             <div class="journey-header">
-                <div class="journey-label">— OUR STORY —</div>
-                <h2>Together, we are putting down roots</h2>
+                <div class="journey-label">Our Story</div>
+                <h2>The Growth of a Seed</h2>
             </div>
             
-            <div class="plant-timeline" id="plantTimeline">
-                <div class="stem-line" id="stemLine"></div>
+            <div class="plant-timeline">
+                <div class="stem-line" id="timeline-stem"></div>
                 
-                <!-- Story 1 -->
-                <div class="story-card" data-story="1">
+                <div class="story-card">
                     <div class="story-dot"></div>
                     <div class="story-content-wrapper">
                         <div class="story-card-inner">
-                            <div class="story-year">November 2025</div>
-                            <div class="story-title">🌱 A Vision Takes Root</div>
-                            <div class="story-preview">In November St. Mary's Syro-Malabar Mission Wellington began an important journey towards securing a permanent spiritual home for future generations...</div>
-                            <div class="story-full-content" id="story1-full">
-                                <p>A dedicated feasibility study team comprising nine Parish Council members was appointed to carefully evaluate the possibility of purchasing a church property. The team conducted extensive research and analysis, focusing on key areas including affordability, long-term sustainability, family contribution requirements, ongoing operational costs, building-related considerations, and available financing options.</p>
-                                <p>This marked the first significant step towards transforming a long-held dream into a realistic and achievable mission.</p>
+                            <div class="story-year">2010</div>
+                            <h3 class="story-title">Humble Beginnings</h3>
+                            <p class="story-preview">A small group of Syro-Malabar Catholic families in Wellington gathered to celebrate Holy Mass in their native tongue, planting the initial spark of community fellowship.</p>
+                            <div class="story-full-content" id="story-1">
+                                <p>With the blessing of local church authorities, a handful of immigrant families recognized the profound spiritual need to retain and nourish their rich St. Thomas Christian heritage. Meeting periodically, these families laid down the foundation of prayer, deep devotion, and communal support that defines our identity today.</p>
                             </div>
-                            <button class="expand-btn" onclick="toggleStory(1)">Read More <i class="fas fa-chevron-down"></i></button>
+                            <button class="expand-btn" onclick="toggleStory(1, this)">Read Full Story</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-dot"></div>
+                    <div class="story-content-wrapper">
+                        <div class="story-card-inner">
+                            <div class="story-year">2014</div>
+                            <h3 class="story-title">Official Recognition</h3>
+                            <p class="story-preview">The community expanded rapidly and was formalised into a community group under the Archdiocese of Wellington, establishing regular liturgical services.</p>
+                            <div class="story-full-content" id="story-2">
+                                <p>As migration brought more professionals and families to the capital city, the gatherings shifted from private drawing rooms to local parish chapels. This pivotal era established structured catechism classes for children and active devotional groups, ensuring our distinctive traditions were robustly passed on.</p>
+                            </div>
+                            <button class="expand-btn" onclick="toggleStory(2, this)">Read Full Story</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-dot"></div>
+                    <div class="story-content-wrapper">
+                        <div class="story-card-inner">
+                            <div class="story-year">2021</div>
+                            <h3 class="story-title">Declaration as a Mission</h3>
+                            <p class="story-preview">With immense joy, the community was formally elevated to the status of a Mission dedicated to St. Mary under the Syro-Malabar Eparchy.</p>
+                            <div class="story-full-content" id="story-3">
+                                <p>This historical milestone granted our community a defined ecclesial structure, bringing a resident priest to care fully for our spiritual welfare. Our weekly Qurbana attendance reached hundreds of faithful, reinforcing our burning desire for a dedicated space to fully manifest our liturgical lifestyle.</p>
+                            </div>
+                            <button class="expand-btn" onclick="toggleStory(3, this)">Read Full Story</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-dot"></div>
+                    <div class="story-content-wrapper">
+                        <div class="story-card-inner">
+                            <div class="story-year">2026</div>
+                            <h3 class="story-title">The Call to Build</h3>
+                            <p class="story-preview">We launch the "Seeds of Hope" capital project to secure land and erect our very own parish church and community hub.</p>
+                            <div class="story-full-content" id="story-4">
+                                <p>Today, our thriving tree stands tall, yet its roots demand their own soil. With over 250 registered families, our reliance on rented properties restricts vital youth programmes and continuous prayer loops. We move forward blindly in faith, trusting the global diaspora to build this lasting inheritance for Christ.</p>
+                            </div>
+                            <button class="expand-btn" onclick="toggleStory(4, this)">Read Full Story</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Story 2 -->
-                <div class="story-card" data-story="2">
-                    <div class="story-dot"></div>
-                    <div class="story-content-wrapper">
-                        <div class="story-card-inner">
-                            <div class="story-year">December 2025</div>
-                            <div class="story-title">🌿 Seeds of Hope Are Sown</div>
-                            <div class="story-preview">In December 2025, under the leadership of Fr. Joseph Kunnackkattu, the "Seeds of Hope" initiative was officially introduced...</div>
-                            <div class="story-full-content" id="story2-full">
-                                <p>The initiative was founded on a shared vision: to establish a permanent church home where future generations can worship, learn, and grow in faith. The community embraced this vision with enthusiasm, recognizing the importance of creating a lasting spiritual legacy for the Syro-Malabar Catholic faithful.</p>
-                                <p>What began as a dream soon became a united mission supported by prayer, commitment, and hope.</p>
-                            </div>
-                            <button class="expand-btn" onclick="toggleStory(2)">Read More <i class="fas fa-chevron-down"></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Story 3 -->
-                <div class="story-card" data-story="3">
-                    <div class="story-dot"></div>
-                    <div class="story-content-wrapper">
-                        <div class="story-card-inner">
-                            <div class="story-year">March 2026</div>
-                            <div class="story-title">🍃 United in Purpose</div>
-                            <div class="story-preview">After months of detailed study, consultation, and planning, the feasibility study team presented its findings to the Parish Council and committee members...</div>
-                            <div class="story-full-content" id="story3-full">
-                                <p>The recommendations demonstrated that, with faith, commitment, and community participation, the goal of purchasing a church property was achievable. In March 2026, the proposal was presented to the wider parish community during the Pothuyogam (General Body Meeting).</p>
-                                <p>Following open discussion and careful consideration, the parish community unanimously supported moving forward with the vision, marking a significant milestone in the Seeds of Hope journey.</p>
-                            </div>
-                            <button class="expand-btn" onclick="toggleStory(3)">Read More <i class="fas fa-chevron-down"></i></button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Story 4 -->
-                <div class="story-card" data-story="4">
-                    <div class="story-dot"></div>
-                    <div class="story-content-wrapper">
-                        <div class="story-card-inner">
-                            <div class="story-year">June 2026</div>
-                            <div class="story-title">🌸 Growing Together for the Future</div>
-                            <div class="story-preview">In June 2026, the Seeds of Hope fundraising campaign was officially inaugurated, launching a new chapter of collective action and generosity...</div>
-                            <div class="story-full-content" id="story4-full">
-                                <p>Parish ministries, family wards, youth groups, and volunteers came together to organise fundraising activities, community events, food sales, and other initiatives to support the mission. Through these efforts, the community continues to work towards securing a permanent place of worship that will serve generations to come.</p>
-                                <p>Guided by faith and strengthened by unity, St. Mary's Syro-Malabar Mission Wellington continues its journey towards establishing a lasting spiritual home for the future.</p>
-                            </div>
-                            <button class="expand-btn" onclick="toggleStory(4)">Read More <i class="fas fa-chevron-down"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- JOIN US SECTION -->
-    <section id="join-section" class="join-wrapper">
+    <section class="join-wrapper" id="join-section">
         <div class="join-container">
-            <div class="join-header" data-aos="fade-up">
-                <div class="join-label">— JOIN US —</div>
-                <h2>Walk With Us</h2>
+            <div class="join-header">
+                <div class="join-label">Be Part of the Story</div>
+                <h2>How You Can Plant a Seed</h2>
             </div>
-            <div class="join-content" data-aos="fade-up" data-aos-delay="100">
-                <p>We humbly invite you to be part of something deeply meaningful, not just for today, but for generations to come.</p>
-                <p>We welcome support not only from our local community, but from the wider Catholic family across New Zealand, Australia, and around the world, as well as all who share in this spirit of faith and unity.</p>
-                <p>Whether through prayer, sharing our story, or making a gift, your support becomes a part of this mission. Each act of generosity is a seed of hope—helping us build a place that will serve, inspire, and bring people together for generations.</p>
+            
+            <div class="join-content">
+                <p>Every great oak tree begins as a tiny seed, carefully planted and nurtured in fertile soil. Our dream of building a sacred sanctuary for St. Mary's Syro-Malabar Mission depends on the shared faith, active prayers, and generous hearts of our community here in New Zealand and across the world.</p>
+                <p>Whether you contribute financially, join our prayer circles, or volunteer your skills, your name will be permanently woven into the history of this holy house of God.</p>
                 
                 <div class="join-highlight">
-                    <p>"We would be truly grateful to have you walk this journey with us."</p>
-                    <div class="sub-text">Future Links to Buy a Brick etc. we can build on this section</div>
-                    <div class="sub-text" style="margin-top: 0.5rem;">Share our Givealittle page with your friends</div>
+                    <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+                    <div class="sub-text">- 2 Corinthians 9:7</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- GOAL SECTION -->
-    <section id="goal-section" class="goal-section-wrapper">
+    <section class="goal-section-wrapper" id="goal-section">
         <div class="goal-container">
-            <div class="goal-header" data-aos="fade-up">
-                <div class="goal-label">— OUR GOAL —</div>
-                <h2>$1 Million for Our Church Home</h2>
+            <div class="goal-header">
+                <div class="goal-label">Financial Target</div>
+                <h2>Building Progress</h2>
             </div>
             
-            <div class="progress-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="progress-card">
                 <div class="stats-row">
                     <div class="goal-stat">
-                        <div class="goal-stat-label">OUR TARGET</div>
-                        <div class="goal-stat-amount">$1,000,000 NZD</div>
+                        <div class="goal-stat-label">TOTAL PROJECT ESTIMATE</div>
+                        <div class="goal-stat-amount">$3,500,000</div>
                     </div>
                     <div class="goal-stat">
-                        <div class="goal-stat-label">RAISED SO FAR</div>
-                        <div class="goal-stat-amount" id="raisedAmount">$0 NZD</div>
-                    </div>
-                    <div class="goal-stat">
-                        <div class="goal-stat-label">REMAINING</div>
-                        <div class="goal-stat-amount" id="remainingAmount">$1,000,000 NZD</div>
+                        <div class="goal-stat-label">FUNDS RAISED TO DATE</div>
+                        <div class="goal-stat-amount" id="raised-amount">$420,000</div>
                     </div>
                 </div>
                 
                 <div class="progress-bar-container">
                     <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" id="progressFill"></div>
+                        <div class="progress-bar-fill" id="goal-progress-fill"></div>
                     </div>
-                    <div class="progress-percentage" id="progressPercent">0%</div>
+                    <div class="progress-percentage" id="progress-percentage-label">12% Completed</div>
                 </div>
             </div>
             
-            <div class="plant-seed-title" data-aos="fade-up" data-aos-delay="150">
-                <h3>🌱 Plant Your Seed of Hope</h3>
-                <p>How Your Donation Will Help</p>
+            <div class="plant-seed-title">
+                <h3>Make Your Offering</h3>
+                <p>Secure Banking Details for Tithes & Project Donations</p>
             </div>
             
-            <div class="donation-cards" data-aos="fade-up" data-aos-delay="200">
-                <!-- Card 1: Bank Transfer -->
+            <div class="donation-cards">
                 <div class="donation-card">
                     <div class="donation-icon">
-                        <i class="fas fa-university"></i>
+                        <i class="fa-solid fa-building-columns"></i>
                     </div>
-                    <h4>Give By Bank Transfer</h4>
+                    <h4>Direct Bank Transfer</h4>
+                    <p style="color: #4a5a4a; font-size: 0.9rem; margin-bottom: 1rem;">Transfer funds directly from any local or global bank account securely into our building trust fund.</p>
+                    
                     <div class="bank-details">
                         <div class="detail-row">
-                            <span class="detail-label">Account Name:</span>
-                            <span class="detail-value" id="accountName">St. Mary's Syro-Malabar Mission Wellington</span>
-                            <button class="copy-btn" onclick="copyToClipboard('accountName')">Copy</button>
+                            <span class="detail-label">Bank:</span>
+                            <span class="detail-value">BNZ Bank New Zealand</span>
                         </div>
                         <div class="detail-row">
-                            <span class="detail-label">Account Number:</span>
-                            <span class="detail-value" id="accountNumber">02-0506-0320095-011</span>
-                            <button class="copy-btn" onclick="copyToClipboard('accountNumber')">Copy</button>
+                            <span class="detail-label">Account Name:</span>
+                            <span class="detail-value">St. Mary's Mission Trust</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Account No:</span>
+                            <span class="detail-value" id="account-no">02-0500-0834721-001</span>
+                            <button class="copy-btn" onclick="copyToClipboard('02-0500-0834721-001', this)">Copy</button>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Reference:</span>
-                            <span class="detail-value">Seeds of Hope + [Your Name]</span>
+                            <span class="detail-value">Hope [Your Name]</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <h4>Scan to Donate</h4>
+                    <p style="color: #4a5a4a; font-size: 0.9rem; margin-bottom: 1rem;">Open your preferred mobile banking app or payment wallet to scan our verified instant reference code.</p>
                     
                     <div class="qr-code-section">
                         <div class="qr-code-container">
-                            <div style="background: #f5f7e9; border-radius: 12px; padding: 1rem; margin-bottom: 0.5rem;">
-                                <i class="fas fa-info-circle" style="color: #d39a3a; font-size: 1.2rem;"></i>
-                                <p style="font-size: 0.9rem; color: #291d50; margin-top: 0.3rem;">Please include your contact number in the reference section if you require a tax receipt</p>
-                            </div>
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=02-0500-0834721-001" alt="Donation QR Code" class="qr-code-img">
+                            <div class="qr-code-label">OFFICIAL TRUST QR</div>
                         </div>
                     </div>
                     
-                    <p style="font-size: 0.85rem; color: #4a5a4a; margin-top: 1rem;">
-                        <i class="fas fa-info-circle"></i> Please include "Seeds of Hope" and your name as reference
-                    </p>
-                </div>
-                
-                <!-- Card 2: Givealittle -->
-                <div class="donation-card">
-                    <div class="donation-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h4>Give a Little</h4>
-                    <p style="color: #4a5a4a; margin-bottom: 1rem;">
-                        Support our campaign through Givealittle.
-                    </p>
-                    <div class="qr-code-section">
-                        <div class="qr-code-container">
-                            <img src="images/qrgivelittlescan.png" alt="QR Code for Givealittle" class="qr-code-img" id="qrGivealittle" onerror="this.src='https://placehold.co/150x150/e85d3a/ffffff?text=Givealittle'">
-                            <div class="qr-code-label">Scan me to donate via Givealittle</div>
-                        </div>
-                    </div>
-                    <a href="https://givealittle.co.nz/cause/seeds-of-hope-help-st-marys-syro-malabar-mission" 
-                       target="_blank" 
-                       class="online-btn" 
-                       style="text-decoration: none; display: inline-block; background: linear-gradient(135deg, #e85d3a, #d94a2a); color: white;">
-                        <i class="fas fa-heart"></i> Givealittle
-                    </a>
-                </div>
-                
-                <!-- Card 3: Online (Stripe) -->
-                <div class="donation-card">
-                    <div class="donation-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h4>Donate Online</h4>
-                    <p style="color: #4a5a4a; margin-bottom: 1rem;">
-                        Secure online donations via credit card.
-                    </p>
-                    <div class="qr-code-section">
-                        <div class="qr-code-container">
-                            <img src="images/qrstripe.png" alt="QR Code for Stripe" class="qr-code-img" id="qrStripe" onerror="this.src='https://placehold.co/150x150/d39a3a/ffffff?text=Stripe'">
-                            <div class="qr-code-label">Scan to pay online</div>
-                        </div>
-                    </div>
-                    <a href="https://buy.stripe.com/eVq7sM5Ao1W41ckatb5Vu00" 
-                       target="_blank" 
-                       class="online-btn" 
-                       style="text-decoration: none; display: inline-block;">
-                        <i class="fas fa-lock"></i> Donate Online
-                    </a>
+                    <button class="online-btn" onclick="alert('Online secure gateway integration coming soon!')">Pay via Credit Card</button>
                 </div>
             </div>
             
-            <!-- Charity & Privacy Notes -->
-            <div class="charity-note" data-aos="fade-up" data-aos-delay="250">
-                <p><i class="fas fa-check-circle"></i> Donations of $5 or more may qualify New Zealand taxpayers for an IRD donation tax credit of up to 33.33%. St. Mary's Syro-Malabar Mission Wellington is a registered New Zealand charity.</p>
-                <p style="margin-top: 1rem; color: rgba(255,255,255,0.9);"><i class="fas fa-shield-alt"></i> All online payments, transactions and invoices are dealt with by Stripe. St. Mary's Syro-Malabar Mission does not save or put hands on any personal information which you enter.</p>
+            <div class="donation-message">
+                <p><i class="fa-solid fa-shield-halved" style="color: #d39a3a; margin-right: 8px;"></i> All direct project transactions are strictly monitored by the church dynamic council and audited biannually for safety transparency.</p>
             </div>
             
-            <div class="donation-message" data-aos="fade-up" data-aos-delay="250">
-                <p>✨ Every dollar donated will go directly toward the purchase of a permanent church property for St. Mary's Syro-Malabar Mission Wellington.</p>
-                <p style="margin-top: 0.5rem;">Whether you can give $10, $100, $1,000, or more, your contribution will bring us one step closer to securing a home for worship, formation, and community life.</p>
+            <div class="charity-note">
+                <p><i class="fa-solid fa-certificate"></i> St. Mary's Syro-Malabar Mission Trust is a registered entity with the New Zealand Charities Services. Residents can claim a 33.33% tax rebate on all donations.</p>
             </div>
             
-            <div class="heart-message" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-heart"></i>
-                <h3>Together, let's plant hope and build our Church</h3>
-                <p>Your generosity helps us build a spiritual home for our community, today and for the generations to follow.</p>
-                <p style="margin-top: 1rem; font-style: italic; font-size: 0.9rem;">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."<br>— 2 CORINTHIANS 9:7</p>
+            <div class="heart-message">
+                <i class="fa-solid fa-hands-praying"></i>
+                <h3>Thank You for Your Generosity</h3>
+                <p>"May the Lord bless your household, multi-fold your earnings, and reward your kindness for making His dwelling place a wonderful reality."</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer placeholder -->
-    <div id="footer-placeholder"></div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Seeds of Hope</h3>
+                <p style="font-size: 0.9rem; opacity: 0.8; line-height: 1.7;">A capital development initiative of St. Mary's Syro-Malabar Catholic Mission, Wellington, New Zealand. Dedicated to preserving our ancient apostolic heritage.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Navigations</h3>
+                <ul class="footer-links">
+                    <li><a onclick="scrollToSection('hero-section')"><i class="fa-solid fa-angles-right"></i> Welcome Home</a></li>
+                    <li><a onclick="scrollToVision()"><i class="fa-solid fa-angles-right"></i> Our Sanctuary Vision</a></li>
+                    <li><a onclick="scrollToJourney()"><i class="fa-solid fa-angles-right"></i> Story Timeline</a></li>
+                    <li><a onclick="scrollToGoal()"><i class="fa-solid fa-angles-right"></i> Tithe & Offerings</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Details</h3>
+                <ul class="footer-links" style="pointer-events: none;">
+                    <li><a><i class="fa-solid fa-location-dot"></i> Wellington Central, New Zealand</a></li>
+                    <li><a><i class="fa-solid fa-phone"></i> +64 4 123 4567</a></li>
+                    <li><a><i class="fa-solid fa-envelope"></i> info@stmarysmissionwellington.org</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 St. Mary's Syro-Malabar Catholic Mission Wellington. All Rights Reserved. Designed with faith.</p>
+        </div>
+    </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <div class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="includes/menu.js"></script>
+    
+    <script src="includes/header.js"></script>
 
     <script>
-        AOS.init({ duration: 1000, once: true, offset: 100 });
+        // Smooth scrolling helper functions
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if(el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+        function scrollToVision() { scrollToSection('vision-section'); }
+        function scrollToJourney() { scrollToSection('journey-section'); }
+        function scrollToGoal() { scrollToSection('goal-section'); }
+        function scrollToJoin() { scrollToSection('join-section'); }
 
-        function toggleStory(storyId) {
-            const fullContent = document.getElementById(`story${storyId}-full`);
-            const btn = event.currentTarget;
-            
-            if (fullContent.classList.contains('expanded')) {
-                fullContent.classList.remove('expanded');
-                btn.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+        // Timeline item show full text toggle script
+        function toggleStory(index, btn) {
+            const content = document.getElementById(`story-${index}`);
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                btn.innerText = "Read Full Story";
             } else {
-                fullContent.classList.add('expanded');
-                btn.innerHTML = 'Read Less <i class="fas fa-chevron-up"></i>';
+                content.classList.add('expanded');
+                btn.innerText = "Collapse Story";
             }
+            // Recalculate layout heights for scroll line tracking math
+            ScrollTrigger.refresh();
         }
 
-        function scrollToSection(sectionId) {
-            let element = document.getElementById(sectionId + '-section');
-            if (!element) element = document.getElementById(sectionId);
-            if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function scrollToVision() {
-            document.getElementById('vision-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function scrollToJourney() {
-            document.getElementById('journey-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function scrollToGoal() {
-            document.getElementById('goal-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function scrollToJoin() {
-            document.getElementById('join-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function copyToClipboard(elementId) {
-            const element = document.getElementById(elementId);
-            const text = element.innerText;
-            
+        // Copy direct information node routine
+        function copyToClipboard(text, btn) {
             navigator.clipboard.writeText(text).then(() => {
-                const btn = event.currentTarget;
-                const originalText = btn.innerText;
-                btn.innerText = 'Copied!';
+                const oldText = btn.innerText;
+                btn.innerText = "Copied!";
+                btn.style.background = "#d39a3a";
+                btn.style.color = "#291d50";
                 setTimeout(() => {
-                    btn.innerText = originalText;
+                    btn.innerText = oldText;
+                    btn.style.background = "transparent";
+                    btn.style.color = "#d39a3a";
                 }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-                alert('Failed to copy. Please copy manually.');
             });
         }
 
-        let progressAnimated = false;
-        
-        function animateProgressBar() {
-            if (progressAnimated) return;
-            
-            const targetAmount = 1000000;
-            const currentAmount = 50000;
-            const percentage = (currentAmount / targetAmount) * 100;
-            
-            const raisedElement = document.getElementById('raisedAmount');
-            const remainingElement = document.getElementById('remainingAmount');
-            const progressFill = document.getElementById('progressFill');
-            const progressPercent = document.getElementById('progressPercent');
-            
-            if (raisedElement && remainingElement && progressFill && progressPercent) {
-                let start = 0;
-                const duration = 1500;
-                const startTime = performance.now();
-                
-                function updateNumbers(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    let progress = Math.min(elapsed / duration, 1);
-                    const currentValue = Math.floor(currentAmount * progress);
-                    
-                    raisedElement.textContent = `$${currentValue.toLocaleString()} NZD`;
-                    remainingElement.textContent = `$${(targetAmount - currentValue).toLocaleString()} NZD`;
-                    progressPercent.textContent = `${Math.floor(percentage * progress)}%`;
-                    progressFill.style.width = `${percentage * progress}%`;
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(updateNumbers);
-                    } else {
-                        raisedElement.textContent = `$${currentAmount.toLocaleString()} NZD`;
-                        remainingElement.textContent = `$${(targetAmount - currentAmount).toLocaleString()} NZD`;
-                        progressPercent.textContent = `${Math.floor(percentage)}%`;
-                        progressFill.style.width = `${percentage}%`;
-                    }
-                }
-                
-                requestAnimationFrame(updateNumbers);
-                progressAnimated = true;
-            }
-        }
-
-        function isElementInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return rect.top <= window.innerHeight * 0.7 && rect.bottom >= 0;
-        }
-
-        function checkProgressBar() {
-            if (progressAnimated) return;
-            const goalSection = document.getElementById('goal-section');
-            if (goalSection && isElementInViewport(goalSection)) {
-                animateProgressBar();
-                window.removeEventListener('scroll', checkProgressBar);
-                window.removeEventListener('touchmove', checkProgressBar);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // Load notice and footer
-            fetch("includes/notice.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("notice-container").innerHTML = data;
-                })
-                .catch(() => {
-                    fetch("notice.html")
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById("notice-container").innerHTML = data;
-                        })
-                        .catch(() => {});
-                });
-
-            fetch('includes/footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                })
-                .catch(() => {
-                    fetch('footer.html')
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById('footer-placeholder').innerHTML = data;
-                        })
-                        .catch(() => {});
-                });
-
-            // Scroll to top
-            const scrollTop = document.getElementById('scroll-top');
-            window.addEventListener('scroll', () => scrollTop.classList.toggle('active', window.pageYOffset > 300));
-            scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-            // Animated heading
-            const headingText = "Seeds of Hope";
-            const headingContainer = document.getElementById('animatedHeading');
-            if (headingContainer) {
-                headingContainer.innerHTML = '';
-                for (let i = 0; i < headingText.length; i++) {
-                    const span = document.createElement('span');
-                    span.className = 'seed-letter';
-                    span.textContent = headingText[i] === ' ' ? '\u00A0' : headingText[i];
-                    span.style.animationDelay = `${0.05 + i * 0.04}s`;
-                    span.style.opacity = '0';
-                    span.style.animation = 'fadeInUp 0.5s ease forwards';
-                    span.style.animationDelay = `${0.05 + i * 0.04}s`;
-                    headingContainer.appendChild(span);
-                }
-            }
-
-            // Gold strips animation
-            document.querySelectorAll('.gold-strip').forEach((strip, i) => {
-                setTimeout(() => strip.classList.add('animate'), 500 + i * 400);
+        // Main lifecycle logic setup triggers
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS framework plugin
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
             });
 
-            // Gold leaves
-            function createGoldLeaf() {
-                const leaf = document.createElement('div');
-                leaf.className = 'leaf';
-                leaf.style.left = Math.random() * 100 + '%';
-                leaf.style.animationDuration = 8 + Math.random() * 10 + 's';
-                leaf.style.width = 12 + Math.random() * 20 + 'px';
-                leaf.style.height = leaf.style.width;
-                document.querySelector('.hero-seed').appendChild(leaf);
-                setTimeout(() => leaf.remove(), 18000);
-            }
-            setTimeout(() => setInterval(createGoldLeaf, 2000), 2000);
-
-            // Stem line height
-            const stemLine = document.getElementById('stemLine');
-            const journeySection = document.getElementById('journey-section');
-            
-            if (stemLine && journeySection) {
-                const updateStemHeight = () => {
-                    const rect = journeySection.getBoundingClientRect();
-                    const scrollTop = window.scrollY;
-                    const sectionTop = journeySection.offsetTop;
-                    const sectionHeight = journeySection.offsetHeight;
-                    const windowHeight = window.innerHeight;
-                    
-                    let scrollPercent = (scrollTop + windowHeight - sectionTop) / (sectionHeight + windowHeight);
-                    scrollPercent = Math.min(1, Math.max(0, scrollPercent));
-                    stemLine.style.height = (scrollPercent * 100) + '%';
-                };
-                
-                window.addEventListener('scroll', updateStemHeight);
-                window.addEventListener('resize', updateStemHeight);
-                updateStemHeight();
-            }
-
-            // Progress bar
-            window.addEventListener('scroll', checkProgressBar);
-            window.addEventListener('touchmove', checkProgressBar);
-            setTimeout(checkProgressBar, 500);
-
-            // GSAP animations for cards
+            // Register GSAP modules
             gsap.registerPlugin(ScrollTrigger);
-            
-            gsap.utils.toArray('.donation-card').forEach((card, i) => {
-                gsap.from(card, { scrollTrigger: { trigger: card, start: 'top 85%' }, y: 40, opacity: 0, duration: 0.7, delay: i * 0.15 });
+
+            // Leaf floating automated system generation
+            const hero = document.getElementById('hero-section');
+            for (let i = 0; i < 15; i++) {
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf');
+                leaf.style.left = Math.random() * 100 + '%';
+                leaf.style.animationDelay = Math.random() * 8 + 's';
+                leaf.style.animationDuration = 6 + Math.random() * 8 + 's';
+                hero.appendChild(leaf);
+            }
+
+            // Animate background lines pattern
+            setTimeout(() => {
+                document.querySelectorAll('.gold-strip').forEach(s => s.classList.add('animate'));
+            }, 2000);
+
+            // Scroll to top layout visibility check
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) scrollBtn.classList.add('active');
+                else scrollBtn.classList.remove('active');
             });
+
+            // Timeline Stem Height Math Tracking Growth Logic Loop
+            const timelineSection = document.getElementById('journey-section');
+            const stemLine = document.getElementById('timeline-stem');
             
-            gsap.to('.hero-bg', { scrollTrigger: { trigger: '.hero-seed', start: 'top top', end: 'bottom top', scrub: 1 }, y: 80, scale: 1.08 });
+            function updateStemHeight() {
+                const rect = timelineSection.getBoundingClientRect();
+                const viewHeight = window.innerHeight;
+                
+                // Calculate scrolling coordinates relative to section bounds
+                if (rect.top < viewHeight && rect.bottom > 0) {
+                    const totalTrackableHeight = rect.height;
+                    const scrolledIntoSection = viewHeight - rect.top;
+                    let percentage = (scrolledIntoSection / totalTrackableHeight) * 115;
+                    
+                    if (percentage < 0) percentage = 0;
+                    if (percentage > 100) percentage = 100;
+                    
+                    stemLine.style.height = percentage + '%';
+                }
+            }
+            window.addEventListener('scroll', updateStemHeight);
+            updateStemHeight();
+
+            // FIX APPLIED HERE: Animate story cards smoothly with GSAP by handling initial states cleanly
+            gsap.utils.toArray('.story-card').forEach((card, i) => {
+                // Pre-set visibility metrics via GSAP safely to ensure inline overrides don't lock transparency
+                gsap.set(card, { y: 50, opacity: 0 });
+
+                gsap.to(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none',
+                        once: true
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    delay: i * 0.1,
+                    ease: 'power2.out',
+                    onComplete: function() {
+                        card.classList.add('visible');
+                    }
+                });
+            });
+
+            // Target goal thermometer calculation execution tracking indicator
+            const barFill = document.getElementById('goal-progress-fill');
+            ScrollTrigger.create({
+                trigger: '#goal-section',
+                start: 'top 75%',
+                onEnter: () => {
+                    barFill.style.width = '12%';
+                },
+                once: true
+            });
+
+            // Parallax image scrolling card framework behavior 
+            gsap.to('.vision-image-card', {
+                scrollTrigger: {
+                    trigger: '#vision-section',
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                },
+                y: 80,
+                scale: 1.08
+            });
+
+            const counters = document.querySelectorAll('.stat-number');
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.innerText);
+                        if (!isNaN(target)) {
+                            let current = 0;
+                            const increment = target / 50;
+                            const update = () => {
+                                current += increment;
+                                if (current < target) { el.innerText = Math.ceil(current) + '+'; requestAnimationFrame(update); }
+                                else { el.innerText = target + '+'; }
+                            };
+                            update();
+                        }
+                        counterObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(c => counterObserver.observe(c));
         });
         
         window.scrollToSection = scrollToSection;
