@@ -566,22 +566,18 @@
             top: 0;
             height: 0%;
             z-index: 1;
-            transition: height 0.3s ease;
+            transition: height 0.5s ease;
         }
 
+        /* Story Cards - Simple and reliable */
         .story-card {
             position: relative;
             width: 100%;
             margin-bottom: 5rem;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            z-index: 10;
-        }
-
-        .story-card.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
+            z-index: 10;
+            transition: all 0.3s ease;
         }
 
         .story-card:nth-child(odd) .story-content-wrapper {
@@ -612,16 +608,6 @@
             top: 30px;
             box-shadow: 0 0 0 4px rgba(93, 183, 90, 0.3);
             transition: all 0.3s ease;
-        }
-
-        .story-card.visible .story-dot {
-            animation: dotPulse 0.6s ease-out;
-        }
-
-        @keyframes dotPulse {
-            0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(93, 183, 90, 0.7); }
-            50% { transform: translateX(-50%) scale(1.3); box-shadow: 0 0 0 15px rgba(93, 183, 90, 0); }
-            100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(93, 183, 90, 0); }
         }
 
         .story-card-inner {
@@ -1526,7 +1512,7 @@
         </div>
     </section>
 
-    <!-- JOURNEY SECTION -->
+    <!-- JOURNEY SECTION - Stories are now statically visible -->
     <section id="journey-section" class="journey-wrapper">
         <div class="journey-container">
             <div class="journey-header">
@@ -1751,7 +1737,7 @@
                 </div>
             </div>
             
-            <!-- Charity & Privacy Notes - More Highlighted -->
+            <!-- Charity & Privacy Notes -->
             <div class="charity-note" data-aos="fade-up" data-aos-delay="250">
                 <p><i class="fas fa-check-circle"></i> Donations of $5 or more may qualify New Zealand taxpayers for an IRD donation tax credit of up to 33.33%. St. Mary's Syro-Malabar Mission Wellington is a registered New Zealand charity.</p>
                 <p style="margin-top: 1rem; color: rgba(255,255,255,0.9);"><i class="fas fa-shield-alt"></i> All online payments, transactions and invoices are dealt with by Stripe. St. Mary's Syro-Malabar Mission does not save or put hands on any personal information which you enter.</p>
@@ -1895,42 +1881,41 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
+            // Load notice and footer
             fetch("includes/notice.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("notice-container").innerHTML = data;
-                    console.log("Notice bar loaded");
                 })
-                .catch(error => {
-                    console.log("Notice loading error:", error);
+                .catch(() => {
                     fetch("notice.html")
                         .then(response => response.text())
                         .then(data => {
                             document.getElementById("notice-container").innerHTML = data;
                         })
-                        .catch(err => console.log("Notice fallback error:", err));
+                        .catch(() => {});
                 });
 
             fetch('includes/footer.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-placeholder').innerHTML = data;
-                    console.log("Footer loaded");
                 })
-                .catch(error => {
-                    console.log("Footer loading error:", error);
+                .catch(() => {
                     fetch('footer.html')
                         .then(response => response.text())
                         .then(data => {
                             document.getElementById('footer-placeholder').innerHTML = data;
                         })
-                        .catch(err => console.log("Footer fallback error:", err));
+                        .catch(() => {});
                 });
 
+            // Scroll to top
             const scrollTop = document.getElementById('scroll-top');
             window.addEventListener('scroll', () => scrollTop.classList.toggle('active', window.pageYOffset > 300));
             scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+            // Animated heading
             const headingText = "Seeds of Hope";
             const headingContainer = document.getElementById('animatedHeading');
             if (headingContainer) {
@@ -1947,27 +1932,12 @@
                 }
             }
 
-            const style = document.createElement('style');
-            style.textContent = `
-                .seed-letter {
-                    display: inline-block;
-                    opacity: 0;
-                    transform: translateY(20px);
-                    animation: fadeInUpLetter 0.5s ease forwards;
-                }
-                @keyframes fadeInUpLetter {
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-
+            // Gold strips animation
             document.querySelectorAll('.gold-strip').forEach((strip, i) => {
                 setTimeout(() => strip.classList.add('animate'), 500 + i * 400);
             });
 
+            // Gold leaves
             function createGoldLeaf() {
                 const leaf = document.createElement('div');
                 leaf.className = 'leaf';
@@ -1980,49 +1950,7 @@
             }
             setTimeout(() => setInterval(createGoldLeaf, 2000), 2000);
 
-            // STORY CARDS - Using Intersection Observer for guaranteed visibility
-            const storyCards = document.querySelectorAll('.story-card');
-            
-            const storyObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-            
-            storyCards.forEach(card => {
-                storyObserver.observe(card);
-                // Also add visible class if already in view
-                const rect = card.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.85) {
-                    card.classList.add('visible');
-                }
-            });
-
-            // Also use GSAP for smooth animation
-            gsap.registerPlugin(ScrollTrigger);
-            
-            // Animate story cards with GSAP as well for parallax effect
-            gsap.utils.toArray('.story-card').forEach((card, i) => {
-                gsap.from(card, {
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top 90%',
-                        toggleActions: 'play none none none',
-                        once: true
-                    },
-                    y: 40,
-                    opacity: 0,
-                    duration: 0.8,
-                    delay: i * 0.15,
-                    ease: 'power2.out',
-                    onStart: function() {
-                        card.classList.add('visible');
-                    }
-                });
-            });
-
+            // Stem line height
             const stemLine = document.getElementById('stemLine');
             const journeySection = document.getElementById('journey-section');
             
@@ -2044,37 +1972,19 @@
                 updateStemHeight();
             }
 
+            // Progress bar
             window.addEventListener('scroll', checkProgressBar);
             window.addEventListener('touchmove', checkProgressBar);
             setTimeout(checkProgressBar, 500);
 
+            // GSAP animations for cards
+            gsap.registerPlugin(ScrollTrigger);
+            
             gsap.utils.toArray('.donation-card').forEach((card, i) => {
                 gsap.from(card, { scrollTrigger: { trigger: card, start: 'top 85%' }, y: 40, opacity: 0, duration: 0.7, delay: i * 0.15 });
             });
             
             gsap.to('.hero-bg', { scrollTrigger: { trigger: '.hero-seed', start: 'top top', end: 'bottom top', scrub: 1 }, y: 80, scale: 1.08 });
-
-            const counters = document.querySelectorAll('.stat-number');
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target;
-                        const target = parseInt(el.innerText);
-                        if (!isNaN(target)) {
-                            let current = 0;
-                            const increment = target / 50;
-                            const update = () => {
-                                current += increment;
-                                if (current < target) { el.innerText = Math.ceil(current) + '+'; requestAnimationFrame(update); }
-                                else { el.innerText = target + '+'; }
-                            };
-                            update();
-                        }
-                        counterObserver.unobserve(el);
-                    }
-                });
-            }, { threshold: 0.5 });
-            counters.forEach(c => counterObserver.observe(c));
         });
         
         window.scrollToSection = scrollToSection;
