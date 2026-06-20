@@ -178,14 +178,14 @@ function createMenuStructure() {
                     </a>
                 </li>
                 
-                <li class="nav-item">
-                    <a href="donate.html" class="nav-link donate">
-                        <div class="nav-link-left">
-                            <i class="fas fa-heart"></i>
-                            <span>DONATE</span>
-                        </div>
-                    </a>
-                </li>
+               <li class="nav-item">
+    <a href="https://buy.stripe.com/eVq7sM5Ao1W41ckatb5Vu00" class="nav-link donate" target="_blank">
+        <div class="nav-link-left">
+            <i class="fas fa-heart"></i>
+            <span>DONATE NOW</span>
+        </div>
+    </a>
+</li>
             </ul>
             
             <div class="menu-footer">
