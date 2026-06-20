@@ -159,7 +159,7 @@ function createMenuStructure() {
                     </a>
                 </li>
                 <li class="nav-item">
-    <a href="SeedsOfHope.html" class="nav-link seeds-of-hope">
+    <a href="SeedOfHope.html" class="nav-link seeds-of-hope">
         <div class="nav-link-left">
             <i class="fas fa-seedling"></i>
             <span>Seeds of Hope</span>
