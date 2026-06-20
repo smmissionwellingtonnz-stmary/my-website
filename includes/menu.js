@@ -160,6 +160,15 @@ function createMenuStructure() {
                 </li>
                 
                 <li class="nav-item">
+                    <a href="SeedsOfHope.html" class="nav-link seeds-of-hope">
+                        <div class="nav-link-left">
+                            <i class="fas fa-seedling"></i>
+                            <span>Seeds of Hope</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
                     <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
                         <div class="default-text">
                             <i class="fas fa-newspaper"></i>
@@ -172,10 +181,10 @@ function createMenuStructure() {
                 </li>
                 
                 <li class="nav-item">
-                    <a href="donate.html" class="nav-link donate">
+                    <a href="https://buy.stripe.com/eVq7sM5Ao1W41ckatb5Vu00" class="nav-link donate">
                         <div class="nav-link-left">
                             <i class="fas fa-heart"></i>
-                            <span>DONATE</span>
+                            <span>DONATE NOW</span>
                         </div>
                     </a>
                 </li>
