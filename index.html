@@ -1,3 +1,5 @@
+This is a complete HTML document for the St. Mary's Syro-Malabar Mission website. It features a modern, visually immersive design with a full-screen hero, a clean layout for community information, and a photo gallery.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,26 +12,20 @@
     <!-- Header / Nav CSS -->
     <link rel="stylesheet" href="includes/header.css">
 
-    <!-- ===== Notice Bar CSS ===== -->
+    <!-- ===== Notice Bar CSS (fixed) ===== -->
     <style id="notice-bar-css">
         .notice-bar {
-            background: linear-gradient(90deg, #0a2540, #0d3a5c, #0a2540);
-            background-size: 200% 100%;
-            animation: noticeGrad 6s ease infinite;
+            background: #0a2540;
             color: #F8DE7E;
             text-align: center;
-            padding: 9px 40px;
+            padding: 9px 20px;
             font-size: 0.8rem;
             letter-spacing: 0.06em;
             font-family: 'Inter', sans-serif;
             font-weight: 400;
             position: relative;
             z-index: 200;
-            overflow: hidden;
-        }
-        @keyframes noticeGrad {
-            0%,100% { background-position: 0% 50%; }
-            50%     { background-position: 100% 50%; }
+            border-bottom: 1px solid rgba(248,222,126,0.2);
         }
         .notice-bar .notice-scroll {
             display: inline-block;
@@ -43,15 +39,16 @@
         .notice-bar i { margin-right: 8px; color: #ffd700; }
     </style>
 
-    <!-- ===== Footer CSS ===== -->
+    <!-- ===== Footer CSS (aligned with index.html) ===== -->
     <style id="footer-css">
         .site-footer {
-            background: #070f1a;
-            color: rgba(255,255,255,0.75);
-            padding: 72px 0 0;
+            background: #0a4d68; /* matches gradient start */
+            color: rgba(255,255,255,0.85);
+            padding: 60px 0 20px;
             font-family: 'Inter', sans-serif;
             position: relative;
             overflow: hidden;
+            border-top: 3px solid #F8DE7E;
         }
         .site-footer::before {
             content: '';
@@ -79,7 +76,7 @@
             letter-spacing: 0.08em;
             margin-bottom: 14px;
         }
-        .footer-brand p { font-size: 0.85rem; line-height: 1.8; }
+        .footer-brand p { font-size: 0.85rem; line-height: 1.8; opacity: 0.9; }
         .footer-col h4 {
             font-family: 'Cinzel', serif;
             font-size: 0.75rem;
@@ -93,7 +90,7 @@
         .footer-col ul { list-style: none; padding: 0; }
         .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a {
-            color: rgba(255,255,255,0.65);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
             font-size: 0.85rem;
             transition: color 0.2s;
@@ -109,29 +106,29 @@
             border-radius: 50%;
             border: 1px solid rgba(248,222,126,0.3);
             display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.7);
             font-size: 0.9rem;
             text-decoration: none;
             transition: all 0.25s;
         }
         .footer-social a:hover {
-            background: #F8DE7E; color: #070f1a;
+            background: #F8DE7E; color: #0a4d68;
             border-color: #F8DE7E;
             transform: translateY(-2px);
         }
         .footer-bottom {
             max-width: 1200px;
-            margin: 48px auto 0;
+            margin: 40px auto 0;
             padding: 22px 30px;
-            border-top: 1px solid rgba(255,255,255,0.07);
+            border-top: 1px solid rgba(255,255,255,0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
         }
-        .footer-bottom p { font-size: 0.78rem; opacity: 0.55; }
-        .footer-bottom a { color: #c8a84b; text-decoration: none; }
+        .footer-bottom p { font-size: 0.78rem; opacity: 0.7; }
+        .footer-bottom a { color: #F8DE7E; text-decoration: none; }
     </style>
 
     <style>
@@ -219,6 +216,20 @@
             text-align: center;
             padding: 0 20px;
             width: 100%; max-width: 1000px;
+        }
+
+        /* Logo on top */
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            opacity: 0;
+            animation: fadeInDown 1s ease 0.2s forwards;
+            filter: drop-shadow(0 0 12px rgba(248,222,126,0.4));
+        }
+        .hero-logo img {
+            width: 100%; height: 100%;
+            object-fit: contain;
         }
 
         /* Cross icon */
@@ -579,29 +590,31 @@
         }
         .event-img-wrap:hover img { transform: scale(1.04); }
 
-        /* ─── GALLERY ──────────────────────────────────────────── */
+        /* ─── GALLERY (full-bleed, no white) ─────────────────── */
         .gallery-section {
-            padding: 100px 0;
-            background: #f9f7f2;
+            padding: 60px 0 40px;
+            background: #0a2540; /* dark background to blend */
+            position: relative;
         }
         .gallery-section .container {
-            max-width: 1200px; margin: 0 auto; padding: 0 30px;
+            max-width: 1200px; margin: 0 auto; padding: 0 20px;
         }
-        .gallery-section .section-heading { text-align: center; }
-        .gallery-section .section-eyebrow { text-align: center; }
-        .gallery-section .section-rule { margin: 0 auto 56px; }
+        .gallery-section .section-heading { text-align: center; color: #F8DE7E; }
+        .gallery-section .section-eyebrow { text-align: center; color: rgba(248,222,126,0.6); }
+        .gallery-section .section-rule { margin: 0 auto 40px; }
 
-        /* 3-D carousel */
+        /* full-bleed slider: images stretch, no padding */
         .slider-scene {
             position: relative;
             width: 100%;
-            max-width: 920px;
+            max-width: 1000px;
             height: 560px;
             margin: 0 auto;
             perspective: 1200px;
+            background: transparent;
         }
         @media(max-width:768px){ .slider-scene { height: 320px; } }
-        @media(max-width:480px){ .slider-scene { height: 230px; } }
+        @media(max-width:480px){ .slider-scene { height: 220px; } }
 
         .slide-track {
             position: relative;
@@ -613,12 +626,14 @@
             opacity: 0;
             transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
             transform: translateZ(-120px);
-            border-radius: 6px;
+            border-radius: 0; /* no rounding, edge-to-edge */
             overflow: hidden;
+            background: transparent;
         }
         .gallery-slide img {
             width: 100%; height: 100%;
             object-fit: cover;
+            display: block;
         }
         .gallery-slide.active {
             opacity: 1; transform: translateZ(0); z-index: 10;
@@ -630,47 +645,47 @@
             opacity: 0.5; transform: translateX(-34%) translateZ(-140px) rotateY(18deg); z-index: 5;
         }
 
-        /* Slideshow nav */
+        /* slider nav */
         .slider-nav {
             position: absolute; top: 50%; transform: translateY(-50%);
             width: 48px; height: 48px;
-            border: 1px solid rgba(10,37,64,0.25);
-            background: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(10,37,64,0.7);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; z-index: 20;
-            font-size: 1rem; color: #0a2540;
+            font-size: 1rem; color: #F8DE7E;
             transition: all 0.25s;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            backdrop-filter: blur(4px);
         }
-        .slider-nav:hover { background: #0a2540; color: #F8DE7E; border-color: #0a2540; }
-        .slider-nav.prev-btn { left: -28px; }
-        .slider-nav.next-btn { right: -28px; }
+        .slider-nav:hover { background: #F8DE7E; color: #0a2540; border-color: #F8DE7E; }
+        .slider-nav.prev-btn { left: 12px; }
+        .slider-nav.next-btn { right: 12px; }
         @media(max-width:600px){
-            .slider-nav.prev-btn { left: 8px; }
-            .slider-nav.next-btn { right: 8px; }
+            .slider-nav.prev-btn { left: 6px; width: 36px; height: 36px; font-size: 0.8rem; }
+            .slider-nav.next-btn { right: 6px; width: 36px; height: 36px; font-size: 0.8rem; }
         }
 
         /* Dots */
         .slider-dots {
             display: flex; justify-content: center; gap: 10px;
-            margin-top: 32px;
+            margin-top: 24px;
         }
         .slider-dot {
-            width: 8px; height: 8px;
+            width: 10px; height: 10px;
             border-radius: 50%;
-            background: rgba(10,37,64,0.2);
+            background: rgba(255,255,255,0.25);
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid transparent;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .slider-dot.active { background: #c8a84b; border-color: #c8a84b; transform: scale(1.3); }
+        .slider-dot.active { background: #F8DE7E; border-color: #F8DE7E; transform: scale(1.25); }
 
         /* Progress bar */
         .slider-progress {
             width: 100%; height: 2px;
-            background: rgba(10,37,64,0.1);
-            margin-top: 14px;
+            background: rgba(255,255,255,0.15);
+            margin-top: 12px;
             border-radius: 1px;
             overflow: hidden;
         }
@@ -700,7 +715,6 @@
         }
         @media(max-width:900px){ .contact-grid { grid-template-columns: 1fr; } }
 
-        /* Contact info panel */
         .contact-info-panel {
             color: rgba(255,255,255,0.85);
         }
@@ -768,7 +782,6 @@
         }
         .map-frame iframe { width: 100%; height: 100%; border: none; display: block; }
 
-        /* Contact form */
         .contact-form-panel {}
         .form-field {
             margin-bottom: 20px;
@@ -917,6 +930,11 @@
     </div>
 
     <div class="hero-content">
+        <!-- Logo on top -->
+        <div class="hero-logo">
+            <img src="./images/logo.png" alt="St. Mary's Logo">
+        </div>
+
         <i class="fas fa-cross hero-cross"></i>
 
         <!-- Animated letter-by-letter title -->
@@ -946,7 +964,7 @@
                 <h2 class="section-heading">Welcome to St. Mary's<br>Syro Malabar Mission</h2>
                 <div class="section-rule left"></div>
                 <p>Thank you for visiting the website of St. Mary's Syro Malabar Mission Wellington, New Zealand. St. Mary's Mission of the Syro-Malabar Eparchy of Melbourne strives to live as a faithful Catholic community in Wellington. Our members belong to the Syro-Malabar Major Archiepiscopal Church — one of the most vibrant Eastern Churches in the Catholic Communion — who call the greater Wellington Region home. The Syro-Malabar Church traces its origin to the preachings of St Thomas, the Apostle, in India.</p>
-                <p>The Mission currently comprises 7 family wards with more than 350 families, continuing to grow in the footsteps of St Thomas the Apostle by celebrating the Syro-Malabar Liturgy in its Synodal form. We are privileged to have daily Holy Qurbana (Holy Mass) at 27 Trebann Street, Paparangi. Our Catechism Classes run every Sunday, attended by more than 250 students and 25 volunteer teachers, alongside our dynamic youth group, SMYM.</p>
+                <p>The Mission currently comprises 7 family wards with more than 350 families, continuing to grow in the footsteps of St Thomas the Apostle by celebrating the Syro-Malabar Liturgy in its Synodal form. We are privileged to have daily Holy Qurbana (Holy Mass) at 27 Trebann Street, Paparangi. Our Catechism Classes run every Sunday, attended by many students and volunteer teachers, alongside our dynamic youth group, SMYM.</p>
                 <p>Our Community consists of migrated Catholic professionals from Kerala and different parts of India, present in greater Wellington since 2006. May the grace of Our Lord Jesus Christ, the love of God the Father, and the fellowship of the Holy Spirit be with us all.</p>
             </div>
 
@@ -964,7 +982,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     STATS STRIP
+     STATS STRIP (removed 250+ catechism)
 ═══════════════════════════════════════════ -->
 <div class="stats-strip">
     <div class="container">
@@ -977,8 +995,8 @@
             <div class="stat-label">Family Wards</div>
         </div>
         <div class="stat-item reveal reveal-delay-2">
-            <div class="stat-num">250<span>+</span></div>
-            <div class="stat-label">Catechism Students</div>
+            <div class="stat-num">25<span>+</span></div>
+            <div class="stat-label">Volunteer Teachers</div>
         </div>
         <div class="stat-item reveal reveal-delay-3">
             <div class="stat-num">2006</div>
@@ -1029,7 +1047,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     GALLERY
+     GALLERY (full-bleed, no white)
 ═══════════════════════════════════════════ -->
 <section class="gallery-section" id="gallery">
     <div class="container">
@@ -1196,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { threshold: 0.12 });
     revealEls.forEach(el => observer.observe(el));
 
-    /* ── Gallery Slideshow ── */
+    /* ── Gallery Slideshow (full-bleed) ── */
     const images = [
         'images/bishoprafel.jpg',
         'images/bishopjohn.jpg',
@@ -1298,3 +1316,4 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
+```
