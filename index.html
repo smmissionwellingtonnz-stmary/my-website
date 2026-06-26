@@ -10,7 +10,7 @@
     <!-- Header / Nav CSS -->
     <link rel="stylesheet" href="includes/header.css">
 
-    <!-- ===== Notice Bar CSS (fixed) ===== -->
+    <!-- ===== Notice Bar CSS ===== -->
     <style id="notice-bar-css">
         .notice-bar {
             background: #0a2540;
@@ -37,98 +37,159 @@
         .notice-bar i { margin-right: 8px; color: #ffd700; }
     </style>
 
-    <!-- ===== Footer CSS (exactly as index.html) ===== -->
+    <!-- ===== Footer CSS (exactly matching index.html) ===== -->
     <style id="footer-css">
         .site-footer {
-            background: #0a4d68;
-            color: rgba(255,255,255,0.85);
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: white;
             padding: 60px 0 20px;
-            font-family: 'Inter', sans-serif;
             position: relative;
             overflow: hidden;
-            border-top: 3px solid #F8DE7E;
         }
+
         .site-footer::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #F8DE7E, #c8a84b, #F8DE7E, transparent);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: footerPulse 15s infinite linear;
+            z-index: 0;
         }
+
+        @keyframes footerPulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .footer-inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 48px;
+            padding: 0 20px;
         }
-        @media(max-width:768px){
-            .footer-inner { grid-template-columns: 1fr; gap:32px; }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 15px;
         }
-        .footer-brand h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #F8DE7E;
-            letter-spacing: 0.08em;
-            margin-bottom: 14px;
-        }
-        .footer-brand p { font-size: 0.85rem; line-height: 1.8; opacity: 0.9; }
-        .footer-col h4 {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #F8DE7E;
-            margin-bottom: 18px;
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
             padding-bottom: 10px;
-            border-bottom: 1px solid rgba(248,222,126,0.25);
+            color: #F8DE7E;
+            font-family: 'Cinzel', serif;
         }
-        .footer-col ul { list-style: none; padding: 0; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a {
-            color: rgba(255,255,255,0.7);
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.2s;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .footer-col ul li a i { color: #c8a84b; font-size: 0.75rem; }
-        .footer-col ul li a:hover { color: #F8DE7E; }
-        .footer-social {
-            display: flex; gap: 12px; margin-top: 20px;
-        }
-        .footer-social a {
-            width: 38px; height: 38px;
-            border-radius: 50%;
-            border: 1px solid rgba(248,222,126,0.3);
-            display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.25s;
-        }
-        .footer-social a:hover {
-            background: #F8DE7E; color: #0a4d68;
-            border-color: #F8DE7E;
-            transform: translateY(-2px);
-        }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 40px auto 0;
-            padding: 22px 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
         }
-        .footer-bottom p { font-size: 0.78rem; opacity: 0.7; }
-        .footer-bottom a { color: #F8DE7E; text-decoration: none; }
+
+        .footer-links a i {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-social a:hover {
+            background: #ffd700;
+            color: #0a4d68;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .footer-bottom a {
+            color: #F8DE7E;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .footer-column {
+                flex: 0 0 100%;
+                padding: 0;
+            }
+        }
     </style>
 
+    <!-- Rest of the CSS (same as before) -->
     <style>
         /* ─── RESET & BASE ─────────────────────────────────────── */
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -588,7 +649,7 @@
         }
         .event-img-wrap:hover img { transform: scale(1.04); }
 
-        /* ─── GALLERY (full-bleed, no white, no crop) ────────── */
+        /* ─── GALLERY (full-bleed, no crop) ─────────────────── */
         .gallery-section {
             padding: 60px 0 40px;
             background: #0a2540;
@@ -633,7 +694,7 @@
         .gallery-slide img {
             width: 100%;
             height: 100%;
-            object-fit: contain;  /* no crop, show full image */
+            object-fit: contain;
             display: block;
         }
         .gallery-slide.active {
@@ -862,7 +923,7 @@
         }
         .ty-message button:hover { background: rgba(200,168,75,0.15); }
 
-        /* ─── STATS STRIP (removed 25+ volunteers) ────────────── */
+        /* ─── STATS STRIP ────────────────────────────────────── */
         .stats-strip {
             background: #f9f7f2;
             padding: 70px 0;
@@ -980,7 +1041,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     STATS STRIP (removed 25+ volunteers, now 4 stats)
+     STATS STRIP
 ═══════════════════════════════════════════ -->
 <div class="stats-strip">
     <div class="container">
@@ -1045,7 +1106,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     GALLERY (full-bleed, no crop)
+     GALLERY
 ═══════════════════════════════════════════ -->
 <section class="gallery-section" id="gallery">
     <div class="container">
@@ -1187,7 +1248,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* ── Hero: letter-by-letter title ── */
     const titleWords = ['St.', "Mary's"];
     const titleEl = document.getElementById('heroTitle');
-    let totalDelay = 0.6; // seconds
+    let totalDelay = 0.6;
 
     titleWords.forEach((word, wi) => {
         if (wi > 0) {
@@ -1212,7 +1273,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { threshold: 0.12 });
     revealEls.forEach(el => observer.observe(el));
 
-    /* ── Gallery Slideshow (no crop) ── */
+    /* ── Gallery Slideshow ── */
     const images = [
         'images/bishoprafel.jpg',
         'images/bishopjohn.jpg',
@@ -1291,7 +1352,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     resetProgress();
 
-    // Neighbor slides initial state
     if (slides.length > 1) {
         slides[(cur + 1) % slides.length].classList.add('next');
         slides[(cur - 1 + slides.length) % slides.length].classList.add('prev');
