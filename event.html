@@ -191,6 +191,43 @@
             margin-top: 0.5rem;
         }
 
+        /* ----- Register Button (added) ----- */
+        .register-btn-wrapper {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .register-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.75rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(8, 131, 149, 0.35);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .register-btn i {
+            margin-right: 8px;
+        }
+
+        /* Hover effect */
+        .register-btn:hover {
+            background: #fff;
+            color: #0a4d68;
+            border-color: #0a4d68;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(8, 131, 149, 0.4);
+        }
+
         /* Footer Styles */
         .footer {
             background: linear-gradient(135deg, #0a4d68, #088395);
@@ -403,7 +440,9 @@
                         Join us in celebrating the feast of St. Thomas, the Apostle. A solemn Holy Mass and community gathering will be held to honor our patron saint.
                     </p>
                 </div>
-            </div><!-- Event Card: Onam Celebration -->
+            </div>
+
+            <!-- Event Card: Onam Celebration (with Register button) -->
             <div class="event-card">
                 <div class="event-image-container">
                     <img src="images/onam.jpg" alt="Onam Celebration" class="event-image">
@@ -414,9 +453,17 @@
                     <p class="event-description">
                         We look forward to celebrating this joyous festival together with our community.                     
                     </p>
+                    <!-- Register Button -->
+                    <div class="register-btn-wrapper">
+                        <a href="https://form.jotform.com/smmissionwellingtonnz/onam-sadhya--cultural-festival-2026" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="register-btn">
+                            <i class="fas fa-ticket-alt"></i> Register Now
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
