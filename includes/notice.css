@@ -1,6 +1,5 @@
 /* ============================================
    NOTICE BAR STYLES
-   Version: 2.0
    ============================================ */
 
 /* -------- NOTICE BAR -------- */
@@ -231,11 +230,7 @@
     padding: 0 2px;
 }
 
-/* ============================================
-   RESPONSIVE STYLES
-   ============================================ */
-
-/* Tablet */
+/* -------- RESPONSIVE -------- */
 @media (max-width: 768px) {
     .notice-content {
         font-size: 12.5px;
@@ -279,12 +274,7 @@
     }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
-    .notice-bar {
-        min-height: 40px;
-    }
-
     .notice-content {
         font-size: 11px;
         gap: 12px;
@@ -327,104 +317,9 @@
     }
 }
 
-/* Very small screens */
-@media (max-width: 360px) {
+/* For very long content, ensure animation works */
+@media (max-width: 400px) {
     .notice-content {
-        font-size: 10px;
-        gap: 10px;
-        padding: 0 8px;
         animation-duration: 15s;
-    }
-
-    .hamburger-btn {
-        width: 30px;
-        height: 30px;
-        min-width: 30px;
-        padding: 5px 4px;
-        margin: 2px 2px 2px 3px;
-    }
-
-    .hamburger-line {
-        width: 14px;
-        height: 2px;
-    }
-
-    .notice-item .label {
-        font-size: 9px;
-    }
-    .notice-item .icon {
-        font-size: 11px;
-    }
-    .notice-separator {
-        font-size: 10px;
-    }
-    .notice-wrapper::before,
-    .notice-wrapper::after {
-        width: 10px;
-    }
-}
-
-/* Landscape mode on phones */
-@media (max-height: 500px) and (orientation: landscape) {
-    .notice-bar {
-        min-height: 36px;
-    }
-    .notice-wrapper {
-        min-height: 36px;
-        padding: 3px 0;
-    }
-    .hamburger-btn {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        padding: 6px 5px;
-        margin: 2px 4px;
-    }
-    .hamburger-line {
-        width: 16px;
-        height: 2px;
-    }
-    .notice-content {
-        font-size: 11px;
-        padding: 0 12px;
-        gap: 14px;
-        animation-duration: 20s;
-    }
-    .notice-item .label {
-        font-size: 10px;
-    }
-    .notice-item .icon {
-        font-size: 12px;
-    }
-    .notice-separator {
-        font-size: 12px;
-    }
-}
-
-/* High DPI screens - ensure smooth animation */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .notice-content {
-        animation-duration: 30s;
-    }
-}
-
-/* Reduced motion preference - respect user settings */
-@media (prefers-reduced-motion: reduce) {
-    .notice-content {
-        animation: none !important;
-        white-space: normal;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px 24px;
-        padding: 8px 20px;
-    }
-    
-    .notice-wrapper::before,
-    .notice-wrapper::after {
-        display: none !important;
-    }
-    
-    .notice-bar:hover .notice-content {
-        animation-play-state: running !important;
     }
 }
