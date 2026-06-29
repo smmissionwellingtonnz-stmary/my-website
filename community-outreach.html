@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Notice Bar CSS -->
+    <link rel="stylesheet" href="includes/notice.css">
+    
     <!-- Menu Navigation CSS -->
     <link rel="stylesheet" href="includes/header.css">
     
@@ -35,6 +38,7 @@
             font-family:'DM Sans', sans-serif;
             background:var(--cream); color:var(--ink);
             overflow-x:hidden; line-height:1.75;
+            padding-top: 48px; /* Space for fixed notice bar */
         }
         body::before {
             content:'';
@@ -60,7 +64,7 @@
 
         /* Hero */
         .hero {
-            margin-top:140px;
+            margin-top:0px;
             min-height:88vh;
             display:grid;
             grid-template-columns:1fr 1fr;
@@ -144,7 +148,7 @@
         .hero-stat-chip span { font-size:.72rem; opacity:.8; letter-spacing:.06em; }
 
         @media(max-width:860px){
-            .hero { grid-template-columns:1fr; min-height:auto; margin-top:90px; }
+            .hero { grid-template-columns:1fr; min-height:auto; margin-top:0px; }
             .hero-left { padding:3.5rem 2rem; }
             .hero-left::after { display:none; }
             .hero-right { min-height:300px; }
@@ -645,6 +649,9 @@
         @keyframes slideUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 44px;
+            }
             .footer-content {
                 flex-direction: column;
             }
@@ -653,6 +660,9 @@
             }
         }
         @media (max-width: 480px) {
+            body {
+                padding-top: 40px;
+            }
             .scroll-top {
                 bottom: 20px;
                 right: 20px;
