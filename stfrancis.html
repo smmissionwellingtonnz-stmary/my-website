@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>St. Chavara Ward · St. Mary's Syro-Malabar Mission</title>
+    <title>St. Francis Xavier Ward · St. Mary's Syro-Malabar Mission</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Notice Bar CSS -->
+    <link rel="stylesheet" href="includes/notice.css">
     
     <!-- Menu Navigation CSS -->
     <link rel="stylesheet" href="includes/header.css">
@@ -27,6 +30,7 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
+            padding-top: 48px; /* Space for fixed notice bar */
         }
         
         html {
@@ -294,7 +298,6 @@
 
         .leader:nth-of-type(1) { animation-delay: 0.1s; }
         .leader:nth-of-type(2) { animation-delay: 0.2s; }
-        .leader:nth-of-type(3) { animation-delay: 0.3s; }
 
         .leader:hover {
             background: rgba(10, 77, 104, 0.1);
@@ -327,7 +330,7 @@
             opacity: 0;
             transform: translateX(30px);
             animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-            animation-delay: 0.4s;
+            animation-delay: 0.3s;
         }
 
         .meeting-schedule p {
@@ -341,7 +344,7 @@
             opacity: 0;
             transform: translateX(30px);
             animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-            animation-delay: 0.5s;
+            animation-delay: 0.4s;
         }
         
         .whatsapp-button {
@@ -360,7 +363,7 @@
             opacity: 0;
             transform: translateX(30px);
             animation: flyInRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-            animation-delay: 0.6s;
+            animation-delay: 0.5s;
         }
         
         .whatsapp-button:hover {
@@ -530,6 +533,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 44px;
+            }
+            
             .title { 
                 font-size: 2.5rem; 
             }
@@ -568,6 +575,10 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding-top: 40px;
+            }
+            
             .title { 
                 font-size: 2rem; 
             }
@@ -612,7 +623,7 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <h1 class="title">ST. CHAVARA WARD</h1>
+        <h1 class="title">ST. FRANCIS XAVIER WARD</h1>
     </section>
 
     <div class="main-content">
@@ -626,8 +637,8 @@
         <div class="ward-hero">
             <div class="image-container">
                 <div class="image-frame">
-                    <img src="images/stchavara.jpg" 
-                         alt="St. Chavara Ward Community" 
+                    <img src="images/stfrancis.jpeg" 
+                         alt="St. Francis Xavier Ward Community" 
                          class="main-image">
                 </div>
             </div>
@@ -637,16 +648,12 @@
                     <h3 class="info-title"><i class="fas fa-users"></i> Ward Leaders</h3>
                     <div class="info-content">
                         <div class="leader">
-                            <div class="leader-name"><i class="fas fa-user"></i> Mathew Mani</div>
-                            <div class="leader-mob">Mobile: +64 22 580 4844</div>
+                            <div class="leader-name"><i class="fas fa-user"></i> George Jose</div>
+                            <div class="leader-mob">Mobile: +64 22 645 1074</div>
                         </div>
                         <div class="leader">
-                            <div class="leader-name"><i class="fas fa-user"></i> Aneesh Philip</div>
-                            <div class="leader-mob">Mobile: +64 22 343 3113</div>
-                        </div>
-                        <div class="leader">
-                            <div class="leader-name"><i class="fas fa-user"></i> Gladis Pathalil George</div>
-                            <div class="leader-mob">Mobile: +64 22 586 4387</div>
+                            <div class="leader-name"><i class="fas fa-user"></i> Jolly Kurian</div>
+                            <div class="leader-mob">Mobile: +64 22 669 5204</div>
                         </div>
                     </div>
                 </div>
@@ -655,12 +662,12 @@
                     <h3 class="info-title"><i class="fas fa-praying-hands"></i> Monthly Gathering</h3>
                     <div class="info-content">
                         <div class="meeting-schedule">
-                            <p>Our ward meetings are held every <strong>first Tuesday</strong> of the month.</p>
+                            <p>Our ward meetings are held every <strong>second Wednesday</strong> of the month.</p>
                         </div>
                         <p class="contact-cta">Contact our leaders for location and time details.</p>
                         
                         <!-- WhatsApp Button -->
-                        <a href="https://chat.whatsapp.com/KYD2XHb0CXJFb3I8Z8WML0" target="_blank" class="whatsapp-button">
+                        <a href="https://chat.whatsapp.com/LqUSuJCtzQY4A4uK1kH8Gh" target="_blank" class="whatsapp-button">
                             <i class="fab fa-whatsapp"></i> Join Family WhatsApp Group
                         </a>
                     </div>
