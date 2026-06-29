@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Notice Bar CSS -->
+    <link rel="stylesheet" href="includes/notice.css">
+    
     <!-- Menu Navigation CSS -->
     <link rel="stylesheet" href="includes/header.css">
     
@@ -27,6 +30,7 @@
             width: 100%;
             max-width: 100%;
             position: relative;
+            padding-top: 48px; /* Space for fixed notice bar */
         }
         
         /* nice animated background overlay */
@@ -706,6 +710,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 44px;
+            }
+            
             .title { font-size: 2.5rem; }
             .hero-subtitle { font-size: 1rem; }
             .hero-section { padding: 5rem 0 3rem; }
@@ -747,6 +755,10 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding-top: 40px;
+            }
+            
             .title { font-size: 2rem; }
             
             .safeguarding-point { padding: 1.2rem; }
