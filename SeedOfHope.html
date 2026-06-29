@@ -14,6 +14,9 @@
     <!-- Menu Navigation CSS -->
     <link rel="stylesheet" href="includes/header.css">
     
+    <!-- Footer CSS -->
+    <link rel="stylesheet" href="includes/footer.css">
+    
     <style>
         /* Global Styles */
         * {
@@ -1179,144 +1182,6 @@
             margin: 0 auto;
         }
 
-        /* ==================== FOOTER STYLES ==================== */
-        .footer {
-            background: linear-gradient(135deg, #0a4d68, #088395);
-            color: white;
-            padding: 60px 0 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-            animation: footerPulse 15s infinite linear;
-            z-index: 0;
-        }
-
-        @keyframes footerPulse {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 40px;
-            padding: 0 15px;
-        }
-
-        .footer-column h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            color: #F8DE7E;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: #d39a3a;
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a i {
-            margin-right: 10px;
-            font-size: 13px;
-            color: #d39a3a;
-        }
-
-        .footer-links a:hover {
-            color: #d39a3a;
-            transform: translateX(5px);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            color: white;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .footer-social a:hover {
-            background: #d39a3a;
-            color: #0a4d68;
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .footer-bottom p {
-            opacity: 0.7;
-            font-size: 0.85rem;
-            font-family: 'Montserrat', sans-serif;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             body {
@@ -1365,24 +1230,6 @@
             .hero-btn {
                 padding: 0.5rem 1.2rem;
                 font-size: 0.75rem;
-            }
-
-            .footer-column {
-                flex: 0 0 100%;
-                text-align: center;
-            }
-            
-            .footer-column h3::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .footer-links a {
-                justify-content: center;
-            }
-            
-            .footer-social {
-                justify-content: center;
             }
 
             .qr-code-img {
@@ -1905,7 +1752,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            // Load notice and footer
+            // Load notice bar
             fetch("includes/notice.html")
                 .then(response => response.text())
                 .then(data => {
@@ -1920,10 +1767,12 @@
                         .catch(() => {});
                 });
 
+            // Load footer from includes folder
             fetch('includes/footer.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-placeholder').innerHTML = data;
+                    console.log("Footer loaded successfully");
                 })
                 .catch(() => {
                     fetch('footer.html')
