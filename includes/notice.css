@@ -7,7 +7,10 @@
     background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%);
     color: #ffffff;
     padding: 0;
-    position: relative;
+    position: fixed;  /* ← CHANGED from relative to fixed */
+    top: 0;           /* ← ADDED - sticks to top */
+    left: 0;          /* ← ADDED - sticks to left */
+    right: 0;         /* ← ADDED - full width */
     z-index: 1000;
     border-bottom: 2px solid rgba(248, 222, 126, 0.25);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
