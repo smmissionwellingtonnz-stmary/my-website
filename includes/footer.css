@@ -1,0 +1,588 @@
+/* ============================================
+   FOOTER STYLES
+   Green Theme with Moving Shaded Stripes
+   Compatible with Desktop, Laptop & Mobile
+   ============================================ */
+
+/* ----- FOOTER BASE ----- */
+.footer {
+    background: linear-gradient(145deg, #0a2e1c 0%, #1a4a2a 50%, #0d331f 100%);
+    color: #f0f5ea;
+    padding: 3rem 0 1.5rem;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid rgba(248, 222, 126, 0.25);
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    margin-top: auto;
+}
+
+/* ============================================================
+   BACKGROUND ANIMATIONS
+   ============================================================ */
+
+/* 1. Pulsing radial glow (like original header) */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(248, 222, 126, 0.05) 0%, rgba(248, 222, 126, 0) 70%);
+    animation: footerPulse 20s infinite linear;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes footerPulse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 2. Moving Shaded Stripes - Fast Set */
+.footer .stripe-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.footer .stripe {
+    position: absolute;
+    top: -50%;
+    height: 200%;
+    width: 8%;
+    background: linear-gradient(
+        90deg,
+        rgba(248, 222, 126, 0) 0%,
+        rgba(248, 222, 126, 0.05) 30%,
+        rgba(248, 222, 126, 0.10) 50%,
+        rgba(248, 222, 126, 0.05) 70%,
+        rgba(248, 222, 126, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: stripeSlide 12s infinite linear;
+}
+
+.footer .stripe:nth-child(1) { left: -10%; animation-duration: 14s; }
+.footer .stripe:nth-child(2) { left: 5%; animation-duration: 18s; animation-delay: 1s; width: 10%; }
+.footer .stripe:nth-child(3) { left: 20%; animation-duration: 16s; animation-delay: 2.5s; width: 6%; }
+.footer .stripe:nth-child(4) { left: 35%; animation-duration: 20s; animation-delay: 0.5s; width: 12%; }
+.footer .stripe:nth-child(5) { left: 50%; animation-duration: 15s; animation-delay: 3s; width: 7%; }
+.footer .stripe:nth-child(6) { left: 65%; animation-duration: 17s; animation-delay: 1.8s; width: 9%; }
+.footer .stripe:nth-child(7) { left: 80%; animation-duration: 19s; animation-delay: 0.2s; width: 8%; }
+.footer .stripe:nth-child(8) { left: 95%; animation-duration: 13s; animation-delay: 2s; width: 11%; }
+
+@keyframes stripeSlide {
+    0% { transform: skewX(-25deg) translateX(-100%); opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: skewX(-25deg) translateX(1200%); opacity: 0; }
+}
+
+/* 3. Moving Shaded Stripes - Slow Set (different angle) */
+.footer .stripe-slow {
+    position: absolute;
+    top: -30%;
+    height: 160%;
+    width: 5%;
+    background: linear-gradient(
+        90deg,
+        rgba(248, 222, 126, 0) 0%,
+        rgba(248, 222, 126, 0.03) 25%,
+        rgba(248, 222, 126, 0.07) 50%,
+        rgba(248, 222, 126, 0.03) 75%,
+        rgba(248, 222, 126, 0) 100%
+    );
+    transform: skewX(-35deg);
+    animation: stripeSlideSlow 25s infinite linear;
+    z-index: 0;
+}
+
+.footer .stripe-slow:nth-child(9) { left: 10%; animation-delay: 0s; width: 12%; }
+.footer .stripe-slow:nth-child(10) { left: 45%; animation-delay: 3s; width: 8%; }
+.footer .stripe-slow:nth-child(11) { left: 75%; animation-delay: 6s; width: 15%; }
+
+@keyframes stripeSlideSlow {
+    0% { transform: skewX(-35deg) translateX(-150%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: skewX(-35deg) translateX(1200%); opacity: 0; }
+}
+
+/* 4. Floating Particles */
+.footer .particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(248, 222, 126, 0.12);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatParticle 14s infinite ease-in-out;
+}
+
+.footer .particle:nth-child(12) { left: 8%; top: 15%; animation-delay: 0s; width: 10px; height: 10px; }
+.footer .particle:nth-child(13) { left: 22%; top: 70%; animation-delay: 1.5s; width: 6px; height: 6px; }
+.footer .particle:nth-child(14) { left: 40%; top: 8%; animation-delay: 3s; width: 14px; height: 14px; }
+.footer .particle:nth-child(15) { left: 58%; top: 85%; animation-delay: 0.8s; width: 8px; height: 8px; }
+.footer .particle:nth-child(16) { left: 75%; top: 20%; animation-delay: 2.2s; width: 12px; height: 12px; }
+.footer .particle:nth-child(17) { left: 90%; top: 50%; animation-delay: 4s; width: 6px; height: 6px; }
+
+@keyframes floatParticle {
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.2; }
+    25% { transform: translateY(-35px) scale(1.2) rotate(90deg); opacity: 0.5; }
+    50% { transform: translateY(-70px) scale(1) rotate(180deg); opacity: 0.2; }
+    75% { transform: translateY(-35px) scale(0.8) rotate(270deg); opacity: 0.4; }
+    100% { transform: translateY(0) scale(1) rotate(360deg); opacity: 0.2; }
+}
+
+/* ============================================================
+   FOOTER CONTAINER - GRID LAYOUT
+   ============================================================ */
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr;
+    gap: 2.5rem;
+}
+
+/* ============================================================
+   COLUMN 1: BRAND & SOCIAL
+   ============================================================ */
+.footer-col-brand h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #F8DE7E;
+    margin-bottom: 0.2rem;
+    letter-spacing: 0.5px;
+}
+
+.footer-col-brand .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: #c7d5b0;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.footer-col-brand p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(240, 245, 234, 0.8);
+    max-width: 400px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(248, 222, 126, 0.2);
+    color: #f0f5ea;
+    font-size: 1.1rem;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    background: #F8DE7E;
+    color: #0a2e1c;
+    transform: translateY(-4px) scale(1.05);
+    border-color: #F8DE7E;
+    box-shadow: 0 6px 20px rgba(248, 222, 126, 0.3);
+}
+
+/* ============================================================
+   COLUMN 2: QUICK LINKS
+   ============================================================ */
+.footer-col-links h4,
+.footer-col-seed h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #F8DE7E;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid rgba(248, 222, 126, 0.15);
+    padding-bottom: 0.6rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.65rem;
+}
+
+.footer-links a {
+    color: rgba(240, 245, 234, 0.75);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-links a i {
+    font-size: 0.65rem;
+    color: #F8DE7E;
+    opacity: 0.6;
+}
+
+.footer-links a:hover {
+    color: #F8DE7E;
+    transform: translateX(5px);
+}
+
+/* ============================================================
+   COLUMN 3: SEEDS OF HOPE CARD
+   ============================================================ */
+.seed-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 20px;
+    padding: 1.5rem 1.2rem;
+    border: 1px solid rgba(248, 222, 126, 0.15);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.seed-card:hover {
+    border-color: rgba(248, 222, 126, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.seed-card .seed-icon {
+    font-size: 2rem;
+    color: #F8DE7E;
+    margin-bottom: 0.2rem;
+    display: block;
+}
+
+.seed-card h5 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #F8DE7E;
+    margin-bottom: 0.2rem;
+}
+
+.seed-card .seed-tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b0c8a8;
+    margin-bottom: 0.6rem;
+    display: block;
+}
+
+.seed-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(240, 245, 234, 0.75);
+    margin-bottom: 1.2rem;
+}
+
+.seed-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #d39a3a, #F8DE7E);
+    color: #0a2e1c;
+    font-weight: 700;
+    padding: 0.65rem 1.5rem;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(211, 154, 58, 0.35);
+}
+
+.seed-btn i {
+    font-size: 0.9rem;
+}
+
+.seed-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(211, 154, 58, 0.5);
+    background: linear-gradient(135deg, #e8b84a, #F8DE7E);
+}
+
+/* ============================================================
+   CONTACT EXTRAS (Chaplain, Kaikkarans, Email)
+   ============================================================ */
+.footer-contact-extras {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: rgba(240, 245, 234, 0.5);
+    line-height: 1.6;
+    border-top: 1px solid rgba(248, 222, 126, 0.08);
+    padding-top: 1rem;
+}
+
+.footer-contact-extras strong {
+    color: #F8DE7E;
+    font-weight: 600;
+}
+
+.footer-contact-extras .role-icon {
+    color: #F8DE7E;
+    margin-right: 4px;
+}
+
+.footer-contact-extras a {
+    color: rgba(240, 245, 234, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-contact-extras a:hover {
+    color: #F8DE7E;
+}
+
+/* ============================================================
+   FOOTER BOTTOM
+   ============================================================ */
+.footer-bottom {
+    max-width: 1300px;
+    margin: 2.5rem auto 0;
+    padding: 1.2rem 2rem 0;
+    border-top: 1px solid rgba(248, 222, 126, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(240, 245, 234, 0.45);
+    position: relative;
+    z-index: 2;
+}
+
+.footer-bottom a {
+    color: #F8DE7E;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.footer-bottom a:hover {
+    color: #fff;
+}
+
+.footer-bottom .creator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-bottom .creator i {
+    font-size: 0.7rem;
+    color: #F8DE7E;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+/* Laptop & Small Desktop */
+@media (max-width: 1024px) {
+    .footer-container {
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+    .footer-col-brand p {
+        max-width: 100%;
+    }
+}
+
+/* Tablet & Mobile Landscape */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        padding: 0 1.2rem;
+    }
+
+    .footer-col-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-col-brand p {
+        max-width: 100%;
+    }
+
+    .footer-col-links {
+        grid-column: 1 / 2;
+    }
+
+    .footer-col-seed {
+        grid-column: 2 / 3;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 1rem 1.2rem 0;
+    }
+
+    /* Reduce animation intensity on mobile for performance */
+    .footer .stripe {
+        animation-duration: 20s !important;
+    }
+    .footer .stripe-slow {
+        animation-duration: 35s !important;
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .footer-col-links {
+        grid-column: 1 / 2;
+    }
+
+    .footer-col-seed {
+        grid-column: 1 / 2;
+    }
+
+    .footer-col-brand h3 {
+        font-size: 1.5rem;
+    }
+
+    .footer-col-brand .sub {
+        font-size: 1rem;
+    }
+
+    .footer-col-brand p {
+        font-size: 0.9rem;
+    }
+
+    .seed-card {
+        padding: 1.2rem;
+    }
+
+    .seed-card h5 {
+        font-size: 1.1rem;
+    }
+
+    .seed-btn {
+        padding: 0.55rem 1.2rem;
+        font-size: 0.8rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-social a {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .footer-links a {
+        font-size: 0.85rem;
+    }
+
+    .footer-contact-extras {
+        font-size: 0.8rem;
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem;
+        padding: 0.8rem 1rem 0;
+        margin-top: 1.5rem;
+    }
+
+    /* Hide some particles on mobile for performance */
+    .footer .particle:nth-child(14),
+    .footer .particle:nth-child(16),
+    .footer .particle:nth-child(17) {
+        display: none;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+    .footer-container {
+        padding: 0 0.8rem;
+        gap: 1.2rem;
+    }
+
+    .footer-col-brand h3 {
+        font-size: 1.3rem;
+    }
+
+    .seed-card {
+        padding: 1rem;
+    }
+
+    .seed-btn {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .footer-social a {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* ============================================================
+   UTILITY - Prevent body scroll issues
+   ============================================================ */
+body.menu-open .footer {
+    z-index: 1;
+}
+
+/* Ensure footer stays at bottom when content is short */
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > .footer {
+    margin-top: auto;
+}
