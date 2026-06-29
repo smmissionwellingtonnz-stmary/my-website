@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
+    <!-- Notice Bar CSS -->
+    <link rel="stylesheet" href="includes/notice.css">
+    
     <!-- Menu Navigation CSS -->
     <link rel="stylesheet" href="includes/header.css">
     
@@ -26,6 +29,7 @@
             overflow-x: hidden;
             color: #1e2a1f;
             line-height: 1.65;
+            padding-top: 48px; /* Space for fixed notice bar */
         }
 
         html {
@@ -1315,6 +1319,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            body {
+                padding-top: 44px;
+            }
+            
             .stem-line {
                 left: 25px;
                 transform: none;
@@ -1384,6 +1392,10 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding-top: 40px;
+            }
+            
             .story-content-wrapper {
                 width: calc(100% - 50px);
                 margin-left: 45px !important;
