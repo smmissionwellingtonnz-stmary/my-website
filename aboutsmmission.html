@@ -13,6 +13,9 @@
     <!-- Menu Navigation CSS -->
     <link rel="stylesheet" href="includes/header.css">
     
+    <!-- Footer CSS -->
+    <link rel="stylesheet" href="includes/footer.css">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
         
@@ -275,6 +278,55 @@
             width: 100%;
         }
         
+        .chaplain-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .chaplain-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .chaplain-image-container {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .chaplain-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.4s ease;
+        }
+        
+        .chaplain-card:hover .chaplain-image {
+            transform: scale(1.05);
+        }
+        
+        .chaplain-info {
+            padding: 1.2rem 1rem;
+            text-align: center;
+        }
+        
+        .chaplain-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .chaplain-period {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+        
         @media (max-width: 1024px) {
             .chaplains-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -292,6 +344,10 @@
                 grid-template-columns: 1fr;
                 max-width: 500px;
                 margin: 2rem auto;
+            }
+            
+            .chaplain-image-container {
+                height: 240px;
             }
             
             .wardmap-container {
@@ -322,14 +378,6 @@
             .thanksgiving {
                 font-size: 1rem;
             }
-            
-            .footer-content {
-                flex-direction: column;
-            }
-            
-            .footer-column {
-                margin-bottom: 30px;
-            }
         }
         
         @media (max-width: 480px) {
@@ -350,6 +398,10 @@
                 font-size: 1.5rem;
             }
             
+            .chaplain-image-container {
+                height: 200px;
+            }
+            
             .scroll-top {
                 bottom: 20px;
                 right: 20px;
@@ -357,143 +409,6 @@
                 height: 40px;
                 font-size: 1rem;
             }
-        }
-        
-        /* Footer Styles */
-        .footer {
-            background: linear-gradient(135deg, #0a4d68, #088395);
-            color: white;
-            padding: 60px 0 20px;
-            position: relative;
-            overflow: hidden;
-            margin-top: 60px;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            animation: pulse 15s infinite linear;
-            z-index: 0;
-        }
-
-        @keyframes pulse {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .footer-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 40px;
-            padding: 0 15px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            color: #F8DE7E;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: #ffd700;
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-links a i {
-            margin-right: 10px;
-            font-size: 14px;
-            color: #ffd700;
-        }
-
-        .footer-links a:hover {
-            color: #ffd700;
-            transform: translateX(5px);
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .footer-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .footer-social a:hover {
-            background: #ffd700;
-            color: #0a4d68;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .footer-bottom {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .footer-bottom p {
-            opacity: 0.8;
-            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -597,11 +512,12 @@
                         .catch(err => console.log("Notice fallback error:", err));
                 });
 
-            // Load footer
+            // Load footer from includes folder
             fetch('includes/footer.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('footer-placeholder').innerHTML = data;
+                    console.log("Footer loaded successfully");
                 })
                 .catch(error => {
                     console.log("Footer loading error:", error);
