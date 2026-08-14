@@ -30,7 +30,7 @@
         .tile-bg {
             position:absolute; top:0; left:0; width:100%; height:100%; z-index:1;
             display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,1fr); 
-            gap:0; /* no gap */
+            gap:0;
             background:#0a0a0a; 
         }
         .tile-bg .bg-tile {
@@ -47,7 +47,7 @@
         }
         .overlay-dark {
             position:absolute; top:0; left:0; width:100%; height:100%;
-            background:rgba(0,0,0,0.55); /* darker overlay */
+            background:rgba(0,0,0,0.55);
             z-index:2;
         }
         .cover-content {
@@ -69,7 +69,6 @@
             text-shadow:0 0 30px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.2);
             animation:fadeIn 1.8s forwards 0.8s; opacity:0;
         }
-        /* border frame closer to heading */
         .border-frame {
             position:absolute; top:8px; left:8px; width:calc(100% - 16px); height:calc(100% - 16px);
             pointer-events:none; z-index:5;
@@ -157,26 +156,26 @@
             font-size:1.1rem; text-align:center;
         }
 
-        /* --- 3. WINDOWS 8 TILES (no gap, bigger, poster-like) --- */
+        /* --- 3. WINDOWS 8 TILES (no gap, bigger, images fully visible) --- */
         .metro-tiles-section {
-            padding: 40px 0;
+            padding: 0;
             background: #1a1f2a;
         }
         .metro-grid {
-            display:grid; grid-template-columns:1fr 1fr; gap:0; /* no gap */
+            display:grid; grid-template-columns:1fr 1fr; gap:0;
             max-width:1200px; margin:0 auto;
         }
         .tile {
-            background:linear-gradient(145deg, #2b3b4e, #1a2635);
-            min-height:280px; /* bigger to hold poster */
-            padding:24px 20px;
+            min-height:320px; /* taller for poster */
+            padding:20px 18px;
             color:#fff; 
             transition:0.3s; 
             display:flex; flex-direction:column;
             perspective:800px;
             cursor:default;
-            border-right:1px solid rgba(255,255,255,0.05);
-            border-bottom:1px solid rgba(255,255,255,0.05);
+            border-right:1px solid rgba(255,255,255,0.04);
+            border-bottom:1px solid rgba(255,255,255,0.04);
+            overflow:hidden;
         }
         .tile:nth-child(2) { border-right:none; }
         .tile:nth-child(3) { border-bottom:none; }
@@ -196,11 +195,12 @@
             display:flex; flex-direction:column; justify-content:center; align-items:center;
             padding:16px;
             border-radius:8px;
+            overflow:hidden;
         }
         .tile-front { background:transparent; }
         .tile-back {
             transform:rotateY(180deg);
-            background:rgba(0,0,0,0.7);
+            background:rgba(0,0,0,0.75);
             backdrop-filter:blur(8px);
             border-radius:8px;
             gap:10px;
@@ -215,8 +215,8 @@
             margin:4px 0; width:auto; min-width:120px; text-align:center;
         }
         .tile-back a:hover, .tile-back button:hover { background:rgba(248,222,126,0.25); border-color:#F8DE7E; }
-        .tile h3 { font-size:1.8rem; margin-bottom:8px; color:#F8DE7E; }
-        .tile p { opacity:0.9; font-size:1rem; }
+        .tile h3 { font-size:1.8rem; margin-bottom:6px; color:#F8DE7E; }
+        .tile p { opacity:0.9; font-size:1rem; margin:2px 0; }
         .tile .small-btn {
             margin-top:12px; background:rgba(255,255,255,0.08); padding:6px 18px;
             border-radius:30px; font-size:0.85rem; color:#ddd; border:1px solid rgba(255,255,255,0.15);
@@ -229,18 +229,24 @@
         .tile-ministry { background:linear-gradient(135deg,#1a4a3a,#0f3a2a); }
         .tile-newsletter { background:linear-gradient(135deg,#3a2a4a,#2a1a3a); }
 
-        .newsletter-preview {
-            width:100%; max-height:130px; object-fit:cover; border-radius:8px;
-            border:1px solid rgba(255,255,255,0.15); margin:8px 0;
+        /* images inside tiles - fully visible, contain */
+        .tile-img {
+            width:100%; max-height:140px; object-fit:contain; 
+            border-radius:8px; margin:6px 0;
+            background:rgba(0,0,0,0.2);
         }
-        /* poster-like content */
+        .newsletter-preview {
+            width:100%; max-height:150px; object-fit:contain;
+            border-radius:8px; margin:6px 0;
+            background:rgba(0,0,0,0.2);
+        }
         .tile .poster-content {
             width:100%; height:100%; display:flex; flex-direction:column; justify-content:center;
             align-items:center; text-align:center;
         }
-        .tile .poster-content i { font-size:3rem; margin-bottom:10px; opacity:0.7; }
+        .tile .poster-content i { font-size:3rem; margin-bottom:8px; opacity:0.7; }
 
-        /* --- 4. GALLERY TILES (no gap, win8 style) --- */
+        /* --- 4. GALLERY TILES (no gap, images fully visible) --- */
         .gallery-tiles-section {
             padding: 40px 0;
             background: #0f1620;
@@ -250,15 +256,16 @@
             text-shadow:0 2px 20px rgba(0,0,0,0.8);
         }
         .gallery-tile-grid {
-            display:grid; grid-template-columns:repeat(4,1fr); gap:0; /* no gap */
+            display:grid; grid-template-columns:repeat(4,1fr); gap:0;
             max-width:1200px; margin:0 auto;
         }
         .gallery-tile {
-            aspect-ratio:1/1; background-size:cover; background-position:center;
+            aspect-ratio:1/1; background-size:contain; background-repeat:no-repeat; background-position:center;
             transition:0.4s; cursor:pointer;
             position:relative;
             transform:rotateY(0deg);
             border:1px solid rgba(255,255,255,0.03);
+            background-color:#0a0a0a;
         }
         .gallery-tile.flip-tile { transform:rotateY(180deg); }
         .gallery-tile:hover { transform:scale(1.02); z-index:5; }
@@ -302,14 +309,14 @@
             .metro-grid { grid-template-columns:1fr; }
             .gallery-tile-grid { grid-template-columns:repeat(2,1fr); }
             .priest-card { flex:1; }
-            .tile { min-height:220px; }
+            .tile { min-height:240px; }
             .logo { width:120px; height:120px; }
         }
         @media (max-width:480px) {
             .heading-main { font-size:32px; }
             .heading-sub { font-size:26px; }
             .gallery-tile-grid { grid-template-columns:repeat(2,1fr); }
-            .tile { min-height:180px; }
+            .tile { min-height:200px; padding:14px; }
             .logo { width:100px; height:100px; }
         }
     </style>
@@ -361,14 +368,14 @@
         </div>
     </section>
 
-    <!-- ===== 3. METRO TILES (no gap, bigger, poster-like) ===== -->
+    <!-- ===== 3. METRO TILES (no gap, bigger, images fully visible) ===== -->
     <section class="metro-tiles-section">
         <div class="metro-grid">
             <!-- TILE 1 : SCHEDULE -->
             <div class="tile tile-schedule" onclick="this.classList.toggle('flipped')">
                 <div class="tile-inner">
                     <div class="tile-front poster-content">
-                        <i class="fas fa-calendar-alt" style="font-size:3rem;color:#F8DE7E;"></i>
+                        <i class="fas fa-calendar-alt" style="font-size:2.8rem;color:#F8DE7E;"></i>
                         <h3>Mass Schedule</h3>
                         <p>Sat 9:30am Rosary · 10am Qurbana</p>
                         <p>Sun 11am Qurbana · 5:30pm Qurbana</p>
@@ -383,9 +390,9 @@
             <div class="tile tile-event" onclick="this.classList.toggle('flipped')">
                 <div class="tile-inner">
                     <div class="tile-front poster-content">
-                        <i class="fas fa-star" style="font-size:3rem;color:#F8DE7E;"></i>
+                        <i class="fas fa-star" style="font-size:2.8rem;color:#F8DE7E;"></i>
                         <h3>Upcoming Event</h3>
-                        <img src="images/Assumption.jpg" alt="event" style="width:100%;max-height:110px;object-fit:cover;border-radius:8px;margin:6px 0;">
+                        <img src="images/Assumption.jpg" alt="event" class="tile-img" style="max-height:130px;">
                         <span class="small-btn">Tap to flip</span>
                     </div>
                     <div class="tile-back">
@@ -397,7 +404,7 @@
             <div class="tile tile-ministry" onclick="this.classList.toggle('flipped')">
                 <div class="tile-inner">
                     <div class="tile-front poster-content">
-                        <i class="fas fa-hands-helping" style="font-size:3rem;color:#F8DE7E;"></i>
+                        <i class="fas fa-hands-helping" style="font-size:2.8rem;color:#F8DE7E;"></i>
                         <h3>Ministries</h3>
                         <p>Catechism · Family Wards · SMYM</p>
                         <span class="small-btn">Tap to flip</span>
@@ -414,7 +421,7 @@
             <div class="tile tile-newsletter" onclick="this.classList.toggle('flipped')">
                 <div class="tile-inner">
                     <div class="tile-front poster-content">
-                        <i class="fas fa-newspaper" style="font-size:3rem;color:#F8DE7E;"></i>
+                        <i class="fas fa-newspaper" style="font-size:2.8rem;color:#F8DE7E;"></i>
                         <h3>Newsletter</h3>
                         <img src="Newsletter/newsletter.jpg" alt="newsletter" class="newsletter-preview" onerror="this.style.display='none'">
                         <span class="small-btn">Tap to flip</span>
@@ -428,7 +435,7 @@
         </div>
     </section>
 
-    <!-- ===== 4. GALLERY TILES (no gap, win8 style) ===== -->
+    <!-- ===== 4. GALLERY TILES (no gap, images fully visible) ===== -->
     <section class="gallery-tiles-section">
         <h2>Photo Gallery</h2>
         <div class="gallery-tile-grid" id="galleryTileGrid"></div>
@@ -497,7 +504,7 @@
         ];
         const tileBg = document.getElementById('tileBg');
         if (tileBg) {
-            const tiles = 8; // 4x2
+            const tiles = 8;
             for (let i=0; i<tiles; i++) {
                 const div = document.createElement('div');
                 div.className = 'bg-tile';
@@ -505,7 +512,6 @@
                 div.style.backgroundImage = `url('${img}')`;
                 tileBg.appendChild(div);
             }
-            // flip random tiles
             setInterval(() => {
                 const all = document.querySelectorAll('.bg-tile');
                 const idx = Math.floor(Math.random() * all.length);
@@ -517,11 +523,10 @@
             }, 2200);
         }
 
-        // ---- GALLERY TILES (no gap, 4 columns) ----
+        // ---- GALLERY TILES (no gap, 4 columns, contain) ----
         const grid = document.getElementById('galleryTileGrid');
         if (grid) {
             const shuffled = [...imageList].sort(()=>Math.random()-0.5);
-            // show 8 tiles
             const display = shuffled.slice(0,8);
             display.forEach(src => {
                 const tile = document.createElement('div');
@@ -532,7 +537,6 @@
                 });
                 grid.appendChild(tile);
             });
-            // auto flip
             setInterval(() => {
                 const all = document.querySelectorAll('.gallery-tile');
                 const idx = Math.floor(Math.random() * all.length);
