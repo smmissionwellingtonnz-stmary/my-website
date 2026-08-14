@@ -166,7 +166,7 @@
             max-width:1200px; margin:0 auto;
         }
         .tile {
-            min-height:320px; /* taller for poster */
+            min-height:360px; /* taller for poster content */
             padding:20px 18px;
             color:#fff; 
             transition:0.3s; 
@@ -195,7 +195,7 @@
             display:flex; flex-direction:column; justify-content:center; align-items:center;
             padding:16px;
             border-radius:8px;
-            overflow:hidden;
+            overflow-y:auto;
         }
         .tile-front { background:transparent; }
         .tile-back {
@@ -216,7 +216,7 @@
         }
         .tile-back a:hover, .tile-back button:hover { background:rgba(248,222,126,0.25); border-color:#F8DE7E; }
         .tile h3 { font-size:1.8rem; margin-bottom:6px; color:#F8DE7E; }
-        .tile p { opacity:0.9; font-size:1rem; margin:2px 0; }
+        .tile p { opacity:0.9; font-size:1rem; margin:2px 0; line-height:1.5; }
         .tile .small-btn {
             margin-top:12px; background:rgba(255,255,255,0.08); padding:6px 18px;
             border-radius:30px; font-size:0.85rem; color:#ddd; border:1px solid rgba(255,255,255,0.15);
@@ -245,6 +245,28 @@
             align-items:center; text-align:center;
         }
         .tile .poster-content i { font-size:3rem; margin-bottom:8px; opacity:0.7; }
+        .tile .poster-content .event-details {
+            font-size:1.1rem; line-height:1.6; margin:4px 0;
+        }
+        .tile .poster-content .event-details strong {
+            color:#F8DE7E;
+        }
+
+        /* ministry icons */
+        .ministry-icons {
+            display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin:8px 0;
+        }
+        .ministry-icons a {
+            display:flex; flex-direction:column; align-items:center;
+            color:#fff; text-decoration:none; background:rgba(255,255,255,0.08);
+            padding:10px 16px; border-radius:12px; border:1px solid rgba(255,255,255,0.1);
+            transition:0.3s; min-width:80px;
+        }
+        .ministry-icons a:hover {
+            background:rgba(248,222,126,0.2); border-color:#F8DE7E; transform:scale(1.05);
+        }
+        .ministry-icons a i { font-size:2rem; color:#F8DE7E; margin-bottom:4px; }
+        .ministry-icons a span { font-size:0.75rem; text-align:center; }
 
         /* --- 4. GALLERY TILES (no gap, images fully visible) --- */
         .gallery-tiles-section {
@@ -309,15 +331,17 @@
             .metro-grid { grid-template-columns:1fr; }
             .gallery-tile-grid { grid-template-columns:repeat(2,1fr); }
             .priest-card { flex:1; }
-            .tile { min-height:240px; }
+            .tile { min-height:280px; }
             .logo { width:120px; height:120px; }
         }
         @media (max-width:480px) {
             .heading-main { font-size:32px; }
             .heading-sub { font-size:26px; }
             .gallery-tile-grid { grid-template-columns:repeat(2,1fr); }
-            .tile { min-height:200px; padding:14px; }
+            .tile { min-height:240px; padding:14px; }
             .logo { width:100px; height:100px; }
+            .ministry-icons a { min-width:60px; padding:6px 10px; }
+            .ministry-icons a i { font-size:1.5rem; }
         }
     </style>
 </head>
@@ -368,17 +392,25 @@
         </div>
     </section>
 
-    <!-- ===== 3. METRO TILES (no gap, bigger, images fully visible) ===== -->
+    <!-- ===== 3. METRO TILES (no gap, bigger, full poster details) ===== -->
     <section class="metro-tiles-section">
         <div class="metro-grid">
-            <!-- TILE 1 : SCHEDULE -->
+            <!-- TILE 1 : SCHEDULE (full details) -->
             <div class="tile tile-schedule" onclick="this.classList.toggle('flipped')">
                 <div class="tile-inner">
                     <div class="tile-front poster-content">
                         <i class="fas fa-calendar-alt" style="font-size:2.8rem;color:#F8DE7E;"></i>
                         <h3>Mass Schedule</h3>
-                        <p>Sat 9:30am Rosary · 10am Qurbana</p>
-                        <p>Sun 11am Qurbana · 5:30pm Qurbana</p>
+                        <div style="font-size:1rem; line-height:1.8;">
+                            <p><strong>Saturday</strong></p>
+                            <p>9:30 am - Rosary</p>
+                            <p>10:00 am - Holy Qurbana</p>
+                            <p style="margin-top:6px;"><strong>Sunday</strong></p>
+                            <p>9:30 am - Catechism</p>
+                            <p>11:00 am - Holy Qurbana</p>
+                            <p>5:00 pm - Rosary</p>
+                            <p>5:30 pm - Holy Qurbana</p>
+                        </div>
                         <span class="small-btn">Tap to flip</span>
                     </div>
                     <div class="tile-back">
@@ -386,13 +418,19 @@
                     </div>
                 </div>
             </div>
-            <!-- TILE 2 : EVENT -->
+            <!-- TILE 2 : EVENT (full poster details) -->
             <div class="tile tile-event" onclick="this.classList.toggle('flipped')">
                 <div class="tile-inner">
                     <div class="tile-front poster-content">
                         <i class="fas fa-star" style="font-size:2.8rem;color:#F8DE7E;"></i>
                         <h3>Upcoming Event</h3>
-                        <img src="images/Assumption.jpg" alt="event" class="tile-img" style="max-height:130px;">
+                        <div class="event-details">
+                            <p><strong>15th Anniversary</strong></p>
+                            <p><strong>Fiesta of the Virgin Mary</strong></p>
+                            <p><strong>Feast of the Assumption of Mary</strong></p>
+                            <p style="margin-top:4px; font-size:0.9rem; opacity:0.8;">15th Anniversary · Feast of the Assumption</p>
+                        </div>
+                        <img src="images/Assumption.jpg" alt="event" class="tile-img" style="max-height:100px;">
                         <span class="small-btn">Tap to flip</span>
                     </div>
                     <div class="tile-back">
@@ -400,13 +438,26 @@
                     </div>
                 </div>
             </div>
-            <!-- TILE 3 : MINISTRIES -->
+            <!-- TILE 3 : MINISTRIES (interactive icons) -->
             <div class="tile tile-ministry" onclick="this.classList.toggle('flipped')">
                 <div class="tile-inner">
                     <div class="tile-front poster-content">
                         <i class="fas fa-hands-helping" style="font-size:2.8rem;color:#F8DE7E;"></i>
                         <h3>Ministries</h3>
-                        <p>Catechism · Family Wards · SMYM</p>
+                        <div class="ministry-icons">
+                            <a href="catechism.html" onclick="event.stopPropagation();">
+                                <i class="fas fa-bible"></i>
+                                <span>Catechism</span>
+                            </a>
+                            <a href="family.html" onclick="event.stopPropagation();">
+                                <i class="fas fa-users"></i>
+                                <span>Family Wards</span>
+                            </a>
+                            <a href="smym.html" onclick="event.stopPropagation();">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>SMYM</span>
+                            </a>
+                        </div>
                         <span class="small-btn">Tap to flip</span>
                     </div>
                     <div class="tile-back" style="gap:6px;flex-wrap:wrap;flex-direction:row;justify-content:center;">
