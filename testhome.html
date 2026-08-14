@@ -156,7 +156,7 @@
             font-size:1.1rem; text-align:center;
         }
 
-        /* --- 3. WINDOWS 8 TILES (no gap, bigger, images fully visible) --- */
+        /* --- 3. WINDOWS 8 TILES (no gap, bigger, no scroll) --- */
         .metro-tiles-section {
             padding: 0;
             background: #1a1f2a;
@@ -166,8 +166,8 @@
             max-width:1200px; margin:0 auto;
         }
         .tile {
-            min-height:360px; /* taller for poster content */
-            padding:20px 18px;
+            min-height:420px; /* taller for poster content */
+            padding:24px 20px;
             color:#fff; 
             transition:0.3s; 
             display:flex; flex-direction:column;
@@ -175,7 +175,7 @@
             cursor:default;
             border-right:1px solid rgba(255,255,255,0.04);
             border-bottom:1px solid rgba(255,255,255,0.04);
-            overflow:hidden;
+            overflow:hidden; /* no scroll */
         }
         .tile:nth-child(2) { border-right:none; }
         .tile:nth-child(3) { border-bottom:none; }
@@ -187,24 +187,26 @@
             position:relative;
             display:flex; flex-direction:column;
             flex:1;
+            overflow:hidden;
         }
         .tile.flipped .tile-inner { transform:rotateY(180deg); }
         .tile-front, .tile-back {
             position:absolute; top:0; left:0; width:100%; height:100%;
             backface-visibility:hidden;
             display:flex; flex-direction:column; justify-content:center; align-items:center;
-            padding:16px;
+            padding:20px;
             border-radius:8px;
-            overflow-y:auto;
+            overflow:hidden;
         }
         .tile-front { background:transparent; }
         .tile-back {
             transform:rotateY(180deg);
-            background:rgba(0,0,0,0.75);
+            background:rgba(0,0,0,0.8);
             backdrop-filter:blur(8px);
             border-radius:8px;
             gap:10px;
             padding:20px;
+            overflow:hidden;
         }
         .tile-back a, .tile-back button {
             background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
@@ -231,12 +233,12 @@
 
         /* images inside tiles - fully visible, contain */
         .tile-img {
-            width:100%; max-height:140px; object-fit:contain; 
+            width:100%; max-height:150px; object-fit:contain; 
             border-radius:8px; margin:6px 0;
             background:rgba(0,0,0,0.2);
         }
         .newsletter-preview {
-            width:100%; max-height:150px; object-fit:contain;
+            width:100%; max-height:160px; object-fit:contain;
             border-radius:8px; margin:6px 0;
             background:rgba(0,0,0,0.2);
         }
@@ -249,6 +251,12 @@
             font-size:1.1rem; line-height:1.6; margin:4px 0;
         }
         .tile .poster-content .event-details strong {
+            color:#F8DE7E;
+        }
+        .tile .poster-content .schedule-details {
+            font-size:1rem; line-height:1.8;
+        }
+        .tile .poster-content .schedule-details strong {
             color:#F8DE7E;
         }
 
@@ -331,14 +339,14 @@
             .metro-grid { grid-template-columns:1fr; }
             .gallery-tile-grid { grid-template-columns:repeat(2,1fr); }
             .priest-card { flex:1; }
-            .tile { min-height:280px; }
+            .tile { min-height:320px; }
             .logo { width:120px; height:120px; }
         }
         @media (max-width:480px) {
             .heading-main { font-size:32px; }
             .heading-sub { font-size:26px; }
             .gallery-tile-grid { grid-template-columns:repeat(2,1fr); }
-            .tile { min-height:240px; padding:14px; }
+            .tile { min-height:280px; padding:14px; }
             .logo { width:100px; height:100px; }
             .ministry-icons a { min-width:60px; padding:6px 10px; }
             .ministry-icons a i { font-size:1.5rem; }
@@ -392,7 +400,7 @@
         </div>
     </section>
 
-    <!-- ===== 3. METRO TILES (no gap, bigger, full poster details) ===== -->
+    <!-- ===== 3. METRO TILES (no gap, bigger, full poster details, no scroll) ===== -->
     <section class="metro-tiles-section">
         <div class="metro-grid">
             <!-- TILE 1 : SCHEDULE (full details) -->
@@ -401,15 +409,15 @@
                     <div class="tile-front poster-content">
                         <i class="fas fa-calendar-alt" style="font-size:2.8rem;color:#F8DE7E;"></i>
                         <h3>Mass Schedule</h3>
-                        <div style="font-size:1rem; line-height:1.8;">
+                        <div class="schedule-details">
                             <p><strong>Saturday</strong></p>
-                            <p>9:30 am - Rosary</p>
-                            <p>10:00 am - Holy Qurbana</p>
+                            <p>9:30 am – Rosary</p>
+                            <p>10:00 am – Holy Qurbana</p>
                             <p style="margin-top:6px;"><strong>Sunday</strong></p>
-                            <p>9:30 am - Catechism</p>
-                            <p>11:00 am - Holy Qurbana</p>
-                            <p>5:00 pm - Rosary</p>
-                            <p>5:30 pm - Holy Qurbana</p>
+                            <p>9:30 am – Catechism</p>
+                            <p>11:00 am – Holy Qurbana</p>
+                            <p>5:00 pm – Rosary</p>
+                            <p>5:30 pm – Holy Qurbana</p>
                         </div>
                         <span class="small-btn">Tap to flip</span>
                     </div>
@@ -418,7 +426,7 @@
                     </div>
                 </div>
             </div>
-            <!-- TILE 2 : EVENT (full poster details) -->
+            <!-- TILE 2 : EVENT (full poster details with image) -->
             <div class="tile tile-event" onclick="this.classList.toggle('flipped')">
                 <div class="tile-inner">
                     <div class="tile-front poster-content">
@@ -426,11 +434,11 @@
                         <h3>Upcoming Event</h3>
                         <div class="event-details">
                             <p><strong>15th Anniversary</strong></p>
-                            <p><strong>Fiesta of the Virgin Mary</strong></p>
+                            <p>Fiesta of the Virgin Mary</p>
                             <p><strong>Feast of the Assumption of Mary</strong></p>
-                            <p style="margin-top:4px; font-size:0.9rem; opacity:0.8;">15th Anniversary · Feast of the Assumption</p>
+                            <p style="font-size:0.9rem; opacity:0.8;">15th August · Happy Independence</p>
                         </div>
-                        <img src="images/Assumption.jpg" alt="event" class="tile-img" style="max-height:100px;">
+                        <img src="images/Assumption.jpg" alt="event" class="tile-img" style="max-height:120px;">
                         <span class="small-btn">Tap to flip</span>
                     </div>
                     <div class="tile-back">
