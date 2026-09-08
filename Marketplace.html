@@ -32,7 +32,7 @@
             overflow-x: hidden;
             color: #1e2a1f;
             line-height: 1.65;
-            padding-top: 48px;
+            padding-top: 0;
         }
 
         html {
@@ -496,11 +496,11 @@
             font-size: 1.2rem;
         }
 
-        /* ==================== TOAST CONFIRMATION ==================== */
-        .toast-overlay {
+        /* ==================== ENQUIRY MODAL ==================== */
+        .enquiry-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(10, 30, 20, 0.55);
+            background: rgba(10, 30, 20, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -510,20 +510,124 @@
             transition: opacity 0.3s ease, visibility 0.3s ease;
             padding: 1.5rem;
         }
-        .toast-overlay.show { opacity: 1; visibility: visible; }
+        .enquiry-overlay.show { opacity: 1; visibility: visible; }
 
-        .toast-card {
+        .enquiry-modal {
+            position: relative;
             background: white;
             border-radius: 24px;
-            padding: 2.6rem 2.2rem;
-            max-width: 420px;
+            padding: 2.4rem 2.2rem;
+            max-width: 460px;
             width: 100%;
-            text-align: center;
+            max-height: 88vh;
+            overflow-y: auto;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-            transform: scale(0.85) translateY(20px);
+            transform: scale(0.9) translateY(20px);
             transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .toast-overlay.show .toast-card { transform: scale(1) translateY(0); }
+        .enquiry-overlay.show .enquiry-modal { transform: scale(1) translateY(0); }
+
+        .enquiry-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: #f5f7e9;
+            color: #4a5a4a;
+            font-size: 1.3rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+        .enquiry-close:hover { background: #e0e8d8; color: #1a5a2a; transform: rotate(90deg); }
+
+        .enquiry-modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #1a5a2a;
+            margin-bottom: 0.4rem;
+        }
+
+        .enquiry-item-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            color: #8a9a6a;
+            margin-bottom: 1.6rem;
+            letter-spacing: 0.3px;
+        }
+
+        .enquiry-item-label span {
+            color: #15a08f;
+            font-weight: 700;
+        }
+
+        .enquiry-form .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .enquiry-form label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.82rem;
+            color: #1a5a2a;
+        }
+
+        .enquiry-form input,
+        .enquiry-form textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid #e0e8d0;
+            border-radius: 12px;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.95rem;
+            color: #1e2a1f;
+            background: #f9fbf5;
+            transition: border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .enquiry-form input:focus,
+        .enquiry-form textarea:focus {
+            outline: none;
+            border-color: #5db75a;
+            background: white;
+        }
+
+        .enquiry-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .enquiry-submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #d39a3a, #F8DE7E);
+            color: #291d50;
+            border: none;
+            padding: 0.85rem 1.5rem;
+            border-radius: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(211, 154, 58, 0.35);
+            margin-top: 0.4rem;
+        }
+        .enquiry-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(211, 154, 58, 0.45); }
+        .enquiry-submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+        .enquiry-thankyou-view { display: none; text-align: center; }
 
         .toast-icon {
             width: 68px;
@@ -538,21 +642,18 @@
             color: white;
         }
 
-        .toast-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: #1a5a2a;
+        .enquiry-thankyou-view h3 {
             margin-bottom: 0.8rem;
         }
 
-        .toast-card p {
+        .enquiry-thankyou-view p {
             color: #4a5a4a;
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 0.6rem;
         }
 
-        .toast-card .toast-item-name {
+        .enquiry-thankyou-view .toast-item-name {
             font-weight: 700;
             color: #15a08f;
         }
@@ -572,9 +673,17 @@
         }
         .toast-close-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(211, 154, 58, 0.4); }
 
+        .enquiry-error {
+            color: #c0392b;
+            font-size: 0.85rem;
+            margin-top: 0.6rem;
+            display: none;
+        }
+        .enquiry-error.show { display: block; }
+
         /* Responsive */
         @media (max-width: 768px) {
-            body { padding-top: 44px; }
+            body { padding-top: 0; }
             .market-hero { min-height: 55vh; padding: 3rem 1.2rem 4.5rem; }
             .listings-wrapper { margin-top: -2.5rem; }
             .listings-toolbar { padding: 1.2rem 1.4rem; }
@@ -583,7 +692,7 @@
         }
 
         @media (max-width: 480px) {
-            body { padding-top: 40px; }
+            body { padding-top: 0; }
             .market-btn { padding: 0.65rem 1.3rem; font-size: 0.75rem; }
             .listings-grid { grid-template-columns: 1fr; }
         }
@@ -640,7 +749,7 @@
             <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7);">
                 To list an item, simply email us with a description and a few photos, and our team will add it to the Market Place for you.
             </p>
-            <a class="market-btn market-btn-primary" href="mailto:smmarketplace2@gmail.com?subject=Item%20Donation%20for%20Seeds%20of%20Hope%20Marketplace&body=Hello%20Seeds%20of%20Hope%20Marketplace%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20donate%20the%20following%20item%20to%20the%20marketplace%3A%0D%0A%0D%0AItem%20name%3A%20%0D%0ACondition%3A%20%0D%0ADescription%3A%20%0D%0A%0D%0APlease%20let%20me%20know%20the%20next%20steps.%0D%0A%0D%0AThank%20you%2C%0D%0A" style="margin-top: 0.6rem;">
+            <a class="market-btn market-btn-primary" href="https://forms.gle/ze9a17SqF7UgK259A" target="_blank" rel="noopener" style="margin-top: 0.6rem;">
                 <i class="fas fa-paper-plane"></i> Offer an Item
             </a>
         </div>
@@ -649,14 +758,54 @@
     <!-- Footer placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- Enquiry Confirmation Toast -->
-    <div class="toast-overlay" id="toastOverlay">
-        <div class="toast-card">
-            <div class="toast-icon"><i class="fas fa-check"></i></div>
-            <h3>Thank You for Your Enquiry!</h3>
-            <p>Your email to our Market Place team has been prepared for <span class="toast-item-name" id="toastItemName">this item</span>.</p>
-            <p>Our team will review your message and get back to you as soon as possible. We truly appreciate your interest in supporting Seeds of Hope.</p>
-            <button class="toast-close-btn" id="toastCloseBtn">Close</button>
+    <!-- Enquiry Modal -->
+    <div class="enquiry-overlay" id="enquiryOverlay">
+        <div class="enquiry-modal">
+            <button class="enquiry-close" id="enquiryCloseBtn" aria-label="Close">&times;</button>
+
+            <!-- Send a Message form -->
+            <div class="enquiry-form-view" id="enquiryFormView">
+                <h3>Send a Message</h3>
+                <p class="enquiry-item-label">Regarding: <span id="enquiryItemName"></span></p>
+
+                <form class="enquiry-form" id="enquiryForm">
+                    <input type="hidden" name="_subject" id="enquirySubjectField">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="Item" id="enquiryItemField">
+
+                    <div class="form-group">
+                        <label for="enquiryName">Full Name</label>
+                        <input type="text" id="enquiryName" name="Full Name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="enquiryContact">Contact</label>
+                        <input type="tel" id="enquiryContact" name="Contact" required placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="enquiryEmail">Email</label>
+                        <input type="email" id="enquiryEmail" name="Email" required placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="enquiryMessage">Message</label>
+                        <textarea id="enquiryMessage" name="Message" required placeholder="Type your message here..."></textarea>
+                    </div>
+
+                    <button type="submit" class="enquiry-submit-btn" id="enquirySubmitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <div class="enquiry-error" id="enquiryError">Sorry, something went wrong sending your message. Please try again in a moment.</div>
+                </form>
+            </div>
+
+            <!-- Thank you confirmation -->
+            <div class="enquiry-thankyou-view" id="enquiryThankYouView">
+                <div class="toast-icon"><i class="fas fa-check"></i></div>
+                <h3>Thank You for Your Enquiry!</h3>
+                <p>Your email to our Market Place team has been received for <span class="toast-item-name" id="thankYouItemName">this item</span>.</p>
+                <p>Our team will review your message and get back to you as soon as possible. We truly appreciate your interest in supporting Seeds of Hope.</p>
+                <button class="toast-close-btn" id="enquiryDoneBtn">Close</button>
+            </div>
         </div>
     </div>
 
@@ -706,6 +855,7 @@
         ];
 
         const MARKETPLACE_EMAIL = "smmarketplace2@gmail.com";
+        let currentEnquiryItem = null;
 
         // ==================== RENDER ITEM CARDS ====================
         function renderItems() {
@@ -846,36 +996,63 @@
         }
 
         function sendEnquiry(item) {
-            const subject = `Enquiry: ${item.title} - Seeds of Hope Marketplace`;
-            const body =
-`Hello Seeds of Hope Marketplace Team,
-
-I recently came across the "${item.title}" listed on the Seeds of Hope Market Place page and I am interested in it.
-
-Could you please confirm whether this item is still available, and let me know how I can proceed with viewing, collection, and contribution towards Seeds of Hope?
-
-Looking forward to hearing from you.
-
-Kind regards,
-`;
-
-            const mailtoLink = `mailto:${MARKETPLACE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-            // Open the default mail client
-            window.location.href = mailtoLink;
-
-            // Show confirmation to the user
-            showThankYouToast(item.title);
+            openEnquiryModal(item);
         }
 
-        function showThankYouToast(itemTitle) {
-            const overlay = document.getElementById('toastOverlay');
-            document.getElementById('toastItemName').textContent = itemTitle;
-            overlay.classList.add('show');
+        // ==================== ENQUIRY MODAL LOGIC ====================
+        function openEnquiryModal(item) {
+            currentEnquiryItem = item;
+
+            document.getElementById('enquiryItemName').textContent = item.title;
+            document.getElementById('enquirySubjectField').value = `Enquiry: ${item.title} - Seeds of Hope Marketplace`;
+            document.getElementById('enquiryItemField').value = item.title;
+
+            document.getElementById('enquiryForm').reset();
+            document.getElementById('enquiryError').classList.remove('show');
+            document.getElementById('enquiryFormView').style.display = 'block';
+            document.getElementById('enquiryThankYouView').style.display = 'none';
+
+            document.getElementById('enquiryOverlay').classList.add('show');
         }
 
-        function hideThankYouToast() {
-            document.getElementById('toastOverlay').classList.remove('show');
+        function closeEnquiryModal() {
+            document.getElementById('enquiryOverlay').classList.remove('show');
+        }
+
+        function initEnquiryForm() {
+            const form = document.getElementById('enquiryForm');
+            const submitBtn = document.getElementById('enquirySubmitBtn');
+            const errorEl = document.getElementById('enquiryError');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                errorEl.classList.remove('show');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                const formData = new FormData(form);
+
+                fetch(`https://formsubmit.co/ajax/${MARKETPLACE_EMAIL}`, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(() => {
+                        const itemTitle = currentEnquiryItem ? currentEnquiryItem.title : 'this item';
+                        document.getElementById('thankYouItemName').textContent = itemTitle;
+                        document.getElementById('enquiryFormView').style.display = 'none';
+                        document.getElementById('enquiryThankYouView').style.display = 'block';
+                    })
+                    .catch(error => {
+                        console.error('Enquiry submission error:', error);
+                        errorEl.classList.add('show');
+                    })
+                    .finally(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    });
+            });
         }
 
         // ==================== NAVIGATION HELPERS ====================
@@ -890,9 +1067,11 @@ Kind regards,
         document.addEventListener('DOMContentLoaded', function () {
             renderItems();
 
-            document.getElementById('toastCloseBtn').addEventListener('click', hideThankYouToast);
-            document.getElementById('toastOverlay').addEventListener('click', function (e) {
-                if (e.target === this) hideThankYouToast();
+            initEnquiryForm();
+            document.getElementById('enquiryCloseBtn').addEventListener('click', closeEnquiryModal);
+            document.getElementById('enquiryDoneBtn').addEventListener('click', closeEnquiryModal);
+            document.getElementById('enquiryOverlay').addEventListener('click', function (e) {
+                if (e.target === this) closeEnquiryModal();
             });
 
             // Load notice bar
