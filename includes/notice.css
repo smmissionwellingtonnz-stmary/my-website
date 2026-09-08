@@ -217,7 +217,7 @@
 }
 
 .notice-wrapper::after {
-    right: 70px;  /* Updated: leave space for logo (was 0) */
+    right: 0;
 
     background: linear-gradient(
         270deg,
@@ -384,54 +384,6 @@
 
 
 /* ============================================
-   LOGO – glassy shadow, right side (UPDATED)
-   ============================================ */
-
-.notice-logo {
-    flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    margin: 0 12px 0 0;
-    position: relative;
-    z-index: 6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(248, 222, 126, 0.08);
-    transition: box-shadow 0.3s ease;
-    /* Removed border/shadow separator line */
-    border: none;
-    outline: none;
-}
-
-/* Removed the glassy inner glow ring that was creating a separator line */
-.notice-logo::after {
-    display: none;
-}
-
-/* Removed the glassy reflection line */
-.notice-logo::before {
-    display: none;
-}
-
-.notice-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 50%;
-    position: relative;
-    z-index: 2;
-    /* Removed drop-shadow that might create separator effect */
-    filter: none;
-}
-
-
-/* ============================================
    RESPONSIVE - TABLET
    ============================================ */
 
@@ -509,17 +461,6 @@
     .notice-wrapper::before,
     .notice-wrapper::after {
         width: 20px;
-    }
-    
-    .notice-wrapper::after {
-        right: 60px;  /* Updated for tablet */
-    }
-
-    /* Logo */
-    .notice-logo {
-        width: 48px;
-        height: 48px;
-        margin-right: 8px;
     }
 
 }
@@ -607,17 +548,6 @@
     .notice-wrapper::before,
     .notice-wrapper::after {
         width: 14px;
-    }
-    
-    .notice-wrapper::after {
-        right: 50px;  /* Updated for mobile */
-    }
-
-    /* Logo */
-    .notice-logo {
-        width: 42px;
-        height: 42px;
-        margin-right: 6px;
     }
 
 }
