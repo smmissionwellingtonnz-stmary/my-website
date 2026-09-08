@@ -217,7 +217,7 @@
 }
 
 .notice-wrapper::after {
-    right: 0;
+    right: 70px;  /* Updated: leave space for logo (was 0) */
 
     background: linear-gradient(
         270deg,
@@ -384,6 +384,65 @@
 
 
 /* ============================================
+   LOGO – glassy shadow, right side (NEW)
+   ============================================ */
+
+.notice-logo {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    margin: 0 12px 0 0;
+    position: relative;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(248, 222, 126, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Glassy inner glow */
+.notice-logo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Glassy reflection */
+.notice-logo::before {
+    content: '';
+    position: absolute;
+    top: 6%;
+    left: 10%;
+    width: 50%;
+    height: 20%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.notice-logo img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ============================================
    RESPONSIVE - TABLET
    ============================================ */
 
@@ -461,6 +520,17 @@
     .notice-wrapper::before,
     .notice-wrapper::after {
         width: 20px;
+    }
+    
+    .notice-wrapper::after {
+        right: 60px;  /* Updated for tablet */
+    }
+
+    /* Logo */
+    .notice-logo {
+        width: 48px;
+        height: 48px;
+        margin-right: 8px;
     }
 
 }
@@ -548,6 +618,17 @@
     .notice-wrapper::before,
     .notice-wrapper::after {
         width: 14px;
+    }
+    
+    .notice-wrapper::after {
+        right: 50px;  /* Updated for mobile */
+    }
+
+    /* Logo */
+    .notice-logo {
+        width: 42px;
+        height: 42px;
+        margin-right: 6px;
     }
 
 }
