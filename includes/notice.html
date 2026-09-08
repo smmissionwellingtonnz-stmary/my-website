@@ -1,163 +1,173 @@
-```html
-<!-- Notice Bar -->
-<div class="notice-bar" id="noticeBar">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Notice Bar with Glassy Logo</title>
+    <!-- Font Awesome 5 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="notice.css" />
+</head>
+<body>
 
-    <!-- Hamburger Button -->
-    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-    </button>
+    <!-- ============================================
+    NOTICE BAR – with logo on far right
+    ============================================ -->
+    <div class="notice-bar" id="noticeBar">
 
-    <!-- Home Button -->
-    <a href="index.html" class="home-btn" aria-label="Home" title="Home">
-        <i class="fas fa-home"></i>
-    </a>
+        <!-- Hamburger Button -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
 
-    <!-- Scrollable Notice Wrapper -->
-    <div class="notice-wrapper">
-        <div class="notice-content">
+        <!-- Home Button -->
+        <a href="index.html" class="home-btn" aria-label="Home" title="Home">
+            <i class="fas fa-home"></i>
+        </a>
 
-            <!-- ========================================= -->
-            <!-- ORIGINAL NOTICE ITEMS -->
-            <!-- ========================================= -->
+        <!-- Scrollable Notice Wrapper -->
+        <div class="notice-wrapper">
+            <div class="notice-content">
 
-            <!-- Item 1: Catechism Registration -->
-            <span class="notice-item">
-                <span class="icon">📢</span>
-                <span class="label">Catechism</span>
-                <span class="text">
-                    Registration 2026 –
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWgF44cPSljYYKSEC7GqS5-RbR801-KWqmKN6VtLqOHC5Ujg/viewform?usp=pp_url&entry.643631175=FRN-"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        Click here to register
-                        <i class="fas fa-external-link-alt" style="font-size:11px;margin-left:3px;"></i>
-                    </a>
+                <!-- ========================================= -->
+                <!-- ORIGINAL NOTICE ITEMS (first set)        -->
+                <!-- ========================================= -->
+
+                <!-- Item 1: Catechism Registration -->
+                <span class="notice-item">
+                    <span class="icon">📢</span>
+                    <span class="label">Catechism</span>
+                    <span class="text">
+                        Registration 2026 –
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWgF44cPSljYYKSEC7GqS5-RbR801-KWqmKN6VtLqOHC5Ujg/viewform?usp=pp_url&entry.643631175=FRN-"
+                           target="_blank" rel="noopener noreferrer">
+                            Click here to register
+                            <i class="fas fa-external-link-alt" style="font-size:11px;margin-left:3px;"></i>
+                        </a>
+                    </span>
                 </span>
-            </span>
+                <span class="notice-separator">|</span>
 
-            <span class="notice-separator">|</span>
+                <!-- Item 2: Feast of the Nativity of Our Lady -->
+                <a href="event.html" class="notice-item">
+                    <span class="icon">🌸</span>
+                    <span class="label">Feast</span>
+                    <span class="text">
+                        എട്ടുനോമ്പാചരണവും പരിശുദ്ധ അമ്മയുടെ ജനന തിരുന്നാളും<br />
+                        September 1 - 8
+                    </span>
+                </a>
+                <span class="notice-separator">|</span>
 
-            <!-- Item 2: Feast of the Nativity of Our Lady -->
-            <a href="event.html" class="notice-item">
-                <span class="icon">🌸</span>
-                <span class="label">Feast</span>
-                <span class="text">
-                    എട്ടുനോമ്പാചരണവും പരിശുദ്ധ അമ്മയുടെ ജനന തിരുന്നാളും<br>
-                    September 1 - 8
+                <!-- Item 3: Faith Fest 2026 -->
+                <a href="event.html" class="notice-item">
+                    <span class="icon">🕊️</span>
+                    <span class="label">Feast</span>
+                    <span class="text">Faith Fest 2026</span>
+                </a>
+                <span class="notice-separator">|</span>
+
+                <!-- Item 4: Seeds of Hope -->
+                <span class="notice-item">
+                    <span class="icon">🌱🌿</span>
+                    <span class="label">Seeds of Hope</span>
+                    <span class="text">
+                        <a href="SeedOfHope.html">
+                            Permanent spiritual home for us. Check details.
+                            <i class="fas fa-external-link-alt" style="font-size:11px;margin-left:3px;"></i>
+                        </a>
+                    </span>
                 </span>
-            </a>
+                <span class="notice-separator">|</span>
 
-            <span class="notice-separator">|</span>
-
-            <!-- Item 3: Faith Fest 2026 -->
-            <a href="event.html" class="notice-item">
-                <span class="icon">🕊️</span>
-                <span class="label">Feast</span>
-                <span class="text">
-                    Faith Fest 2026
+                <!-- Item 5: National Bible Quiz 2026 Champions -->
+                <span class="notice-item">
+                    <span class="icon">🏆</span>
+                    <span class="label">Congratulations!</span>
+                    <span class="text">Wellington Team – National Bible Quiz 2026 Champions!</span>
                 </span>
-            </a>
+                <span class="notice-separator">|</span>
 
-            <span class="notice-separator">|</span>
+                <!-- ========================================= -->
+                <!-- DUPLICATE ITEMS FOR SEAMLESS LOOPING     -->
+                <!-- ========================================= -->
 
-            <!-- Item 4: Seeds of Hope -->
-            <span class="notice-item">
-                <span class="icon">🌱🌿</span>
-                <span class="label">Seeds of Hope</span>
-                <span class="text">
-                    <a href="SeedOfHope.html">
-                        Permanent spiritual home for us. Check details.
-                        <i class="fas fa-external-link-alt" style="font-size:11px;margin-left:3px;"></i>
-                    </a>
+                <!-- Duplicate Item 1 -->
+                <span class="notice-item">
+                    <span class="icon">📢</span>
+                    <span class="label">Catechism</span>
+                    <span class="text">
+                        Registration 2026 –
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWgF44cPSljYYKSEC7GqS5-RbR801-KWqmKN6VtLqOHC5Ujg/viewform?usp=pp_url&entry.643631175=FRN-"
+                           target="_blank" rel="noopener noreferrer">
+                            Click here to register
+                            <i class="fas fa-external-link-alt" style="font-size:11px;margin-left:3px;"></i>
+                        </a>
+                    </span>
                 </span>
-            </span>
+                <span class="notice-separator">|</span>
 
-            <span class="notice-separator">|</span>
+                <!-- Duplicate Item 2 -->
+                <a href="event.html" class="notice-item">
+                    <span class="icon">🌸</span>
+                    <span class="label">Feast</span>
+                    <span class="text">
+                        എട്ടുനോമ്പാചരണവും പരിശുദ്ധ അമ്മയുടെ ജനന തിരുന്നാളും<br />
+                        September 1 - 8
+                    </span>
+                </a>
+                <span class="notice-separator">|</span>
 
-            <!-- Item 5: National Bible Quiz 2026 Champions -->
-            <span class="notice-item">
-                <span class="icon">🏆</span>
-                <span class="label">Congratulations!</span>
-                <span class="text">
-                    Wellington Team – National Bible Quiz 2026 Champions!
+                <!-- Duplicate Item 3 -->
+                <a href="event.html" class="notice-item">
+                    <span class="icon">🕊️</span>
+                    <span class="label">Feast</span>
+                    <span class="text">Faith Fest 2026</span>
+                </a>
+                <span class="notice-separator">|</span>
+
+                <!-- Duplicate Item 4 -->
+                <span class="notice-item">
+                    <span class="icon">🌱🌿</span>
+                    <span class="label">Seeds of Hope</span>
+                    <span class="text">
+                        <a href="SeedOfHope.html">
+                            Permanent spiritual home for us. Check details.
+                            <i class="fas fa-external-link-alt" style="font-size:11px;margin-left:3px;"></i>
+                        </a>
+                    </span>
                 </span>
-            </span>
+                <span class="notice-separator">|</span>
 
-            <span class="notice-separator">|</span>
-
-
-            <!-- ========================================= -->
-            <!-- DUPLICATE ITEMS FOR SEAMLESS LOOPING -->
-            <!-- ========================================= -->
-
-            <!-- Duplicate Item 1: Catechism Registration -->
-            <span class="notice-item">
-                <span class="icon">📢</span>
-                <span class="label">Catechism</span>
-                <span class="text">
-                    Registration 2026 –
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfWgF44cPSljYYKSEC7GqS5-RbR801-KWqmKN6VtLqOHC5Ujg/viewform?usp=pp_url&entry.643631175=FRN-"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        Click here to register
-                        <i class="fas fa-external-link-alt" style="font-size:11px;margin-left:3px;"></i>
-                    </a>
+                <!-- Duplicate Item 5 -->
+                <span class="notice-item">
+                    <span class="icon">🏆</span>
+                    <span class="label">Congratulations!</span>
+                    <span class="text">Wellington Team – National Bible Quiz 2026 Champions!</span>
                 </span>
-            </span>
+                <span class="notice-separator">|</span>
 
-            <span class="notice-separator">|</span>
+            </div> <!-- /notice-content -->
+        </div> <!-- /notice-wrapper -->
 
-            <!-- Duplicate Item 2: Feast of the Nativity of Our Lady -->
-            <a href="event.html" class="notice-item">
-                <span class="icon">🌸</span>
-                <span class="label">Feast</span>
-                <span class="text">
-                    എട്ടുനോമ്പാചരണവും പരിശുദ്ധ അമ്മയുടെ ജനന തിരുന്നാളും<br>
-                    September 1 - 8
-                </span>
-            </a>
-
-            <span class="notice-separator">|</span>
-
-            <!-- Duplicate Item 3: Faith Fest 2026 -->
-            <a href="event.html" class="notice-item">
-                <span class="icon">🕊️</span>
-                <span class="label">Feast</span>
-                <span class="text">
-                    Faith Fest 2026
-                </span>
-            </a>
-
-            <span class="notice-separator">|</span>
-
-            <!-- Duplicate Item 4: Seeds of Hope -->
-            <span class="notice-item">
-                <span class="icon">🌱🌿</span>
-                <span class="label">Seeds of Hope</span>
-                <span class="text">
-                    <a href="SeedsOfHope.html">
-                        Permanent spiritual home for us. Check details.
-                        <i class="fas fa-external-link-alt" style="font-size:11px;margin-left:3px;"></i>
-                    </a>
-                </span>
-            </span>
-
-            <span class="notice-separator">|</span>
-
-            <!-- Duplicate Item 5: National Bible Quiz 2026 Champions -->
-            <span class="notice-item">
-                <span class="icon">🏆</span>
-                <span class="label">Congratulations!</span>
-                <span class="text">
-                    Wellington Team – National Bible Quiz 2026 Champions!
-                </span>
-            </span>
-
-            <span class="notice-separator">|</span>
-
+        <!-- ========================================= -->
+        <!-- LOGO – glassy shadow, far right           -->
+        <!-- ========================================= -->
+        <div class="notice-logo" aria-label="Logo">
+            <img src="images/logo.png" alt="Logo" />
         </div>
-    </div>
-</div>
-```
+
+    </div> <!-- /notice-bar -->
+
+    <script>
+        // Hamburger toggle for demonstration
+        document.getElementById('hamburgerBtn')?.addEventListener('click', function(e) {
+            this.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
