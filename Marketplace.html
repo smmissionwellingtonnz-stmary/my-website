@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Seeds of Hope - Market Place | St. Mary's Syro-Malabar Mission Wellington</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Marcellus&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Notice Bar CSS -->
+    <link rel="stylesheet" href="includes/notice.css">
+
+    <!-- Menu Navigation CSS -->
+    <link rel="stylesheet" href="includes/header.css">
+
+    <!-- Footer CSS -->
+    <link rel="stylesheet" href="includes/footer.css">
+
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Figtree', 'Poppins', sans-serif;
+            background: #eef3e8;
+            overflow-x: hidden;
+            color: #1e2a1f;
+            line-height: 1.65;
+            padding-top: 48px;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a3a2a; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #15a08f, #5db75a); border-radius: 10px; }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #0a4d68, #088395);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 996;
+        }
+        .scroll-top.active { opacity: 1; visibility: visible; }
+        .scroll-top:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ==================== MARKET HERO ==================== */
+        .market-hero {
+            position: relative;
+            width: 100%;
+            min-height: 62vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a2e1c 0%, #1a4a2a 50%, #0d331f 100%);
+            padding: 4rem 1.5rem 5rem;
+        }
+
+        .market-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="%235db75a" d="M50,0 L61,35 L98,35 L68,57 L79,92 L50,70 L21,92 L32,57 L2,35 L39,35 Z"/></svg>');
+            background-repeat: repeat;
+            background-size: 70px;
+            pointer-events: none;
+        }
+
+        .market-hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 780px;
+        }
+
+        .market-eyebrow {
+            font-family: 'Marcellus', serif;
+            font-size: clamp(0.85rem, 2.6vw, 1.05rem);
+            color: #F8DE7E;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .market-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .market-heading .accent { color: #F8DE7E; }
+
+        .market-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.05rem, 3vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            max-width: 640px;
+            margin: 0 auto 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .market-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+        }
+
+        .market-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.85rem 1.7rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            border: none;
+        }
+
+        .market-btn-primary {
+            background: linear-gradient(135deg, #5db75a, #15a08f);
+            color: white;
+            box-shadow: 0 8px 24px rgba(21, 160, 143, 0.35);
+        }
+        .market-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(21, 160, 143, 0.45); }
+
+        .market-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        .market-btn-secondary:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+
+        .hero-wave {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 2;
+        }
+
+        /* ==================== LISTINGS SECTION ==================== */
+        .listings-wrapper {
+            max-width: 1320px;
+            margin: -3.5rem auto 0;
+            padding: 0 20px 5rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .listings-toolbar {
+            background: white;
+            border-radius: 22px;
+            box-shadow: 0 20px 45px rgba(20, 50, 30, 0.12);
+            padding: 1.6rem 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .listings-count {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #1a5a2a;
+            font-weight: 700;
+        }
+
+        .listings-count span { color: #15a08f; }
+
+        .listings-note {
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.92rem;
+            color: #4a5a4a;
+        }
+
+        .listings-note i { color: #5db75a; margin-right: 6px; }
+
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.4rem;
+        }
+
+        /* ---- Item Card ---- */
+        .item-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(20, 50, 30, 0.1);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(20, 50, 30, 0.18);
+        }
+
+        /* Carousel */
+        .item-gallery {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: #e0e8d8;
+            touch-action: pan-y;
+        }
+
+        .item-gallery-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .item-gallery-slide {
+            min-width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .item-gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .item-status-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(21, 160, 143, 0.92);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 0.4rem 0.9rem;
+            border-radius: 30px;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .item-status-badge i { font-size: 0.65rem; }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(10, 46, 28, 0.55);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 4;
+            transition: background 0.25s ease, transform 0.25s ease;
+            font-size: 0.85rem;
+        }
+        .gallery-nav:hover { background: rgba(21, 160, 143, 0.9); transform: translateY(-50%) scale(1.08); }
+        .gallery-nav.prev { left: 12px; }
+        .gallery-nav.next { right: 12px; }
+
+        .gallery-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            z-index: 4;
+        }
+
+        .gallery-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.55);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .gallery-dot.active { background: #F8DE7E; width: 20px; border-radius: 4px; }
+
+        /* Item Body */
+        .item-body {
+            padding: 1.6rem 1.6rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .item-category {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #15a08f;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1a5a2a;
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .item-description {
+            color: #4a5a4a;
+            font-size: 0.94rem;
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
+        .item-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .item-meta-chip {
+            background: #f5f7e9;
+            color: #3a4a3a;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .item-meta-chip i { color: #5db75a; }
+
+        .item-footer-row {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .item-contribution {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #291d50;
+        }
+
+        .item-contribution small {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #8a9a6a;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .enquire-btn {
+            background: linear-gradient(135deg, #d39a3a, #F8DE7E);
+            color: #291d50;
+            border: none;
+            padding: 0.75rem 1.4rem;
+            border-radius: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(211, 154, 58, 0.35);
+            white-space: nowrap;
+        }
+        .enquire-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(211, 154, 58, 0.45); }
+        .enquire-btn:active { transform: translateY(0); }
+
+        /* ==================== DONATE-AN-ITEM CTA ==================== */
+        .donate-item-wrapper {
+            background: linear-gradient(135deg, #3a2a6b 0%, #291d50 100%);
+            padding: 4.5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donate-item-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.04"><path fill="%23d39a3a" d="M50,0 L61,35 L98,35 L68,57 L79,92 L50,70 L21,92 L32,57 L2,35 L39,35 Z"/></svg>');
+            background-repeat: repeat;
+            background-size: 60px;
+            pointer-events: none;
+        }
+
+        .donate-item-inner {
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .donate-item-inner i.crown-icon {
+            font-size: 2.4rem;
+            color: #F8DE7E;
+            margin-bottom: 1.2rem;
+        }
+
+        .donate-item-inner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+            color: #F8DE7E;
+            margin-bottom: 1rem;
+        }
+
+        .donate-item-inner p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.8rem;
+        }
+
+        .donate-item-inner .market-btn-primary {
+            box-shadow: 0 8px 24px rgba(93, 183, 90, 0.3);
+        }
+
+        /* ==================== EMPTY STATE (kept for future use) ==================== */
+        .listings-empty {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #4a5a4a;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+        }
+
+        /* ==================== TOAST CONFIRMATION ==================== */
+        .toast-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 30, 20, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1.5rem;
+        }
+        .toast-overlay.show { opacity: 1; visibility: visible; }
+
+        .toast-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.6rem 2.2rem;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.85) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .toast-overlay.show .toast-card { transform: scale(1) translateY(0); }
+
+        .toast-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5db75a, #15a08f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 1.6rem;
+            color: white;
+        }
+
+        .toast-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #1a5a2a;
+            margin-bottom: 0.8rem;
+        }
+
+        .toast-card p {
+            color: #4a5a4a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0.6rem;
+        }
+
+        .toast-card .toast-item-name {
+            font-weight: 700;
+            color: #15a08f;
+        }
+
+        .toast-close-btn {
+            margin-top: 1.4rem;
+            background: linear-gradient(135deg, #d39a3a, #F8DE7E);
+            color: #291d50;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .toast-close-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(211, 154, 58, 0.4); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding-top: 44px; }
+            .market-hero { min-height: 55vh; padding: 3rem 1.2rem 4.5rem; }
+            .listings-wrapper { margin-top: -2.5rem; }
+            .listings-toolbar { padding: 1.2rem 1.4rem; }
+            .item-footer-row { flex-direction: column; align-items: stretch; }
+            .enquire-btn { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            body { padding-top: 40px; }
+            .market-btn { padding: 0.65rem 1.3rem; font-size: 0.75rem; }
+            .listings-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Notice Bar Container -->
+    <div id="notice-container"></div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- MARKET HERO -->
+    <section class="market-hero" id="market-hero">
+        <div class="market-hero-content">
+            <div class="market-eyebrow">St. Mary's Syro-Malabar Mission, Wellington</div>
+            <h1 class="market-heading">Seeds of Hope <span class="accent">Market Place</span></h1>
+            <p class="market-tagline">
+                Pre-loved and donated items, generously given by our community, finding new homes so every contribution can help us grow closer to our Church of Our Own.
+            </p>
+            <div class="market-hero-actions">
+                <button class="market-btn market-btn-primary" onclick="scrollToListings()"><i class="fas fa-store"></i> Browse Listings</button>
+                <button class="market-btn market-btn-secondary" onclick="scrollToDonateItem()"><i class="fas fa-gift"></i> Donate an Item</button>
+            </div>
+        </div>
+        <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" style="height:70px;width:100%;">
+            <path fill="#eef3e8" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,42.7C840,32,960,32,1080,42.7C1200,53,1320,75,1380,85.3L1440,96L1440,100L1380,100C1320,100,1200,100,1080,100C960,100,840,100,720,100C600,100,480,100,360,100C240,100,120,100,60,100L0,100Z"></path>
+        </svg>
+    </section>
+
+    <!-- LISTINGS -->
+    <section class="listings-wrapper" id="listings-section">
+        <div class="listings-toolbar" data-aos="fade-up">
+            <div class="listings-count"><span id="itemCount">2</span> items currently available</div>
+            <div class="listings-note"><i class="fas fa-hand-holding-heart"></i>All proceeds go towards Seeds of Hope, our Church of Our Own fund</div>
+        </div>
+
+        <div class="listings-grid" id="listingsGrid">
+            <!-- Items are rendered here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- DONATE AN ITEM CTA -->
+    <section class="donate-item-wrapper" id="donate-item-section">
+        <div class="donate-item-inner" data-aos="fade-up">
+            <i class="fas fa-seedling crown-icon"></i>
+            <h2>Have something to give?</h2>
+            <p>
+                If you have goods in good condition that you no longer need — electronics, furniture, appliances, or anything else of value — we would love to feature them here. Every item donated and sold helps plant another seed towards our Church of Our Own.
+            </p>
+            <p style="font-size: 0.95rem; color: rgba(255,255,255,0.7);">
+                To list an item, simply email us with a description and a few photos, and our team will add it to the Market Place for you.
+            </p>
+            <a class="market-btn market-btn-primary" href="mailto:smmarketplace2@gmail.com?subject=Item%20Donation%20for%20Seeds%20of%20Hope%20Marketplace&body=Hello%20Seeds%20of%20Hope%20Marketplace%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20donate%20the%20following%20item%20to%20the%20marketplace%3A%0D%0A%0D%0AItem%20name%3A%20%0D%0ACondition%3A%20%0D%0ADescription%3A%20%0D%0A%0D%0APlease%20let%20me%20know%20the%20next%20steps.%0D%0A%0D%0AThank%20you%2C%0D%0A" style="margin-top: 0.6rem;">
+                <i class="fas fa-paper-plane"></i> Offer an Item
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Enquiry Confirmation Toast -->
+    <div class="toast-overlay" id="toastOverlay">
+        <div class="toast-card">
+            <div class="toast-icon"><i class="fas fa-check"></i></div>
+            <h3>Thank You for Your Enquiry!</h3>
+            <p>Your email to our Market Place team has been prepared for <span class="toast-item-name" id="toastItemName">this item</span>.</p>
+            <p>Our team will review your message and get back to you as soon as possible. We truly appreciate your interest in supporting Seeds of Hope.</p>
+            <button class="toast-close-btn" id="toastCloseBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="includes/menu.js"></script>
+
+    <script>
+        AOS.init({ duration: 900, once: true, offset: 80 });
+
+        // ==================== ITEM DATA ====================
+        const marketItems = [
+            {
+                id: "galaxy-a34",
+                title: "Samsung Galaxy A34 5G",
+                category: "Mobile Phone",
+                images: [
+                    "images/Marketplace/Galaxya34/image1.jpg",
+                    "images/Marketplace/Galaxya34/image2.jpg"
+                ],
+                description: "A reliable and well-maintained Samsung Galaxy A34 5G, kindly donated to support our Seeds of Hope campaign. Great camera, smooth performance, and plenty of life left for everyday use.",
+                meta: [
+                    { icon: "fa-check-circle", label: "Good Condition" },
+                    { icon: "fa-box", label: "128GB Storage" },
+                    { icon: "fa-charging-station", label: "Charger Included" }
+                ],
+                contribution: "Offers Welcome",
+                contributionNote: "Suggested Donation"
+            },
+            {
+                id: "sennheiser-epos",
+                title: "Sennheiser EPOS Headset",
+                category: "Audio Equipment",
+                images: [
+                    "images/Marketplace/Sennheiser/image1.jpg",
+                    "images/Marketplace/Sennheiser/image2.jpg"
+                ],
+                description: "A premium Sennheiser EPOS headset, ideal for calls, meetings, or everyday listening. Crisp audio quality and a comfortable fit, generously donated to our Market Place.",
+                meta: [
+                    { icon: "fa-check-circle", label: "Excellent Condition" },
+                    { icon: "fa-headphones", label: "Noise-Cancelling Mic" },
+                    { icon: "fa-plug", label: "Cable Included" }
+                ],
+                contribution: "Offers Welcome",
+                contributionNote: "Suggested Donation"
+            }
+        ];
+
+        const MARKETPLACE_EMAIL = "smmarketplace2@gmail.com";
+
+        // ==================== RENDER ITEM CARDS ====================
+        function renderItems() {
+            const grid = document.getElementById('listingsGrid');
+            document.getElementById('itemCount').textContent = marketItems.length;
+
+            if (marketItems.length === 0) {
+                grid.innerHTML = '<div class="listings-empty">No items are listed at the moment. Please check back soon — new donations are added regularly.</div>';
+                return;
+            }
+
+            grid.innerHTML = marketItems.map((item, idx) => {
+                const slides = item.images.map((src, i) => `
+                    <div class="item-gallery-slide">
+                        <img src="${src}" alt="${item.title} - photo ${i + 1}" loading="lazy"
+                             onerror="this.src='https://placehold.co/600x450/e0e8d8/1a5a2a?text=${encodeURIComponent(item.title)}'">
+                    </div>
+                `).join('');
+
+                const dots = item.images.map((_, i) => `
+                    <div class="gallery-dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></div>
+                `).join('');
+
+                const metaChips = item.meta.map(m => `
+                    <span class="item-meta-chip"><i class="fas ${m.icon}"></i>${m.label}</span>
+                `).join('');
+
+                return `
+                <div class="item-card" data-aos="fade-up" data-aos-delay="${(idx % 3) * 100}">
+                    <div class="item-gallery" data-item-index="${idx}">
+                        <div class="item-status-badge"><i class="fas fa-circle"></i> Available</div>
+                        ${item.images.length > 1 ? `
+                            <button class="gallery-nav prev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
+                            <button class="gallery-nav next" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+                        ` : ''}
+                        <div class="item-gallery-track">
+                            ${slides}
+                        </div>
+                        ${item.images.length > 1 ? `<div class="gallery-dots">${dots}</div>` : ''}
+                    </div>
+                    <div class="item-body">
+                        <div class="item-category">${item.category}</div>
+                        <div class="item-title">${item.title}</div>
+                        <div class="item-description">${item.description}</div>
+                        <div class="item-meta">${metaChips}</div>
+                        <div class="item-footer-row">
+                            <div class="item-contribution"><small>${item.contributionNote}</small>${item.contribution}</div>
+                            <button class="enquire-btn" data-item-id="${item.id}"><i class="fas fa-envelope"></i> Enquire Now</button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            initGalleries();
+            initEnquiryButtons();
+        }
+
+        // ==================== IMAGE CAROUSEL LOGIC ====================
+        function initGalleries() {
+            document.querySelectorAll('.item-gallery').forEach(gallery => {
+                const track = gallery.querySelector('.item-gallery-track');
+                const slides = gallery.querySelectorAll('.item-gallery-slide');
+                const dots = gallery.querySelectorAll('.gallery-dot');
+                const prevBtn = gallery.querySelector('.gallery-nav.prev');
+                const nextBtn = gallery.querySelector('.gallery-nav.next');
+                let current = 0;
+                let startX = 0;
+                let isDragging = false;
+
+                function goTo(index) {
+                    if (index < 0) index = slides.length - 1;
+                    if (index >= slides.length) index = 0;
+                    current = index;
+                    track.style.transform = `translateX(-${current * 100}%)`;
+                    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+                }
+
+                if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(current - 1); });
+                if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); goTo(current + 1); });
+
+                dots.forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        goTo(parseInt(dot.dataset.slide, 10));
+                    });
+                });
+
+                // Touch swipe support
+                gallery.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                }, { passive: true });
+
+                gallery.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                }, { passive: true });
+
+                gallery.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    const endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+                    if (Math.abs(diff) > 40) {
+                        if (diff > 0) goTo(current + 1);
+                        else goTo(current - 1);
+                    }
+                });
+
+                // Mouse drag support for desktop
+                gallery.addEventListener('mousedown', (e) => {
+                    startX = e.clientX;
+                    isDragging = true;
+                });
+                gallery.addEventListener('mouseup', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    const diff = startX - e.clientX;
+                    if (Math.abs(diff) > 40) {
+                        if (diff > 0) goTo(current + 1);
+                        else goTo(current - 1);
+                    }
+                });
+                gallery.addEventListener('mouseleave', () => { isDragging = false; });
+            });
+        }
+
+        // ==================== ENQUIRY LOGIC ====================
+        function initEnquiryButtons() {
+            document.querySelectorAll('.enquire-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const itemId = btn.dataset.itemId;
+                    const item = marketItems.find(i => i.id === itemId);
+                    if (!item) return;
+                    sendEnquiry(item);
+                });
+            });
+        }
+
+        function sendEnquiry(item) {
+            const subject = `Enquiry: ${item.title} - Seeds of Hope Marketplace`;
+            const body =
+`Hello Seeds of Hope Marketplace Team,
+
+I recently came across the "${item.title}" listed on the Seeds of Hope Market Place page and I am interested in it.
+
+Could you please confirm whether this item is still available, and let me know how I can proceed with viewing, collection, and contribution towards Seeds of Hope?
+
+Looking forward to hearing from you.
+
+Kind regards,
+`;
+
+            const mailtoLink = `mailto:${MARKETPLACE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open the default mail client
+            window.location.href = mailtoLink;
+
+            // Show confirmation to the user
+            showThankYouToast(item.title);
+        }
+
+        function showThankYouToast(itemTitle) {
+            const overlay = document.getElementById('toastOverlay');
+            document.getElementById('toastItemName').textContent = itemTitle;
+            overlay.classList.add('show');
+        }
+
+        function hideThankYouToast() {
+            document.getElementById('toastOverlay').classList.remove('show');
+        }
+
+        // ==================== NAVIGATION HELPERS ====================
+        function scrollToListings() {
+            document.getElementById('listings-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function scrollToDonateItem() {
+            document.getElementById('donate-item-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            renderItems();
+
+            document.getElementById('toastCloseBtn').addEventListener('click', hideThankYouToast);
+            document.getElementById('toastOverlay').addEventListener('click', function (e) {
+                if (e.target === this) hideThankYouToast();
+            });
+
+            // Load notice bar
+            fetch("includes/notice.html")
+                .then(response => response.text())
+                .then(data => { document.getElementById("notice-container").innerHTML = data; })
+                .catch(() => {
+                    fetch("notice.html")
+                        .then(response => response.text())
+                        .then(data => { document.getElementById("notice-container").innerHTML = data; })
+                        .catch(() => {});
+                });
+
+            // Load footer from includes folder
+            fetch('includes/footer.html')
+                .then(response => response.text())
+                .then(data => { document.getElementById('footer-placeholder').innerHTML = data; })
+                .catch(() => {
+                    fetch('footer.html')
+                        .then(response => response.text())
+                        .then(data => { document.getElementById('footer-placeholder').innerHTML = data; })
+                        .catch(() => {});
+                });
+
+            // Scroll to top
+            const scrollTop = document.getElementById('scroll-top');
+            window.addEventListener('scroll', () => scrollTop.classList.toggle('active', window.pageYOffset > 300));
+            scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        });
+
+        window.scrollToListings = scrollToListings;
+        window.scrollToDonateItem = scrollToDonateItem;
+    </script>
+</body>
+</html>
