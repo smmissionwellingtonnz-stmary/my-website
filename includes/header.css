@@ -577,7 +577,7 @@ body.menu-open {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
 }
 
-.nav-link.marketplace .nav-link-left span:not(.marketplace-badge) {
+.nav-link.marketplace .nav-link-left span {
     color: #fff;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -651,6 +651,7 @@ body.menu-open {
 }
 
 .mobile-nav-link.marketplace .marketplace-badge {
+    position: absolute;
     top: 50%;
     right: 14px;
     transform: translateY(-50%);
