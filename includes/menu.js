@@ -159,24 +159,24 @@ function createMenuStructure() {
                     </a>
                 </li>
                 <li class="nav-item">
-    <a href="SeedOfHope.html" class="nav-link seeds-of-hope">
-        <div class="nav-link-left">
-            <i class="fas fa-seedling"></i>
-            <span>Seeds of Hope</span>
-        </div>
-    </a>
-</li>     
-                    <li class="nav-item">
+                    <a href="SeedOfHope.html" class="nav-link seeds-of-hope">
+                        <div class="nav-link-left">
+                            <i class="fas fa-seedling"></i>
+                            <span>Seeds of Hope</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="Marketplace.html" class="nav-link marketplace">
                         <div class="nav-link-left">
                             <i class="fas fa-store"></i>
                             <span>Market Place</span>
-                            <span class="marketplace-badge">NEW</span>
                         </div>
+                        <span class="marketplace-badge">NEW</span>
                     </a>
                 </li>
-<li class="nav-item">
-<a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
+                <li class="nav-item">
+                    <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
                         <div class="default-text">
                             <i class="fas fa-newspaper"></i>
                             <span>Newsletter</span>
@@ -187,14 +187,14 @@ function createMenuStructure() {
                     </a>
                 </li>
                 
-               <li class="nav-item">
-    <a href="https://buy.stripe.com/eVq7sM5Ao1W41ckatb5Vu00" class="nav-link donate" target="_blank">
-        <div class="nav-link-left">
-            <i class="fas fa-heart"></i>
-            <span>DONATE NOW</span>
-        </div>
-    </a>
-</li>
+                <li class="nav-item">
+                    <a href="https://buy.stripe.com/eVq7sM5Ao1W41ckatb5Vu00" class="nav-link donate" target="_blank">
+                        <div class="nav-link-left">
+                            <i class="fas fa-heart"></i>
+                            <span>DONATE NOW</span>
+                        </div>
+                    </a>
+                </li>
             </ul>
             
             <div class="menu-footer">
