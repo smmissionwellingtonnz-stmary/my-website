@@ -165,9 +165,18 @@ function createMenuStructure() {
             <span>Seeds of Hope</span>
         </div>
     </a>
-</li>      
-                <li class="nav-item">
-                    <a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
+</li>     
+                    <li class="nav-item">
+                    <a href="Marketplace.html" class="nav-link marketplace">
+                        <div class="nav-link-left">
+                            <i class="fas fa-store"></i>
+                            <span>Market Place</span>
+                            <span class="marketplace-badge">NEW</span>
+                        </div>
+                    </a>
+                </li>
+<li class="nav-item">
+<a href="Newsletter/newsletter.jpg" class="nav-link newsletter" download>
                         <div class="default-text">
                             <i class="fas fa-newspaper"></i>
                             <span>Newsletter</span>
