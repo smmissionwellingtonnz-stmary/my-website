@@ -888,7 +888,7 @@
     <!-- LISTINGS -->
     <section class="listings-wrapper" id="listings-section">
         <div class="listings-toolbar" data-aos="fade-up">
-            <div class="listings-count"><span id="itemCount">1</span> item currently available</div>
+            <div class="listings-count"><span id="itemCount">3</span> items currently available</div>
             <div class="listings-note"><i class="fas fa-hand-holding-heart"></i>All proceeds go towards Seeds of Hope, our Church of Our Own fund</div>
         </div>
 
@@ -996,24 +996,65 @@
         // ==================== ITEM DATA ====================
         const marketItems = [
             {
-                id: "kathmandu-puffer",
-                title: "Kathmandu Puffer Jacket",
-                category: "Clothing",
+                id: "tv-stand",
+                title: "TV Stand",
+                category: "Furniture",
                 images: [
-                    "images/Marketplace/Jacket/jacket1.jpg",
-                    "images/Marketplace/Jacket/jacket2.jpg"
+                    "images/Marketplace/tvstand/image1.jpg",
+                    "images/Marketplace/tvstand/image2.jpg"
                 ],
-                description: "Warm packable lightweight fill. Size: Large. Condition: Used like new. A quality Kathmandu puffer jacket, kindly donated to support our Seeds of Hope campaign.",
+                description: "Black Tempered Glass TV Stand / Entertainment Unit (3-Tier). Height: 46cm · Width: 45cm · Length middle: 102cm · Length front: 110cm.",
                 meta: [
-                    { icon: "fa-check-circle", label: "Used Like New" },
-                    { icon: "fa-tshirt", label: "Size: Large" },
-                    { icon: "fa-weight-hanging", label: "Lightweight & Packable" }
+                    { icon: "fa-ruler-combined", label: "H: 46cm" },
+                    { icon: "fa-arrows-alt-h", label: "W: 45cm" },
+                    { icon: "fa-arrows-alt-h", label: "L (mid): 102cm" },
+                    { icon: "fa-arrows-alt-h", label: "L (front): 110cm" }
                 ],
-                contribution: "$110",
+                contribution: "$60",
                 contributionNote: "Price",
-                shipping: "Pick-up only. Item location: Newlands, Wellington."
+                shipping: "Pick Up from Upper Hutt."
             },
-            ];
+            {
+                id: "kids-slide",
+                title: "Kids Slide",
+                category: "Toys & Play",
+                images: [
+                    "images/Marketplace/slide/image1.jpg",
+                    "images/Marketplace/slide/image2.jpg",
+                    "images/Marketplace/slide/image3.jpg",
+                    "images/Marketplace/slide/image4.jpg"
+                ],
+                description: "Vintage Fisher-Price 2-in-1 \"Grow With Me\" Toddler Slide. Good condition.",
+                meta: [
+                    { icon: "fa-check-circle", label: "Good Condition" },
+                    { icon: "fa-child", label: "Toddler" },
+                    { icon: "fa-star", label: "Vintage Fisher-Price" }
+                ],
+                contribution: "$60",
+                contributionNote: "Price",
+                shipping: "Pick Up from Mount Cook, Wellington."
+            },
+            {
+                id: "chair",
+                title: "Chair",
+                category: "Furniture",
+                images: [
+                    "images/Marketplace/chair/image1.jpg",
+                    "images/Marketplace/chair/image2.jpg",
+                    "images/Marketplace/chair/image3.jpg",
+                    "images/Marketplace/chair/image4.jpg"
+                ],
+                description: "High-Density armless stacker with a distinctive hand-hold cutout on the upper backrest for easy mobility. Durable plastic seat and back paired with a metal sled base.",
+                meta: [
+                    { icon: "fa-layer-group", label: "53 available" },
+                    { icon: "fa-tag", label: "$15 each" },
+                    { icon: "fa-hand-holding-usd", label: "Negotiable" }
+                ],
+                contribution: "$15",
+                contributionNote: "Each (Negotiable)",
+                shipping: "Pick up from Newlands."
+            }
+        ];
 
         const MARKETPLACE_EMAIL = "smmarketplace2@gmail.com";
         let currentEnquiryItem = null;
