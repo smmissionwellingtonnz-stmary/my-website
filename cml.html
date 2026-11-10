@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cherupushpa Mission League (CML) | St. Mary's Syro-Malabar Mission</title>
+    <meta name="description" content="Cherupushpa Mission League (CML) at St. Mary's Syro-Malabar Mission, Wellington. Growing in faith, serving with love.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Notice Bar CSS -->
+    <link rel="stylesheet" href="includes/notice.css">
+
+    <!-- Menu Navigation CSS -->
+    <link rel="stylesheet" href="includes/header.css">
+
+    <!-- Footer CSS -->
+    <link rel="stylesheet" href="includes/footer.css">
+
+    <style>
+        /* Global Styles (same base as the other pages) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2b1a1f;
+            background-color: #fff9f1;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ---------- CML theme ----------
+           Rose red and gold for the Little Flower, cream for the page,
+           leaf green as the accent of new growth. */
+        :root {
+            --cml-rose: #b3123a;
+            --cml-rose-bright: #d62a55;
+            --cml-rose-deep: #5e0c24;
+            --cml-blush: #fde8ec;
+            --cml-gold: #d9a521;
+            --cml-gold-soft: #f6d97a;
+            --cml-cream: #fff9f1;
+            --cml-ink: #2b1a1f;
+            --cml-muted: #6f5a60;
+            --cml-leaf: #2f7d5b;
+            --cml-shadow: 0 14px 34px rgba(94, 12, 36, 0.12);
+        }
+
+        .cml-wrap {
+            width: 100%;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cml-section {
+            padding: 84px 0;
+            position: relative;
+            scroll-margin-top: 80px;
+        }
+
+        .cml-section.blush { background: linear-gradient(180deg, #fff3f4, var(--cml-blush)); }
+        .cml-section.white { background: #ffffff; }
+
+        .cml-head {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 46px;
+        }
+
+        .cml-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cml-rose);
+            margin-bottom: 10px;
+        }
+
+        .cml-head h2 {
+            font-family: 'Marcellus', serif;
+            font-weight: 400;
+            font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+            line-height: 1.2;
+            color: var(--cml-rose-deep);
+        }
+
+        .cml-flourish {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 16px auto 0;
+            color: var(--cml-gold);
+            font-size: 1rem;
+        }
+
+        .cml-flourish::before,
+        .cml-flourish::after {
+            content: '';
+            width: 70px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cml-gold));
+        }
+
+        .cml-flourish::after { transform: scaleX(-1); }
+
+        .cml-head p {
+            margin-top: 18px;
+            color: var(--cml-muted);
+            font-size: 1.05rem;
+        }
+
+        .cml-text p { margin-bottom: 18px; font-size: 1.04rem; }
+        .cml-text p:last-child { margin-bottom: 0; }
+        .cml-text strong { color: var(--cml-rose-deep); font-weight: 600; }
+
+        /* Reveal on scroll (only when JS is running) */
+        .cml-js .cml-reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .cml-js .cml-reveal.in { opacity: 1; transform: none; }
+
+        /* ---------- Hero ---------- */
+        .cml-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 130px 20px 120px;
+            color: #fff;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 28%, rgba(246, 217, 122, 0.35), transparent 42%),
+                radial-gradient(circle at 12% 85%, rgba(214, 42, 85, 0.55), transparent 45%),
+                radial-gradient(circle at 88% 80%, rgba(214, 42, 85, 0.45), transparent 45%),
+                linear-gradient(160deg, #7d0f30 0%, var(--cml-rose-deep) 55%, #3a0716 100%);
+        }
+
+        .cml-hero-inner { position: relative; z-index: 2; max-width: 900px; }
+
+        .cml-logo {
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 26px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 14px;
+            box-shadow: 0 0 0 4px var(--cml-gold), 0 0 0 12px rgba(246, 217, 122, 0.22), 0 20px 50px rgba(0, 0, 0, 0.4);
+            animation: cmlGlow 4s ease-in-out infinite;
+        }
+
+        .cml-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+
+        @keyframes cmlGlow {
+            0%, 100% { box-shadow: 0 0 0 4px var(--cml-gold), 0 0 0 12px rgba(246, 217, 122, 0.22), 0 20px 50px rgba(0, 0, 0, 0.4); }
+            50% { box-shadow: 0 0 0 4px var(--cml-gold), 0 0 0 20px rgba(246, 217, 122, 0.1), 0 20px 50px rgba(0, 0, 0, 0.4); }
+        }
+
+        .cml-hero .cml-kicker {
+            font-size: 0.85rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--cml-gold-soft);
+            margin-bottom: 12px;
+        }
+
+        .cml-hero h1 {
+            font-family: 'Cinzel Decorative', 'Marcellus', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            line-height: 1.15;
+            color: var(--cml-gold-soft);
+            text-shadow: 0 3px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .cml-hero h1 span { display: block; color: #fff; font-size: 0.5em; letter-spacing: 0.3em; margin-top: 12px; }
+
+        .cml-hero .cml-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1.4rem, 3.4vw, 2.1rem);
+            margin: 20px 0 28px;
+            color: #ffe9ee;
+        }
+
+        .cml-motto {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 34px;
+        }
+
+        .cml-motto span {
+            padding: 8px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(246, 217, 122, 0.6);
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 0.86rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .cml-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+
+        .cml-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .cml-btn.gold { background: linear-gradient(135deg, var(--cml-gold-soft), var(--cml-gold)); color: var(--cml-rose-deep); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25); }
+        .cml-btn.ghost { border: 2px solid rgba(255, 255, 255, 0.75); color: #fff; }
+        .cml-btn:hover { transform: translateY(-3px); }
+        .cml-btn.ghost:hover { background: rgba(255, 255, 255, 0.14); }
+
+        .cml-wave { position: absolute; left: 0; bottom: -1px; width: 100%; height: 90px; z-index: 2; display: block; }
+
+        /* Falling rose petals: St. Thérèse's "shower of roses" */
+        .cml-petal {
+            position: absolute;
+            top: -40px;
+            width: 16px;
+            height: 22px;
+            background: linear-gradient(140deg, #ffc4d0, #e8436b);
+            border-radius: 80% 0 80% 0;
+            opacity: 0.8;
+            z-index: 1;
+            pointer-events: none;
+            animation: cmlFall linear infinite;
+        }
+
+        @keyframes cmlFall {
+            0% { transform: translate3d(0, -40px, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.85; }
+            100% { transform: translate3d(90px, 110vh, 0) rotate(540deg); opacity: 0; }
+        }
+
+        /* ---------- Welcome ---------- */
+        .cml-welcome {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .cml-portrait { position: relative; max-width: 380px; margin: 0 auto; width: 100%; }
+
+        .cml-portrait img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 200px 200px 18px 18px;
+            border: 6px solid #fff;
+            box-shadow: 0 0 0 3px var(--cml-gold), var(--cml-shadow);
+            display: block;
+            background: var(--cml-blush);
+        }
+
+        .cml-quote {
+            position: relative;
+            margin: -40px 12px 0;
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px 22px;
+            box-shadow: var(--cml-shadow);
+            border-top: 4px solid var(--cml-rose);
+            text-align: center;
+        }
+
+        .cml-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.35;
+            color: var(--cml-rose-deep);
+        }
+
+        .cml-quote small { display: block; margin-top: 8px; color: var(--cml-muted); letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.72rem; }
+
+        .cml-fact {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 26px;
+            padding: 14px 22px;
+            border-radius: 14px;
+            background: var(--cml-blush);
+            border-left: 4px solid var(--cml-gold);
+        }
+
+        .cml-fact i { font-size: 1.5rem; color: var(--cml-rose); }
+        .cml-fact b { display: block; color: var(--cml-rose-deep); font-size: 1.05rem; }
+        .cml-fact span { font-size: 0.9rem; color: var(--cml-muted); }
+
+        /* ---------- Mission ---------- */
+        .cml-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+        }
+
+        .cml-pillar {
+            background: #fff;
+            border-radius: 18px;
+            padding: 28px 16px 24px;
+            text-align: center;
+            box-shadow: var(--cml-shadow);
+            border-bottom: 4px solid var(--cml-gold);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .cml-pillar:hover { transform: translateY(-8px); border-color: var(--cml-rose); }
+
+        .cml-pillar i {
+            width: 62px;
+            height: 62px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cml-rose-bright), var(--cml-rose));
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 14px;
+        }
+
+        .cml-pillar h3 { font-size: 0.98rem; font-weight: 600; color: var(--cml-rose-deep); line-height: 1.35; }
+
+        .cml-mottoband {
+            margin-top: 46px;
+            border-radius: 22px;
+            padding: 36px 26px;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(135deg, var(--cml-rose), var(--cml-rose-deep));
+            box-shadow: var(--cml-shadow);
+        }
+
+        .cml-mottoband .words {
+            font-family: 'Marcellus', serif;
+            font-size: clamp(1.3rem, 3.4vw, 2.1rem);
+            color: var(--cml-gold-soft);
+            margin: 6px 0 14px;
+        }
+
+        .cml-mottoband .words i { font-size: 0.5em; vertical-align: middle; margin: 0 10px; color: #fff; opacity: 0.7; }
+        .cml-mottoband small { letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.76rem; opacity: 0.85; }
+        .cml-mottoband p { max-width: 720px; margin: 0 auto; opacity: 0.95; }
+
+        /* ---------- Saints ---------- */
+        .cml-patron {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--cml-shadow);
+            margin-bottom: 26px;
+        }
+
+        .cml-patron img { width: 100%; height: 100%; min-height: 340px; object-fit: cover; object-position: center top; display: block; background: var(--cml-blush); }
+
+        .cml-patron .body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+
+        .cml-badge {
+            align-self: flex-start;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--cml-gold-soft), var(--cml-gold));
+            color: var(--cml-rose-deep);
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .cml-patron h3, .cml-saint h3 { font-family: 'Marcellus', serif; font-weight: 400; color: var(--cml-rose-deep); line-height: 1.25; }
+        .cml-patron h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+        .cml-patron h3 em { display: block; font-family: 'Cormorant Garamond', serif; font-size: 0.8em; color: var(--cml-rose); margin-top: 4px; }
+        .cml-patron p { margin-top: 14px; font-size: 1.08rem; color: var(--cml-muted); }
+
+        .cml-saints { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+
+        .cml-saint {
+            background: #fff;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: var(--cml-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .cml-saint:hover { transform: translateY(-8px); }
+        .cml-saint .pic { aspect-ratio: 4 / 5; overflow: hidden; background: var(--cml-blush); }
+        .cml-saint img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform 0.6s ease; }
+        .cml-saint:hover img { transform: scale(1.05); }
+        .cml-saint .body { padding: 22px 24px 26px; border-top: 4px solid var(--cml-gold); }
+        .cml-saint h3 { font-size: 1.3rem; }
+        .cml-saint p { margin-top: 8px; color: var(--cml-muted); font-size: 0.97rem; }
+
+        .cml-closing {
+            text-align: center;
+            max-width: 720px;
+            margin: 40px auto 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.45rem;
+            line-height: 1.4;
+            color: var(--cml-rose-deep);
+        }
+
+        /* ---------- Growing Together ---------- */
+        .cml-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 30px 0 50px; }
+
+        .cml-chips span {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 20px;
+            border-radius: 40px;
+            background: #fff;
+            border: 1px solid #f3c9d2;
+            color: var(--cml-rose-deep);
+            font-weight: 500;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 16px rgba(94, 12, 36, 0.07);
+        }
+
+        .cml-chips i { color: var(--cml-rose); }
+
+        .cml-symbols {
+            display: grid;
+            grid-template-columns: 1fr 240px 1fr;
+            gap: 26px;
+            align-items: center;
+        }
+
+        .cml-symbols .col { display: grid; gap: 22px; }
+
+        .cml-symbols .logo {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 22px;
+            box-shadow: 0 0 0 3px var(--cml-gold), 0 0 0 14px rgba(217, 165, 33, 0.15), var(--cml-shadow);
+            margin: 0 auto;
+        }
+
+        .cml-symbols .logo img { width: 100%; height: 100%; object-fit: contain; }
+
+        .cml-symbol {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--cml-shadow);
+        }
+
+        .cml-symbol i {
+            flex: 0 0 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cml-blush);
+            color: var(--cml-rose);
+            font-size: 1.3rem;
+        }
+
+        .cml-symbol h3 { font-size: 1.05rem; color: var(--cml-rose-deep); font-weight: 600; }
+        .cml-symbol p { font-size: 0.93rem; color: var(--cml-muted); line-height: 1.55; }
+
+        /* ---------- CML at St. Mary's ---------- */
+        .cml-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 40px 0; }
+
+        .cml-group {
+            border-radius: 22px;
+            padding: 34px 30px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--cml-shadow);
+        }
+
+        .cml-group.junior { background: linear-gradient(135deg, #e8436b, var(--cml-rose)); }
+        .cml-group.senior { background: linear-gradient(135deg, var(--cml-rose), var(--cml-rose-deep)); }
+        .cml-group > i { position: absolute; right: -10px; bottom: -18px; font-size: 7.5rem; opacity: 0.13; }
+        .cml-group small { letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.76rem; color: var(--cml-gold-soft); }
+        .cml-group h3 { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.9rem; margin: 4px 0; }
+        .cml-group .years { font-size: 1.15rem; font-weight: 600; }
+
+        .cml-two { max-width: 860px; margin: 0 auto; }
+
+        /* ---------- Leaders ---------- */
+        .cml-leadblock + .cml-leadblock { margin-top: 56px; }
+
+        .cml-leadtitle {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .cml-leadtitle h3 { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.6rem; color: var(--cml-rose-deep); white-space: nowrap; }
+        .cml-leadtitle span { font-size: 0.82rem; padding: 4px 14px; border-radius: 30px; background: var(--cml-blush); color: var(--cml-rose); font-weight: 600; white-space: nowrap; }
+        .cml-leadtitle::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--cml-gold), transparent); }
+
+        .cml-leaders { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; }
+
+        .cml-leader {
+            flex: 0 1 172px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 10px 10px 16px;
+            text-align: center;
+            box-shadow: var(--cml-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cml-leader:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 20px 40px rgba(94, 12, 36, 0.2); }
+
+        /* Photo frame: fixed portrait shape. The image fills it and is anchored
+           towards the top so faces stay in view. Fine-tune any single photo with
+           the "focus" value in the leaders list at the bottom of this file. */
+        .cml-leader .pic {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            border-radius: 14px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--cml-blush), #f8c9d3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Marcellus', serif;
+            font-size: 3rem;
+            color: var(--cml-rose);
+        }
+
+        .cml-leader img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: var(--focus, 50% 20%);
+            display: block;
+        }
+
+        .cml-leader h4 { margin-top: 12px; font-size: 1.05rem; font-weight: 600; color: var(--cml-rose-deep); }
+        .cml-leader p { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cml-muted); }
+
+        /* ---------- Live scoreboard ---------- */
+        .cml-score {
+            color: #fff;
+            background:
+                radial-gradient(circle at 85% 0%, rgba(246, 217, 122, 0.22), transparent 40%),
+                linear-gradient(160deg, #7d0f30, var(--cml-rose-deep) 60%, #3a0716);
+        }
+
+        .cml-score .cml-head h2 { color: #fff; }
+        .cml-score .cml-eyebrow { color: var(--cml-gold-soft); }
+        .cml-score .cml-head p { color: rgba(255, 255, 255, 0.82); }
+
+        .cml-livebar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 34px;
+            font-size: 0.9rem;
+        }
+
+        .cml-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 7px 16px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .cml-live b { width: 9px; height: 9px; border-radius: 50%; background: #4be08a; animation: cmlPulse 1.6s infinite; }
+        .cml-live.off b { background: #ffb347; animation: none; }
+
+        @keyframes cmlPulse {
+            0% { box-shadow: 0 0 0 0 rgba(75, 224, 138, 0.7); }
+            100% { box-shadow: 0 0 0 10px rgba(75, 224, 138, 0); }
+        }
+
+        .cml-refresh {
+            font: inherit;
+            color: #fff;
+            cursor: pointer;
+            padding: 7px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            background: transparent;
+            transition: background 0.25s ease;
+        }
+
+        .cml-refresh:hover { background: rgba(255, 255, 255, 0.15); }
+        .cml-refresh.spin i { animation: cmlSpin 0.8s linear infinite; }
+        @keyframes cmlSpin { to { transform: rotate(360deg); } }
+
+        .cml-teams { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+
+        .cml-team {
+            position: relative;
+            background: #fff;
+            color: var(--cml-ink);
+            border-radius: 22px;
+            padding: 26px 24px 24px;
+            text-align: center;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+            border-top: 6px solid var(--team, var(--cml-rose));
+        }
+
+        .cml-team.lead { transform: translateY(-10px); box-shadow: 0 0 0 3px var(--cml-gold), 0 22px 44px rgba(0, 0, 0, 0.35); }
+
+        .cml-team .rank {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 30px;
+            background: var(--cml-blush);
+            color: var(--cml-rose-deep);
+        }
+
+        .cml-team.lead .rank { background: linear-gradient(135deg, var(--cml-gold-soft), var(--cml-gold)); }
+
+        .cml-team .avatar {
+            width: 92px;
+            height: 92px;
+            margin: 14px auto 12px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--team, var(--cml-rose));
+            background: var(--cml-blush);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--team, var(--cml-rose));
+            font-size: 2rem;
+        }
+
+        .cml-team .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .cml-team h3 { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.3rem; color: var(--cml-rose-deep); }
+        .cml-team .pts { font-size: 3.2rem; font-weight: 700; line-height: 1.1; color: var(--team, var(--cml-rose)); margin-top: 6px; }
+        .cml-team .pts small { display: block; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cml-muted); }
+        .cml-team .bar { height: 8px; border-radius: 8px; background: #f3e4e7; margin-top: 16px; overflow: hidden; }
+        .cml-team .bar i { display: block; height: 100%; width: 0; border-radius: 8px; background: var(--team, var(--cml-rose)); transition: width 1s ease; }
+
+        .cml-events-title { text-align: center; font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.5rem; color: var(--cml-gold-soft); margin: 56px 0 24px; }
+
+        .cml-events { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
+
+        .cml-event {
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 18px;
+            padding: 22px;
+        }
+
+        .cml-event h4 { font-size: 1.08rem; font-weight: 600; margin-bottom: 12px; color: #fff; }
+        .cml-event ul { list-style: none; }
+        .cml-event li { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px dashed rgba(255, 255, 255, 0.2); font-size: 0.95rem; }
+
+        .cml-event .pos {
+            flex: 0 0 44px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.82rem;
+            padding: 3px 0;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .cml-event li:nth-child(1) .pos { background: var(--cml-gold); color: var(--cml-rose-deep); }
+        .cml-event li:nth-child(2) .pos { background: #d7dbe0; color: #333; }
+        .cml-event li:nth-child(3) .pos { background: #c98a55; color: #2b1a1f; }
+        .cml-event .who { flex: 1; }
+        .cml-event .who.tba { opacity: 0.55; font-style: italic; }
+        .cml-event .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; background: var(--team); }
+        .cml-event .p { font-weight: 600; color: var(--cml-gold-soft); white-space: nowrap; }
+
+        .cml-scoremsg { text-align: center; padding: 40px 20px; border-radius: 18px; background: rgba(255, 255, 255, 0.09); border: 1px dashed rgba(255, 255, 255, 0.35); }
+        .cml-scoremsg i { font-size: 2rem; color: var(--cml-gold-soft); margin-bottom: 10px; display: block; }
+
+        /* ---------- Journey + Mission Sunday ---------- */
+        .cml-split { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+        .cml-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px 36px;
+            box-shadow: var(--cml-shadow);
+            border-top: 5px solid var(--cml-rose);
+        }
+
+        .cml-card.gold { border-top-color: var(--cml-gold); }
+        .cml-card > i { font-size: 2rem; color: var(--cml-rose); margin-bottom: 14px; }
+        .cml-card.gold > i { color: var(--cml-gold); }
+        .cml-card h2 { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.2; color: var(--cml-rose-deep); margin-bottom: 18px; }
+
+        .cml-highlight {
+            margin-top: 22px;
+            padding: 18px 22px;
+            border-radius: 14px;
+            background: var(--cml-blush);
+            border-left: 4px solid var(--cml-rose);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            color: var(--cml-rose-deep);
+        }
+
+        .cml-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 22px; }
+
+        .cml-mini div {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 15px;
+            border-radius: 12px;
+            background: #fff8e6;
+            font-weight: 500;
+            font-size: 0.93rem;
+            color: var(--cml-rose-deep);
+            line-height: 1.3;
+        }
+
+        .cml-mini i { color: var(--cml-gold); font-size: 1.15rem; }
+
+        /* ---------- Join ---------- */
+        .cml-join {
+            text-align: center;
+            color: #fff;
+            padding: 100px 0;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(246, 217, 122, 0.3), transparent 50%),
+                linear-gradient(160deg, var(--cml-rose-bright), var(--cml-rose) 45%, var(--cml-rose-deep));
+        }
+
+        .cml-join .cml-wrap { position: relative; z-index: 2; max-width: 860px; }
+        .cml-join h2 { font-family: 'Marcellus', serif; font-weight: 400; font-size: clamp(1.9rem, 4.6vw, 3rem); line-height: 1.2; }
+        .cml-join p { margin-top: 18px; font-size: 1.06rem; opacity: 0.96; }
+        .cml-join p strong { color: var(--cml-gold-soft); }
+
+        .cml-shine {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin: 36px 0 8px;
+        }
+
+        .cml-shine span {
+            font-family: 'Cinzel Decorative', 'Marcellus', serif;
+            font-size: clamp(1.3rem, 3.6vw, 2.2rem);
+            color: var(--cml-gold-soft);
+            padding: 8px 22px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(246, 217, 122, 0.45);
+        }
+
+        .cml-join .invite { font-size: 1.5rem; font-weight: 700; color: #fff; margin-top: 30px; }
+        .cml-join .noise { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--cml-gold-soft); margin-top: 10px; }
+
+        /* Scroll to top button (same behaviour as other pages) */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--cml-rose-bright), var(--cml-rose-deep));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 996;
+        }
+
+        .scroll-top.active { opacity: 1; visibility: visible; }
+        .scroll-top:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 960px) {
+            .cml-welcome { grid-template-columns: 1fr; }
+            .cml-portrait { order: -1; }
+            .cml-patron { grid-template-columns: 1fr; }
+            .cml-patron img { min-height: 0; aspect-ratio: 4 / 3; }
+            .cml-symbols { grid-template-columns: 1fr; }
+            .cml-symbols .logo { order: -1; width: 190px; height: 190px; }
+            .cml-split { grid-template-columns: 1fr; }
+            .cml-team.lead { transform: none; }
+        }
+
+        @media (max-width: 760px) {
+            .cml-section { padding: 60px 0; }
+            .cml-saints { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
+            .cml-groups { grid-template-columns: 1fr; }
+            .cml-logo { width: 130px; height: 130px; }
+            .cml-patron .body { padding: 28px 24px; }
+            .cml-card { padding: 30px 24px; }
+            .cml-leader { flex-basis: calc(50% - 11px); }
+            .cml-leadtitle { flex-wrap: wrap; gap: 10px; }
+            .cml-mini { grid-template-columns: 1fr; }
+            .cml-hero h1 span { letter-spacing: 0.2em; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cml-petal { display: none; }
+            .cml-js .cml-reveal { opacity: 1; transform: none; transition: none; }
+            .cml-logo, .cml-live b { animation: none; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notice bar placeholder (contains hamburger button) -->
+    <div id="notice-container"></div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- ================= Hero ================= -->
+    <section class="cml-hero" id="cml-hero">
+        <div class="cml-hero-inner">
+            <div class="cml-logo">
+                <img src="images/cml/logo/cmllogo.png" alt="Cherupushpa Mission League logo">
+            </div>
+            <p class="cml-kicker">St. Mary's Syro-Malabar Mission, Wellington</p>
+            <h1>Cherupushpa Mission League <span>(CML)</span></h1>
+            <p class="cml-tagline">Growing in Faith, Serving with Love</p>
+            <div class="cml-motto">
+                <span>Love</span><span>Sacrifice</span><span>Service</span><span>Suffering</span>
+            </div>
+            <div class="cml-btns">
+                <a class="cml-btn gold" href="#scoreboard"><i class="fas fa-trophy"></i> Live Score Card</a>
+                <a class="cml-btn ghost" href="#leaders"><i class="fas fa-user-group"></i> Meet Our Leaders</a>
+            </div>
+        </div>
+        <svg class="cml-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+            <path fill="#ffffff" d="M0,48 C240,100 480,0 720,36 C960,72 1200,96 1440,40 L1440,90 L0,90 Z"></path>
+        </svg>
+    </section>
+
+    <!-- ================= Welcome ================= -->
+    <section class="cml-section white">
+        <div class="cml-wrap cml-welcome">
+            <div class="cml-text cml-reveal">
+                <span class="cml-eyebrow"><i class="fas fa-spa"></i> Welcome</span>
+                <h2 style="font-family:'Marcellus',serif;font-weight:400;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.2;color:var(--cml-rose-deep);margin-bottom:22px;">A new mission family in Wellington</h2>
+                <p>We are delighted to welcome the <strong>Cherupushpa Mission League (CML)</strong> into the family of <strong>St. Mary’s Syro-Malabar Mission, Wellington</strong>.</p>
+                <p>CML is one of the mission groups of the Syro-Malabar Church, dedicated especially to helping children and young people grow in their love for Christ, the Church, and missionary life. Founded on <strong>3 October 1947 in Bharananganam, Kerala, India</strong>, CML has grown into a mission movement with a presence in parishes around the world.</p>
+                <p>At the heart of CML is the example of <strong>St. Thérèse of Lisieux, the Little Flower</strong>, our heavenly patron. St. Thérèse taught us her “Little Way” — that even the smallest things, when done with great love, can become a beautiful offering to God. Her childlike trust, love for God, and missionary spirit continue to inspire every CML member.</p>
+                <div class="cml-fact">
+                    <i class="fas fa-seedling"></i>
+                    <div><b>Founded 3 October 1947</b><span>Bharananganam, Kerala, India</span></div>
+                </div>
+            </div>
+            <div class="cml-portrait cml-reveal">
+                <img src="images/cml/sttheresa.jpg" alt="St. Thérèse of Lisieux, the Little Flower">
+                <div class="cml-quote">
+                    <p>Do small things with great love.</p>
+                    <small>The Little Way of St. Thérèse</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= Our Mission ================= -->
+    <section class="cml-section blush">
+        <div class="cml-wrap">
+            <div class="cml-head cml-reveal">
+                <span class="cml-eyebrow"><i class="fas fa-dove"></i> What we are here for</span>
+                <h2>Our Mission</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+                <p>CML seeks to foster a strong <strong>missionary spirit</strong> among children and young people and to support the mission of the Church through:</p>
+            </div>
+            <div class="cml-pillars cml-reveal">
+                <div class="cml-pillar"><i class="fas fa-hands-praying"></i><h3>Prayer</h3></div>
+                <div class="cml-pillar"><i class="fas fa-cross"></i><h3>Sacrifice</h3></div>
+                <div class="cml-pillar"><i class="fas fa-hand-holding-heart"></i><h3>Service</h3></div>
+                <div class="cml-pillar"><i class="fas fa-seedling"></i><h3>Spiritual growth</h3></div>
+                <div class="cml-pillar"><i class="fas fa-people-group"></i><h3>Leadership development</h3></div>
+                <div class="cml-pillar"><i class="fas fa-fire"></i><h3>Vocation promotion</h3></div>
+                <div class="cml-pillar"><i class="fas fa-church"></i><h3>Active participation in the life of the Church</h3></div>
+            </div>
+            <div class="cml-mottoband cml-reveal">
+                <small>The CML motto</small>
+                <div class="words">Love <i class="fas fa-spa"></i> Sacrifice <i class="fas fa-spa"></i> Service <i class="fas fa-spa"></i> Suffering</div>
+                <p>It reminds us of the Christian call to love God and others, follow Christ through selfless sacrifice, and serve our community and society.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= Saints ================= -->
+    <section class="cml-section white">
+        <div class="cml-wrap">
+            <div class="cml-head cml-reveal">
+                <span class="cml-eyebrow"><i class="fas fa-star"></i> Our heavenly patrons</span>
+                <h2>Inspired by the Saints</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+                <p>CML is guided by the example of its heavenly patrons:</p>
+            </div>
+
+            <article class="cml-patron cml-reveal">
+                <img src="images/cml/sttheresa.jpg" alt="St. Thérèse of Lisieux">
+                <div class="body">
+                    <span class="cml-badge">Principal Patron</span>
+                    <h3>St. Thérèse of Lisieux <em>The Little Flower</em></h3>
+                    <p>Our principal patron, who teaches us to do small things with great love.</p>
+                </div>
+            </article>
+
+            <div class="cml-saints">
+                <article class="cml-saint cml-reveal">
+                    <div class="pic"><img src="images/stthomas.jpg" alt="St. Thomas the Apostle"></div>
+                    <div class="body">
+                        <h3>St. Thomas the Apostle</h3>
+                        <p>A powerful reminder of faith, witness and the missionary foundation of the Church.</p>
+                    </div>
+                </article>
+                <article class="cml-saint cml-reveal">
+                    <div class="pic"><img src="images/stfrancis.jpg" alt="St. Francis Xavier"></div>
+                    <div class="body">
+                        <h3>St. Francis Xavier</h3>
+                        <p>A model of missionary zeal and dedication to spreading the Gospel.</p>
+                    </div>
+                </article>
+                <article class="cml-saint cml-reveal">
+                    <div class="pic"><img src="images/stalphonsa.png" alt="St. Alphonsa"></div>
+                    <div class="body">
+                        <h3>St. Alphonsa</h3>
+                        <p>An inspiring example of holiness, faith, perseverance and surrender to God.</p>
+                    </div>
+                </article>
+            </div>
+
+            <p class="cml-closing cml-reveal">Together, these saints encourage our young people to live their faith courageously and share the love of Christ with others.</p>
+        </div>
+    </section>
+
+    <!-- ================= Growing Together ================= -->
+    <section class="cml-section blush">
+        <div class="cml-wrap">
+            <div class="cml-head cml-reveal">
+                <span class="cml-eyebrow"><i class="fas fa-seedling"></i> Learn, serve, lead</span>
+                <h2>Growing Together</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+                <p>CML provides children and young people with opportunities to learn, serve, lead and grow together as a community of faith. CML encourages our young people to discover their gifts while becoming more actively involved in the life of the Church.</p>
+            </div>
+
+            <div class="cml-chips cml-reveal">
+                <span><i class="fas fa-book-bible"></i> Liturgy</span>
+                <span><i class="fas fa-earth-asia"></i> Mission activities</span>
+                <span><i class="fas fa-palette"></i> Creative arts</span>
+                <span><i class="fas fa-campground"></i> Camps</span>
+                <span><i class="fas fa-chalkboard-user"></i> Workshops</span>
+                <span><i class="fas fa-futbol"></i> Sports and games</span>
+            </div>
+
+            <div class="cml-head cml-reveal" style="margin-bottom:30px;">
+                <h2 style="font-size:clamp(1.4rem,3vw,1.9rem);">What our logo tells us</h2>
+                <p>The CML logo itself reflects this mission.</p>
+            </div>
+
+            <div class="cml-symbols cml-reveal">
+                <div class="col">
+                    <div class="cml-symbol"><i class="fas fa-book-bible"></i><div><h3>The Bible</h3><p>Reminds us to study and live according to God's Word.</p></div></div>
+                    <div class="cml-symbol"><i class="fas fa-cross"></i><div><h3>The Holy Cross</h3><p>Represents our salvation.</p></div></div>
+                </div>
+                <div class="logo"><img src="images/cml/logo/cmllogo.png" alt="CML logo"></div>
+                <div class="col">
+                    <div class="cml-symbol"><i class="fas fa-fire"></i><div><h3>The Lamp</h3><p>Reminds us to carry the light of Christ into the world.</p></div></div>
+                    <div class="cml-symbol"><i class="fas fa-wheat-awn"></i><div><h3>The Wheat Grains</h3><p>Remind us of our responsibility to proclaim the Gospel.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CML at St. Mary's ================= -->
+    <section class="cml-section white">
+        <div class="cml-wrap">
+            <div class="cml-head cml-reveal">
+                <span class="cml-eyebrow"><i class="fas fa-church"></i> Our parish, our family</span>
+                <h2>CML at St. Mary’s Syro-Malabar Mission</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+            </div>
+
+            <div class="cml-two cml-text cml-reveal">
+                <p>With the beginning of CML at St. Mary’s Syro-Malabar Mission, Wellington, our children now have a dedicated space to <strong>pray, learn, serve, lead and grow together in faith</strong>.</p>
+                <p>CML is more than a programme for children. It is an opportunity to build friendships, strengthen our parish community, develop leadership and teamwork, and encourage our young people to become active members of the Church.</p>
+            </div>
+
+            <div class="cml-groups cml-reveal">
+                <div class="cml-group junior">
+                    <i class="fas fa-seedling"></i>
+                    <small>Mission group</small>
+                    <h3>Junior CML</h3>
+                    <p class="years">Years 5–7</p>
+                </div>
+                <div class="cml-group senior">
+                    <i class="fas fa-fire"></i>
+                    <small>Mission group</small>
+                    <h3>Senior CML</h3>
+                    <p class="years">Years 8–10</p>
+                </div>
+            </div>
+
+            <div class="cml-two cml-text cml-reveal" style="text-align:center;">
+                <p>Our CML family is organised into <strong>Junior CML for Years 5–7</strong> and <strong>Senior CML for Years 8–10</strong>, with members working together in missionary groups inspired by St. Thomas the Apostle, St. Francis Xavier and St. Alphonsa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= Leaders ================= -->
+    <section class="cml-section blush" id="leaders">
+        <div class="cml-wrap">
+            <div class="cml-head cml-reveal">
+                <span class="cml-eyebrow"><i class="fas fa-user-group"></i> Young people leading the way</span>
+                <h2>Our CML Leaders</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+            </div>
+
+            <div class="cml-leadblock cml-reveal">
+                <div class="cml-leadtitle"><h3>Junior CML Leaders</h3><span>Years 5–7</span></div>
+                <div class="cml-leaders" id="junior-leaders"></div>
+            </div>
+
+            <div class="cml-leadblock cml-reveal">
+                <div class="cml-leadtitle"><h3>Senior CML Leaders</h3><span>Years 8–10</span></div>
+                <div class="cml-leaders" id="senior-leaders"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= Live Score Card ================= -->
+    <section class="cml-section cml-score" id="scoreboard">
+        <div class="cml-wrap">
+            <div class="cml-head cml-reveal">
+                <span class="cml-eyebrow"><i class="fas fa-trophy"></i> Missionary groups</span>
+                <h2>Live Score Card</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+                <p>Points earned by our missionary groups, updated straight from the CML score sheet.</p>
+            </div>
+
+            <div class="cml-livebar">
+                <span class="cml-live off" id="cml-live"><b></b><span id="cml-live-text">Loading scores…</span></span>
+                <button class="cml-refresh" id="cml-refresh" type="button"><i class="fas fa-rotate"></i> Refresh</button>
+            </div>
+
+            <div id="cml-scoreboard" aria-live="polite">
+                <div class="cml-scoremsg"><i class="fas fa-hourglass-half"></i>Loading the latest scores…</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= Journey + Mission Sunday ================= -->
+    <section class="cml-section white">
+        <div class="cml-wrap cml-split">
+            <article class="cml-card cml-text cml-reveal">
+                <i class="fas fa-route"></i>
+                <h2>A Journey of Faith and Service</h2>
+                <p>As our CML journey begins in Wellington, we look forward to creating many opportunities for our children to put their faith into action.</p>
+                <p>From prayer and liturgical participation to mission activities, fundraising, creative activities, sports and community service, every experience is an opportunity to discover the joy of giving and serving.</p>
+                <div class="cml-highlight">Our young people are not simply preparing to become tomorrow's leaders — they are already an important part of our Church today.</div>
+            </article>
+
+            <article class="cml-card gold cml-text cml-reveal">
+                <i class="fas fa-earth-asia"></i>
+                <h2>Mission Sunday</h2>
+                <p>CML also encourages our young people to take an active role in supporting the missionary life of the Church. Mission Sunday activities provide opportunities for children and families to pray, contribute, create and participate together.</p>
+                <p>Through these activities our children learn that even small acts of generosity and service can make a difference.</p>
+                <div class="cml-mini">
+                    <div><i class="fas fa-hands-praying"></i> Rosary</div>
+                    <div><i class="fas fa-coins"></i> Gold Coin Donation</div>
+                    <div><i class="fas fa-cookie-bite"></i> Bake Sale</div>
+                    <div><i class="fas fa-palette"></i> Mission Sunday-themed arts and exhibitions</div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ================= Join ================= -->
+    <section class="cml-section cml-join" id="cml-join">
+        <div class="cml-wrap cml-reveal">
+            <h2>Ready to Pray, Serve, Learn and Grow?</h2>
+            <p>We warmly invite our children and families to become part of the <strong>CML family at St. Mary’s Syro-Malabar Mission, Wellington</strong>.</p>
+            <p>Let us walk together in the Little Way of St. Thérèse — discovering Christ through prayer, serving others with love, growing together in faith, and bringing the light of Christ into our homes, parish and wider community.</p>
+            <div class="cml-shine"><span>Pray.</span><span>Serve.</span><span>Grow.</span><span>Shine.</span></div>
+            <p>Together, let us nurture a generation of young people who know their faith, love their Church, serve others and carry the missionary spirit forward.</p>
+            <p class="invite">Come and join our CML family!</p>
+            <p class="noise">Together, we can make a difference — and a lot of noise!</p>
+        </div>
+    </section>
+
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Menu JavaScript -->
+    <script src="includes/menu.js"></script>
+
+    <script>
+        document.documentElement.classList.add('cml-js');
+
+        /* ============================================================
+           SETTINGS YOU MAY WANT TO CHANGE
+           ============================================================ */
+
+        // Google Sheet that holds the score card.
+        const CML_SHEET_ID = '1Ga7s3unWiafiOvCuSxWQN58unDQIxELgTiLXbgjOPYQ';
+        // Leave empty to read the first tab. To read another tab, put the number
+        // that follows "gid=" in the sheet's address bar, e.g. '123456789'.
+        const CML_SHEET_GID = '';
+        // How often the page re-reads the sheet (in seconds).
+        const CML_REFRESH_SECONDS = 60;
+
+        // Leaders. "focus" controls which part of the photo stays visible:
+        // first number = left/right, second = up/down (0% = top, 100% = bottom).
+        // If a face sits too high or too low on a card, change that leader's focus.
+        const CML_LEADERS = {
+            junior: [
+                { name: 'Alfred',  img: 'images/cml/Leaders/junior/Alfred.jpg',  focus: '50% 20%' },
+                { name: 'Asin',    img: 'images/cml/Leaders/junior/Asin.jpg',    focus: '50% 20%' },
+                { name: 'Jonadh',  img: 'images/cml/Leaders/junior/Jonadh.jpg',  focus: '50% 20%' },
+                { name: 'Maryann', img: 'images/cml/Leaders/junior/Maryann.jpg', focus: '50% 20%' },
+                { name: 'Nevin',   img: 'images/cml/Leaders/junior/Nevin.jpg',   focus: '50% 20%' },
+                { name: 'Norah',   img: 'images/cml/Leaders/junior/Norah.jpg',   focus: '50% 20%' }
+            ],
+            senior: [
+                { name: 'Adlin',  img: 'images/cml/Leaders/Senior/Adlin.jpg',  focus: '50% 20%' },
+                { name: 'Aidan',  img: 'images/cml/Leaders/Senior/Aidan.jpg',  focus: '50% 20%' },
+                { name: 'Allin',  img: 'images/cml/Leaders/Senior/Allin.jpg',  focus: '50% 20%' },
+                { name: 'Chris',  img: 'images/cml/Leaders/Senior/Chris.jpg',  focus: '50% 20%' },
+                { name: 'Eva',    img: 'images/cml/Leaders/Senior/Eva.jpg',    focus: '50% 20%' },
+                { name: 'Hannah', img: 'images/cml/Leaders/Senior/Hannah.jpg', focus: '50% 20%' },
+                { name: 'Rose',   img: 'images/cml/Leaders/Senior/Rose.jpg',   focus: '50% 20%' }
+            ]
+        };
+
+        /* ============================================================
+           SCORE SHEET READING (pure functions)
+           ============================================================ */
+
+        function cmlParseCSV(text) {
+            const rows = [];
+            let row = [], cell = '', quoted = false;
+            for (let i = 0; i < text.length; i++) {
+                const ch = text[i];
+                if (quoted) {
+                    if (ch === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+                    else if (ch === '"') quoted = false;
+                    else cell += ch;
+                } else if (ch === '"') quoted = true;
+                else if (ch === ',') { row.push(cell); cell = ''; }
+                else if (ch === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+                else if (ch !== '\r') cell += ch;
+            }
+            row.push(cell);
+            rows.push(row);
+            return rows.map(r => r.map(c => c.trim()));
+        }
+
+        function cmlNumber(value) {
+            const n = parseFloat(String(value || '').replace(/[^0-9.\-]/g, ''));
+            return isNaN(n) ? 0 : n;
+        }
+
+        // Turns the sheet grid into { teams: [{name,total}], events: [{name, places:[{pos, winners:[{team,points}]}]}] }
+        function cmlReadScores(grid) {
+            const headerIdx = grid.findIndex(r => r.some(c => /^position$/i.test(c)));
+            if (headerIdx === -1) throw new Error('Could not find the "Position" column in the sheet.');
+            const header = grid[headerIdx];
+            const posCol = header.findIndex(c => /^position$/i.test(c));
+            let eventCol = header.findIndex(c => /^event$/i.test(c));
+            if (eventCol === -1) eventCol = Math.max(0, posCol - 1);
+
+            const teams = [];
+            header.forEach((name, col) => { if (col > posCol && name) teams.push({ name, col, total: 0 }); });
+            if (!teams.length) throw new Error('No team columns found in the sheet.');
+
+            const events = [];
+            let current = null, sheetTotals = null;
+
+            for (let r = headerIdx + 1; r < grid.length; r++) {
+                const row = grid[r];
+                if (row.some(c => /^total$/i.test(c))) {
+                    sheetTotals = teams.map(t => cmlNumber(row[t.col]));
+                    continue;
+                }
+                const eventName = row[eventCol] || '';
+                const pos = row[posCol] || '';
+                // A new event starts at each "1st" row, or when a second event name appears.
+                // (Works whether the event name sits on the first or the last row of its block.)
+                const startsBlock = /^(1|1st|first)$/i.test(pos) && current && current.places.length > 0;
+                const secondName = eventName && current && current.name;
+                if (!current || startsBlock || secondName) {
+                    if (eventName || pos) { current = { name: '', places: [] }; events.push(current); }
+                }
+                if (eventName && current) current.name = eventName;
+                if (pos && current) {
+                    const winners = [];
+                    teams.forEach((t, i) => {
+                        const points = cmlNumber(row[t.col]);
+                        if (points) { winners.push({ team: i, points }); t.total += points; }
+                    });
+                    current.places.push({ pos, winners });
+                }
+            }
+
+            // Use the sheet's own Total row when it has one.
+            if (sheetTotals && sheetTotals.some(n => n > 0)) teams.forEach((t, i) => { t.total = sheetTotals[i]; });
+            events.forEach((e, i) => { if (!e.name) e.name = 'Event ' + (i + 1); });
+            return { teams: teams.map(t => ({ name: t.name, total: t.total })), events };
+        }
+
+        /* ============================================================
+           PAGE BEHAVIOUR
+           ============================================================ */
+        if (typeof document !== 'undefined' && document.addEventListener) document.addEventListener('DOMContentLoaded', function () {
+
+            // Load notice bar from includes folder
+            fetch('includes/notice.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('notice-container').innerHTML = data;
+                    console.log('Notice bar loaded');
+                })
+                .catch(error => {
+                    console.log('Notice loading error:', error);
+                    fetch('notice.html')
+                        .then(response => response.text())
+                        .then(data => { document.getElementById('notice-container').innerHTML = data; })
+                        .catch(err => console.log('Notice fallback error:', err));
+                });
+
+            // Load footer from includes folder
+            fetch('includes/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    console.log('Footer loaded successfully');
+                })
+                .catch(error => {
+                    console.log('Footer loading error:', error);
+                    fetch('footer.html')
+                        .then(response => response.text())
+                        .then(data => { document.getElementById('footer-placeholder').innerHTML = data; })
+                        .catch(err => console.log('Footer fallback error:', err));
+                });
+
+            // Scroll to top
+            const scrollTop = document.getElementById('scroll-top');
+            window.addEventListener('scroll', function () {
+                scrollTop.classList.toggle('active', window.pageYOffset > 300);
+            });
+            scrollTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Small helper to build elements safely
+            function el(tag, className, text) {
+                const node = document.createElement(tag);
+                if (className) node.className = className;
+                if (text !== undefined) node.textContent = text;
+                return node;
+            }
+
+            // Leaders
+            function renderLeaders(list, targetId, role) {
+                const target = document.getElementById(targetId);
+                list.forEach(person => {
+                    const card = el('div', 'cml-leader');
+                    const pic = el('div', 'pic', person.name.charAt(0)); // initial shows if the photo is missing
+                    const img = document.createElement('img');
+                    img.src = person.img;
+                    img.alt = person.name;
+                    img.loading = 'lazy';
+                    img.style.setProperty('--focus', person.focus || '50% 20%');
+                    img.onerror = function () { this.remove(); };
+                    pic.appendChild(img);
+                    card.appendChild(pic);
+                    card.appendChild(el('h4', '', person.name));
+                    card.appendChild(el('p', '', role));
+                    target.appendChild(card);
+                });
+            }
+            renderLeaders(CML_LEADERS.junior, 'junior-leaders', 'Junior Leader');
+            renderLeaders(CML_LEADERS.senior, 'senior-leaders', 'Senior Leader');
+
+            // Falling rose petals
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                ['cml-hero', 'cml-join'].forEach(id => {
+                    const host = document.getElementById(id);
+                    for (let i = 0; i < 12; i++) {
+                        const petal = el('span', 'cml-petal');
+                        const size = 10 + Math.random() * 12;
+                        petal.style.left = (Math.random() * 100) + '%';
+                        petal.style.width = size + 'px';
+                        petal.style.height = (size * 1.35) + 'px';
+                        petal.style.animationDuration = (9 + Math.random() * 9) + 's';
+                        petal.style.animationDelay = (-Math.random() * 18) + 's';
+                        host.appendChild(petal);
+                    }
+                });
+            }
+
+            // Reveal on scroll
+            const revealItems = document.querySelectorAll('.cml-reveal');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
+                    });
+                }, { threshold: 0.12 });
+                revealItems.forEach(item => observer.observe(item));
+            } else {
+                revealItems.forEach(item => item.classList.add('in'));
+            }
+
+            /* ---------- Live score card ---------- */
+            const TEAM_COLOURS = ['#c8102e', '#e09a00', '#2f7d5b', '#3b6fb5', '#7b4bb0', '#0f8a94'];
+            const board = document.getElementById('cml-scoreboard');
+            const liveBadge = document.getElementById('cml-live');
+            const liveText = document.getElementById('cml-live-text');
+            const refreshBtn = document.getElementById('cml-refresh');
+            let hasData = false;
+
+            function saintImage(teamName) {
+                const n = teamName.toLowerCase();
+                if (n.includes('thomas')) return 'images/stthomas.jpg';
+                if (n.includes('xavier') || n.includes('francis')) return 'images/stfrancis.jpg';
+                if (n.includes('alphonsa')) return 'images/stalphonsa.png';
+                if (n.includes('ther') || n.includes('flower')) return 'images/cml/sttheresa.jpg';
+                return '';
+            }
+
+            function ordinal(n) {
+                const s = ['th', 'st', 'nd', 'rd'], v = n % 100;
+                return n + (s[(v - 20) % 10] || s[v] || s[0]);
+            }
+
+            function renderScores(data) {
+                board.textContent = '';
+                const teams = data.teams.map((t, i) => Object.assign({ colour: TEAM_COLOURS[i % TEAM_COLOURS.length] }, t));
+                const ranked = teams.slice().sort((a, b) => b.total - a.total);
+                const top = ranked[0].total;
+
+                const teamGrid = el('div', 'cml-teams');
+                ranked.forEach((team) => {
+                    const rank = ranked.filter(t => t.total > team.total).length + 1;
+                    const isLead = top > 0 && team.total === top;
+                    const card = el('div', 'cml-team' + (isLead ? ' lead' : ''));
+                    card.style.setProperty('--team', team.colour);
+
+                    const rankTag = el('span', 'rank');
+                    if (isLead) rankTag.appendChild(el('i', 'fas fa-crown'));
+                    rankTag.appendChild(document.createTextNode((isLead ? ' ' : '') + ordinal(rank)));
+                    card.appendChild(rankTag);
+
+                    const avatar = el('div', 'avatar');
+                    const src = saintImage(team.name);
+                    if (src) {
+                        const img = document.createElement('img');
+                        img.src = src; img.alt = '';
+                        img.onerror = function () { this.replaceWith(el('i', 'fas fa-shield-heart')); };
+                        avatar.appendChild(img);
+                    } else {
+                        avatar.appendChild(el('i', 'fas fa-shield-heart'));
+                    }
+                    card.appendChild(avatar);
+                    card.appendChild(el('h3', '', team.name));
+
+                    const pts = el('div', 'pts', String(team.total));
+                    pts.appendChild(el('small', '', 'points'));
+                    card.appendChild(pts);
+
+                    const bar = el('div', 'bar');
+                    const fill = el('i');
+                    bar.appendChild(fill);
+                    card.appendChild(bar);
+                    teamGrid.appendChild(card);
+                    requestAnimationFrame(() => requestAnimationFrame(() => {
+                        fill.style.width = (top > 0 ? Math.max(4, team.total / top * 100) : 0) + '%';
+                    }));
+                });
+                board.appendChild(teamGrid);
+
+                if (data.events.length) {
+                    board.appendChild(el('h3', 'cml-events-title', 'Event Results'));
+                    const eventGrid = el('div', 'cml-events');
+                    data.events.forEach(event => {
+                        const card = el('div', 'cml-event');
+                        card.appendChild(el('h4', '', event.name));
+                        const list = el('ul');
+                        event.places.forEach(place => {
+                            const li = el('li');
+                            li.appendChild(el('span', 'pos', place.pos));
+                            if (place.winners.length) {
+                                const who = el('span', 'who');
+                                place.winners.forEach((w, i) => {
+                                    if (i) who.appendChild(document.createTextNode(', '));
+                                    const dot = el('span', 'dot');
+                                    dot.style.setProperty('--team', teams[w.team].colour);
+                                    who.appendChild(dot);
+                                    who.appendChild(document.createTextNode(teams[w.team].name));
+                                });
+                                li.appendChild(who);
+                                li.appendChild(el('span', 'p', place.winners[0].points + ' pts'));
+                            } else {
+                                li.appendChild(el('span', 'who tba', 'To be announced'));
+                            }
+                            list.appendChild(li);
+                        });
+                        card.appendChild(list);
+                        eventGrid.appendChild(card);
+                    });
+                    board.appendChild(eventGrid);
+                }
+            }
+
+            function showMessage(text) {
+                board.textContent = '';
+                const box = el('div', 'cml-scoremsg');
+                box.appendChild(el('i', 'fas fa-circle-info'));
+                box.appendChild(document.createTextNode(text));
+                board.appendChild(box);
+            }
+
+            async function fetchSheet() {
+                const gid = CML_SHEET_GID ? '&gid=' + CML_SHEET_GID : '';
+                const base = 'https://docs.google.com/spreadsheets/d/' + CML_SHEET_ID;
+                const stamp = '&t=' + Date.now(); // avoids a cached copy
+                const sources = [
+                    base + '/export?format=csv' + gid + stamp,
+                    base + '/gviz/tq?tqx=out:csv' + gid + stamp
+                ];
+                let lastError;
+                for (const url of sources) {
+                    try {
+                        const response = await fetch(url, { cache: 'no-store' });
+                        if (!response.ok) throw new Error('HTTP ' + response.status);
+                        const text = await response.text();
+                        if (/^\s*</.test(text)) throw new Error('Sheet is not shared publicly');
+                        return cmlReadScores(cmlParseCSV(text));
+                    } catch (error) {
+                        lastError = error;
+                    }
+                }
+                throw lastError;
+            }
+
+            async function loadScores() {
+                refreshBtn.classList.add('spin');
+                try {
+                    const data = await fetchSheet();
+                    renderScores(data);
+                    hasData = true;
+                    liveBadge.classList.remove('off');
+                    liveText.textContent = 'Live · updated ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+                } catch (error) {
+                    console.log('Score card error:', error);
+                    liveBadge.classList.add('off');
+                    liveText.textContent = hasData ? 'Could not refresh · showing last scores' : 'Scores unavailable';
+                    if (!hasData) showMessage('The score card could not be loaded right now. Please check back soon.');
+                } finally {
+                    refreshBtn.classList.remove('spin');
+                }
+            }
+
+            refreshBtn.addEventListener('click', loadScores);
+            loadScores();
+            setInterval(function () { if (!document.hidden) loadScores(); }, CML_REFRESH_SECONDS * 1000);
+            document.addEventListener('visibilitychange', function () { if (!document.hidden) loadScores(); });
+        });
+    </script>
+</body>
+</html>
