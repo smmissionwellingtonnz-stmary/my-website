@@ -243,24 +243,26 @@
 
         .cml-wave { position: absolute; left: 0; bottom: -1px; width: 100%; height: 90px; z-index: 2; display: block; }
 
-        /* Falling rose petals: St. Thérèse's "shower of roses" */
-        .cml-petal {
+        /* Falling roses: St. Thérèse's "shower of roses" */
+        .cml-rose {
             position: absolute;
-            top: -40px;
-            width: 16px;
-            height: 22px;
-            background: linear-gradient(140deg, #ffc4d0, #e8436b);
-            border-radius: 80% 0 80% 0;
-            opacity: 0.8;
+            top: -50px;
+            width: 26px;
+            height: 26px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg stroke='%239c1036' stroke-width='.7'%3E%3Cg fill='%23f0668a'%3E%3Ccircle cx='20' cy='10.5' r='9'/%3E%3Ccircle cx='29' cy='17.1' r='9'/%3E%3Ccircle cx='25.6' cy='27.7' r='9'/%3E%3Ccircle cx='14.4' cy='27.7' r='9'/%3E%3Ccircle cx='11' cy='17.1' r='9'/%3E%3C/g%3E%3Cg fill='%23dc3560'%3E%3Ccircle cx='22.9' cy='16' r='6.6'/%3E%3Ccircle cx='24.8' cy='21.5' r='6.6'/%3E%3Ccircle cx='20' cy='25' r='6.6'/%3E%3Ccircle cx='15.2' cy='21.5' r='6.6'/%3E%3Ccircle cx='17.1' cy='16' r='6.6'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='5.6' fill='%23b3123a'/%3E%3Cpath d='M16.9 20.6a3.2 3.2 0 1 1 3.4 2.9M18.6 19.7a1.6 1.6 0 1 1 1.6 1.7' fill='none' stroke='%236d0a25' stroke-width='.9' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+            opacity: 0.9;
             z-index: 1;
             pointer-events: none;
             animation: cmlFall linear infinite;
         }
 
         @keyframes cmlFall {
-            0% { transform: translate3d(0, -40px, 0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.85; }
-            100% { transform: translate3d(90px, 110vh, 0) rotate(540deg); opacity: 0; }
+            0% { transform: translate3d(0, -50px, 0) rotate(0deg); opacity: 0; }
+            8% { opacity: 0.9; }
+            50% { transform: translate3d(50px, 55vh, 0) rotate(160deg); }
+            90% { opacity: 0.9; }
+            100% { transform: translate3d(-10px, 112vh, 0) rotate(320deg); opacity: 0; }
         }
 
         /* ---------- Welcome ---------- */
@@ -525,36 +527,73 @@
         .cml-two { max-width: 860px; margin: 0 auto; }
 
         /* ---------- Leaders ---------- */
-        .cml-leadblock + .cml-leadblock { margin-top: 56px; }
+        .cml-teamcard {
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--cml-shadow);
+            border-top: 6px solid var(--team, var(--cml-rose));
+        }
 
-        .cml-leadtitle {
+        .cml-teamcard + .cml-teamcard { margin-top: 30px; }
+
+        .cml-teamhead {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 26px;
+            padding: 18px 26px;
+            background: var(--cml-blush);
+            background: color-mix(in srgb, var(--team, #b3123a) 12%, #fff);
         }
 
-        .cml-leadtitle h3 { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.6rem; color: var(--cml-rose-deep); white-space: nowrap; }
-        .cml-leadtitle span { font-size: 0.82rem; padding: 4px 14px; border-radius: 30px; background: var(--cml-blush); color: var(--cml-rose); font-weight: 600; white-space: nowrap; }
-        .cml-leadtitle::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--cml-gold), transparent); }
+        .cml-teamhead .avatar {
+            flex: 0 0 64px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--team, var(--cml-rose));
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--team, var(--cml-rose));
+            font-size: 1.5rem;
+        }
 
-        .cml-leaders { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; }
+        .cml-teamhead .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+        .cml-teamhead small { display: block; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cml-muted); }
+        .cml-teamhead h3 { font-family: 'Marcellus', serif; font-weight: 400; font-size: clamp(1.35rem, 3.6vw, 1.8rem); line-height: 1.2; color: var(--cml-rose-deep); }
+
+        .cml-teambody { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 26px; }
+
+        .cml-subtitle { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 16px; }
+        .cml-subtitle h4 { font-size: 1.02rem; font-weight: 600; color: var(--cml-rose-deep); }
+        .cml-subtitle span { font-size: 0.76rem; padding: 3px 12px; border-radius: 30px; background: var(--cml-blush); color: var(--cml-rose); font-weight: 600; white-space: nowrap; }
+
+        .cml-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+        .cml-people { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; max-width: 880px; margin: 0 auto; }
+        .cml-people .cml-leader { flex: 0 1 190px; }
+        .cml-people.wide .cml-leader { flex-basis: 230px; }
 
         .cml-leader {
-            flex: 0 1 172px;
+            position: relative;
+            min-width: 0;
             background: #fff;
+            border: 1px solid #f6dfe4;
             border-radius: 20px;
             padding: 10px 10px 16px;
             text-align: center;
-            box-shadow: var(--cml-shadow);
+            box-shadow: 0 8px 22px rgba(94, 12, 36, 0.09);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .cml-leader:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 20px 40px rgba(94, 12, 36, 0.2); }
+        .cml-leader:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(94, 12, 36, 0.18); }
 
         /* Photo frame: fixed portrait shape. The image fills it and is anchored
-           towards the top so faces stay in view. Fine-tune any single photo with
-           the "focus" value in the leaders list at the bottom of this file. */
+           towards the top so faces stay in view. Fine-tune any single photo by
+           adding  focus: '50% 10%'  to that person in the lists at the bottom of this file. */
         .cml-leader .pic {
             position: relative;
             aspect-ratio: 4 / 5;
@@ -579,8 +618,134 @@
             display: block;
         }
 
-        .cml-leader h4 { margin-top: 12px; font-size: 1.05rem; font-weight: 600; color: var(--cml-rose-deep); }
-        .cml-leader p { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cml-muted); }
+        .cml-leader .role {
+            display: block;
+            margin: 2px 0 10px;
+            padding: 6px 8px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--cml-gold-soft), var(--cml-gold));
+            color: var(--cml-rose-deep);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .cml-leader h4 { margin-top: 12px; font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--cml-rose-deep); overflow-wrap: anywhere; }
+        .cml-leader p { margin-top: 4px; font-size: 0.8rem; line-height: 1.4; color: var(--cml-muted); }
+
+        .cml-subhead { text-align: center; margin: 64px auto 30px; }
+        .cml-subhead h2 { font-family: 'Marcellus', serif; font-weight: 400; font-size: clamp(1.6rem, 3.6vw, 2.2rem); line-height: 1.2; color: var(--cml-rose-deep); }
+
+        /* ---------- Photo galleries ---------- */
+        .cml-gallery {
+            background: #fff;
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: var(--cml-shadow);
+        }
+
+        .cml-gallery + .cml-gallery { margin-top: 34px; }
+
+        .cml-gal-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-bottom: 16px; }
+        .cml-gal-head h3 { font-family: 'Marcellus', serif; font-weight: 400; font-size: clamp(1.3rem, 3.4vw, 1.7rem); line-height: 1.2; color: var(--cml-rose-deep); }
+        .cml-gal-head span { color: var(--cml-rose); font-weight: 600; font-size: 0.9rem; }
+        .cml-gal-head span i { margin-right: 6px; }
+
+        .cml-gal-stage {
+            position: relative;
+            aspect-ratio: 3 / 2;
+            max-height: 78vh;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #2a0a14;
+            touch-action: pan-y;
+            outline: none;
+        }
+
+        .cml-gal-stage:focus-visible { box-shadow: 0 0 0 3px var(--cml-gold); }
+
+        .cml-gal-stage .backdrop {
+            position: absolute;
+            inset: -30px;
+            background-size: cover;
+            background-position: center;
+            filter: blur(24px) brightness(0.55);
+        }
+
+        .cml-gal-stage img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            color: #fff;
+        }
+
+        .cml-gal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--cml-rose-deep);
+            font-size: 1.05rem;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+            transition: background 0.2s ease, transform 0.2s ease;
+            z-index: 2;
+        }
+
+        .cml-gal-nav:hover { background: var(--cml-gold-soft); transform: translateY(-50%) scale(1.08); }
+        .cml-gal-nav.prev { left: 12px; }
+        .cml-gal-nav.next { right: 12px; }
+
+        .cml-gal-count {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .cml-gal-thumbs {
+            position: relative;
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 4px 2px 8px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .cml-gal-thumbs button {
+            flex: 0 0 84px;
+            height: 60px;
+            padding: 0;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--cml-blush);
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s ease, border-color 0.2s ease;
+        }
+
+        .cml-gal-thumbs button:hover { opacity: 1; }
+        .cml-gal-thumbs button.active { opacity: 1; border-color: var(--cml-rose); }
+        .cml-gal-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         /* ---------- Live scoreboard ---------- */
         .cml-score {
@@ -850,14 +1015,33 @@
             .cml-logo { width: 130px; height: 130px; }
             .cml-patron .body { padding: 28px 24px; }
             .cml-card { padding: 30px 24px; }
-            .cml-leader { flex-basis: calc(50% - 11px); }
-            .cml-leadtitle { flex-wrap: wrap; gap: 10px; }
+            .cml-teamhead { padding: 16px 18px; gap: 12px; }
+            .cml-teamhead .avatar { flex-basis: 54px; width: 54px; height: 54px; }
+            .cml-teambody { grid-template-columns: 1fr; gap: 26px; padding: 18px 14px 20px; }
+            .cml-pair { gap: 12px; }
+            .cml-people { gap: 12px; }
+            .cml-people .cml-leader, .cml-people.wide .cml-leader { flex: 0 1 calc(50% - 6px); }
+            .cml-leader { padding: 8px 8px 14px; border-radius: 16px; }
+            .cml-leader h4 { font-size: 0.92rem; }
+            .cml-leader .role { font-size: 0.66rem; letter-spacing: 0.04em; }
+            .cml-subhead { margin-top: 50px; }
+            .cml-gallery { padding: 12px; border-radius: 18px; }
+            .cml-gal-stage { aspect-ratio: 4 / 3; border-radius: 12px; }
+            .cml-gal-nav { width: 44px; height: 44px; }
+            .cml-gal-nav.prev { left: 8px; }
+            .cml-gal-nav.next { right: 8px; }
+            .cml-gal-thumbs button { flex-basis: 68px; height: 50px; }
+            .cml-btns { flex-direction: column; align-items: center; }
+            .cml-btn { width: 100%; max-width: 300px; justify-content: center; }
+            .cml-hero { padding: 110px 16px 110px; }
+            .cml-wrap { padding: 0 16px; }
+            .scroll-top { right: 16px; bottom: 20px; width: 44px; height: 44px; }
             .cml-mini { grid-template-columns: 1fr; }
             .cml-hero h1 span { letter-spacing: 0.2em; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .cml-petal { display: none; }
+            .cml-rose { display: none; }
             .cml-js .cml-reveal { opacity: 1; transform: none; transition: none; }
             .cml-logo, .cml-live b { animation: none; }
             html { scroll-behavior: auto; }
@@ -877,7 +1061,7 @@
     <section class="cml-hero" id="cml-hero">
         <div class="cml-hero-inner">
             <div class="cml-logo">
-                <img src="images/cml/logo/cmllogo.png" alt="Cherupushpa Mission League logo">
+                <img src="images/cml/logo/cml_logo.png" alt="Cherupushpa Mission League logo">
             </div>
             <p class="cml-kicker">St. Mary's Syro-Malabar Mission, Wellington</p>
             <h1>Cherupushpa Mission League <span>(CML)</span></h1>
@@ -888,6 +1072,7 @@
             <div class="cml-btns">
                 <a class="cml-btn gold" href="#scoreboard"><i class="fas fa-trophy"></i> Live Score Card</a>
                 <a class="cml-btn ghost" href="#leaders"><i class="fas fa-user-group"></i> Meet Our Leaders</a>
+                <a class="cml-btn ghost" href="#gallery"><i class="fas fa-images"></i> Photo Gallery</a>
             </div>
         </div>
         <svg class="cml-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
@@ -1021,7 +1206,7 @@
                     <div class="cml-symbol"><i class="fas fa-book-bible"></i><div><h3>The Bible</h3><p>Reminds us to study and live according to God's Word.</p></div></div>
                     <div class="cml-symbol"><i class="fas fa-cross"></i><div><h3>The Holy Cross</h3><p>Represents our salvation.</p></div></div>
                 </div>
-                <div class="logo"><img src="images/cml/logo/cmllogo.png" alt="CML logo"></div>
+                <div class="logo"><img src="images/cml/logo/cml_logo.png" alt="CML logo"></div>
                 <div class="col">
                     <div class="cml-symbol"><i class="fas fa-fire"></i><div><h3>The Lamp</h3><p>Reminds us to carry the light of Christ into the world.</p></div></div>
                     <div class="cml-symbol"><i class="fas fa-wheat-awn"></i><div><h3>The Wheat Grains</h3><p>Remind us of our responsibility to proclaim the Gospel.</p></div></div>
@@ -1072,17 +1257,25 @@
                 <span class="cml-eyebrow"><i class="fas fa-user-group"></i> Young people leading the way</span>
                 <h2>Our CML Leaders</h2>
                 <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+                <p>Each missionary group is led by its own Junior and Senior CML leaders.</p>
             </div>
 
-            <div class="cml-leadblock cml-reveal">
-                <div class="cml-leadtitle"><h3>Junior CML Leaders</h3><span>Years 5–7</span></div>
-                <div class="cml-leaders" id="junior-leaders"></div>
-            </div>
+            <!-- Filled from the CML_TEAMS list at the bottom of this file -->
+            <div id="cml-team-leaders"></div>
 
-            <div class="cml-leadblock cml-reveal">
-                <div class="cml-leadtitle"><h3>Senior CML Leaders</h3><span>Years 8–10</span></div>
-                <div class="cml-leaders" id="senior-leaders"></div>
+            <div class="cml-subhead cml-reveal" id="office-bearers">
+                <span class="cml-eyebrow"><i class="fas fa-award"></i> Serving the whole CML family</span>
+                <h2>CML Office Bearers</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
             </div>
+            <div class="cml-people cml-reveal" id="cml-office-bearers"></div>
+
+            <div class="cml-subhead cml-reveal" id="moderators">
+                <span class="cml-eyebrow"><i class="fas fa-hands-holding-child"></i> Guiding and encouraging</span>
+                <h2>Our Moderators</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+            </div>
+            <div class="cml-people wide cml-reveal" id="cml-moderators"></div>
         </div>
     </section>
 
@@ -1133,6 +1326,19 @@
         </div>
     </section>
 
+    <!-- ================= Photo Gallery ================= -->
+    <section class="cml-section blush" id="gallery">
+        <div class="cml-wrap">
+            <div class="cml-head cml-reveal">
+                <span class="cml-eyebrow"><i class="fas fa-images"></i> Moments from our journey</span>
+                <h2>Photo Gallery</h2>
+                <div class="cml-flourish"><i class="fas fa-spa"></i></div>
+            </div>
+            <!-- Filled from the CML_GALLERIES list at the bottom of this file -->
+            <div id="cml-galleries" class="cml-reveal"></div>
+        </div>
+    </section>
+
     <!-- ================= Join ================= -->
     <section class="cml-section cml-join" id="cml-join">
         <div class="cml-wrap cml-reveal">
@@ -1167,28 +1373,81 @@
         // How often the page re-reads the sheet (in seconds).
         const CML_REFRESH_SECONDS = 60;
 
-        // Leaders. "focus" controls which part of the photo stays visible:
-        // first number = left/right, second = up/down (0% = top, 100% = bottom).
-        // If a face sits too high or too low on a card, change that leader's focus.
-        const CML_LEADERS = {
-            junior: [
-                { name: 'Alfred',  img: 'images/cml/Leaders/junior/Alfred.jpg',  focus: '50% 20%' },
-                { name: 'Asin',    img: 'images/cml/Leaders/junior/Asin.jpg',    focus: '50% 20%' },
-                { name: 'Jonadh',  img: 'images/cml/Leaders/junior/Jonadh.jpg',  focus: '50% 20%' },
-                { name: 'Maryann', img: 'images/cml/Leaders/junior/Maryann.jpg', focus: '50% 20%' },
-                { name: 'Nevin',   img: 'images/cml/Leaders/junior/Nevin.jpg',   focus: '50% 20%' },
-                { name: 'Norah',   img: 'images/cml/Leaders/junior/Norah.jpg',   focus: '50% 20%' }
-            ],
-            senior: [
-                { name: 'Adlin',  img: 'images/cml/Leaders/Senior/Adlin.jpg',  focus: '50% 20%' },
-                { name: 'Aidan',  img: 'images/cml/Leaders/Senior/Aidan.jpg',  focus: '50% 20%' },
-                { name: 'Allin',  img: 'images/cml/Leaders/Senior/Allin.jpg',  focus: '50% 20%' },
-                { name: 'Chris',  img: 'images/cml/Leaders/Senior/Chris.jpg',  focus: '50% 20%' },
-                { name: 'Eva',    img: 'images/cml/Leaders/Senior/Eva.jpg',    focus: '50% 20%' },
-                { name: 'Hannah', img: 'images/cml/Leaders/Senior/Hannah.jpg', focus: '50% 20%' },
-                { name: 'Rose',   img: 'images/cml/Leaders/Senior/Rose.jpg',   focus: '50% 20%' }
-            ]
-        };
+        // Missionary groups and their leaders.
+        // Optional for any person:  focus: '50% 10%'  controls which part of the photo
+        // stays visible (first number = left/right, second = up/down; 0% = top).
+        const J = 'images/cml/Leaders/junior/';
+        const S = 'images/cml/Leaders/Senior/';
+        const CML_TEAMS = [
+            {
+                name: 'St. Thomas Warriors', saint: 'images/stthomas.jpg', colour: '#c8102e',
+                junior: [
+                    { name: 'Maryann Jose', year: 'Year 7', img: J + 'Maryann.jpg' },
+                    { name: 'Alfred Tomy', year: 'Year 7', img: J + 'Alfred.jpg' }
+                ],
+                senior: [
+                    { name: 'Eva Maria Justine', year: 'Year 9', img: S + 'Eva.jpg' },
+                    { name: 'Aidan Abhilash', year: 'Year 9', img: S + 'Aidan.jpg' }
+                ]
+            },
+            {
+                name: 'St. Xavier Heros', saint: 'images/stfrancis.jpg', colour: '#e09a00',
+                junior: [
+                    { name: 'Norah Jeff', year: 'Year 7', img: J + 'Norah.jpg' },
+                    { name: 'Nevin Jose Kuzhivelil', year: 'Year 7', img: J + 'Nevin.jpg' }
+                ],
+                senior: [
+                    { name: 'Rose Mariya Renjith', year: 'Year 9', img: S + 'Rose.jpg' },
+                    { name: 'Adlin Prince', year: 'Year 9', img: S + 'Adlin.jpg' }
+                ]
+            },
+            {
+                name: 'St. Alphonsa Stars', saint: 'images/stalphonsa.png', colour: '#2f7d5b',
+                junior: [
+                    { name: 'Asin Maria Sinoop', year: 'Year 7', img: J + 'Asin.jpg' },
+                    { name: 'Jonadh Philip', year: 'Year 7', img: J + 'Jonadh.jpg' }
+                ],
+                senior: [
+                    { name: 'Hannah Mariyam Jojo', year: 'Year 9', img: S + 'Hannah.jpg' },
+                    { name: 'Chris Tomson Jacob', year: 'Year 9', img: S + 'Chris.jpg' }
+                ]
+            }
+        ];
+
+        // Office bearers ("note" is an optional line shown under the name).
+        const CML_OFFICE_BEARERS = [
+            { role: 'President', name: 'Chris Tomson Jacob', img: S + 'Chris.jpg' },
+            { role: 'Vice President', name: 'Eva Maria Justine', img: S + 'Eva.jpg' },
+            { role: 'Secretary', name: 'Hannah Mariyam Jojo', img: S + 'Hannah.jpg', note: 'Coordinates records and communication' },
+            { role: 'Joint Secretary', name: 'Adlin Prince', img: S + 'Adlin.jpg' },
+            { role: 'Treasurer', name: 'Alin Maria Jayesh', img: S + 'Allin.jpg' },
+            { role: 'Treasurer', name: 'Rose Mariya Renjith', img: S + 'Rose.jpg' },
+            { role: 'Joint Treasurer', name: 'Aidan Abhilash', img: S + 'Aidan.jpg' }
+        ];
+
+        const CML_MODERATORS = [
+            { name: 'Varghese Cherian', img: 'images/cml/moderators/varghese.jpg' },
+            { name: 'Sandra Maria Geejay', img: 'images/cml/moderators/sandra.jpg' }
+        ];
+
+        // Photo galleries. To add another gallery, copy one { ... } block,
+        // change the title, date and folder, and list its image file names.
+        const CML_GALLERIES = [
+            {
+                title: 'CML Introduction',
+                date: '11 October 2026',
+                folder: 'images/cml/Gallery/CML_Introduction_11Oct26/',
+                images: [
+                    'IMG-20261011-WA0006.jpg', 'IMG-20261011-WA0009.jpg', 'IMG-20261011-WA0017.jpg',
+                    'IMG-20261011-WA0018.jpg', 'IMG-20261011-WA0019.jpg', 'IMG-20261011-WA0020.jpg',
+                    'IMG-20261011-WA0021.jpg', 'IMG-20261011-WA0022.jpg', 'IMG-20261011-WA0023.jpg',
+                    'IMG-20261011-WA0024.jpg', 'IMG-20261011-WA0025.jpg', 'IMG-20261011-WA0026.jpg',
+                    'IMG-20261011-WA0027.jpg', 'IMG-20261011-WA0028.jpg', 'IMG-20261011-WA0029.jpg',
+                    'IMG-20261011-WA0030.jpg', 'IMG-20261011-WA0031.jpg', 'IMG-20261011-WA0032.jpg',
+                    'IMG-20261011-WA0033.jpg', 'IMG-20261011-WA0034.jpg'
+                ]
+            }
+        ];
 
         /* ============================================================
            SCORE SHEET READING (pure functions)
@@ -1273,7 +1532,7 @@
 
             // Load notice bar from includes folder
             fetch('includes/notice.html')
-                .then(response => response.text())
+                .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.text(); })
                 .then(data => {
                     document.getElementById('notice-container').innerHTML = data;
                     console.log('Notice bar loaded');
@@ -1281,14 +1540,14 @@
                 .catch(error => {
                     console.log('Notice loading error:', error);
                     fetch('notice.html')
-                        .then(response => response.text())
+                        .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.text(); })
                         .then(data => { document.getElementById('notice-container').innerHTML = data; })
                         .catch(err => console.log('Notice fallback error:', err));
                 });
 
             // Load footer from includes folder
             fetch('includes/footer.html')
-                .then(response => response.text())
+                .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.text(); })
                 .then(data => {
                     document.getElementById('footer-placeholder').innerHTML = data;
                     console.log('Footer loaded successfully');
@@ -1296,7 +1555,7 @@
                 .catch(error => {
                     console.log('Footer loading error:', error);
                     fetch('footer.html')
-                        .then(response => response.text())
+                        .then(response => { if (!response.ok) throw new Error('HTTP ' + response.status); return response.text(); })
                         .then(data => { document.getElementById('footer-placeholder').innerHTML = data; })
                         .catch(err => console.log('Footer fallback error:', err));
                 });
@@ -1318,41 +1577,176 @@
                 return node;
             }
 
-            // Leaders
-            function renderLeaders(list, targetId, role) {
-                const target = document.getElementById(targetId);
-                list.forEach(person => {
-                    const card = el('div', 'cml-leader');
-                    const pic = el('div', 'pic', person.name.charAt(0)); // initial shows if the photo is missing
-                    const img = document.createElement('img');
-                    img.src = person.img;
-                    img.alt = person.name;
-                    img.loading = 'lazy';
-                    img.style.setProperty('--focus', person.focus || '50% 20%');
-                    img.onerror = function () { this.remove(); };
-                    pic.appendChild(img);
-                    card.appendChild(pic);
-                    card.appendChild(el('h4', '', person.name));
-                    card.appendChild(el('p', '', role));
-                    target.appendChild(card);
-                });
+            // ---------- People cards ----------
+            function personCard(person) {
+                const card = el('div', 'cml-leader');
+                if (person.role) card.appendChild(el('span', 'role', person.role));
+                const pic = el('div', 'pic', person.name.charAt(0)); // initial shows if the photo is missing
+                const img = document.createElement('img');
+                img.src = person.img;
+                img.alt = person.name;
+                img.loading = 'lazy';
+                if (person.focus) img.style.setProperty('--focus', person.focus);
+                img.onerror = function () { this.remove(); };
+                pic.appendChild(img);
+                card.appendChild(pic);
+                card.appendChild(el('h4', '', person.name));
+                const line = person.year || person.note;
+                if (line) card.appendChild(el('p', '', line));
+                return card;
             }
-            renderLeaders(CML_LEADERS.junior, 'junior-leaders', 'Junior Leader');
-            renderLeaders(CML_LEADERS.senior, 'senior-leaders', 'Senior Leader');
 
-            // Falling rose petals
+            function leaderGroup(title, years, people) {
+                const group = el('div', 'cml-sub');
+                const heading = el('div', 'cml-subtitle');
+                heading.appendChild(el('h4', '', title));
+                heading.appendChild(el('span', '', years));
+                group.appendChild(heading);
+                const pair = el('div', 'cml-pair');
+                people.forEach(person => pair.appendChild(personCard(person)));
+                group.appendChild(pair);
+                return group;
+            }
+
+            const teamHost = document.getElementById('cml-team-leaders');
+            CML_TEAMS.forEach(team => {
+                const card = el('article', 'cml-teamcard cml-reveal');
+                card.style.setProperty('--team', team.colour);
+
+                const head = el('div', 'cml-teamhead');
+                const avatar = el('div', 'avatar');
+                const saint = document.createElement('img');
+                saint.src = team.saint;
+                saint.alt = '';
+                saint.onerror = function () { this.replaceWith(el('i', 'fas fa-shield-heart')); };
+                avatar.appendChild(saint);
+                head.appendChild(avatar);
+                const title = el('div');
+                title.appendChild(el('small', '', 'Missionary group'));
+                title.appendChild(el('h3', '', team.name));
+                head.appendChild(title);
+                card.appendChild(head);
+
+                const body = el('div', 'cml-teambody');
+                body.appendChild(leaderGroup('Junior CML Leaders', 'Years 5–7', team.junior));
+                body.appendChild(leaderGroup('Senior CML Leaders', 'Years 8–10', team.senior));
+                card.appendChild(body);
+                teamHost.appendChild(card);
+            });
+
+            const officeHost = document.getElementById('cml-office-bearers');
+            CML_OFFICE_BEARERS.forEach(person => officeHost.appendChild(personCard(person)));
+
+            const moderatorHost = document.getElementById('cml-moderators');
+            CML_MODERATORS.forEach(person => moderatorHost.appendChild(personCard(Object.assign({ year: 'Moderator' }, person))));
+
+            // ---------- Photo galleries (each one has its own controls) ----------
+            function buildGallery(gallery) {
+                const total = gallery.images.length;
+                if (!total) return null;
+                let index = 0;
+
+                const wrap = el('div', 'cml-gallery');
+                const head = el('div', 'cml-gal-head');
+                head.appendChild(el('h3', '', gallery.title));
+                if (gallery.date) {
+                    const date = el('span');
+                    date.appendChild(el('i', 'far fa-calendar'));
+                    date.appendChild(document.createTextNode(gallery.date));
+                    head.appendChild(date);
+                }
+                wrap.appendChild(head);
+
+                const stage = el('div', 'cml-gal-stage');
+                stage.tabIndex = 0;
+                stage.setAttribute('role', 'group');
+                stage.setAttribute('aria-label', gallery.title + ' photos. Use the left and right arrow keys to browse.');
+                const backdrop = el('div', 'backdrop');
+                const photo = document.createElement('img');
+                const prev = el('button', 'cml-gal-nav prev');
+                const next = el('button', 'cml-gal-nav next');
+                prev.type = next.type = 'button';
+                prev.setAttribute('aria-label', 'Previous photo');
+                next.setAttribute('aria-label', 'Next photo');
+                prev.appendChild(el('i', 'fas fa-chevron-left'));
+                next.appendChild(el('i', 'fas fa-chevron-right'));
+                const count = el('span', 'cml-gal-count');
+                [backdrop, photo, prev, next, count].forEach(node => stage.appendChild(node));
+                wrap.appendChild(stage);
+
+                const thumbs = el('div', 'cml-gal-thumbs');
+                const thumbButtons = gallery.images.map((file, i) => {
+                    const button = el('button');
+                    button.type = 'button';
+                    button.setAttribute('aria-label', 'Show photo ' + (i + 1));
+                    const thumb = document.createElement('img');
+                    thumb.src = gallery.folder + file;
+                    thumb.alt = '';
+                    thumb.loading = 'lazy';
+                    button.appendChild(thumb);
+                    button.addEventListener('click', () => show(i));
+                    thumbs.appendChild(button);
+                    return button;
+                });
+                wrap.appendChild(thumbs);
+
+                function show(i) {
+                    index = (i + total) % total;
+                    const src = gallery.folder + gallery.images[index];
+                    photo.src = src;
+                    photo.alt = gallery.title + ' – photo ' + (index + 1) + ' of ' + total;
+                    backdrop.style.backgroundImage = 'url("' + encodeURI(src) + '")';
+                    count.textContent = (index + 1) + ' / ' + total;
+                    thumbButtons.forEach((button, n) => button.classList.toggle('active', n === index));
+                    const active = thumbButtons[index];
+                    // Slide the thumbnail strip only (never the page itself)
+                    thumbs.scrollTo({ left: active.offsetLeft - (thumbs.clientWidth - active.offsetWidth) / 2, behavior: 'smooth' });
+                    new Image().src = gallery.folder + gallery.images[(index + 1) % total]; // warm up the next photo
+                }
+
+                prev.addEventListener('click', () => show(index - 1));
+                next.addEventListener('click', () => show(index + 1));
+                stage.addEventListener('keydown', event => {
+                    if (event.key === 'ArrowLeft') { event.preventDefault(); show(index - 1); }
+                    if (event.key === 'ArrowRight') { event.preventDefault(); show(index + 1); }
+                });
+
+                // Swipe left / right on phones
+                let startX = 0, startY = 0;
+                stage.addEventListener('touchstart', event => {
+                    startX = event.changedTouches[0].clientX;
+                    startY = event.changedTouches[0].clientY;
+                }, { passive: true });
+                stage.addEventListener('touchend', event => {
+                    const dx = event.changedTouches[0].clientX - startX;
+                    const dy = event.changedTouches[0].clientY - startY;
+                    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(index + (dx < 0 ? 1 : -1));
+                }, { passive: true });
+
+                show(0);
+                return wrap;
+            }
+
+            const galleryHost = document.getElementById('cml-galleries');
+            CML_GALLERIES.forEach(gallery => {
+                const node = buildGallery(gallery);
+                if (node) galleryHost.appendChild(node);
+            });
+
+            // Falling roses
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const roseCount = window.innerWidth < 760 ? 8 : 14;
                 ['cml-hero', 'cml-join'].forEach(id => {
                     const host = document.getElementById(id);
-                    for (let i = 0; i < 12; i++) {
-                        const petal = el('span', 'cml-petal');
-                        const size = 10 + Math.random() * 12;
-                        petal.style.left = (Math.random() * 100) + '%';
-                        petal.style.width = size + 'px';
-                        petal.style.height = (size * 1.35) + 'px';
-                        petal.style.animationDuration = (9 + Math.random() * 9) + 's';
-                        petal.style.animationDelay = (-Math.random() * 18) + 's';
-                        host.appendChild(petal);
+                    for (let i = 0; i < roseCount; i++) {
+                        const rose = el('span', 'cml-rose');
+                        const size = 18 + Math.random() * 18;
+                        rose.style.left = (Math.random() * 96) + '%';
+                        rose.style.width = size + 'px';
+                        rose.style.height = size + 'px';
+                        rose.style.animationDuration = (10 + Math.random() * 10) + 's';
+                        rose.style.animationDelay = (-Math.random() * 20) + 's';
+                        host.appendChild(rose);
                     }
                 });
             }
